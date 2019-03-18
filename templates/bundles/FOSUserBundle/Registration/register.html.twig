@@ -1,0 +1,40 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}Inscription{% endblock %}
+{% block menu %}
+
+{% endblock %}
+{% block stylesheets %}
+
+{% endblock %}
+{% block fosuser_body %}
+    <div class="container row registration-container">
+        <div class="col-md-4">
+            <img src="#">
+        </div>
+        <div class="col-md-6">
+            <form action="{{ path('fos_user_registration_register') }}" }} method="POST" id="fosRegistration">
+                <div>
+
+                    {{ form_widget(form.firstName, { 'attr': {'class': 'form-control', 'placeholder': 'Prénom', 'autocomplete': 'off' } }) }}
+                    {{ form_errors(form.firstName) }}
+
+                    {{ form_widget(form.lastName, { 'attr': {'class': 'form-control', 'placeholder': 'Nom', 'autocomplete': 'off' } }) }}
+                    {{ form_errors(form.lastName) }}
+            
+                    {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'Email', 'autocomplete': 'off' } }) }}
+                    {{ form_errors(form.email) }}
+
+                    {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'Mot de passe', 'autocomplete': 'off' } }) }}
+                    {{ form_errors(form.plainPassword.first) }}
+                
+                    {{ form_rest(form) }}
+
+                    <input class="login login-submit btn-outline-info registration-submit" type="submit" value="{{ 'registration.submit'|trans }}">
+                </div>
+            </form>            
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+
+{% endblock %}

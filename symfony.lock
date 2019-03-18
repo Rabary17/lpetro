@@ -182,6 +182,9 @@
     "swiftmailer/swiftmailer": {
         "version": "v6.1.2"
     },
+    "symfony/asset": {
+        "version": "v4.1.11"
+    },
     "symfony/browser-kit": {
         "version": "v4.1.3"
     },

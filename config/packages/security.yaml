@@ -1,42 +1,18 @@
 security:
     encoders:
       FOS\UserBundle\Model\UserInterface: bcrypt
-      App\Security\User\WebserviceUser: bcrypt
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_CANDIDAT:    ROLE_USER
+        ROLE_RH:          [ROLE_USER, ROLE_CANDIDAT]
+        ROLE_ADMIN:       [ROLE_USER, ROLE_RH, ROLE_CANDIDAT, ROLE_ALLOWED_TO_SWITCH]
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         fos_userbundle:
           id: fos_user.user_provider.username
-        userproviderservice:
-            id: App\Service\UserProviderService
-        in_memory: { memory: ~ }
-
 
     firewalls:
-        login:
-            pattern:  ^/api/login
-            stateless: true
-            anonymous: true
-            json_login:
-                provider: userproviderservice
-                username_path: username
-                password_path: password
-                check_path:               /api/login_check
-                success_handler:          lexik_jwt_authentication.handler.authentication_success
-                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-
-        api:
-            pattern: ^/api
-            provider: userproviderservice
-            stateless: true
-            guard:
-                authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
-
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -44,8 +20,13 @@ security:
             #anonymous: true
             pattern: ^/
             form_login:
-                provider: fos_userbundle
+                provider:       fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
+                login_path:     /login
+                use_referer:     true
+                use_forward:    false
+                check_path:     /login_check
+                failure_path:   null
 
             logout:       true
             anonymous:    true
@@ -67,5 +48,3 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
