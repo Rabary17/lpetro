@@ -1,26 +1,12 @@
 
 ###> symfony/framework-bundle ###
 /.env
-/public/bundles/
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
 
 /crap/
 /phpmetrics/
-
-*.log
-wp-config.php
-wp-content/advanced-cache.php
-wp-content/backup-db/
-wp-content/backups/
-wp-content/blogs.dir/
-wp-content/cache/
-wp-content/upgrade/
-wp-content/uploads/
-wp-content/mu-plugins/
-wp-content/wp-cache-config.php
-wp-content/plugins/hello.php
 
 /.htaccess
 /license.txt
@@ -65,15 +51,6 @@ target/
 .settings/
 .classpath
 .project
-
-# NetBeans specific
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-nbactions.xml
-nb-configuration.xml
 
 
 # OS

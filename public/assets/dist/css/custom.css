@@ -1,0 +1,23 @@
+.main-header.main-header-user .navbar {
+	margin-left: 0 !important;
+}
+.content-wrapper.content-wrapper-user {
+	margin-left: 0 !important;
+	margin-bottom: -10px !important;
+	padding: 10px 5%;
+}
+footer {
+	min-height: 50px;
+	background-color: #222222;
+	text-align: center;
+	line-height: 50px;
+	color: white;
+}
+.login-box {
+    padding: 10px 30px !important;
+}
+
+.text-danger ul {
+	padding: 0;
+	list-style-type: none;
+}
