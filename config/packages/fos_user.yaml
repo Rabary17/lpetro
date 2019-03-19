@@ -10,3 +10,6 @@ fos_user:
     registration:
         form:
             type: App\Form\RegistrationType
+    resetting:
+        email:
+            template:   emails/password_resetting.email.twig
