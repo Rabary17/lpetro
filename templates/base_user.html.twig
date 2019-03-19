@@ -40,6 +40,31 @@
             <ul class="nav navbar-nav">
               <li><a href="{{ path('fos_user_security_login') }}"><i class="fa fa-user"></i> Se connecter</a></li>
               <li><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-home"></i> S'inscrire</a></li>
+              {% if app.user %}
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="{{ asset('assets/dist/img/user-avatar.jpg') }}" class="user-image" alt="User Image">
+                <span class="hidden-xs">{{ app.user.lastName }}</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="user-header">
+                    <img src="{{ asset('assets/dist/img/user-avatar.jpg') }}" class="img-circle" alt="User Image">
+                    <p>
+                    {{ app.user.firstName | upper }} {{ app.user.lastName}}
+                    </p>
+                  </li>
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="pull-left">
+                      <a href="{{ path('user_profile') }}" class="btn btn-default btn-flat">Profil</a>
+                    </div>
+                    <div class="pull-right">
+                      <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Se déconnecter</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              {% endif %}
             </ul>
           </div>
         </nav>

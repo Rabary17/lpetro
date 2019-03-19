@@ -14,7 +14,8 @@ class DefaultController extends AbstractController
      * @param DefaultService $defaultservice
      * @return JsonResponse
      */
-    public function index() {
+    public function index()
+    {
         return $this->render('homepage/index.html.twig');
     }
 }

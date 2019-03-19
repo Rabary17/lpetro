@@ -1,0 +1,48 @@
+{% extends 'base_user.html.twig' %}
+{% block body %}
+	<div style="background-color: white">
+		<table class="table table-bordered">
+			<tr>
+				<td>NOM</td>
+				<td>{{ user.firstName }}</td>
+			</tr>
+			<tr>
+				<td>PRENOM</td>
+				<td>{{ user.lastName }}</td>
+			</tr>
+			<tr>
+				<td>EMAIL</td>
+				<td>{{ user.email }}</td>
+			</tr>
+			<tr>
+				<td>DATE DE NAISSANCE</td>
+				<td>{{ user.dateOfBirth }}</td>
+			</tr>
+			<tr>
+				<td>LIEU DE NAISSANCE</td>
+				<td>{{ user.placeOfBirth }}</td>
+			</tr>
+			<tr>
+				<td>SITUATION FAMILIALE</td>
+				<td>{{ user.maritalStatus }}</td>
+			</tr>
+			<tr>
+				<td>NOM CONJOINT</td>
+				<td>{{ user.conjointName }}</td>
+			</tr>
+			<tr>
+				<td>NOMBRE D'ENFANTS</td>
+				<td>{{ user.nbChildren }}</td>
+			</tr>
+			<tr>
+				<td>ADRESSE</td>
+				<td>{{ user.address }}</td>
+			</tr>
+			<tr>
+				<td>NATIONALITE</td>
+				<td>{{ user.nationality }}</td>
+			</tr>
+		</table>		
+	</div>
+
+{% endblock body %}
