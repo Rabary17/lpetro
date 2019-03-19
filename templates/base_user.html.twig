@@ -29,9 +29,12 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
       <link rel="stylesheet" type="text/css" href="{{ asset('assets/dist/css/custom.css') }}">
       <title>{% block title %}LPCS{% endblock %}</title>
-      {% block stylesheets %}{% endblock %}
+      {% block stylesheets %}
+
+      {% endblock %}
   </head>
   <body class="skin-blue">
+<<<<<<< 7f1ad87e2dbf758e2f9fdc87f228dc98318ff45f
       <header class="main-header main-header-user">
         <nav class="navbar navbar-static-top">
           <div class="navbar-custom-menu">
@@ -42,14 +45,71 @@
           </div>
         </nav>
       </header>
-
-      <div class="content-wrapper content-wrapper-user">
-          {% block body %}{% endblock %}
-          {% block javascripts %}{% endblock %}
+=======
+      <div class="wrapper">
+          <header class="main-header main-header-user">
+            <nav class="navbar navbar-static-top" style="background-color: #90b2b2;">
+              <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                  <li><a href="{{ path('fos_user_security_login') }}"><i class="fa fa-user"></i> Se connecter</a></li>
+                  <li><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-home"></i> S'inscrire</a></li>
+                </ul>
+              </div>
+            </nav>
+          </header>
       </div>
+>>>>>>> intégration login register ok
+
+      <div class="content-wrapper content-wrapper-user" style="background-image: url('{{ asset('assets/dist/img/hydrocarbure.png') }}'); background-size: cover;">
+          {% block body %}{% endblock %}
+      </div>
+
+        {% block javascripts %}
+        <!-- jQuery 3 -->
+        <script src="{{ asset('assets/dist/js/jquery.min.js') }}"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="{{ asset('assets/dist/js/jquery-ui.min.js') }}"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+          $.widget.bridge('uibutton', $.ui.button);
+        </script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="{{ asset('assets/dist/js/bootstrap.min.js') }}"></script>
+        {# raphael #}
+        <script src="{{ asset('assets/dist/js/raphael.min.js') }}"></script>
+        {# morris #}
+        <script src="{{ asset('assets/dist/js/morris.min.js') }}"></script>
+        {# sparkline #}
+        <script src="{{ asset('assets/dist/js/sparkline.min.js') }}"></script>
+         {# jquery vector map #} 
+        <script src="{{ asset('assets/dist/js/jquery-vectormap.min.js') }}"></script>
+        {# vector map all #} 
+        <script src="{{ asset('assets/dist/js/jquery-vectormap-all.min.js') }}"></script>
+        {# knob #}
+        <script src="{{ asset('assets/dist/js/knob.min.js') }}"></script>
+        {# moment #}
+        <script src="{{ asset('assets/dist/js/moment.min.js') }}"></script>
+        {# daterange js #}
+        <script src="{{ asset('assets/dist/js/daterangepicker.js') }}"></script>
+        {# daterange bootstrap #}
+        <script src="{{ asset('assets/dist/js/bootstrap-daterangepicker.min.js') }}"></script>
+        {# wysihtml5 #}
+        <script src="{{ asset('assets/dist/js/wysihtml5.min.js') }}"></script>
+        <!-- Slimscroll -->
+        <script src="{{ asset('assets/dist/js/jquery.slimscroll.js') }}"></script>
+        <!-- FastClick -->
+        <script src="{{ asset('assets/dist/js/fastclick.js') }}"></script>
+        <!-- AdminLTE App -->
+        <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="dist/js/demo.js"></script>
+        {% endblock %}
       <footer>
           Copyright &copy; 2019 by <a href="https://passion4humanity.com">Passion for Humanity</a>
       </footer>
+<<<<<<< 7f1ad87e2dbf758e2f9fdc87f228dc98318ff45f
       <!-- jQuery 3 -->
       <script src="{{ asset('assets/dist/js/jquery.min.js') }}"></script>
       <!-- jQuery UI 1.11.4 -->
@@ -66,5 +126,8 @@
       <script src="{{ asset('assets/dist/js/fastclick.js') }}"></script>
       <!-- AdminLTE App -->
       <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+=======
+     
+>>>>>>> intégration login register ok
   </body>
 </html>

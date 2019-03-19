@@ -6,6 +6,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('assets/dist/css/check-blue.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/login.css')}}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,7 +19,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 {% endblock %}
 {% block body %}
-{% block fosuser_body %}
     {% for type, messages in app.session.flashBag.all %}
         {% for message in messages %}
             <div class="{{ type }}">
@@ -29,7 +29,7 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <a href="#"><b>LP</b></a>
+            <a href="#"><b>SE CONNECTER</b></a>
         </div>
         <div class="login-box-body">
             <p class="login-box-msg">Veuillez-vous connecter</p>
@@ -48,31 +48,31 @@
             </div>
             <div class="row">
                 <div class="col-xs-8">
-                    <div class="checkbox icheck">
+                    <div class="checkbox icheck" style="margin-left: 20px;">
                         <label>
-                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" /> Se souvenir de moi
+                            <input style="margin-top: 1px;" type="checkbox" id="remember_me" name="_remember_me" value="on" /> Se souvenir de moi
                         </label>
                     </div>
                 </div>
-            </div>
+            
 
-            <div class="col-xs-4">
-            <input type="submit" class="login login-submit btn btn-primary btn-block btn-flat" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                <div class="col-xs-4">
+                <input type="submit" class="login login-submit btn btn-primary btn-block btn-flat" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                </div>
             </div>
             </form>
 
-            <div class="social-auth-links text-center">
+            {# <div class="social-auth-links text-center">
             <p>- OU -</p>
             <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Se connecter avec facebook</a>
-            </div>
+            </div> #}
             <a href="{{ path('fos_user_resetting_request') }}">J'ai oublié mon mot de passe</a><br>
             <a href="{{ path('fos_user_registration_register') }}" class="text-center">S'inscrire</a>
         </div>
     </div>
 
-    </div>
+    {% endblock %}
     {% block javascripts %}
         {{ parent() }}
     {% endblock %}
     {% endblock %}
-{% endblock %}

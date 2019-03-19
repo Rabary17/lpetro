@@ -6,6 +6,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('assets/dist/css/check-blue.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/register.css')}}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,12 +21,12 @@
 {% block body %}
     <div class="login-box">
         <div class="login-logo">
-            <a href="#"><b>LP</b></a>
+            <a href="#"><b>S'INSCRIRE</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">Veuillez-vous inscrire</p>
-            <form action="{{ path('fos_user_registration_register') }}" }} method="POST" id="fosRegistration">
+            <p class="login-box-msg">Veuillez remplir les informations</p>
+            <form id="fosRegister" action="{{ path('fos_user_registration_register') }}" }} method="POST" id="fosRegistration">
                 <div class="form-group has-feedback">
                     {{ form_widget(form.firstName, { 'attr': {'class': 'form-control', 'placeholder': 'Prénom', 'autocomplete': 'off' } }) }}
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -53,7 +54,8 @@
                 </div>
                     {{ form_rest(form) }}
                     <input class="btn btn-primary btn-block btn-flat" type="submit" value="{{ 'registration.submit'|trans }}">
-            </form>            
+            </form>
+            <a href="{{ path('fos_user_security_login') }}">J'ai déjà un compte</a><br>            
         </div>
         <div class="col-md-2">
         </div>
