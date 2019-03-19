@@ -7,9 +7,9 @@
 	    <div class="login-box-body">
 	        <p class="login-box-msg">Réinitialisation mot de passe</p>
 			<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
-			    <div>
-			        <input type="text" id="username" name="username" required="required" class="form-control" placeholder="Email"/>
-			        <span class="fa fa-envelop form-control-feedback"></span>
+			    <div class="form-group has-feedback">
+			        <input type="email" id="username" name="username" required="required" class="form-control" placeholder="Email"/>
+			        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 			    </div>
 			    <br/>
 			    <div>

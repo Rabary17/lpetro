@@ -32,18 +32,16 @@
       {% block stylesheets %}{% endblock %}
   </head>
   <body class="skin-blue">
-      <div class="wrapper">
-          <header class="main-header main-header-user">
-            <nav class="navbar navbar-static-top">
-              <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
-                  <li><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
-                  <li><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
-                </ul>
-              </div>
-            </nav>
-          </header>
-      </div>
+      <header class="main-header main-header-user">
+        <nav class="navbar navbar-static-top">
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <li><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+              <li><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
 
       <div class="content-wrapper content-wrapper-user">
           {% block body %}{% endblock %}
@@ -68,9 +66,5 @@
       <script src="{{ asset('assets/dist/js/fastclick.js') }}"></script>
       <!-- AdminLTE App -->
       <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
-      <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-      <script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script>
-      <!-- AdminLTE for demo purposes -->
-      <script src="dist/js/demo.js"></script>
   </body>
 </html>
