@@ -7,11 +7,13 @@
 	padding: 10px 5%;
 }
 footer {
-	min-height: 50px;
-	background-color: #90b2b2;
-	text-align: center;
-	line-height: 50px;
-	color: white;
+    min-height: 50px;
+    background-color: #90b2b2;
+    padding: 1rem 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
 }
 .login-box {
     padding: 10px 30px !important;
@@ -23,4 +25,11 @@ footer {
 }
 .skin-blue .main-header-user li.user-header {
     background-color: #90b2b2 !important;
+}
+.form-control{
+	font-size: 16px;
+}
+
+.login-logo a{
+	color: white;
 }
