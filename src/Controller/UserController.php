@@ -14,10 +14,11 @@ class UserController extends AbstractController
      */
     public function index()
     {
-		$securityContext = $this->container->get('security.authorization_checker');
-		if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-			return $this->render('user/profile.html.twig');
+		$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+		$user = $this->getUser();
+		if ($user) {
+			return $this->render('user/profile.html.twig', ['user' => $user]);
 		}
-		return $this->redirectToRoute('login');
+		return $this->redirectToRoute('fos_user_security_login');
     }
 }
