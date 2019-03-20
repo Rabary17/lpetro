@@ -14,7 +14,10 @@ footer {
     width: 100%;
     text-align: center;
     color: white;
+<<<<<<< HEAD
     position: fixed;
+=======
+>>>>>>> 94a818e3845d0dfdca7a568aec32446e308ec37a
 }
 .login-box {
     padding: 10px 30px !important;
