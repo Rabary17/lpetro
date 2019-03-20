@@ -1,11 +1,10 @@
 .banner {
-    width: 50%;
+    text-align: center;
 padding: 2%;
 margin: 2%;
-background-color: #90b2b2e6;
 }
 .home-picture {
-    height: 200px;
+    height: 300px;
 }
 .title-home{
     font-family: Anton;
