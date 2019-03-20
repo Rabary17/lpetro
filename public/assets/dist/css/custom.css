@@ -1,3 +1,10 @@
+html{
+    height: 100%; 
+}
+body{
+        position: relative;
+        min-height: 100%; 
+}
 .main-header.main-header-user .navbar {
 	margin-left: 0 !important;
 }
@@ -7,14 +14,15 @@
 	padding: 10px 5%;
 }
 footer {
-    min-height: 50px;
-    background-color: #90b2b2;
-    padding: 1rem 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    color: white;
     position: absolute;
+    bottom: 0;
+    z-index: 2;
+    text-align: center;
+    background-color: #90b2b2;
+    width: 100%;
+    padding: 1rem;
+    color: white;
+    text-align: center;
 }
 .login-box {
     padding: 10px 30px !important;
