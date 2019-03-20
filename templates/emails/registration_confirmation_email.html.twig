@@ -1,0 +1,30 @@
+	{% trans_default_domain 'FOSUserBundle' %}
+	{% block subject %}
+	{%- autoescape false -%}
+		LP | Confirmation du compte
+	{%- endautoescape -%}
+	{% endblock %}
+	{% block body_text %}
+	{% autoescape false %}
+	{% endautoescape %}
+	{% endblock %}
+	{% block body_html %}
+		<div style="text-align: center !important; background-color:#90b2b2; color: white !important; font-size:16px;padding:30px 20%; ">
+			<img src="#" width="50px" height="50px" style="text-align:center"/>
+			<p>Bonjour {{ user.lastName }} !</p>
+			<p style="color:white">Pour valider votre compte LP, merci de cliquer sur le bouton ci-dessous</p>
+			<br/><br/>
+			<div style="margin:0 auto;width:40%;text-align:center;">
+				<a href="{{ confirmationUrl }}" style="text-align:center; background-color:#3079ed; padding:20px; width:200px; font-weight:bold; text-decoration:none; color: white"> Valider mon compte</a>		
+			</div>
+			<br/><br/><br/>
+			<p style="color:white">Ce lien ne peut être utilisé qu'une seule fois pour valider votre compte.</p><br/>
+			<div style="text-align:left !important; color:white !important">
+				<h3> Vous n'êtes pas à l'origine de cette demande ? </h3>
+				<p> Si vous n'êtes pas à l'origine de la création de ce compte, ne tenez pas compte de cet email, le compte sera automatiquement supprimé.</p>				
+			</div>
+			</div>
+			<div  style="height: 40px; line-height:40px;color:white; background:#fe0130;text-align:center; margin-top: -15px;font-size:16px">
+				 Copyright © LP {{ "now" | date('Y') }}
+			</div>
+	{% endblock %}	

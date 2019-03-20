@@ -10,6 +10,9 @@ fos_user:
     registration:
         form:
             type: App\Form\RegistrationType
+        confirmation:
+            enabled: true
+            template: emails/registration_confirmation_email.html.twig
     resetting:
         email:
             template:   emails/password_resetting.email.twig

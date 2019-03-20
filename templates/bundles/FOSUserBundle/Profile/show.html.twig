@@ -1,0 +1,8 @@
+{% extends 'base_user.html.twig' %}
+{% block body %}
+	<div style="text-align: center; color: white">
+		<p>Votre mot de passe a bien été réinitialisé</p>
+		<p>Vous pouvez maintenant vous <a href="{{ path('fos_user_security_login') }}">ré-connecter</a> avec votre nouveau mot de passe</p>
+		<p>Nom d'utilisateur: {{ user.username }}</p>
+	</div>
+{% endblock body %}
