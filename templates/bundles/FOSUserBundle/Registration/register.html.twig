@@ -1,7 +1,6 @@
+{% trans_default_domain 'FOSUserBundle' %}
 {% extends 'base_user.html.twig' %}
 {% trans_default_domain 'FOSUserBundle' %}
-{% trans_default_domain 'FOSUserBundle' %}
-
 {% block title %}Inscription{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
@@ -18,7 +17,7 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 {% endblock %}
-{% block body %}
+{% block fos_user_content %}
     <div class="login-box">
         <div class="login-logo">
             <a href="#"><b>S'INSCRIRE</b></a>
