@@ -1,9 +1,18 @@
 {% extends 'base_user.html.twig' %}
 {% block body %}
 	<div style="background-color: white;padding: 20px">
-		<form method="POST">
+		<form method="POST" enctype="multipart/form-data">
+		{{form_widget(form._token)}}
 			<fieldset>
 				<legend>ETAT CIVIL</legend>
+				<div class="form-group" style="text-align:center">
+					<div>
+						<img src="{{ asset('uploads/photos/' ~ user.profileName) }}" width="100px" height="100px" id="preview">
+					</div>
+					<input type="file" name='profileFile' class="form-control" id="profileFile" onchange="readURL(this);">
+					<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
+				</div>
+				<br/>
 				<div class="form-group">
 					<label for="firstName">NOM:</label>
 					{{ form_widget(form.firstName, {attr:{'class': 'form-control', 'id': 'firstName'}}) }}
@@ -21,7 +30,7 @@
 				</div>
 				<div class="form-group">
 					<label for="dateOfBirth">DATE DE NAISSANCE:</label>
-					{{ form_widget(form.dateOfBirth, {attr:{'class': 'form-control', 'id': 'dateOfBirth', 'type': 'date'}}) }}
+					{{ form_widget(form.dateOfBirth, {attr:{'class': 'form-control', 'id': 'dateOfBirth', 'type': 'date', 'required': false}}) }}
 					<span class="text-danger">{{ form_errors(form.dateOfBirth) }}</span>
 				</div>
 				<div class="form-group">
@@ -63,3 +72,17 @@
 	</div>
 	<br/><br/>
 {% endblock body %}
+{% block javascripts %}
+	<script type="text/javascript">
+     function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#preview')
+                        .attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+	</script>
+{% endblock %}

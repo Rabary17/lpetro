@@ -8,9 +8,17 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\UserType;
+use App\Service\UserService;
 
 class UserController extends AbstractController
 {
+    private $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     /**
      * @Route("/profile", name="user_profile")
      */
@@ -36,7 +44,7 @@ class UserController extends AbstractController
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
-            if ($form->isSubmitted()) {
+            if ($form->isSubmitted() && $form->isValid()) {
                 $em->flush();
             }
         }

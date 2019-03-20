@@ -5,10 +5,14 @@ namespace App\Entity;
 use App\Helpers\StringHelpers;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="app_user")
+ * @Vich\Uploadable
  */
 class User extends BaseUser
 {
@@ -63,11 +67,33 @@ class User extends BaseUser
      */
     private $nationality;
 
+    /**
+     * @Vich\UploadableField(mapping="profil", fileNameProperty="profileName")
+     * 
+     * @var File
+     */
+    private $profileFile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $profileName;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+    */
+    private $updatedAt;
+
     public function __construct()
     {
         parent::__construct();
         $stringHelpers = new StringHelpers();
         $this->id      = $stringHelpers->generateUuid();
+        $this->updatedAt = new \DateTime('now');
     }
 
     public function getId(): ?string
@@ -188,6 +214,53 @@ class User extends BaseUser
         parent::setEmail($email);
         $this->setUsername($email);
 
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getProfileName(): ?string
+    {
+        return $this->profileName;
+    }
+
+    public function setProfileName(?string $profileName): self
+    {
+        $this->profileName = $profileName;
+
+        return $this;
+    }
+
+    /**
+     * @return File|null|\Symfony\Component\HttpFoundation\File\UploadedFile $profile
+     */
+    public function getProfileFile()
+    {
+        return $this->profileFile;
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $profile
+     *
+    */
+    public function setProfileFile(File $profile = null)
+    {
+        $this->profileFile = $profile;
+
+        if ($profile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+        
         return $this;
     }
  }

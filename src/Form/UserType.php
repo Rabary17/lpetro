@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class UserType extends AbstractType
 {
@@ -18,6 +19,7 @@ class UserType extends AbstractType
             ->add('firstName')
             ->add('dateOfBirth', DateType::class, [
                 'widget' => 'single_text',
+                'required' => false
             ])
             ->add('placeOfBirth')
             ->add('maritalStatus')
@@ -25,7 +27,7 @@ class UserType extends AbstractType
             ->add('nbChildren')
             ->add('address')
             ->add('nationality')
-        ;
+            ->add('profileFile', FileType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
