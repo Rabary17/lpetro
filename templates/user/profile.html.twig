@@ -1,4 +1,8 @@
 {% extends 'base_user.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/profil.css')}}">
+{% endblock %}
 {% block body %}
 	<div style="background-color: white">
 		<table class="table table-bordered">
