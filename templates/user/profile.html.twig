@@ -1,48 +1,40 @@
 {% extends 'base_user.html.twig' %}
 {% block body %}
 	<div style="background-color: white">
-		<table class="table table-bordered">
-			<tr>
-				<td>NOM</td>
-				<td>{{ user.firstName }}</td>
-			</tr>
-			<tr>
-				<td>PRENOM</td>
-				<td>{{ user.lastName }}</td>
-			</tr>
-			<tr>
-				<td>EMAIL</td>
-				<td>{{ user.email }}</td>
-			</tr>
-			<tr>
-				<td>DATE DE NAISSANCE</td>
-				<td>{{ user.dateOfBirth }}</td>
-			</tr>
-			<tr>
-				<td>LIEU DE NAISSANCE</td>
-				<td>{{ user.placeOfBirth }}</td>
-			</tr>
-			<tr>
-				<td>SITUATION FAMILIALE</td>
-				<td>{{ user.maritalStatus }}</td>
-			</tr>
-			<tr>
-				<td>NOM CONJOINT</td>
-				<td>{{ user.conjointName }}</td>
-			</tr>
-			<tr>
-				<td>NOMBRE D'ENFANTS</td>
-				<td>{{ user.nbChildren }}</td>
-			</tr>
-			<tr>
-				<td>ADRESSE</td>
-				<td>{{ user.address }}</td>
-			</tr>
-			<tr>
-				<td>NATIONALITE</td>
-				<td>{{ user.nationality }}</td>
-			</tr>
-		</table>		
+		<fieldset>
+			<legend>ETAT CIVIL</legend>
+			<div>
+				NOM: {{ user.firstName }}
+			</div>
+			<div>
+				PRENOM: {{ user.lastName }}
+			</div>
+			<div>
+				EMAIL: {{ user.email }}
+			</div>
+			<div>
+				DATE DE NAISSANCE: {{ user.dateOfBirth | date('d/m/Y') }}
+			</div>
+			<div>
+				LIEU DE NAISSANCE: {{ user.placeOfBirth }}
+			</div>
+			<div>
+				SITUATION FAMILIALE: {{ user.maritalStatus }}
+			</div>
+			<div>
+				NOM CONJOINT: {{ user.conjointName }}
+			</div>
+			<div>
+				NOMBRE D'ENFANT: {{ user.nbChildren }}
+			</div>
+			<div>
+				ADDRESSE: {{ user.address }}
+			</div>
+			<div>
+				NATIONALITE: {{ user.nationality }}
+			</div>
+		</fieldset>
+		<a href="{{ path('user_profile_edit', {id: user.id}) }}" class="btn btn-primary btn-block btn-flat">Editer mon CV</a>
 	</div>
 
 {% endblock body %}
