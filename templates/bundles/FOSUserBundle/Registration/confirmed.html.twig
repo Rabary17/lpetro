@@ -1,0 +1,8 @@
+{% extends 'base_user.html.twig' %}
+{% block body %}
+	<div style="color: white; text-align: center">
+		<p>Félicitations {{ user.lastName }}! Votre inscription est confirmé.</p>
+		<p>Vous pouvez maintenant voir <a href="{{ path('user_profile') }}">votre profil</a>.</p>
+	</div>
+
+{% endblock body %}
