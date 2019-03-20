@@ -14,7 +14,7 @@ footer {
     width: 100%;
     text-align: center;
     color: white;
-    position: absolute;
+    position: fixed;
 }
 .login-box {
     padding: 10px 30px !important;
@@ -33,4 +33,9 @@ footer {
 
 .login-logo a{
 	color: white;
+}
+
+.navbar-custom-menu{
+position: absolute;
+right: 0;
 }
