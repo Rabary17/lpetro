@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use App\Entity\Hobby;
+use App\Entity\Sport;
 use App\Form\ExtraWorkActivityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -33,6 +34,12 @@ class UserType extends AbstractType
             ->add('nationality')
             ->add('hobbies', EntityType::class, [
                 'class' => Hobby::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true
+            ])
+            ->add('sports', EntityType::class, [
+                'class' => Sport::class,
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true

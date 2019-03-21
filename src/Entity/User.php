@@ -102,6 +102,12 @@ class User extends BaseUser
     protected $hobbies;
 
     /**
+     *@ORM\ManyToMany(targetEntity="Sport")
+     *@ORM\JoinTable(name="user_sports")
+     */
+    protected $sports;
+
+    /**
     * @ORM\OneToMany(targetEntity="ExtraWorkActivity", mappedBy="user", cascade={"persist", "remove"})
     */
     private $extraWorkActivities;
@@ -114,6 +120,7 @@ class User extends BaseUser
         $this->updatedAt = new \DateTime('now');
         $this->hobbies = new ArrayCollection();
         $this->extraWorkActivities = new ArrayCollection();
+        $this->sports = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -348,6 +355,32 @@ class User extends BaseUser
             if ($extraWorkActivity->getUser() === $this) {
                 $extraWorkActivity->setUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Sport[]
+     */
+    public function getSports(): Collection
+    {
+        return $this->sports;
+    }
+
+    public function addSport(Sport $sport): self
+    {
+        if (!$this->sports->contains($sport)) {
+            $this->sports[] = $sport;
+        }
+
+        return $this;
+    }
+
+    public function removeSport(Sport $sport): self
+    {
+        if ($this->sports->contains($sport)) {
+            $this->sports->removeElement($sport);
         }
 
         return $this;

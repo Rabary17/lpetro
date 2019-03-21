@@ -64,14 +64,15 @@
 					<span class="text-danger">{{ form_errors(form.nationality) }}</span>
 				</div>
 			</fieldset>
+
 			<fieldset>
 				<legend>HOBBIES</legend>
 				<div class="form-group">
-					<label for="nbChildren">LOISIRS</label>
 					{{ form_widget(form.hobbies, {attr:{'id': 'hobbies'}}) }}
 					<span class="text-danger">{{ form_errors(form.hobbies) }}</span>
 				</div>
 			</fieldset>
+
 			<fieldset>
 				<legend>ACTIVITES EXTRA-PROFESSIONNELLE</legend>
 				<div id="extra-work-activity">
@@ -79,6 +80,14 @@
 				</div>
 				<div class="form-group">
 					<a href="#" id="add_activity" title="Ajouter activité"><i class="fa fa-plus text-success"></i></a>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<legend>SPORTS</legend>
+				<div class="form-group">
+					{{ form_widget(form.sports, {attr:{'id': 'sports'}}) }}
+					<span class="text-danger">{{ form_errors(form.sports) }}</span>
 				</div>
 				<div class="form-group">
 					<input type="submit" class="btn btn-primary" value="Sauvegarder la modification">
