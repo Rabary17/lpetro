@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Helpers\StringHelpers;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -93,12 +95,19 @@ class User extends BaseUser
     */
     private $updatedAt;
 
+    /**
+     *@ORM\ManyToMany(targetEntity="Hobby", inversedBy="users")
+     *@ORM\JoinTable(name="user_hobbies")
+     */
+    protected $hobbies;
+
     public function __construct()
     {
         parent::__construct();
         $stringHelpers = new StringHelpers();
         $this->id      = $stringHelpers->generateUuid();
         $this->updatedAt = new \DateTime('now');
+        $this->hobbies = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -277,6 +286,32 @@ class User extends BaseUser
     public function setPhoneNumber(?string $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Hobby[]
+     */
+    public function getHobbies(): Collection
+    {
+        return $this->hobbies;
+    }
+
+    public function addHobby(Hobby $hobby): self
+    {
+        if (!$this->hobbies->contains($hobby)) {
+            $this->hobbies[] = $hobby;
+        }
+
+        return $this;
+    }
+
+    public function removeHobby(Hobby $hobby): self
+    {
+        if ($this->hobbies->contains($hobby)) {
+            $this->hobbies->removeElement($hobby);
+        }
 
         return $this;
     }
