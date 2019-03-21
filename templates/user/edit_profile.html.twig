@@ -64,6 +64,11 @@
 					<span class="text-danger">{{ form_errors(form.nationality) }}</span>
 				</div>
 				<div class="form-group">
+					<label for="nbChildren">HOBBIES</label>
+					{{ form_widget(form.hobbies, {attr:{'id': 'hobbies'}}) }}
+					<span class="text-danger">{{ form_errors(form.hobbies) }}</span>
+				</div>
+				<div class="form-group">
 					<input type="submit" class="btn btn-primary" value="Sauvegarder la modification">
 					<a href="{{ path('user_profile') }}"class="btn btn-default">Annuler</a>
 				</div>
