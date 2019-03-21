@@ -1,6 +1,10 @@
 {% extends 'base_user.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/profil.css')}}">
+{% endblock %}
 {% block body %}
-	<div style="background-color: white;padding: 20px">
+	{# <div style="background-color: white;padding: 20px">
 		<form method="POST" enctype="multipart/form-data">
 		{{form_widget(form._token)}}
 			<fieldset>
@@ -75,9 +79,118 @@
 		</form>
 		</fieldset>
 	</div>
-	<br/><br/>
+	<br/><br/> #}
+
+    <article class="resume-wrapper text-center position-relative">
+		<form method="POST" enctype="multipart/form-data">
+			{{form_widget(form._token)}}
+			<div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
+				<header class="resume-header pt-4 pt-md-0">
+					<div class="media flex-column flex-md-row" style="position: relative;">
+						<img id="preview" style="position:relative" class="mr-3 img-fluid picture mx-auto" src="{{ asset('uploads/photos/' ~ user.profileName) }}" alt="">
+							<span style="position:absolute;width:1px;overflow: hidden;">
+							{{ form_widget(form.profileFile, {attr:{'onchange':'readURL(this)'}}) }} 
+							<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
+							</span>
+						<div class="btn-div" id="trig-upl" style="position:absolute;position: absolute;
+									width: 220px;
+									text-align: center;
+									padding: 5px;
+									border:1px solid white;
+									color:white;
+									bottom: 85px;">
+							<i class="fa fa-picture-o"></i> Modifier
+						</div>
+							<div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
+							<div class="primary-info">
+								<h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">					
+										<label for="firstName">NOM:</label>
+										{{ form_widget(form.firstName, {attr:{'class': 'form-control', 'id': 'firstName'}}) }}
+										<span class="text-danger">{{ form_errors(form.firstName) }}</span>
+
+										<label for="lastName">PRENOM:</label>
+										{{ form_widget(form.lastName, {attr:{'class': 'form-control', 'id': 'lastName'}}) }}
+										<span class="text-danger">{{ form_errors(form.lastName) }}</span>
+								</h1>
+								<ul class="list-unstyled">
+									<li class="mb-2"><a href="#"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>
+
+										<label for="email">EMAIL:</label>
+										{{ form_widget(form.email, {attr:{'class': 'form-control', 'id': 'email'}}) }}
+										<span class="text-danger">{{ form_errors(form.email) }}</span>
+									</a></li>
+									<li><a href="#"><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ user.phoneNumber }} +261 34 50 554 87</a></li>
+								</ul>
+							</div><!--//primary-info-->
+							<div class="secondary-info ml-md-auto mt-2">
+								<a class="btn-edit-cv btn-div" href="{{ path('user_profile') }}"><i class="fa fa-times"></i> Annuler</a>
+							</div><!--//secondary-info-->
+							
+						</div><!--//media-body-->
+					</div><!--//media-->
+				</header>
+				<div class="resume-body p-5">
+					<section class="resume-section summary-section mb-5">
+						<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">OBJECTIF</h2>
+						<div class="resume-section-content">
+							<p class="mb-0">Summarise your career here. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+						</div>
+					</section><!--//summary-section-->
+					<div class="row">
+						<div class="col-lg-9">
+							<section class="resume-section experience-section mb-5">
+								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Etat civil</h2>
+								<p>
+									<label for="dateOfBirth">DATE DE NAISSANCE:</label>
+									{{ form_widget(form.dateOfBirth, {attr:{'class': 'form-control', 'id': 'dateOfBirth', 'type': 'date', 'required': false}}) }}
+									<span class="text-danger">{{ form_errors(form.dateOfBirth) }}</span>
+								</p>
+								<p>
+									<label for="placeOfBirth">LIEU DE NAISSANCE:</label>
+									{{ form_widget(form.placeOfBirth, {attr:{'class': 'form-control', 'id': 'placeOfBirth'}}) }}
+									<span class="text-danger">{{ form_errors(form.placeOfBirth) }}</span>
+								</p>
+								<p>
+									<label for="maritalStatus">SITUATION MATRIMONIALE:</label>
+									{{ form_widget(form.maritalStatus, {attr:{'class': 'form-control', 'id': 'maritalStatus'}}) }}
+									<span class="text-danger">{{ form_errors(form.maritalStatus) }}</span>
+								</p>
+								<p>
+									<label for="conjointName">NOM CONJOINT(E):</label>
+									{{ form_widget(form.conjointName, {attr:{'class': 'form-control', 'id': 'conjointName'}}) }}
+									<span class="text-danger">{{ form_errors(form.conjointName) }}</span>
+								</p>
+								<p>
+									<label for="nbChildren">NATIONALITE</label>
+									{{ form_widget(form.nationality, {attr:{'class': 'form-control', 'id': 'nationality'}}) }}
+									<span class="text-danger">{{ form_errors(form.nationality) }}</span>
+								</p>
+								<p>	
+									<label for="addressaddress">ADRESSE:</label>
+									{{ form_widget(form.address, {attr:{'class': 'form-control', 'id': 'address', 'rows': 5}}) }}
+									<span class="text-danger">{{ form_errors(form.address) }}</span>
+								</p>
+								<p>
+									<label for="nbChildren">HOBBIES</label>
+									{{ form_widget(form.hobbies, {attr:{'id': 'hobbies'}}) }}
+									<span class="text-danger">{{ form_errors(form.hobbies) }}</span>
+								</p>
+								<div style="padding:20px; margin-top:30px;text-align:center;">
+									<input style="font-size:15px;" type="submit" class="btn btn-primary" value="Sauvegarder la modification"> ou 
+									<a href="{{ path('user_profile') }}"class="btn btn-default" style="font-size:15px;"><i class="fa fa-times"></i> Annuler</a>
+								</div>
+
+							</section>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</article>
+
 {% endblock body %}
 {% block javascripts %}
+<script src="{{ asset('assets/dist/js/jquery.min.js') }}"></script>
 	<script type="text/javascript">
      function readURL(input) {
             if (input.files && input.files[0]) {
@@ -89,5 +202,11 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+		$(document).ready(function(){
+				$('#trig-upl').on('click', function(){
+					$('#user_profileFile').trigger('click');
+				})
+		})
+
 	</script>
 {% endblock %}

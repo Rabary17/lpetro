@@ -8724,3 +8724,31 @@
       border-radius: 4px;
     }
   }
+
+
+  .btn-edit-cv{
+    padding: 10px;
+    border: 1px solid white;
+  }
+
+  .resume-header{
+    height: auto;
+  }
+
+  label{
+    font-weight: normal;
+    font-size: 13px;
+  }
+
+  input{
+    font-weight: normal;
+  }
+
+  .editor-field{
+    display: flex;
+  }
+
+  .btn-div:hover{
+    opacity: 0.75;
+    cursor: pointer;
+  }

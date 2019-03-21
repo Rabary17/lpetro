@@ -15,17 +15,11 @@
 						    <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">{{user.firstname}} {{user.lastName}}</h1>
 						    <ul class="list-unstyled">
 							    <li class="mb-2"><a href="#"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{user.email}}</a></li>
-							    <li><a href="#"><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ user.phoneNumber }}</a></li>
-							    <a href="{{ path('user_profile_edit', {'id': user.id }) }}">Editer mon cv</a>
+							    <li><a href="#"><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ user.phoneNumber }} +261 34 50 554 87</a></li>
 						    </ul>
 					    </div><!--//primary-info-->
 					    <div class="secondary-info ml-md-auto mt-2">
-						    <ul class="resume-social list-unstyled">
-				                <li class="mb-3"><a href="#"><span class="fa-container text-center mr-2"><i class="fa fa-linkedin-in fa-fw"></i></span>linkedin.com/in/stevedoe</a></li>
-				                <li class="mb-3"><a href="#"><span class="fa-container text-center mr-2"><i class="fa fa-github-alt fa-fw"></i></span>github.com/username</a></li>
-				                <li class="mb-3"><a href="#"><span class="fa-container text-center mr-2"><i class="fa fa-codepen fa-fw"></i></span>codepen.io/username/</a></li>
-				                <li><a href="#"><span class="fa-container text-center mr-2"><i class="fa fa-globe"></i></span>yourwebsite.com</a></li>
-						    </ul>
+							<a class="btn-edit-cv" href="{{ path('user_profile_edit', {'id': user.id }) }}">Editer mon cv</a>
 					    </div><!--//secondary-info-->
 					    
 				    </div><!--//media-body-->
