@@ -3,7 +3,7 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
-
+/public/uploads/photos/
 /crap/
 /phpmetrics/
 
