@@ -27,7 +27,9 @@ class UserType extends AbstractType
             ->add('nbChildren')
             ->add('address')
             ->add('nationality')
-            ->add('profileFile', FileType::class);
+            ->add('profileFile', FileType::class, [
+                    'required' => false
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

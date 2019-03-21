@@ -9,7 +9,7 @@
 					<div>
 						<img src="{{ asset('uploads/photos/' ~ user.profileName) }}" width="100px" height="100px" id="preview">
 					</div>
-					<input type="file" name='profileFile' class="form-control" id="profileFile" onchange="readURL(this);">
+					{{ form_widget(form.profileFile, {attr:{'onchange':'readURL(this)'}}) }}
 					<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
 				</div>
 				<br/>
