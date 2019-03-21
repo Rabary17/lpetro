@@ -1,8 +1,16 @@
 {% extends 'base_user.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/home.css')}}">
+{% endblock %}
 {% block body %}
-	<div style="color: white; text-align: center">
-		<p>Un e-mail a été envoyé à l'adresse {{ user.email }}. Il contient un lien d'activation sur lequel il vous faudra cliquer afin d'activer votre compte.</p>
-
-		<p>Si vous ne recevez pas un email, vérifiez votre dossier spam ou essayez à nouveau.</p>	
-	</div>
+<div class="banner">
+	<img class="home-picture" style="height: 150px;" src="{{ asset('assets/dist/img/Logo-lp.jpg')}}" alt="logo-LP" />
+	{# <h1 class="title-home">Félicitations {{ user.lastName }}!</h1> #}
+	<h3 class="subtitle-home"> Votre inscription est confirmé.</h3>
+	<p class="paraph-home" style="line-height: 30px;">Un e-mail a été envoyé à l'adresse <span style="background-color:white;color:black;padding:0 5px;">{{ user.email }}</span>.
+	<br>Il contient un lien d'activation sur lequel il vous faudra cliquer afin d'activer votre compte.
+	<br>Si vous ne recevez pas un email, vérifiez votre dossier spam ou essayez à nouveau.</p>
+	<p class="paraph-home" style="font-size:12px;color:#eee;margin-top:20px;">L'équipe LP.</p>
+</div>
 {% endblock body %}
