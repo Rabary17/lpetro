@@ -4,104 +4,6 @@
 	<link rel="stylesheet" href="{{ asset('assets/dist/css/profil.css')}}">
 {% endblock %}
 {% block body %}
-	{# <div style="background-color: white;padding: 20px">
-		<form method="POST" enctype="multipart/form-data">
-		{{form_widget(form._token)}}
-			<fieldset>
-				<legend>ETAT CIVIL</legend>
-				<div class="form-group" style="text-align:center">
-					<div>
-						<img src="{{ asset('uploads/photos/' ~ user.profileName) }}" width="100px" height="100px" id="preview">
-					</div>
-					{{ form_widget(form.profileFile, {attr:{'onchange':'readURL(this)'}}) }}
-					<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
-				</div>
-				<br/>
-				<div class="form-group">
-					<label for="firstName">NOM:</label>
-					{{ form_widget(form.firstName, {attr:{'class': 'form-control', 'id': 'firstName'}}) }}
-					<span class="text-danger">{{ form_errors(form.firstName) }}</span>
-				</div>
-				<div class="form-group">
-					<label for="lastName">PRENOM:</label>
-					{{ form_widget(form.lastName, {attr:{'class': 'form-control', 'id': 'lastName'}}) }}
-					<span class="text-danger">{{ form_errors(form.lastName) }}</span>
-				</div>
-				<div class="form-group">
-					<label for="email">EMAIL:</label>
-					{{ form_widget(form.email, {attr:{'class': 'form-control', 'id': 'email'}}) }}
-					<span class="text-danger">{{ form_errors(form.email) }}</span>
-				</div>
-				<div class="form-group">
-					<label for="dateOfBirth">DATE DE NAISSANCE:</label>
-					{{ form_widget(form.dateOfBirth, {attr:{'class': 'form-control', 'id': 'dateOfBirth', 'type': 'date', 'required': false}}) }}
-					<span class="text-danger">{{ form_errors(form.dateOfBirth) }}</span>
-				</div>
-				<div class="form-group">
-					<label for="placeOfBirth">LIEU DE NAISSANCE:</label>
-					{{ form_widget(form.placeOfBirth, {attr:{'class': 'form-control', 'id': 'placeOfBirth'}}) }}
-					<span class="text-danger">{{ form_errors(form.placeOfBirth) }}</span>
-				</div>
-				<div class="form-group">
-					<label for="maritalStatus">SITUATION MATRIMONIALE:</label>
-					{{ form_widget(form.maritalStatus, {attr:{'class': 'form-control', 'id': 'maritalStatus'}}) }}
-					<span class="text-danger">{{ form_errors(form.maritalStatus) }}</span>
-				</div>
-				<div class="form-group">
-					<label for="conjointName">NOM CONJOINT(E):</label>
-					{{ form_widget(form.conjointName, {attr:{'class': 'form-control', 'id': 'conjointName'}}) }}
-					<span class="text-danger">{{ form_errors(form.conjointName) }}</span>
-				</div>
-				<div class="form-group">
-					<label for="nbChildren">NOMBRE D'ENFANTS:</label>
-					{{ form_widget(form.nbChildren, {attr:{'class': 'form-control', 'id': 'nbChildren'}}) }}
-					<span class="text-danger">{{ form_errors(form.nbChildren) }}</span>
-				</div>
-				<div class="form-group">
-					<label for="addressaddress">ADRESSE:</label>
-					{{ form_widget(form.address, {attr:{'class': 'form-control', 'id': 'address', 'rows': 5}}) }}
-					<span class="text-danger">{{ form_errors(form.address) }}</span>
-				</div>
-				<div class="form-group">
-					<label for="nbChildren">NATIONALITE</label>
-					{{ form_widget(form.nationality, {attr:{'class': 'form-control', 'id': 'nationality'}}) }}
-					<span class="text-danger">{{ form_errors(form.nationality) }}</span>
-				</div>
-			</fieldset>
-
-			<fieldset>
-				<legend>HOBBIES</legend>
-				<div class="form-group">
-					{{ form_widget(form.hobbies, {attr:{'id': 'hobbies'}}) }}
-					<span class="text-danger">{{ form_errors(form.hobbies) }}</span>
-				</div>
-			</fieldset>
-
-			<fieldset>
-				<legend>ACTIVITES EXTRA-PROFESSIONNELLE</legend>
-				<div id="extra-work-activity">
-					{{ form_row(form.extraWorkActivities) }}					
-				</div>
-				<div class="form-group">
-					<a href="#" id="add_activity" title="Ajouter activité"><i class="fa fa-plus text-success"></i></a>
-				</div>
-			</fieldset>
-
-			<fieldset>
-				<legend>SPORTS</legend>
-				<div class="form-group">
-					{{ form_widget(form.sports, {attr:{'id': 'sports'}}) }}
-					<span class="text-danger">{{ form_errors(form.sports) }}</span>
-				</div>
-				<div class="form-group">
-					<input type="submit" class="btn btn-primary" value="Sauvegarder la modification">
-					<a href="{{ path('user_profile') }}"class="btn btn-default">Annuler</a>
-				</div>
-			</fieldset>
-		</form>
-	</div>
-	<br/><br/> #}
-
     <article class="resume-wrapper text-center position-relative">
 		<form method="POST" enctype="multipart/form-data">
 			{{form_widget(form._token)}}
@@ -111,10 +13,9 @@
 					<div class="media flex-column flex-md-row" style="position: relative;">
 						
 						<div id="preview" style="min-height: 250px;width: 220px;background-size: cover; background-image:url('{{ asset('uploads/photos/' ~ user.profileName) }}')">
-							{# <img id="preview" style="position:relative" class="mr-3 img-fluid picture mx-auto" src="{{ asset('uploads/photos/' ~ user.profileName) }}" alt=""> #}
 							<span style="position:absolute;width:1px;overflow: hidden;">
-							{{ form_widget(form.profileFile, {attr:{'onchange':'readURL(this)'}}) }} 
-							<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
+								{{ form_widget(form.profileFile, {attr:{'onchange':'readURL(this)'}}) }} 
+								<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
 							</span>
 						</div>
 						<div class="btn-div" id="trig-upl" style="position: absolute;
@@ -199,11 +100,26 @@
 									{{ form_widget(form.address, {attr:{'class': 'form-control', 'id': 'address', 'rows': 5}}) }}
 									<span class="text-danger">{{ form_errors(form.address) }}</span>
 								</p>
+								<br/>
+								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">HOBBIES</h2>
 								<p>
-									<label for="nbChildren">HOBBIES</label>
 									{{ form_widget(form.hobbies, {attr:{'id': 'hobbies'}}) }}
 									<span class="text-danger">{{ form_errors(form.hobbies) }}</span>
 								</p>
+								<br/>
+								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">ACTIVITES EXTRA PROFESSIONNELLES</h2>
+								<div id="extra-work-activity">
+									{{ form_row(form.extraWorkActivities) }}					
+								</div>
+								<div class="form-group">
+									<a href="#" id="add_activity" title="Ajouter activité"><i class="fa fa-plus text-success"></i></a>
+								</div>
+								<br/>
+								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">SPORTS</h2>
+								<div class="form-group">
+									{{ form_widget(form.sports, {attr:{'id': 'sports'}}) }}
+									<span class="text-danger">{{ form_errors(form.sports) }}</span>
+								</div>
 								<div style="padding:20px; margin-top:30px;text-align:center;">
 									<input style="font-size:15px;" type="submit" class="btn btn-primary" value="Sauvegarder la modification"> ou 
 									<a href="{{ path('user_profile') }}"class="btn btn-default" style="font-size:15px;"><i class="fa fa-times"></i> Annuler</a>
@@ -225,8 +141,9 @@
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
+                	console.log($('#preview').css('background-image'));
                     $('#preview')
-                        .attr('src', e.target.result);
+                        .css('backgroundImage', 'url(' + e.target.result +')');
                 };
                 reader.readAsDataURL(input.files[0]);
             }
