@@ -63,23 +63,35 @@
 					{{ form_widget(form.nationality, {attr:{'class': 'form-control', 'id': 'nationality'}}) }}
 					<span class="text-danger">{{ form_errors(form.nationality) }}</span>
 				</div>
+			</fieldset>
+			<fieldset>
+				<legend>HOBBIES</legend>
 				<div class="form-group">
-					<label for="nbChildren">HOBBIES</label>
+					<label for="nbChildren">LOISIRS</label>
 					{{ form_widget(form.hobbies, {attr:{'id': 'hobbies'}}) }}
 					<span class="text-danger">{{ form_errors(form.hobbies) }}</span>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>ACTIVITES EXTRA-PROFESSIONNELLE</legend>
+				<div id="extra-work-activity">
+					{{ form_row(form.extraWorkActivities) }}					
+				</div>
+				<div class="form-group">
+					<a href="#" id="add_activity" title="Ajouter activité"><i class="fa fa-plus text-success"></i></a>
 				</div>
 				<div class="form-group">
 					<input type="submit" class="btn btn-primary" value="Sauvegarder la modification">
 					<a href="{{ path('user_profile') }}"class="btn btn-default">Annuler</a>
 				</div>
+			</fieldset>
 		</form>
-		</fieldset>
 	</div>
 	<br/><br/>
 {% endblock body %}
 {% block javascripts %}
 	<script type="text/javascript">
-     function readURL(input) {
+     	function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
@@ -89,5 +101,44 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
+		jQuery(document).ready(function($) {
+		    var $container = $('div#user_extraWorkActivities');
+		    $container.attr('data-prototype')
+		    	.replace(/__name__label__/g, '');
+		    var index = $container.find(':input').length;
+		    $('#add_activity').click(function(e){
+		        addExtraWorkActivity($container);
+		        e.preventDefault();
+		        return false;
+		    });
+		    if (index == 0) {
+		        addExtraWorkActivity($container);
+		    } else {
+		        $container.children('div').each(function(){
+		            addDeleteLink($(this));
+		        });
+		    }
+
+		    function addExtraWorkActivity($container) {
+		        var template = $container.attr('data-prototype')
+		            .replace(/__name__label__/g, 'Activité ' + (index + 1))
+		            .replace(/__name__/g, index);
+		        var $prototype = $(template);
+		        addDeleteLink($prototype);
+		        $container.append($prototype);
+		        index++;
+		    }
+
+		    function addDeleteLink($prototype) {
+		        var $deleteLink = $('<a href="#" class="fa fa-remove text-danger" title="Supprimer"></a>');
+		        $prototype.append($deleteLink);
+		        $deleteLink.click(function(e) {
+		            $prototype.remove();
+		            e.preventDefault();
+		            return false;
+		        });
+		    }
+		})
 	</script>
 {% endblock %}

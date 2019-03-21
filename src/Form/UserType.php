@@ -4,12 +4,14 @@ namespace App\Form;
 
 use App\Entity\User;
 use App\Entity\Hobby;
+use App\Form\ExtraWorkActivityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class UserType extends AbstractType
 {
@@ -34,6 +36,12 @@ class UserType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true
+            ])
+            ->add('extraWorkActivities', CollectionType::class, [
+                'entry_type' => ExtraWorkActivityType::class,
+                'allow_add' => true,
+                'allow_delete'=> true,
+                'by_reference' => false
             ])
             ->add('profileFile', FileType::class, [
                     'required' => false
