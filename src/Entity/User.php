@@ -33,6 +33,11 @@ class User extends BaseUser
     private $firstName;
 
     /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $phoneNumber;
+
+    /**
      * @ORM\Column(type="date", nullable=true)
      */
     private $dateOfBirth;
@@ -261,6 +266,18 @@ class User extends BaseUser
             $this->updatedAt = new \DateTimeImmutable();
         }
         
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(?string $phoneNumber): self
+    {
+        $this->phoneNumber = $phoneNumber;
+
         return $this;
     }
  }
