@@ -16,6 +16,7 @@
 						    <ul class="list-unstyled">
 							    <li class="mb-2"><a href="#"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{user.email}}</a></li>
 							    <li><a href="#"><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ user.phoneNumber }}</a></li>
+							    <a href="{{ path('user_profile_edit', {'id': user.id }) }}">Editer mon cv</a>
 						    </ul>
 					    </div><!--//primary-info-->
 					    <div class="secondary-info ml-md-auto mt-2">
