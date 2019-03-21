@@ -44,6 +44,9 @@ footer {
 }
 
 .navbar-custom-menu{
-position: absolute;
-right: 0;
+    position: absolute;
+    right: 0;
+}
+label.required:not(.mylabel) {
+    display: none;
 }

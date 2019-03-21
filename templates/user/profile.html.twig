@@ -162,6 +162,25 @@
 							    
 						    </div>
 					    </section><!--//experience-section-->
+					    <section class="resume-section experience-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Activités extra-professionnelles</h2>
+						    <div class="resume-section-content">
+							    <div class="resume-timeline position-relative">
+								    <article class="resume-timeline-item position-relative pb-5">
+									    <div class="resume-timeline-item-header mb-2">
+									    	{% for activity in user.extraWorkActivities %}
+											    <div>
+											        <h3 class="resume-position-title font-weight-bold mb-1">{{ activity.name }}</h3>
+													<p>{{ activity.description }}</p>
+											    </div><!--//row-->
+										    {% endfor %}
+									    </div><!--//resume-timeline-item-header-->
+
+								    </article><!--//resume-timeline-item-->
+							    </div><!--//resume-timeline-->
+							    
+						    </div>
+					    </section><!--//extra-work-activity-->
 				    </div>
 				    <div class="col-lg-3">
 					    <section class="resume-section skills-section mb-5">
@@ -304,7 +323,16 @@
 							    </ul>
 						    </div>
 					    </section><!--//interests-section-->
-					    
+					    <section class="resume-section interests-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Sports</h2>
+						    <div class="resume-section-content">
+							    <ul class="list-unstyled">
+							    	{% for sport in user.sports %}
+								    	<li class="mb-1">{{ sport.name }}</li>
+								    {% endfor %}
+							    </ul>
+						    </div>
+					    </section><!--//interests-section-->
 				    </div>
 			    </div><!--//row-->
 		    </div><!--//resume-body-->

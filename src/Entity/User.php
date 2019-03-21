@@ -101,6 +101,17 @@ class User extends BaseUser
      */
     protected $hobbies;
 
+    /**
+     *@ORM\ManyToMany(targetEntity="Sport")
+     *@ORM\JoinTable(name="user_sports")
+     */
+    protected $sports;
+
+    /**
+    * @ORM\OneToMany(targetEntity="ExtraWorkActivity", mappedBy="user", cascade={"persist", "remove"})
+    */
+    private $extraWorkActivities;
+
     public function __construct()
     {
         parent::__construct();
@@ -108,6 +119,8 @@ class User extends BaseUser
         $this->id      = $stringHelpers->generateUuid();
         $this->updatedAt = new \DateTime('now');
         $this->hobbies = new ArrayCollection();
+        $this->extraWorkActivities = new ArrayCollection();
+        $this->sports = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -311,6 +324,63 @@ class User extends BaseUser
     {
         if ($this->hobbies->contains($hobby)) {
             $this->hobbies->removeElement($hobby);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ExtraWorkActivity[]
+     */
+    public function getExtraWorkActivities(): Collection
+    {
+        return $this->extraWorkActivities;
+    }
+
+    public function addExtraWorkActivity(ExtraWorkActivity $extraWorkActivity): self
+    {
+        if (!$this->extraWorkActivities->contains($extraWorkActivity)) {
+            $this->extraWorkActivities[] = $extraWorkActivity;
+            $extraWorkActivity->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExtraWorkActivity(ExtraWorkActivity $extraWorkActivity): self
+    {
+        if ($this->extraWorkActivities->contains($extraWorkActivity)) {
+            $this->extraWorkActivities->removeElement($extraWorkActivity);
+            // set the owning side to null (unless already changed)
+            if ($extraWorkActivity->getUser() === $this) {
+                $extraWorkActivity->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Sport[]
+     */
+    public function getSports(): Collection
+    {
+        return $this->sports;
+    }
+
+    public function addSport(Sport $sport): self
+    {
+        if (!$this->sports->contains($sport)) {
+            $this->sports[] = $sport;
+        }
+
+        return $this;
+    }
+
+    public function removeSport(Sport $sport): self
+    {
+        if ($this->sports->contains($sport)) {
+            $this->sports->removeElement($sport);
         }
 
         return $this;
