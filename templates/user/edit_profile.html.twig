@@ -107,19 +107,26 @@
 			{{form_widget(form._token)}}
 			<div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
 				<header class="resume-header pt-4 pt-md-0">
+				
 					<div class="media flex-column flex-md-row" style="position: relative;">
-						<img id="preview" style="position:relative" class="mr-3 img-fluid picture mx-auto" src="{{ asset('uploads/photos/' ~ user.profileName) }}" alt="">
+						
+						<div id="preview" style="min-height: 250px;width: 220px;background-size: cover; background-image:url('{{ asset('uploads/photos/' ~ user.profileName) }}')">
+							{# <img id="preview" style="position:relative" class="mr-3 img-fluid picture mx-auto" src="{{ asset('uploads/photos/' ~ user.profileName) }}" alt=""> #}
 							<span style="position:absolute;width:1px;overflow: hidden;">
 							{{ form_widget(form.profileFile, {attr:{'onchange':'readURL(this)'}}) }} 
 							<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
 							</span>
-						<div class="btn-div" id="trig-upl" style="position:absolute;position: absolute;
+						</div>
+						<div class="btn-div" id="trig-upl" style="position: absolute;
 									width: 220px;
 									text-align: center;
 									padding: 5px;
 									border:1px solid white;
 									color:white;
-									bottom: 85px;">
+									background-color: #323232;
+									top:50%;
+									margin: 0 10px;"
+						>
 							<i class="fa fa-picture-o"></i> Modifier
 						</div>
 							<div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
