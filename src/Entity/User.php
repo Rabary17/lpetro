@@ -112,6 +112,11 @@ class User extends BaseUser
     */
     private $extraWorkActivities;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Training", mappedBy="user", cascade={"persist", "remove"})
+    */
+    private $trainings;
+
     public function __construct()
     {
         parent::__construct();
@@ -121,6 +126,7 @@ class User extends BaseUser
         $this->hobbies = new ArrayCollection();
         $this->extraWorkActivities = new ArrayCollection();
         $this->sports = new ArrayCollection();
+        $this->trainings = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -381,6 +387,37 @@ class User extends BaseUser
     {
         if ($this->sports->contains($sport)) {
             $this->sports->removeElement($sport);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Training[]
+     */
+    public function getTrainings(): Collection
+    {
+        return $this->trainings;
+    }
+
+    public function addTraining(Training $training): self
+    {
+        if (!$this->trainings->contains($training)) {
+            $this->trainings[] = $training;
+            $training->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTraining(Training $training): self
+    {
+        if ($this->trainings->contains($training)) {
+            $this->trainings->removeElement($training);
+            // set the owning side to null (unless already changed)
+            if ($training->getUser() === $this) {
+                $training->setUser(null);
+            }
         }
 
         return $this;

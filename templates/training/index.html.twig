@@ -1,0 +1,23 @@
+{% extends 'base_user.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/profil.css')}}">
+{% endblock %}
+{% block body %}
+    <article class="resume-wrapper text-center position-relative">
+	    <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
+			<div class="resume-body p-5">
+			    <section class="resume-section summary-section mb-5">
+				    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">MES FORMATIONS</h2>
+				    {% for training in trainings %}
+				    <div class="resume-section-content">
+						<h3 class="resume-position-title font-weight-bold mb-1">{{ training.name }}</h3>
+					    <p class="mb-0">{{ training.description }}</p>
+				    </div>
+				    <br/>
+				    {% endfor %}
+			    </section><!--//summary-section-->
+			</div>
+		</div>
+	</article>
+{% endblock %}
