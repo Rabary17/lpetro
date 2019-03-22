@@ -123,6 +123,7 @@
 									<span class="text-danger">{{ form_errors(form.sports) }}</span>
 								</div>
 								<br/>
+
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="training">FORMATIONS</h2>
 								<div id="extra-work-activity">
 									{{ form_row(form.trainings) }}					
@@ -130,6 +131,16 @@
 								<span id="c2"></span>
 								<div class="form-group">
 									<a href="#c2" id="add_training" title="Ajouter formation"><i class="fa fa-plus text-success"></i></a>
+								</div>
+								<br/>
+
+								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="experience">MES PARCOURS PROFESSIONELLES</h2>
+								<div id="extra-work-activity">
+									{{ form_row(form.experiences) }}					
+								</div>
+								<span id="c2"></span>
+								<div class="form-group">
+									<a href="#c2" id="add_experience" title="Ajouter expérience professionnelle"><i class="fa fa-plus text-success"></i></a>
 								</div>
 								<br/>
 								<div style="padding:20px; margin-top:30px;text-align:center;">
@@ -166,10 +177,14 @@
 
 		    var $container = $('div#user_extraWorkActivities');
 		    var $containerTraining = $('div#user_trainings');
+		    var $containerExperience = $('div#user_experiences');
 		    var index = $container.find(':input').length;
 
 			$('#add_training').click(function() {
 				$('#add_activity').trigger('click', [$containerTraining]);
+			});
+			$('#add_experience').click(function() {
+				$('#add_activity').trigger('click', [$containerExperience]);
 			});
 
 		    $('#add_activity').click(function(e, $c){

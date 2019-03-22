@@ -45,28 +45,25 @@
 						    <p>Adresse: {{ user.address }}</p>
 						</section>
 					    <section class="resume-section experience-section mb-5">
-						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Expérience Professionnel</h2>
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Expérience Professionnelle</h2>
 						    <div class="resume-section-content">
 							    <div class="resume-timeline position-relative">		    
 								    <article class="resume-timeline-item position-relative">
-									    
-									    <div class="resume-timeline-item-header mb-2">
-										    <div class="d-flex flex-column flex-md-row">
-										        <h3 class="resume-position-title font-weight-bold mb-1">Web Developer <small class="text-muted">(Intern)</small></h3>
-										        <div class="resume-company-name ml-auto">Amazon</div>
+									    {% for experience in user.experiences %}
+										    <div class="resume-timeline-item-header mb-2">
+											    <div class="d-flex flex-column flex-md-row">
+											        <h3 class="resume-position-title font-weight-bold mb-1">{{ experience.position }} <small class="text-muted">({{ experience.status }})</small></h3>
+											        <div class="resume-company-name ml-auto">{{ experience.company }}</div>
+											    </div>
+											    <div class="resume-position-time">{{ experience.period }}</div>
 										    </div>
-										    <div class="resume-position-time">2011 - 2012</div>
-									    </div>
-									    <div class="resume-timeline-item-desc">
-										    <p>Role description goes here ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum.</p>
-										    <h4 class="resume-timeline-item-desc-heading font-weight-bold">Technologies used:</h4>
-										    <ul class="list-inline">
-											    <li class="list-inline-item"><span class="badge badge-primary badge-pill">Ruby on Rails</span></li>
-											    <li class="list-inline-item"><span class="badge badge-primary badge-pill">jQuery</span></li>
-											    <li class="list-inline-item"><span class="badge badge-primary badge-pill">HTML/LESS</span></li>
-											    <li class="list-inline-item"><span class="badge badge-primary badge-pill">MongoDB</span></li>
-										    </ul>
-									    </div>
+										    <div class="resume-timeline-item-desc">
+											    <p>{{ experience.achievements|nl2br}}</p>
+											    <h4 class="resume-timeline-item-desc-heading font-weight-bold">Technologies used:</h4>
+											    <p>{{ experience.others|nl2br}}</p>
+										    </div>
+									    {% endfor %}
+									    <a href="{{ path('experience') }}">Voir toutes mes expériences déjà encodés </a>
 								    </article>
 							    </div>
 						    </div>

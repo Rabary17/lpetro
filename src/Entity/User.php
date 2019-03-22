@@ -117,6 +117,11 @@ class User extends BaseUser
     */
     private $trainings;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Experience", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $experiences;
+
     public function __construct()
     {
         parent::__construct();
@@ -127,6 +132,7 @@ class User extends BaseUser
         $this->extraWorkActivities = new ArrayCollection();
         $this->sports = new ArrayCollection();
         $this->trainings = new ArrayCollection();
+        $this->experiences = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -417,6 +423,37 @@ class User extends BaseUser
             // set the owning side to null (unless already changed)
             if ($training->getUser() === $this) {
                 $training->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Experience[]
+     */
+    public function getExperiences(): Collection
+    {
+        return $this->experiences;
+    }
+
+    public function addExperience(Experience $experience): self
+    {
+        if (!$this->experiences->contains($experience)) {
+            $this->experiences[] = $experience;
+            $experience->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExperience(Experience $experience): self
+    {
+        if ($this->experiences->contains($experience)) {
+            $this->experiences->removeElement($experience);
+            // set the owning side to null (unless already changed)
+            if ($experience->getUser() === $this) {
+                $experience->setUser(null);
             }
         }
 
