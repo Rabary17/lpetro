@@ -1,0 +1,53 @@
+{% extends 'base_user.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/profil.css')}}">
+{% endblock %}
+{% block body %}
+    <article class="resume-wrapper text-center position-relative">
+	    <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
+			<div class="resume-body p-5">
+			    <section class="resume-section summary-section mb-5">
+				    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">MES PARCOURS PROFESSIONNELLES</h2>
+				    {% for experience in experiences %}
+					    <div class="resume-section-content">
+							<div class="d-flex flex-column flex-md-row">
+						        <h3 class="resume-position-title font-weight-bold mb-1">{{ experience.position }} <small class="text-muted">({{ experience.status }})</small></h3>
+						        <div class="resume-company-name ml-auto">{{ experience.company }}</div>
+						    </div>
+						    <p class="mb-0">{{ experience.achievements |nl2br }}</p>
+						    <h4 class="resume-timeline-item-desc-heading font-weight-bold">Technologies ou Outils utilisés:</h4>
+						    <p>{{ experience.others |nl2br }}</p>
+					    </div>
+					    <br/>
+				    {% endfor %}
+			    </section><!--//summary-section-->
+				<div>
+					<a href="{{ path('user_profile_edit', {id:user})  ~ '#experience' }}" class="btn btn-primary">Ajouter/Modifier</a>		
+					<a href="{{ path('user_profile') }}" class="btn btn-default">Revenir</a><br/>				
+				</div>
+			</div>
+		</div>
+		<!-- deletion modal >
+        <div class="modal fade" id="modal-default">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Suppréssion formation</h4>
+              </div>
+              <div class="modal-body">
+                <p>Etês-vous vraimment sûr de vouloir supprimer ceci?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Annuler</button>
+                <a type="button" class="btn btn-primary" href="#" id="delete-training">Oui</a>
+              </div>
+            </div>
+            <!-- /.modal-content >
+          </div-->
+          <!-- /.modal-dialog >
+        </div-->
+	</article>
+{% endblock %}
