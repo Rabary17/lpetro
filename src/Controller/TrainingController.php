@@ -34,7 +34,7 @@ class TrainingController extends AbstractController
         if ($training) {
             $em->remove($training);
             $em->flush();
-            return $this->redirectToRoute('training');  
+            return $this->redirectToRoute('training');
         }
 
         return $this->render('training/index.html.twig', [

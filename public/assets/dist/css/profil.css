@@ -8367,11 +8367,6 @@
   .text-danger {
     color: #dc3545 !important;
     color: #dc3545 !important;
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 2px;
-    border-radius: 5px;
   }
   
   a.text-danger:hover, a.text-danger:focus {
