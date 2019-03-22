@@ -15,12 +15,12 @@ class TrainingType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                    'label' => 'Titre de la formation',
+                    'label' => 'TITRE DE LA FORMATION',
                     'label_attr' => [
                         'class' => 'mylabel'
                     ]
                 ])
-            ->add('description')
+            ->add('description', null, ['label' => 'DESCRIPTION'])
         ;
     }
 

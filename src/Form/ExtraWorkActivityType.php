@@ -15,7 +15,7 @@ class ExtraWorkActivityType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'NOM',
+                'label' => 'ACTIVITE',
                 'label_attr' => [
                     'class' => 'mylabel'
                 ],
