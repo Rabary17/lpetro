@@ -50,3 +50,20 @@ footer {
 label.required:not(.mylabel) {
     display: none;
 }
+#confirm_email {
+    position: fixed;
+    width: 30%;
+    min-height: 100px;
+    background-color: #464b51;
+    color: white;
+    bottom: 0px;
+    z-index: 999;
+    right: 0;
+    padding: 10px;
+    text-align: center;
+}
+.alert-dismissible .close {
+    right: -8px !important;
+    top: -7px !important;
+    color: white !important;
+}
