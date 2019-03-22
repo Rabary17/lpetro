@@ -83,6 +83,12 @@
           {% block body %}{% endblock %}
           {% block fos_user_content %}{% endblock %}
       </div>
+      {% for message in app.flashes('registration_confirm_notice') %}
+        <div class="alert-dismissible" id="confirm_email">
+            <a href="#" class="close" data-dismiss="alert" id="close" aria-label="close">&times;</a>
+            <p>{{ message }}</p>
+        </div>
+      {% endfor %}
       <footer>
           Copyright &copy; 2019 by <a href="https://passion4humanity.com">Passion for Humanity</a>
       </footer>
@@ -102,6 +108,11 @@
       <script src="{{ asset('assets/dist/js/fastclick.js') }}"></script>
       <!-- AdminLTE App -->
       <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+      <script type="text/javascript">
+          $('#close').click(function() {
+              $('#confirm_email').fadeOut('slow');
+          });
+      </script>
       {% block javascripts %}{% endblock %}
   </body>
 </html>
