@@ -8366,7 +8366,10 @@
   
   .text-danger {
     color: #dc3545 !important;
-    color: #dc3545 !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
   }
   
   a.text-danger:hover, a.text-danger:focus {
@@ -8803,7 +8806,7 @@ position: relative;
 padding: 0;
 }
 
-#user_extraWorkActivities > div{
+#user_extraWorkActivities > div, #user_trainings > div{
   width: 30%;
   float: left;
   padding: 10px;
@@ -8812,7 +8815,7 @@ padding: 0;
   background-color: #eee;
 }
 
-#add_activity{
+#add_activity, #add_training{
   padding: 5px 10px;
   border: 2px solid green;
   position: absolute;

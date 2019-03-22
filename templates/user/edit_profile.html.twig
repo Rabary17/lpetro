@@ -110,7 +110,7 @@
 								<br/>
 
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">ACTIVITES EXTRA PROFESSIONNELLES</h2>
-								<div id="extra-work-activity" class="container">
+								<div id="extra-work-activity" class="container" style="min-height: 50px;">
 								{{ form_row(form.extraWorkActivities) }}
 								<a href="#" id="add_activity" title="Ajouter activité"><i class="fa fa-plus text-success"></i></a>
 								</div>
@@ -124,13 +124,11 @@
 								</div>
 								<br/>
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="training">FORMATIONS</h2>
-								<div id="extra-work-activity">
-									{{ form_row(form.trainings) }}					
-								</div>
-								<span id="c2"></span>
-								<div class="form-group">
+								<div id="extra-work-activity"  class="container" style="min-height: 50px;">
+									{{ form_row(form.trainings) }}	
 									<a href="#c2" id="add_training" title="Ajouter formation"><i class="fa fa-plus text-success"></i></a>
 								</div>
+
 								<br/>
 								<div style="padding:20px; margin-top:30px;text-align:center;">
 									<input style="font-size:15px;" type="submit" class="btn btn-primary" value="Sauvegarder"> ou 
