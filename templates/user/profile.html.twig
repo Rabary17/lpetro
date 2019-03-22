@@ -200,16 +200,15 @@
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Formations</h2>
 						    <div class="resume-section-content">
 							    <ul class="list-unstyled resume-awards-list">
-								    <li class="mb-2 pl-4 position-relative">
-								        <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
-								        <div class="resume-award-name">Award Name Lorem</div>
-								        <div class="resume-award-desc">Award desc goes here, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo.</div>
-								    </li>
-								    <li class="mb-0 pl-4 position-relative">
-								        <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
-								        <div class="resume-award-name">Award Name Ipsum</div>
-								        <div class="resume-award-desc">Award desc goes here, ultricies nec, pellentesque.</div>
-								    </li>
+							    	{% set break = 0 %}
+							    	{% for training in user.trainings if break < 3 %}
+									    <li class="mb-2 pl-4 position-relative">
+									        <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
+									        <div class="resume-award-name">{{ training.name }}</div>
+									        <div class="resume-award-desc">{{ training.description | slice(0, 50) ~ '...' }}</div>
+									    </li>
+										{% set break = break + 1 %}
+								    {% endfor %}
 							    </ul>
 						    </div>
 						    <a href="{{ path('training') }}">Voir toutes mes formations</a>

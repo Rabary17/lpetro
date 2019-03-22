@@ -17,6 +17,10 @@
 				    <br/>
 				    {% endfor %}
 			    </section><!--//summary-section-->
+				<div>
+					<a href="{{ path('user_profile_edit', {id:user})  ~ '#training' }}" class="btn btn-primary">Ajouter/Modifier</a>		
+					<a href="{{ path('user_profile') }}" class="btn btn-default">Revenir</a><br/>				
+				</div>
 			</div>
 		</div>
 	</article>

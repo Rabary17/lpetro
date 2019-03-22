@@ -101,12 +101,14 @@
 									<span class="text-danger">{{ form_errors(form.address) }}</span>
 								</p>
 								<br/>
+
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">HOBBIES</h2>
 								<div id="user-hobbies">
 									{{ form_widget(form.hobbies, {attr:{'id': 'hobbies'}}) }}
 									<span class="text-danger">{{ form_errors(form.hobbies) }}</span>
 								</div>
 								<br/>
+
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">ACTIVITES EXTRA PROFESSIONNELLES</h2>
 								<div id="extra-work-activity" class="container">
 								{{ form_row(form.extraWorkActivities) }}
@@ -114,16 +116,26 @@
 								</div>
 
 								<br/>
+
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">SPORTS</h2>
 								<div class="form-group">
 									{{ form_widget(form.sports, {attr:{'id': 'sports'}}) }}
 									<span class="text-danger">{{ form_errors(form.sports) }}</span>
 								</div>
-								<div style="padding:20px; margin-top:30px;text-align:center;">
-									<input style="font-size:15px;" type="submit" class="btn btn-primary" value="Sauvegarder la modification"> ou 
-									<a href="{{ path('user_profile') }}"class="btn btn-default" style="font-size:15px;"><i class="fa fa-times"></i> Annuler</a>
+								<br/>
+								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="training">FORMATIONS</h2>
+								<div id="extra-work-activity">
+									{{ form_row(form.trainings) }}					
 								</div>
-
+								<span id="c2"></span>
+								<div class="form-group">
+									<a href="#c2" id="add_training" title="Ajouter formation"><i class="fa fa-plus text-success"></i></a>
+								</div>
+								<br/>
+								<div style="padding:20px; margin-top:30px;text-align:center;">
+									<input style="font-size:15px;" type="submit" class="btn btn-primary" value="Sauvegarder"> ou 
+									<a href="{{ path('user_profile') }}"class="btn btn-default" style="font-size:15px;"><i class="fa fa-times"></i> Revenir</a>
+								</div>
 							</section>
 						</div>
 					</div>
@@ -140,7 +152,6 @@
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                	console.log($('#preview').css('background-image'));
                     $('#preview')
                         .css('backgroundImage', 'url(' + e.target.result +')');
                 };
@@ -154,29 +165,40 @@
 			})
 
 		    var $container = $('div#user_extraWorkActivities');
-		    $container.attr('data-prototype')
-		    	.replace(/__name__label__/g, '');
+		    var $containerTraining = $('div#user_trainings');
 		    var index = $container.find(':input').length;
-		    $('#add_activity').click(function(e){
-		        addExtraWorkActivity($container);
+
+			$('#add_training').click(function() {
+				$('#add_activity').trigger('click', [$containerTraining]);
+			});
+
+		    $('#add_activity').click(function(e, $c){
+		    	if (typeof $c === "undefined") {
+		    		$c = $container;
+		    	}
+		        addExtraWorkActivity($c);
 		        e.preventDefault();
 		        return false;
 		    });
 		    if (index == 0) {
 		        addExtraWorkActivity($container);
+		        addExtraWorkActivity($containerTraining);
 		    } else {
 		        $container.children('div').each(function(){
 		            addDeleteLink($(this));
 		        });
+		        $containerTraining.children('div').each(function(){
+		            addDeleteLink($(this));
+		        });
 		    }
 
-		    function addExtraWorkActivity($container) {
-		        var template = $container.attr('data-prototype')
+		    function addExtraWorkActivity($c) {
+		        var template = $c.attr('data-prototype')
 		            .replace(/__name__label__/g, 'Activité ' + (index + 1))
 		            .replace(/__name__/g, index);
 		        var $prototype = $(template);
 		        addDeleteLink($prototype);
-		        $container.append($prototype);
+		        $c.append($prototype);
 		        index++;
 		    }
 
