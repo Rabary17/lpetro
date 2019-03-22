@@ -2783,10 +2783,6 @@
     }
   }
   
-  .fade:not(.show) {
-    opacity: 0;
-  }
-  
   .collapse:not(.show) {
     display: none;
   }
@@ -5108,7 +5104,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1040;
+    z-index: 0;
     background-color: #000;
   }
   

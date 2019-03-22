@@ -6,15 +6,18 @@
 {% block body %}
     <article class="resume-wrapper text-center position-relative">
 	    <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
+	    	{% if error is defined %}
+	    		<p class="text-danger">{{ error }}</p>
+	    	{% endif %}
 			<div class="resume-body p-5">
 			    <section class="resume-section summary-section mb-5">
 				    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">MES FORMATIONS</h2>
 				    {% for training in trainings %}
-				    <div class="resume-section-content">
-						<h3 class="resume-position-title font-weight-bold mb-1">{{ training.name }}</h3>
-					    <p class="mb-0">{{ training.description }}</p>
-				    </div>
-				    <br/>
+					    <div class="resume-section-content">
+							<h3 class="resume-position-title font-weight-bold mb-1">{{ training.name }} <a  data-toggle="modal" data-target="#modal-default" href="#" id="training-{{ training.id }}" title="Supprimer" onclick="deleteTraining('{{ training.id }}')"><i class="text-danger">&times;</i></a></h3>
+						    <p class="mb-0">{{ training.description }}</p>
+					    </div>
+					    <br/>
 				    {% endfor %}
 			    </section><!--//summary-section-->
 				<div>
@@ -23,5 +26,34 @@
 				</div>
 			</div>
 		</div>
+		<!-- deletion modal -->
+        <div class="modal fade" id="modal-default">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Suppréssion formation</h4>
+              </div>
+              <div class="modal-body">
+                <p>Etês-vous vraimment sûr de vouloir supprimer ceci?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Annuler</button>
+                <a type="button" class="btn btn-primary" href="#" id="delete-training">Oui</a>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
 	</article>
 {% endblock %}
+{% block javascripts %}
+	<script type="text/javascript">
+		function deleteTraining(id) {
+			console.log(id);
+			$('#delete-training').attr('href', '/training/delete/' + id);
+		}
+	</script>
+{% endblock javascripts %}

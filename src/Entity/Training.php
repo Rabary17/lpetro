@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Helpers\StringHelpers;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TrainingRepository")
@@ -11,8 +12,7 @@ class Training
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=36)
      */
     private $id;
 
@@ -32,7 +32,13 @@ class Training
      */
     private $description;
 
-    public function getId(): ?int
+    public function __construct()
+    {
+        $stringHelpers = new StringHelpers();
+        $this->id      = $stringHelpers->generateUuid();
+    }
+
+    public function getId(): ?string
     {
         return $this->id;
     }

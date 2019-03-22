@@ -21,4 +21,26 @@ class TrainingController extends AbstractController
             'user' => $user->getId()
         ]);
     }
+
+    /**
+     * @Route("/training/delete/{id}", name="delete_training")
+     */
+    public function delete($id)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $training = $em->getRepository('App:Training')->find($id);
+        if ($training) {
+            $em->remove($training);
+            $em->flush();
+            return $this->redirectToRoute('training');  
+        }
+
+        return $this->render('training/index.html.twig', [
+            'trainings' => $trainings,
+            'error' => 'Impossible de supprimé cette formation',
+            'user' => $user->getId()
+        ]);
+    }
 }
