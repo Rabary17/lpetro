@@ -18,12 +18,18 @@ class ExperienceType extends AbstractType
                 'label' => 'PERIODE DU - AU',
                 'label_attr' => [
                     'class' => 'mylabel'
+                ],
+                'attr' => [
+                    'class' => 'form-control',
                 ]
             ])
             ->add('position', TextType::class, [
                 'label' => 'POSTE',
                 'label_attr' => [
                     'class' => 'mylabel'
+                ],
+                'attr' => [
+                    'class' => 'form-control',
                 ]
             ])
             ->add('status', TextType::class, [
@@ -31,18 +37,27 @@ class ExperienceType extends AbstractType
                 'required' => false,
                 'label_attr' => [
                     'class' => 'mylabel'
+                ],
+                'attr' => [
+                    'class' => 'form-control',
                 ]
             ])
             ->add('company', TextType::class, [
                 'label' => 'DENOMINATION DE LA SOCIETE',
                 'label_attr' => [
                     'class' => 'mylabel'
+                ],
+                'attr' => [
+                    'class' => 'form-control',
                 ]
             ])
             ->add('achievements', TextareaType::class, [
                 'label' => 'MISSIONS',
                 'label_attr' => [
                     'class' => 'mylabel'
+                ],
+                'attr' => [
+                    'class' => 'form-control',
                 ]
             ])
             ->add('others', TextareaType::class, [
@@ -50,6 +65,9 @@ class ExperienceType extends AbstractType
                 'required' => false,
                 'label_attr' => [
                     'class' => 'mylabel'
+                ],
+                'attr' => [
+                    'class' => 'form-control',
                 ]
             ])
         ;

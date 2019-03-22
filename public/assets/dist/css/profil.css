@@ -8801,7 +8801,7 @@ input[type=radio   ]:not(old) + label{
   grid-auto-flow: row;
 }
 
-#extra-work-activity {
+#extra-work-activity, #user_experiences {
 position: relative;
 padding: 0;
 }
@@ -8815,9 +8815,18 @@ padding: 0;
   background-color: #eee;
 }
 
-#add_activity, #add_training{
+#add_activity, #add_training, #add_experience{
   padding: 5px 10px;
   border: 2px solid green;
   position: absolute;
-bottom: 0;
+  bottom: 0;
+}
+
+#user_experiences > div{
+  width: 45%;
+  float: left;
+  padding: 10px;
+  margin: 5px;
+  background-color: #eee;
+  position: relative;
 }
