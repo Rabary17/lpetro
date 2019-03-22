@@ -53,15 +53,23 @@ label.required:not(.mylabel) {
 #confirm_email {
     position: fixed;
     width: 30%;
-    min-height: 100px;
-    background-color: #464b51;
+    background-color: #90b2b299;
     color: white;
     bottom: 0px;
     z-index: 999;
     right: 0;
     padding: 10px;
     text-align: center;
+    bottom: 4em;
+    right: 1em;
 }
+#confirm_email p {
+    margin: 20px 0;
+}
+#confirm_email a {
+    padding: 10px;
+}
+
 .alert-dismissible .close {
     right: -8px !important;
     top: -7px !important;
