@@ -8370,6 +8370,12 @@
   
   .text-danger {
     color: #dc3545 !important;
+    color: #dc3545 !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2px;
+    border-radius: 5px;
   }
   
   a.text-danger:hover, a.text-danger:focus {
@@ -8752,3 +8758,72 @@
     opacity: 0.75;
     cursor: pointer;
   }
+
+
+
+input[type=checkbox]:not(old),
+input[type=radio   ]:not(old){
+	-webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 9px;
+	border-radius: 3px;
+	display: inline-block;
+  position: relative;
+  height: 10px;
+  margin: 0;
+}
+
+input[type=checkbox]:not(old):checked {
+	background-color: #e9ecee;
+	border: 1px solid #adb8c0;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+	color: #99a1a7;
+}
+input[type=checkbox]:not(old):checked:after {
+content: '\2714';
+font-size: 14px;
+position: absolute;
+top: 0px;
+left: 3px;
+color: #99a1a7;
+}
+	
+
+input[type=checkbox]:not(old) + label,
+input[type=radio   ]:not(old) + label{
+  display      : inline-block;
+  margin-left: -20px;
+  padding-left : 28px;
+  background   : url('checks.png') no-repeat 0 0;
+  line-height  : 24px;
+}
+
+#user_hobbies, #user_sports{
+  display: grid;
+  grid-template-columns: 20px 150px 20px 150px 20px 150px;
+  grid-template-rows: 30px 30px;
+  grid-auto-flow: row;
+}
+
+#extra-work-activity {
+position: relative;
+padding: 0;
+}
+
+#user_extraWorkActivities > div{
+  width: 30%;
+  float: left;
+  padding: 10px;
+  margin: 5px;
+  position: relative;
+  background-color: #eee;
+}
+
+#add_activity{
+  padding: 5px 10px;
+  border: 2px solid green;
+  position: absolute;
+bottom: 0;
+}
