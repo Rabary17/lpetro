@@ -91,6 +91,11 @@
 									<span class="text-danger">{{ form_errors(form.conjointName) }}</span>
 								</p>
 								<p>
+									<label for="nbChildren">NOMBRE D'ENFANTS:</label>
+									{{ form_widget(form.nbChildren, {attr:{'class': 'form-control', 'id': 'nbChildren'}}) }}
+									<span class="text-danger">{{ form_errors(form.nbChildren) }}</span>
+								</p>
+								<p>
 									<label for="nbChildren">NATIONALITE</label>
 									{{ form_widget(form.nationality, {attr:{'class': 'form-control', 'id': 'nationality'}}) }}
 									<span class="text-danger">{{ form_errors(form.nationality) }}</span>
@@ -135,6 +140,7 @@
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="experience">MES PARCOURS PROFESSIONELLES</h2>
 								<div id="extra-work-activity"  class="container" style="min-height: 50px;">
 									{{ form_row(form.experiences) }}
+									{{ form_rest (form) }}
 									<a href="#c3" id="add_experience" title="Ajouter expérience professionnelle"><i class="fa fa-plus text-success"></i></a>					
 								</div>
 								<br/>
