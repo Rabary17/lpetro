@@ -7,18 +7,18 @@
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <!-- Bootstrap 3.3.7 -->
-      <link rel="stylesheet" href="{{ asset('/assets/dist/css/bootstrap.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/dist/css/bootstrap.min.css') }}">
       <!-- Font Awesome -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
       <!-- Ionicons -->
       {# font Anton #}
       <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
-      <link rel="stylesheet" href="{{ asset('/assets/dist/css/ionicons.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/dist/css/ionicons.min.css') }}">
       <!-- Theme style -->
-      <link rel="stylesheet" href="{{ asset('/assets/dist/css/AdminLTE.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/dist/css/AdminLTE.min.css') }}">
       <!-- AdminLTE Skins. Choose a skin from the css/skins
            folder instead of downloading all of them to reduce the load. -->
-      <link rel="stylesheet" href="{{ asset('/assets/dist/css/all_skins.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/dist/css/all_skins.min.css') }}">
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +29,7 @@
 
       <!-- Google Font -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-      <link rel="stylesheet" type="text/css" href="{{ asset('/assets/dist/css/custom.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ asset('assets/dist/css/custom.css') }}">
       <title>{% block title %}LPCS{% endblock %}</title>
       {% block stylesheets %}
 
@@ -47,12 +47,12 @@
               {% if app.user %}
                 <li class="dropdown user user-menu">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="{{ asset('/assets/dist/img/user-avatar.jpg') }}" class="user-image" alt="User Image">
+                  <img src="{{ asset('assets/dist/img/user-avatar.jpg') }}" class="user-image" alt="User Image">
                   <span class="hidden-xs">{{ app.user.lastName }}</span>
                   </a>
                   <ul class="dropdown-menu">
                     <li class="user-header">
-                      <img src="{{ asset('/assets/dist/img/user-avatar.jpg') }}" class="img-circle" alt="User Image">
+                      <img src="{{ asset('assets/dist/img/user-avatar.jpg') }}" class="img-circle" alt="User Image">
                       <p>
                       {{ app.user.firstName | upper }} {{ app.user.lastName}}
                       </p>
@@ -79,7 +79,7 @@
         padding-bottom: 6rem;
         min-height: 100%;
           margin: 0 auto;
-        position:relative; z-index: 1;background-image: url('{{ asset('/assets/dist/img/hydrocarbure.jpg') }}'); background-size: cover;min-height: 860px;">
+        position:relative; z-index: 1;background-image: url('{{ asset('assets/dist/img/hydrocarbure.jpg') }}'); background-size: cover;min-height: 860px;">
           {% block body %}{% endblock %}
           {% block fos_user_content %}{% endblock %}
       </div>
@@ -93,21 +93,21 @@
           Copyright &copy; 2019 by <a href="https://passion4humanity.com">Passion for Humanity</a>
       </footer>
       <!-- jQuery 3 -->
-      <script src="{{ asset('/assets/dist/js/jquery.min.js') }}"></script>
+      <script src="{{ asset('assets/dist/js/jquery.min.js') }}"></script>
       <!-- jQuery UI 1.11.4 -->
-      <script src="{{ asset('/assets/dist/js/jquery-ui.min.js') }}"></script>
+      <script src="{{ asset('assets/dist/js/jquery-ui.min.js') }}"></script>
       <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
       <script>
         $.widget.bridge('uibutton', $.ui.button);
       </script>
       <!-- Bootstrap 3.3.7 -->
-      <script src="{{ asset('/assets/dist/js/bootstrap.min.js') }}"></script>
+      <script src="{{ asset('assets/dist/js/bootstrap.min.js') }}"></script>
       <!-- Slimscroll -->
-      <script src="{{ asset('/assets/dist/js/jquery.slimscroll.min.js') }}"></script>
+      <script src="{{ asset('assets/dist/js/jquery.slimscroll.min.js') }}"></script>
       <!-- FastClick -->
-      <script src="{{ asset('/assets/dist/js/fastclick.js') }}"></script>
+      <script src="{{ asset('assets/dist/js/fastclick.js') }}"></script>
       <!-- AdminLTE App -->
-      <script src="{{ asset('/assets/dist/js/adminlte.min.js') }}"></script>
+      <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
       <script type="text/javascript">
           $('#close').click(function() {
               $('#confirm_email').fadeOut('slow');
