@@ -3,11 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Experience;
+use App\Form\ReferencedPersonType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class ExperienceType extends AbstractType
 {
@@ -69,6 +71,12 @@ class ExperienceType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                 ]
+            ])
+            ->add('referencedPeople', CollectionType::class, [
+                'entry_type' => ReferencedPersonType::class,
+                'allow_add' => true,
+                'allow_delete'=> true,
+                'prototype_name' => 'personne_reference'
             ])
         ;
     }

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -50,6 +52,17 @@ class Experience
      * @ORM\Column(type="text", nullable=true)
      */
     private $others;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ReferencedPerson", mappedBy="experiences")
+     */
+    private $referencedPeople;
+
+    public function __construct()
+    {
+        $this->referencedPeople = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -136,6 +149,37 @@ class Experience
     public function setOthers(?string $others): self
     {
         $this->others = $others;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Experience[]
+     */
+    public function getReferencedPeople(): Collection
+    {
+        return $this->referencedPeople;
+    }
+
+    public function addReferencedPerson(Experience $referencedPerson): self
+    {
+        if (!$this->referencedPeople->contains($referencedPerson)) {
+            $this->referencedPeople[] = $referencedPerson;
+            $referencedPerson->setExperiences($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReferencedPerson(Experience $referencedPerson): self
+    {
+        if ($this->referencedPeople->contains($referencedPerson)) {
+            $this->referencedPeople->removeElement($referencedPerson);
+            // set the owning side to null (unless already changed)
+            if ($referencedPerson->getExperiences() === $this) {
+                $referencedPerson->setExperiences(null);
+            }
+        }
 
         return $this;
     }
