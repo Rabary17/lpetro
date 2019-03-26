@@ -45,6 +45,8 @@
                 <li><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-home"></i> S'inscrire</a></li>
               {% endif %}
               {% if app.user %}
+                <li><a href="{{ path('training') }}">Mes Ma</a></li>
+                <li><a href="{{ path('skill') }}">Mes compétences</a></li>
                 <li class="dropdown user user-menu">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="{{ asset('assets/dist/img/user-avatar.jpg') }}" class="user-image" alt="User Image">
@@ -61,7 +63,7 @@
                     <!-- Menu Footer-->
                     <li class="user-footer">
                       <div class="pull-left">
-                        <a href="{{ path('user_profile') }}" class="btn btn-default btn-flat">Profil</a>
+                        <a href="{{ path('user_profile') }}" class="" ass="btn btn-default btn-flat">Profil</a>
                       </div>
                       <div class="pull-right">
                         <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Se déconnecter</a>

@@ -127,6 +127,11 @@ class User extends BaseUser
      */
     private $skills;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ApplicationLetter", mappedBy="user")
+     */
+    private $applicationLetters;
+
     public function __construct()
     {
         parent::__construct();
@@ -139,6 +144,7 @@ class User extends BaseUser
         $this->trainings = new ArrayCollection();
         $this->experiences = new ArrayCollection();
         $this->skills = new ArrayCollection();
+        $this->applicationLetters = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -491,6 +497,37 @@ class User extends BaseUser
             // set the owning side to null (unless already changed)
             if ($skill->getUser() === $this) {
                 $skill->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ApplicationLetter[]
+     */
+    public function getApplicationLetters(): Collection
+    {
+        return $this->applicationLetters;
+    }
+
+    public function addApplicationLetter(ApplicationLetter $applicationLetter): self
+    {
+        if (!$this->applicationLetters->contains($applicationLetter)) {
+            $this->applicationLetters[] = $applicationLetter;
+            $applicationLetter->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApplicationLetter(ApplicationLetter $applicationLetter): self
+    {
+        if ($this->applicationLetters->contains($applicationLetter)) {
+            $this->applicationLetters->removeElement($applicationLetter);
+            // set the owning side to null (unless already changed)
+            if ($applicationLetter->getUser() === $this) {
+                $applicationLetter->setUser(null);
             }
         }
 
