@@ -62,7 +62,8 @@ class UserType extends AbstractType
                 'entry_type' => ExperienceType::class,
                 'allow_add' => true,
                 'allow_delete'=> true,
-                'by_reference' => false
+                'by_reference' => false,
+                'prototype_name' => 'user_experience'
             ])
             ->add('profileFile', FileType::class, [
                     'required' => false

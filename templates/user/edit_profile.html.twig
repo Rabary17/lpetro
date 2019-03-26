@@ -178,10 +178,9 @@
 		    var $container = $('div#user_extraWorkActivities');
 		    var $containerTraining = $('div#user_trainings');
 		    var $containerExperience = $('div#user_experiences');
-		    var $containerReferencedPerson = $containerExperience.find('personne_reference');
-		    console.log($containerReferencedPerson);
+		    var tmpProto =  $($('#user_experiences').attr('data-prototype'));
+		    var $containerReferencedPerson = tmpProto.find('#user_experiences_user_experience_referencedPeople');
 		    var index = $container.find(':input').length;
-
 			$('#add_training').click(function() {
 				$('#add_activity').trigger('click', [$containerTraining]);
 			});
@@ -201,7 +200,6 @@
 		        addExtraWorkActivity($container);
 		        addExtraWorkActivity($containerTraining);
 		        addExtraWorkActivity($containerExperience);
-		        addExtraWorkActivity($containerReferencedPerson);
 		    } else {
 		        $container.children('div').each(function(){
 		            addDeleteLink($(this));
@@ -211,12 +209,12 @@
 		        });
 		        $containerExperience.children('div').each(function(){
 		            addDeleteLink($(this));
+		            addAddLink($(this));
 		        });
-		        $containerReferencedPerson.children('div').each(function(){
-		            addDeleteLink($(this));
+		        $($containerReferencedPerson).children('div:first').each(function(){
+		           $(this).css('backgroundColor', 'yellow');
 		        });
 		    }
-
 		    function addExtraWorkActivity($c) {
 		        var template = $c.attr('data-prototype')
 		            .replace(/__name__label__/g, 'Activité ' + (index + 1))
@@ -227,11 +225,31 @@
 		        index++;
 		    }
 
+			function addReferencedPerson($cont) {
+		        var template = $cont.attr('data-prototype')
+		            .replace(/personne_referencelabel__/g, 'Personne de reference ' + (index + 1))
+		            .replace(/personne_reference/g, index);
+		        var $prototype = $(template);
+		        addDeleteLink($prototype);
+		        $cont.append($prototype);
+		        index++;
+			}
+
 		    function addDeleteLink($prototype) {
-		        var $deleteLink = $('<a href="#" class="fa fa-remove text-danger deleteThis" title="Supprimer" onClick="confirm(\'Voulez-vous vraimment supprimer?\')"></a>');
+		        var $deleteLink = $('<a href="#" class="fa fa-remove text-danger deleteThis" title="Supprimer"></a>');
 		        $prototype.append($deleteLink);
 		        $deleteLink.click(function(e) { 
 		            $prototype.remove();
+		            e.preventDefault();
+		            return false;
+		        });
+		    }
+		    function addAddLink($prototype) {
+		        var $addLink = $('<a href="#c3" class="add_referencedPersonne" title="Ajouter personne de reference"><i class="fa fa-plus text-success"></i></a>');
+		        $prototype.append($addLink);
+		        $addLink.click(function(e) {
+		        	console.log($prototype);
+		        	addReferencedPerson($containerReferencedPerson);
 		            e.preventDefault();
 		            return false;
 		        });
