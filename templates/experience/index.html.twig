@@ -18,6 +18,11 @@
 						    <p class="mb-0">{{ experience.achievements |nl2br }}</p>
 						    <h4 class="resume-timeline-item-desc-heading font-weight-bold">Technologies ou Outils utilisés:</h4>
 						    <p>{{ experience.others |nl2br }}</p>
+						    <h4 class="resume-timeline-item-desc-heading font-weight-bold">Personne de référence:</h4>
+						    {% for referencedPerson in experience.referencedPeople %}
+						    	<p>{{ referencedPerson.name }} - {{ referencedPerson.position }}</p>
+						    	<p>{{ referencedPerson.email }} - {{ referencedPerson.phone }}</p>
+						    {% endfor %}
 					    </div>
 					    <br/>
 				    {% endfor %}
@@ -28,26 +33,5 @@
 				</div>
 			</div>
 		</div>
-		<!-- deletion modal >
-        <div class="modal fade" id="modal-default">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Suppréssion formation</h4>
-              </div>
-              <div class="modal-body">
-                <p>Etês-vous vraimment sûr de vouloir supprimer ceci?</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Annuler</button>
-                <a type="button" class="btn btn-primary" href="#" id="delete-training">Oui</a>
-              </div>
-            </div>
-            <!-- /.modal-content >
-          </div-->
-          <!-- /.modal-dialog >
-        </div-->
 	</article>
 {% endblock %}
