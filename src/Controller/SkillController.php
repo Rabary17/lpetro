@@ -21,4 +21,26 @@ class SkillController extends AbstractController
             'user' => $user->getId()
         ]);
     }
+
+    /**
+     * @Route("/skill/delete/{id}", name="delete_skill")
+     */
+    public function delete($id)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $skill = $em->getRepository('App:Skill')->find($id);
+        if ($skill) {
+            $em->remove($skill);
+            $em->flush();
+            return $this->redirectToRoute('skill');
+        }
+
+        return $this->render('skill/index.html.twig', [
+            'skills' => $skills,
+            'error' => 'Impossible de supprimé ce compétence',
+            'user' => $user->getId()
+        ]);
+    }
 }

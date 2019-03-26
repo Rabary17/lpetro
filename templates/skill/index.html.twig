@@ -14,7 +14,7 @@
 				    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">MES COMPETENCES</h2>
 				    {% for skill in skills %}
 					    <div class="resume-section-content">
-							<h3 class="resume-position-title font-weight-bold mb-1">{{ skill.title }} <a  data-toggle="modal" data-target="#modal-default" href="#" id="skill-{{ skill.id }}" title="Supprimer" onclick="deleteskill('{{ skill.id }}')"><i class="text-danger">&times;</i></a></h3>
+							<h3 class="resume-position-title font-weight-bold mb-1">{{ skill.title }} <a  data-toggle="modal" data-target="#modal-default" href="#" id="skill-{{ skill.id }}" title="Supprimer" onclick="deleteSkill('{{ skill.id }}')"><i class="text-danger">&times;</i></a></h3>
 						    <p class="mb-0">{{ skill.description }}</p>
 					    </div>
 					    <br/>
@@ -33,7 +33,7 @@
               <div class="modal-header">
                 <button type="button" class="close" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Suppréssion formation</h4>
+                <h4 class="modal-title">Suppréssion compétence</h4>
               </div>
               <div class="modal-body">
                 <p>Etês-vous vraimment sûr de vouloir supprimer ceci?</p>
@@ -52,7 +52,6 @@
 {% block javascripts %}
 	<script type="text/javascript">
 		function deleteSkill(id) {
-			console.log(id);
 			$('#delete-skill').attr('href', '/skill/delete/' + id);
 		}
 	</script>
