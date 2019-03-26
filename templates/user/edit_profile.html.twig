@@ -143,6 +143,14 @@
 									<a href="#c3" id="add_experience" title="Ajouter expérience professionnelle"><i class="fa fa-plus text-success"></i></a>
 								</div>
 								<br/>
+
+								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="c4">MES COMPETENCES</h2>
+								<div id="extra-work-activity"  class="container" style="min-height: 50px;">
+									{{ form_row(form.skills) }}
+									<a href="#c4" id="add_skill" title="Ajouter compétence professionnelle"><i class="fa fa-plus text-success"></i></a>
+								</div>
+								<br/>
+
 								<div style="padding:20px; margin-top:30px;text-align:center;">
 									<input style="font-size:15px;" type="submit" class="btn btn-primary" value="Sauvegarder"> ou 
 									<a href="{{ path('user_profile') }}"class="btn btn-default" style="font-size:15px;"><i class="fa fa-times"></i> Revenir</a>
@@ -178,6 +186,7 @@
 		    var $container = $('div#user_extraWorkActivities');
 		    var $containerTraining = $('div#user_trainings');
 		    var $containerExperience = $('div#user_experiences');
+		    var $containerSkill = $('div#user_skills');
 		    var tmpProto =  $($('#user_experiences').attr('data-prototype'));
 		    var $containerReferencedPerson = tmpProto.find('#user_experiences_user_experience_referencedPeople');
 		    var index = $container.find(':input').length;
@@ -187,7 +196,9 @@
 			$('#add_experience').click(function() {
 				$('#add_activity').trigger('click', [$containerExperience]);
 			});
-
+			$('#add_skill').click(function() {
+				$('#add_activity').trigger('click', [$containerSkill]);
+			});
 		    $('#add_activity').click(function(e, $c){
 		    	if (typeof $c === "undefined") {
 		    		$c = $container;
@@ -200,6 +211,7 @@
 		        addExtraWorkActivity($container);
 		        addExtraWorkActivity($containerTraining);
 		        addExtraWorkActivity($containerExperience);
+		        addExtraWorkActivity($containerSkill);
 		    } else {
 		        $container.children('div').each(function(){
 		            addDeleteLink($(this));
@@ -210,6 +222,9 @@
 		        $containerExperience.children('div').each(function(){
 		            addDeleteLink($(this));
 		            addAddLink($(this));
+		        });
+		        $containerSkill.children('div').each(function(){
+		            addDeleteLink($(this));
 		        });
 		        $($containerReferencedPerson).children('div:first').each(function(){
 		           $(this).css('backgroundColor', 'yellow');

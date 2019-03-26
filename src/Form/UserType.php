@@ -8,6 +8,7 @@ use App\Entity\Sport;
 use App\Form\ExtraWorkActivityType;
 use App\Form\TrainingType;
 use App\Form\ExperienceType;
+use App\Form\SkillType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -64,6 +65,12 @@ class UserType extends AbstractType
                 'allow_delete'=> true,
                 'by_reference' => false,
                 'prototype_name' => 'user_experience'
+            ])
+            ->add('skills', CollectionType::class, [
+                'entry_type' => SkillType::class,
+                'allow_add' => true,
+                'allow_delete'=> true,
+                'by_reference' => false,
             ])
             ->add('profileFile', FileType::class, [
                     'required' => false
