@@ -41,13 +41,16 @@ class SecurityControllerTest extends WebTestCase
     public function testPageLoginSubmitForm(): void
     {
         $client  = static::createClient();
+
         $crawler = $client->request('GET', '/login');
 
-        $form              = $crawler->selectButton('Log in')->form();
-        $form['_username'] = 'admin';
-        $form['_password'] = 'admin';
+        $form              = $crawler->selectButton('Log In')->form();
+        $form['_username'] = 'heriniaina@passion4humanity.com';
+        $form['_password'] = 'test';
 
         $postCrawler = $client->submit($form);
+        $response = $client->getResponse();
+
         $this->assertContains(
             'Redirecting to',
             $postCrawler->filter('html')->text()
