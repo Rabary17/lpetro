@@ -116,8 +116,8 @@
 
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">ACTIVITES EXTRA PROFESSIONNELLES</h2>
 								<div id="extra-work-activity" class="container" style="min-height: 50px;">
+								{% form_theme form 'collection/jquery.collection.html.twig' %}
 								{{ form_row(form.extraWorkActivities) }}
-								<a href="#" id="add_activity" title="Ajouter activité"><i class="fa fa-plus text-success"></i></a>
 								</div>
 
 								<br/>
@@ -131,17 +131,18 @@
 
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="training">FORMATIONS</h2>
 								<div id="extra-work-activity"  class="container" style="min-height: 50px;">
+								{% form_theme form 'collection/jquery.collection.html.twig' %}
 									{{ form_row(form.trainings) }}	
-									<a href="#c2" id="add_training" title="Ajouter formation"><i class="fa fa-plus text-success"></i></a>
 								</div>
 
 								<br/>
 
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="experience">MES PARCOURS PROFESSIONELLES</h2>
 								<div id="extra-work-activity"  class="container" style="min-height: 50px;">
+								{% form_theme form 'collection/jquery.collection.html.twig' %}
 									{{ form_row(form.experiences) }}
-									<a href="#c3" id="add_experience" title="Ajouter expérience professionnelle"><i class="fa fa-plus text-success"></i></a>
 								</div>
+
 								<br/>
 								<div style="padding:20px; margin-top:30px;text-align:center;">
 									<input style="font-size:15px;" type="submit" class="btn btn-primary" value="Sauvegarder"> ou 
@@ -158,6 +159,7 @@
 {% endblock body %}
 {% block javascripts %}
 <script src="{{ asset('assets/dist/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/jquery.collection.js') }}"></script>
 	<script type="text/javascript">
      	function readURL(input) {
             if (input.files && input.files[0]) {
@@ -169,8 +171,44 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
 		jQuery(document).ready(function($) {
+			$('#user_experiences').addClass('container');
+			$('#trig-upl').on('click', function(){
+				$('#user_profileFile').trigger('click');
+			})
+			$('.collection-selector-user-extraWorkActivities').collection({
+					allow_up: false,
+					allow_down: false,
+					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+				});
+			$('.collection-selector-user-trainings').collection({
+					allow_up: false,
+					allow_down: false,
+					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+				});
+				$('.collection-selector-user-experience').collection({
+					allow_up: false,
+					allow_down: false,
+					add: '<button><i title="Ajouter" class="fa fa-plus collection-btn"></i>Ajouter une expérience</button>',
+					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+					prefix: 'parent',
+					add_at_the_end: true,
+					children: [{
+						selector: '.collection-selector-people-reference',
+						prefix: 'child',
+						allow_up: false,
+						allow_down: false,
+						add_at_the_end: true,
+						add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i><span style="font-size:10px;">Ajouter une personne de référence</span></a>',
+						remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+						// ...
+					}]
+				});
+		});
+
+		{# jQuery(document).ready(function($) {
 			$('#trig-upl').on('click', function(){
 				$('#user_profileFile').trigger('click');
 			})
@@ -181,9 +219,12 @@
 		    var tmpProto =  $($('#user_experiences').attr('data-prototype'));
 		    var $containerReferencedPerson = tmpProto.find('#user_experiences_user_experience_referencedPeople');
 		    var index = $container.find(':input').length;
+
+
 			$('#add_training').click(function() {
 				$('#add_activity').trigger('click', [$containerTraining]);
 			});
+
 			$('#add_experience').click(function() {
 				$('#add_activity').trigger('click', [$containerExperience]);
 			});
@@ -196,6 +237,7 @@
 		        e.preventDefault();
 		        return false;
 		    });
+			
 		    if (index == 0) {
 		        addExtraWorkActivity($container);
 		        addExtraWorkActivity($containerTraining);
@@ -214,7 +256,12 @@
 		        $($containerReferencedPerson).children('div:first').each(function(){
 		           $(this).css('backgroundColor', 'yellow');
 		        });
+				$containerReferencedPerson.children('div').each(function(){
+		            addDeleteLink($(this));
+		            addAddLink($(this));
+		        });
 		    }
+
 		    function addExtraWorkActivity($c) {
 		        var template = $c.attr('data-prototype')
 		            .replace(/__name__label__/g, 'Activité ' + (index + 1))
@@ -227,16 +274,18 @@
 
 			function addReferencedPerson($cont) {
 		        var template = $cont.attr('data-prototype')
-		            .replace(/personne_referencelabel__/g, 'Personne de reference ' + (index + 1))
+		            .replace(/personne_referencelabel__/g, 'Personne de reference n°' + (index + 1))
 		            .replace(/personne_reference/g, index);
+					console.log(template);
 		        var $prototype = $(template);
 		        addDeleteLink($prototype);
-		        $cont.append($prototype);
+				// trouver le bon endroit pour append
+		        $('#user_experiences_0').append($prototype);
 		        index++;
 			}
 
 		    function addDeleteLink($prototype) {
-		        var $deleteLink = $('<a href="#" class="fa fa-remove text-danger deleteThis" title="Supprimer"></a>');
+		        var $deleteLink = $('<a href="#" class="fa fa-remove deleteThis" title="Supprimer">Supprimer</a>');
 		        $prototype.append($deleteLink);
 		        $deleteLink.click(function(e) { 
 		            $prototype.remove();
@@ -245,8 +294,9 @@
 		        });
 		    }
 		    function addAddLink($prototype) {
-		        var $addLink = $('<a href="#c3" class="add_referencedPersonne" title="Ajouter personne de reference"><i class="fa fa-plus text-success"></i></a>');
+		        var $addLink = $('<a href="#c3" class="add_referencedPersonne" title="Ajouter personne de reference"><i class="fa fa-plus text-success"></i>Add Personne réf</a>');
 		        $prototype.append($addLink);
+				$(this).closest('div').append($prototype);
 		        $addLink.click(function(e) {
 		        	console.log($prototype);
 		        	addReferencedPerson($containerReferencedPerson);
@@ -254,6 +304,6 @@
 		            return false;
 		        });
 		    }
-		})
+		}) #}
 	</script>
 {% endblock %}

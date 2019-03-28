@@ -22,8 +22,7 @@
         "symfony/translation": "*",
         "symfony/twig-bundle": "*",
         "symfony/yaml": "*",
-        "vich/uploader-bundle": "^1.9"
-    },
+        "vich/uploader-bundle": "^1.9"},
     "require-dev": {
         "phpmd/phpmd": "^2.6",
         "phpmetrics/phpmetrics": "^2.4",

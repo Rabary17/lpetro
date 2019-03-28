@@ -54,7 +54,7 @@ class Experience
     private $others;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ReferencedPerson", mappedBy="experiences")
+     * @ORM\OneToMany(targetEntity="App\Entity\ReferencedPerson", mappedBy="experiences", cascade={"persist"})
      */
     private $referencedPeople;
 
@@ -161,7 +161,7 @@ class Experience
         return $this->referencedPeople;
     }
 
-    public function addReferencedPerson(Experience $referencedPerson): self
+    public function addReferencedPerson(ReferencedPerson $referencedPerson): self
     {
         if (!$this->referencedPeople->contains($referencedPerson)) {
             $this->referencedPeople[] = $referencedPerson;

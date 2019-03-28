@@ -39,7 +39,7 @@ class UserController extends AbstractController
     {
     	$em = $this->getDoctrine()->getManager();
     	$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-    	$user = $em->getRepository('App:user')->find($id);
+    	$user = $em->getRepository('App:User')->find($id);
         $form = $this->createForm(UserType::class, $user);
 
         if ($request->getMethod() == 'POST') {
