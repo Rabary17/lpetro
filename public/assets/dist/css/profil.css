@@ -8806,6 +8806,7 @@ padding: 0;
 }
 #user_experiences {
     display: flex;
+    flex-wrap: wrap;
 }
 #user_extraWorkActivities > div, #user_trainings > div{
   width: 30%;
