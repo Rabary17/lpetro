@@ -12,7 +12,7 @@
 				
 					<div class="media flex-column flex-md-row" style="position: relative;">
 						
-						<div id="preview" style="min-height: 250px;width: 220px;background-size: cover; background-image:url('{{ asset('uploads/photos/' ~ user.profileName) }}')">
+						<div id="preview" style="min-height: 250px;width: 220px;background-size: cover; background-image:url('{{ asset('./uploads/photos/' ~ user.profileName) }}')">
 							<span style="position:absolute;width:1px;overflow: hidden;">
 								{{ form_widget(form.profileFile, {attr:{'onchange':'readURL(this)'}}) }} 
 								<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
@@ -145,7 +145,7 @@
 
 								<br/>
 
-								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="c4">MES COMPETENCES</h2>
+								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="c4" style="margin-top: 50px">MES COMPETENCES</h2>
 								<div id="extra-work-activity"  class="container" style="min-height: 50px;">
 									{{ form_row(form.skills) }}
 									<a href="#c4" id="add_skill" title="Ajouter compétence professionnelle"><i class="fa fa-plus text-success"></i></a>
