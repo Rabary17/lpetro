@@ -52,22 +52,30 @@
                   <img src="{{ asset('assets/dist/img/user-avatar.jpg') }}" class="user-image" alt="User Image">
                   <span class="hidden-xs">{{ app.user.lastName }}</span>
                   </a>
-                  <ul class="dropdown-menu">
-                    <li class="user-header">
+                  <ul class="dropdown-menu"  style="
+                    position: absolute;
+                    right: 0;
+                    left: auto;
+                    margin: 5px;
+                    background-color: #90b2b299;
+                    border-radius: 10px;
+                    overflow: hidden;
+                ">
+                    <li class="user-header" style="background-color: #90b2b233 !important">
                       <img src="{{ asset('assets/dist/img/user-avatar.jpg') }}" class="img-circle" alt="User Image">
                       <p>
                       {{ app.user.firstName | upper }} {{ app.user.lastName}}
                       </p>
-                      <p><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></p>
+                      <p style="color:white !important;font-size:12px;"><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></p>
                     </li>
                     <!-- Menu Footer-->
-                    <li class="user-footer">
-                      <div class="pull-left">
-                        <a href="{{ path('user_profile') }}" class="" ass="btn btn-default btn-flat">Profil</a>
-                      </div>
-                      <div class="pull-right">
-                        <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Se déconnecter</a>
-                      </div>
+                    <li class="user-footer" style="display: flex;">
+                      <a href="{{ path('user_profile') }}" class="" ass="btn btn-default btn-flat" style="width: 50%;height: 28.5px;float:left;line-height: 20px;text-align: center;">
+                            Profil
+                      </a>
+                      <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat" style="width: 50%;height: 28.5px;line-height: 20px;text-align: center;">
+                            Se déconnecter
+                      </a>
                     </li>
                   </ul>
                 </li>
@@ -76,6 +84,7 @@
           </div>
         </nav>
       </header>
+
 
       <div class="content-wrapper content-wrapper-user" style="
         padding-bottom: 6rem;
