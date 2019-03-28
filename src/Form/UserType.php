@@ -35,6 +35,7 @@ class UserType extends AbstractType
             ->add('nbChildren')
             ->add('address')
             ->add('nationality')
+            ->add('phoneNumber')
             ->add('hobbies', EntityType::class, [
                 'class' => Hobby::class,
                 'choice_label' => 'name',

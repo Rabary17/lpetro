@@ -33,23 +33,27 @@
 						</div>
 							<div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
 							<div class="primary-info">
-								<h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">					
+								<ul class="list-unstyled">
+									<li>
 										<label for="firstName">NOM:</label>
 										{{ form_widget(form.firstName, {attr:{'class': 'form-control', 'id': 'firstName'}}) }}
 										<span class="text-danger">{{ form_errors(form.firstName) }}</span>
-
+									</li>
+									<li>
 										<label for="lastName">PRENOM:</label>
 										{{ form_widget(form.lastName, {attr:{'class': 'form-control', 'id': 'lastName'}}) }}
 										<span class="text-danger">{{ form_errors(form.lastName) }}</span>
-								</h1>
-								<ul class="list-unstyled">
-									<li class="mb-2"><a href="#"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>
-
+									</li>
+									<li class="mb-2">
 										<label for="email">EMAIL:</label>
 										{{ form_widget(form.email, {attr:{'class': 'form-control', 'id': 'email'}}) }}
 										<span class="text-danger">{{ form_errors(form.email) }}</span>
 									</a></li>
-									<li><a href="#"><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ user.phoneNumber }}</a></li>
+									<li>
+										<label for="email"> PHONE:</label>
+										{{ form_widget(form.phoneNumber, {attr:{'class': 'form-control', 'id': 'phone'}}) }}
+										<span class="text-danger">{{ form_errors(form.phoneNumber) }}</span>
+									</li>
 								</ul>
 							</div><!--//primary-info-->
 							<div class="secondary-info ml-md-auto mt-2">
