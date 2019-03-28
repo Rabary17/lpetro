@@ -20,14 +20,14 @@ class ExtraWorkActivityType extends AbstractType
                     'class' => 'mylabel'
                 ],
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'DESCRIPTION',
                 'required' => false,
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control'
 
                 ]
             ])

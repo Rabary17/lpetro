@@ -9,6 +9,7 @@ class TrainingController extends AbstractController
 {
     /**
      * @Route("/training", name="training")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index()
     {
@@ -24,6 +25,7 @@ class TrainingController extends AbstractController
 
     /**
      * @Route("/training/delete/{id}", name="delete_training")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function delete($id)
     {
@@ -34,13 +36,8 @@ class TrainingController extends AbstractController
         if ($training) {
             $em->remove($training);
             $em->flush();
-            return $this->redirectToRoute('training');
         }
 
-        return $this->render('training/index.html.twig', [
-            'trainings' => $trainings,
-            'error' => 'Impossible de supprimé cette formation',
-            'user' => $user->getId()
-        ]);
+        return $this->redirectToRoute('training');
     }
 }

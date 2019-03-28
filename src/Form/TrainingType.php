@@ -20,12 +20,12 @@ class TrainingType extends AbstractType
                         'class' => 'mylabel'
                     ],
                     'attr' => [
-                        'class' => 'form-control',
+                        'class' => 'form-control'
                     ]
                 ])
             ->add('description', null, ['label' => 'DESCRIPTION',
             'attr' => [
-                'class' => 'form-control',
+                'class' => 'form-control'
             ]
             ])
         ;

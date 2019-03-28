@@ -20,12 +20,12 @@ class SkillType extends AbstractType
                         'class' => 'mylabel'
                     ],
                     'attr' => [
-                        'class' => 'form-control',
+                        'class' => 'form-control'
                     ]
                 ])
             ->add('description', TextareaType::class, ['label' => 'DESCRIPTION',
                     'attr' => [
-                        'class' => 'form-control',
+                        'class' => 'form-control'
                     ],
                     'label_attr' => [
                         'class' => 'mylabel'

@@ -9,6 +9,7 @@ class SkillController extends AbstractController
 {
     /**
      * @Route("/skill", name="skill")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index()
     {
@@ -24,6 +25,8 @@ class SkillController extends AbstractController
 
     /**
      * @Route("/skill/delete/{id}", name="delete_skill")
+     * @param $id string
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function delete($id)
     {
@@ -38,7 +41,7 @@ class SkillController extends AbstractController
         }
 
         return $this->render('skill/index.html.twig', [
-            'skills' => $skills,
+            'skills' => $skill,
             'error' => 'Impossible de supprimé ce compétence',
             'user' => $user->getId()
         ]);

@@ -21,6 +21,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/profile", name="user_profile")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index()
     {
@@ -34,6 +35,9 @@ class UserController extends AbstractController
 
     /**
      * @Route("/profile/edit/{id}", name="user_profile_edit")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @param string $request
      */
     public function edit(Request $request, $id)
     {

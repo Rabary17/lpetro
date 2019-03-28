@@ -20,7 +20,7 @@ class ApplicationLetterType extends AbstractType
                     'class' => 'mylabel'
                 ],
                 'attr' => [
-                    'class' => 'form-control ckeditor',
+                    'class' => 'form-control ckeditor'
                 ]
             ])
         ;
