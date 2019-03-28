@@ -51,26 +51,42 @@ class UserType extends AbstractType
                 'entry_type' => ExtraWorkActivityType::class,
                 'allow_add' => true,
                 'allow_delete'=> true,
-                'by_reference' => false
+                'by_reference' => false,
+                'prototype' => true,
+                'attr' => array(
+                    'class' => 'collection-selector-user-extraWorkActivities',
+                ),
             ])
             ->add('trainings', CollectionType::class, [
                 'entry_type' => TrainingType::class,
                 'allow_add' => true,
                 'allow_delete'=> true,
-                'by_reference' => false
+                'by_reference' => false,
+                'prototype' => true,
+                'attr' => array(
+                    'class' => 'collection-selector-user-trainings',
+                ),
             ])
             ->add('experiences', CollectionType::class, [
                 'entry_type' => ExperienceType::class,
                 'allow_add' => true,
                 'allow_delete'=> true,
                 'by_reference' => false,
-                'prototype_name' => 'user_experience'
+                'prototype_name' => 'user_experience',
+                'prototype' => true,
+                'attr' => array(
+                    'class' => 'collection-selector-user-experience',
+                ),
             ])
             ->add('skills', CollectionType::class, [
                 'entry_type' => SkillType::class,
                 'allow_add' => true,
                 'allow_delete'=> true,
                 'by_reference' => false,
+                'prototype' => true,
+                'attr' => array(
+                    'class' => 'collection-selector-user-skills',
+                ),
             ])
             ->add('profileFile', FileType::class, [
                     'required' => false

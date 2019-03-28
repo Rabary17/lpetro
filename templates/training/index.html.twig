@@ -12,14 +12,22 @@
 			<div class="resume-body p-5">
 			    <section class="resume-section summary-section mb-5">
 				    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">MES FORMATIONS</h2>
-				    {% for training in trainings %}
-					    <div class="resume-section-content">
-							<h3 class="resume-position-title font-weight-bold mb-1">{{ training.name }} <a  data-toggle="modal" data-target="#modal-default" href="#" id="training-{{ training.id }}" title="Supprimer" onclick="deleteTraining('{{ training.id }}')"><i class="text-danger">&times;</i></a></h3>
-						    <p class="mb-0">{{ training.description }}</p>
-					    </div>
-					    <br/>
-				    {% endfor %}
+				    <div id="extra-work-activity" class="container" style="min-height: 50px;">
+							{% for training in trainings %}
+								<div class="resume-section-content">
+								<h3 class="font-weight-bold mb-1">{{ training.name }}
+									<a  data-toggle="modal" data-target="#modal-default" href="#" id="training-{{ training.id }}" title="Supprimer" onclick="deleteTraining('{{ training.id }}')" 
+									style="background-color: #ff00004d;"><i class="text-danger">&times;</i>
+									</a></h3>
+									<p class="mb-0">{{ training.description }}</p>
+								</div>
+								<br/>
+							{% endfor %}
+						</div>								
+
+								
 			    </section><!--//summary-section-->
+
 				<div>
 					<a href="{{ path('user_profile_edit', {id:user})  ~ '#training' }}" class="btn btn-primary">Ajouter/Modifier</a>		
 					<a href="{{ path('user_profile') }}" class="btn btn-default">Revenir</a><br/>				
@@ -31,9 +39,9 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Suppréssion formation</h4>
+                {# <button type="button" class="close" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button> #}
+                <h2 class="modal-title">Suppréssion formation</h2>
               </div>
               <div class="modal-body">
                 <p>Etês-vous vraimment sûr de vouloir supprimer ceci?</p>

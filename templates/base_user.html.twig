@@ -45,7 +45,7 @@
                 <li><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-home"></i> S'inscrire</a></li>
               {% endif %}
               {% if app.user %}
-                <li><a href="{{ path('training') }}">Mes Ma</a></li>
+                <li><a href="{{ path('training') }}">Mes formations</a></li>
                 <li><a href="{{ path('skill') }}">Mes compétences</a></li>
                 <li class="dropdown user user-menu">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -81,7 +81,7 @@
         padding-bottom: 6rem;
         min-height: 100%;
           margin: 0 auto;
-        position:relative; z-index: 1;background-image: url('{{ asset('assets/dist/img/hydrocarbure.jpg') }}'); background-size: cover;min-height: 860px;">
+        position:relative; z-index: 1;background-image: url('./assets/dist/img/hydrocarbure.jpg'); background-size: cover;min-height: 860px;">
           {% block body %}{% endblock %}
           {% block fos_user_content %}{% endblock %}
       </div>
