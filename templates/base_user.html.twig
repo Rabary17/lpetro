@@ -81,14 +81,14 @@
         padding-bottom: 6rem;
         min-height: 100%;
           margin: 0 auto;
-        position:relative; z-index: 1;background-image: url('{{ asset('assets/dist/img/hydrocarbure.jpg') }}'); background-size: cover;min-height: 860px;">
+        position:relative; z-index: 1;background-image: url('{{ asset('./assets/dist/img/hydrocarbure.jpg') }}'); background-size: cover;min-height: 860px;">
           {% block body %}{% endblock %}
           {% block fos_user_content %}{% endblock %}
       </div>
       {% for message in app.flashes('user_confirm_notice') %}
         <div class="alert-dismissible" id="confirm_email">
             <a href="#" class="close" data-dismiss="alert" id="close" aria-label="close">&times;</a>
-            <p>lorem  dfdfd dfddfdd ddfd fdf</p>
+            <p>{{ message }}</p>
         </div>
       {% endfor %}
       <footer>
