@@ -1676,6 +1676,7 @@
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
+    font-size: 15px !important;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
   
@@ -8736,7 +8737,7 @@
 
   label{
     font-weight: normal;
-    font-size: 13px;
+    font-size: 11px;
   }
 
   input{
@@ -8751,8 +8752,6 @@
     opacity: 0.75;
     cursor: pointer;
   }
-
-
 
 input[type=checkbox]:not(old),
 input[type=radio   ]:not(old){
@@ -8804,7 +8803,10 @@ input[type=radio   ]:not(old) + label{
 position: relative;
 padding: 0;
 }
-
+#user_experiences {
+    display: flex;
+    flex-wrap: wrap;
+}
 #user_extraWorkActivities > div, #user_trainings > div{
   width: 30%;
   float: left;
@@ -8828,4 +8830,63 @@ padding: 0;
   margin: 5px;
   background-color: #eee;
   position: relative;
+}
+
+.collection-btn{
+  padding: 5px;
+  margin: 0 3px;
+  color: white;
+  border-radius: 10%;
+}
+
+.fa-times.collection-btn  {
+  background-color: #f006;
+  text-align: right;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.fa-plus.collection-btn {
+  background-color: #00800080;
+  text-align: right;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.collection-btn:hover{
+  background-color: #434e5e;
+}
+
+.user_extraWorkActivities-collection-actions,
+.user_trainings-collection-actions,
+.user_experiences-parent-actions{
+  text-align: right;
+  border-top: 1px solid #ddd;
+  
+}
+
+.Reference_label{
+display: block !important;
+margin: 15px 0;
+background-color: #9e9e9e;
+color: white;
+text-align: center;
+}
+
+.user_experiences-parent-rescue-add{
+position: absolute;
+bottom: -50px;
+display: flex;
+flex-direction: row;
+align-items: baseline;
+background-color: #57bd19;
+border: none;
+color: white;
+}
+
+.collection-selector-people-reference{
+margin-left: 10%;
+padding: 5px;
+background-color: #d1d1d1;
+margin-bottom: 10px;
 }

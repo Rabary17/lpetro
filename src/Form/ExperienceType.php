@@ -73,10 +73,19 @@ class ExperienceType extends AbstractType
                 ]
             ])
             ->add('referencedPeople', CollectionType::class, [
+                'label' => 'Personne de référence',
+                'label_attr' => [
+                    'class' => 'Reference_label'
+                ],
                 'entry_type' => ReferencedPersonType::class,
                 'allow_add' => true,
                 'allow_delete'=> true,
-                'prototype_name' => 'personne_reference'
+                'by_reference' => false,
+                'prototype_name' => 'personne_reference',
+                'prototype' => true,
+                'attr' => array(
+                    'class' => 'collection-selector-people-reference',
+                ),
             ])
         ;
     }
