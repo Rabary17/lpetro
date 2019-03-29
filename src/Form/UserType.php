@@ -54,7 +54,7 @@ class UserType extends AbstractType
                 'by_reference' => false,
                 'prototype' => true,
                 'attr' => array(
-                    'class' => 'collection-selector-user-extraWorkActivities',
+                    'class' => 'collection-selector-user-extraWorkActivities'
                 ),
             ])
             ->add('trainings', CollectionType::class, [
@@ -64,7 +64,7 @@ class UserType extends AbstractType
                 'by_reference' => false,
                 'prototype' => true,
                 'attr' => array(
-                    'class' => 'collection-selector-user-trainings',
+                    'class' => 'collection-selector-user-trainings'
                 ),
             ])
             ->add('experiences', CollectionType::class, [
@@ -75,7 +75,7 @@ class UserType extends AbstractType
                 'prototype_name' => 'user_experience',
                 'prototype' => true,
                 'attr' => array(
-                    'class' => 'collection-selector-user-experience',
+                    'class' => 'collection-selector-user-experience'
                 ),
             ])
             ->add('skills', CollectionType::class, [
@@ -85,7 +85,7 @@ class UserType extends AbstractType
                 'by_reference' => false,
                 'prototype' => true,
                 'attr' => array(
-                    'class' => 'collection-selector-user-skills',
+                    'class' => 'collection-selector-user-skills'
                 ),
             ])
             ->add('profileFile', FileType::class, [

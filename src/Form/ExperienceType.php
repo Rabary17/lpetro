@@ -22,7 +22,7 @@ class ExperienceType extends AbstractType
                     'class' => 'mylabel'
                 ],
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('position', TextType::class, [
@@ -31,7 +31,7 @@ class ExperienceType extends AbstractType
                     'class' => 'mylabel'
                 ],
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('status', TextType::class, [
@@ -41,7 +41,7 @@ class ExperienceType extends AbstractType
                     'class' => 'mylabel'
                 ],
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('company', TextType::class, [
@@ -50,7 +50,7 @@ class ExperienceType extends AbstractType
                     'class' => 'mylabel'
                 ],
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('achievements', TextareaType::class, [
@@ -59,7 +59,7 @@ class ExperienceType extends AbstractType
                     'class' => 'mylabel'
                 ],
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('others', TextareaType::class, [
@@ -69,7 +69,7 @@ class ExperienceType extends AbstractType
                     'class' => 'mylabel'
                 ],
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('referencedPeople', CollectionType::class, [
@@ -84,7 +84,7 @@ class ExperienceType extends AbstractType
                 'prototype_name' => 'personne_reference',
                 'prototype' => true,
                 'attr' => array(
-                    'class' => 'collection-selector-people-reference',
+                    'class' => 'collection-selector-people-reference'
                 ),
             ])
         ;

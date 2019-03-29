@@ -20,7 +20,7 @@ class ReferencedPersonType extends AbstractType
                         'class' => 'mylabel'
                     ],
                     'attr' => [
-                        'class' => 'form-control',
+                        'class' => 'form-control'
                     ]
                 ])
             ->add('position', TextType::class, [
@@ -29,7 +29,7 @@ class ReferencedPersonType extends AbstractType
                         'class' => 'mylabel'
                     ],
                     'attr' => [
-                        'class' => 'form-control',
+                        'class' => 'form-control'
                     ]
                 ])
             ->add('email', TextType::class, [
@@ -38,7 +38,7 @@ class ReferencedPersonType extends AbstractType
                         'class' => 'mylabel'
                     ],
                     'attr' => [
-                        'class' => 'form-control',
+                        'class' => 'form-control'
                     ]
                 ])
             ->add('phone', TextType::class, [
@@ -47,7 +47,7 @@ class ReferencedPersonType extends AbstractType
                         'class' => 'mylabel'
                     ],
                     'attr' => [
-                        'class' => 'form-control',
+                        'class' => 'form-control'
                     ]
                 ])
         ;
