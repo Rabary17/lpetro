@@ -83,6 +83,10 @@ class UserType extends AbstractType
                 'allow_add' => true,
                 'allow_delete'=> true,
                 'by_reference' => false,
+                'prototype' => true,
+                'attr' => array(
+                    'class' => 'collection-selector-user-skills',
+                ),
             ])
             ->add('profileFile', FileType::class, [
                     'required' => false

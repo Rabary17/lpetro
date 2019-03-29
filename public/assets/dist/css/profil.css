@@ -8803,7 +8803,7 @@ input[type=radio   ]:not(old) + label{
 position: relative;
 padding: 0;
 }
-#user_experiences {
+#user_experiences, #user_skills {
     display: flex;
     flex-wrap: wrap;
 }
@@ -8823,7 +8823,8 @@ padding: 0;
   bottom: 0;
 }
 
-#user_experiences > div{
+#user_experiences > div,
+#user_skills > div{
   width: 45%;
   float: left;
   padding: 10px;

@@ -147,8 +147,8 @@
 
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="c4" style="margin-top: 50px">MES COMPETENCES</h2>
 								<div id="extra-work-activity"  class="container" style="min-height: 50px;">
+								{% form_theme form 'collection/jquery.collection.html.twig' %}
 									{{ form_row(form.skills) }}
-									<a href="#c4" id="add_skill" title="Ajouter compétence professionnelle"><i class="fa fa-plus text-success"></i></a>
 								</div>
 								<br/>
 
@@ -191,6 +191,12 @@
 					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
 				});
 			$('.collection-selector-user-trainings').collection({
+					allow_up: false,
+					allow_down: false,
+					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+				});
+			$('.collection-selector-user-skills').collection({
 					allow_up: false,
 					allow_down: false,
 					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
