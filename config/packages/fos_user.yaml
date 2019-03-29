@@ -6,7 +6,7 @@ fos_user:
         mailer: fos_user.mailer.twig_swift
     from_email:
         address: "noreplay@passion4humanity.com"
-        sender_name: "noreplay@passion4humanity.com"
+        sender_name: "Logistique Petrolière"
     registration:
         form:
             type: App\Form\RegistrationType

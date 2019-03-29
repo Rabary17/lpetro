@@ -20,12 +20,12 @@ class PasswordResettingListener implements EventSubscriberInterface {
 
     public static function getSubscribedEvents() {
         return array(
-            FOSUserEvents::RESETTING_RESET_SUCCESS => [
-                ['onPasswordResettingSuccess', -10]
-            ],
             FOSUserEvents::RESETTING_RESET_REQUEST => [
-                ['onResettingResetRequest', -100]
+                ['onResettingResetRequest', -20]
             ],
+            FOSUserEvents::RESETTING_RESET_SUCCESS => [
+                ['onPasswordResettingSuccess', -20]
+            ]
         );
     }
 
