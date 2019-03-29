@@ -1,0 +1,48 @@
+image: bctandoc/symfony-4-docker
+
+
+variables:
+  application_path: "."
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+  - vendor/
+
+before_script:
+  - php -d memory_limit=-1 /usr/local/bin/composer install -d $application_path
+
+phplint:
+  stage: build
+  script:
+    - php -d memory_limit=-1 /usr/local/bin/composer require --dev jakub-onderka/php-parallel-lint -d $application_path/
+    - php $application_path/vendor/jakub-onderka/php-parallel-lint/parallel-lint $application_path/src/
+
+phpcs:
+  stage: test
+  script:
+    - git clone https://github.com/Endouble/Symfony3-custom-coding-standard.git && composer install -d ./Symfony3-custom-coding-standard
+    - ./Symfony3-custom-coding-standard/vendor/bin/phpcs --config-set installed_paths ../../../../Symfony3-custom-coding-standard
+    - ./Symfony3-custom-coding-standard/vendor/bin/phpcs -d memory_limit=512M --standard=Symfony3Custom --ignore=*/vendor/*,*/var/*,*/config/*,*/bin/*,*/public/*,*/DataFixtures/*,*/tests/*,*/Symfony3Custom/*,*/Migrations/*,*/Entity/*,*/src/Kernel.php $application_path/ --report=full
+
+phpmd:
+  stage: test
+  script:
+    - php -d memory_limit=-1 /usr/local/bin/composer  require --dev phpmd/phpmd
+    - $application_path/vendor/phpmd/phpmd/src/bin/phpmd src/ text config/phpmd.xml --exclude Tests,src/Migrations --suffixes php,twig
+
+phpunit:
+  stage: test
+  script:
+    - php -d memory_limit=-1 /usr/local/bin/composer require --dev symfony/phpunit-bridge
+    - php -d memory_limit=-1 $application_path/bin/phpunit
+
+Deploydev:
+  stage: deploy
+  script:
+    - "echo déploiement à configurer"
+  environment:
+    name: staging
+  only:
+    - develop
+
