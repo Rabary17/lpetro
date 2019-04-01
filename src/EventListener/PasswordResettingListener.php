@@ -11,14 +11,23 @@ use FOS\UserBundle\Event\GetResponseUserEvent;
 /**
  * Listener responsible to change the redirection at the end of the password resetting
  */
-class PasswordResettingListener implements EventSubscriberInterface {
+class PasswordResettingListener implements EventSubscriberInterface
+{
     private $router;
 
-    public function __construct(UrlGeneratorInterface $router) {
+    /**
+     * @param UrlGeneratorInterface $router
+     */
+    public function __construct(UrlGeneratorInterface $router)
+    {
         $this->router = $router;
     }
 
-    public static function getSubscribedEvents() {
+    /**
+     * @return array
+     */
+    public static function getSubscribedEvents()
+    {
         return array(
             FOSUserEvents::RESETTING_RESET_REQUEST => [
                 ['onResettingResetRequest', -20]
@@ -29,13 +38,24 @@ class PasswordResettingListener implements EventSubscriberInterface {
         );
     }
 
-    public function onPasswordResettingSuccess(FormEvent $event) {
+    /**
+     * @param  FormEvent $event
+     * @return void
+     */
+    public function onPasswordResettingSuccess(FormEvent $event)
+    {
         $url = $this->router->generate('user_profile');
         $session = $event->getRequest()->getSession();
         $session->getFlashBag()->add('user_confirm_notice', 'Votre mot de passe a bien été réinitialisé.');
         $event->setResponse(new RedirectResponse($url));
     }
-    public function onResettingResetRequest(GetResponseUserEvent $event) {
+
+    /**
+     * @param  GetResponseUserEvent $event
+     * @return void
+     */
+    public function onResettingResetRequest(GetResponseUserEvent $event)
+    {
         $url = $this->router->generate('home');
         $session = $event->getRequest()->getSession();
         $session->getFlashBag()->add('user_confirm_notice', "Un e-mail a été envoyé à votre adresse email. Merci de consulter votre boite email pour pouvoir réinitialiser votre mot de passe");
