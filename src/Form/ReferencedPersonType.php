@@ -24,8 +24,7 @@ class ReferencedPersonType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('name', TextType::class, [
+        $builder->add('name', TextType::class, [
                     'label' => 'NOM & PRENOM',
                     'label_attr' => [
                         'class' => 'mylabel'

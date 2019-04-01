@@ -1,0 +1,21 @@
+{% extends 'base_rh.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/home.css')}}">
+{% endblock %}
+
+{% block body %}
+	<div class="banner">
+		{% for candidat in candidates %}
+			<div class="card" style="width: 18rem;">
+			  <img class="card-img-top" src="{{ asset('uploads/photos/' ~ candidat.profileName) }}" alt="Photo de {{ candidat.lastName }}" width="100px" height="100px">
+			  <div class="card-body">
+			    <h5 class="card-title">CV {{ candidat.lastName }}</h5>
+			    <p class="card-text">{{ candidat.firstName }}</p>
+			    <p class="card-text">{{ candidat.email }}</p>
+			    <a href="{{ path('candidat_view', {id: candidat.id}) }}" class="btn btn-primary"><i class="fa fa-eye"></i> Voir</a>
+			  </div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

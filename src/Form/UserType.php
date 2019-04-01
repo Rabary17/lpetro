@@ -32,15 +32,13 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('email')
+        $builder->add('email')
             ->add('lastName')
             ->add('firstName')
             ->add('dateOfBirth', DateType::class, [
                     'widget' => 'single_text',
                     'required' => false
-                ]
-            )
+                ])
             ->add('placeOfBirth')
             ->add('maritalStatus')
             ->add('conjointName')
@@ -53,15 +51,13 @@ class UserType extends AbstractType
                     'choice_label' => 'name',
                     'multiple' => true,
                     'expanded' => true
-                ]
-            )
+                ])
             ->add('sports', EntityType::class, [
                     'class' => Sport::class,
                     'choice_label' => 'name',
                     'multiple' => true,
                     'expanded' => true
-                ]
-            )
+                ])
             ->add('extraWorkActivities', CollectionType::class, [
                     'entry_type' => ExtraWorkActivityType::class,
                     'allow_add' => true,
@@ -71,8 +67,7 @@ class UserType extends AbstractType
                     'attr' => array(
                         'class' => 'collection-selector-user-extraWorkActivities'
                     )
-                ]
-            )
+                ])
             ->add('trainings', CollectionType::class, [
                     'entry_type' => TrainingType::class,
                     'allow_add' => true,
@@ -82,8 +77,7 @@ class UserType extends AbstractType
                     'attr' => array(
                         'class' => 'collection-selector-user-trainings'
                     )
-                ]
-            )
+                ])
             ->add('experiences', CollectionType::class, [
                     'entry_type' => ExperienceType::class,
                     'allow_add' => true,
@@ -94,8 +88,7 @@ class UserType extends AbstractType
                     'attr' => array(
                         'class' => 'collection-selector-user-experience'
                     )
-                ]
-            )
+                ])
             ->add('skills', CollectionType::class, [
                     'entry_type' => SkillType::class,
                     'allow_add' => true,
@@ -105,12 +98,10 @@ class UserType extends AbstractType
                     'attr' => array(
                         'class' => 'collection-selector-user-skills'
                     )
-                ]
-            )
+                ])
             ->add('profileFile', FileType::class, [
                     'required' => false
-                ]
-            );
+                ]);
     }
 
     /**
