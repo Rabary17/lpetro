@@ -28,6 +28,7 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
     }
 
     /**
+     * @SuppressWarnings(PHPMD)
      * @param Request        $request
      *
      * @param TokenInterface $token
@@ -43,11 +44,9 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
         }, $roles);
 
         if (in_array('ROLE_RH', $rolesTab, true)) {
-            $redirection = new RedirectResponse($this->router->generate('rh_home'));
-        } else {
-            $redirection = new RedirectResponse($this->router->generate('home'));
+            return new RedirectResponse($this->router->generate('rh_home'));
         }
 
-        return $redirection;
+        return new RedirectResponse($this->router->generate('home'));
     }
 }

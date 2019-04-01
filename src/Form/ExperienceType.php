@@ -26,7 +26,8 @@ class ExperienceType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('period', TextType::class, [
+        $builder
+            ->add('period', TextType::class, [
                 'label' => 'PERIODE DU - AU',
                 'label_attr' => [
                     'class' => 'mylabel'
@@ -34,8 +35,7 @@ class ExperienceType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ]
-            ])
-            ->add('position', TextType::class, [
+            ])->add('position', TextType::class, [
                 'label' => 'POSTE',
                 'label_attr' => [
                     'class' => 'mylabel'
@@ -43,8 +43,7 @@ class ExperienceType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ]
-            ])
-            ->add('status', TextType::class, [
+            ])->add('status', TextType::class, [
                 'label' => 'STATUS (internat, junior, senior...)',
                 'required' => false,
                 'label_attr' => [
@@ -53,8 +52,7 @@ class ExperienceType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ]
-            ])
-            ->add('company', TextType::class, [
+            ])->add('company', TextType::class, [
                 'label' => 'DENOMINATION DE LA SOCIETE',
                 'label_attr' => [
                     'class' => 'mylabel'
@@ -62,8 +60,7 @@ class ExperienceType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ]
-            ])
-            ->add('achievements', TextareaType::class, [
+            ])->add('achievements', TextareaType::class, [
                 'label' => 'MISSIONS',
                 'label_attr' => [
                     'class' => 'mylabel'
@@ -71,8 +68,7 @@ class ExperienceType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ]
-            ])
-            ->add('others', TextareaType::class, [
+            ])->add('others', TextareaType::class, [
                 'label' => 'AUTRES',
                 'required' => false,
                 'label_attr' => [
@@ -81,8 +77,7 @@ class ExperienceType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ]
-            ])
-            ->add('referencedPeople', CollectionType::class, [
+            ])->add('referencedPeople', CollectionType::class, [
                 'label' => 'Personne de référence',
                 'label_attr' => [
                     'class' => 'Reference_label'
@@ -96,8 +91,7 @@ class ExperienceType extends AbstractType
                 'attr' => array(
                     'class' => 'collection-selector-people-reference'
                 ),
-            ])
-        ;
+            ]);
     }
 
     /**
