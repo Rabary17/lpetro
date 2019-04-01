@@ -17,25 +17,25 @@ class ApplicationLetterController extends AbstractController
      */
     public function index(Request $request)
     {
-    	$em = $this->getDoctrine()->getManager();
-    	$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-    	$user = $this->getUser();
-    	$application = new ApplicationLetter();
+        $em = $this->getDoctrine()->getManager();
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+        $application = new ApplicationLetter();
         $form = $this->createForm(ApplicationLetterType::class, $application);
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
-            	$application->setUser($user);
-            	$em->persist($application);
+                $application->setUser($user);
+                $em->persist($application);
                 $em->flush();
                 return $this->redirectToRoute('application_letter');
             }
         }
 
         return $this->render('application_letter/index.html.twig', [
-			'user' => $user,
-			'form' => $form->createView()
+            'user' => $user,
+            'form' => $form->createView()
         ]);
     }
 }

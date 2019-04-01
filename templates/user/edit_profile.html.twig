@@ -183,6 +183,7 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
 		jQuery(document).ready(function($) {
 			$('#user_experiences').addClass('container');
 			$('#trig-upl').on('click', function(){
@@ -224,111 +225,19 @@
 						// ...
 					}]
 				});
-		});
 
-		{# jQuery(document).ready(function($) {
-			$('#trig-upl').on('click', function(){
-				$('#user_profileFile').trigger('click');
-			})
+			  $('input[name="user[experiences][0][period]"]').daterangepicker({
+			      autoUpdateInput: false,
+			      locale: {
+			          cancelLabel: 'Clear'
+			      }
+			  });
 
-		    var $container = $('div#user_extraWorkActivities');
-		    var $containerTraining = $('div#user_trainings');
-		    var $containerExperience = $('div#user_experiences');
-		    var $containerSkill = $('div#user_skills');
-		    var tmpProto =  $($('#user_experiences').attr('data-prototype'));
-		    var $containerReferencedPerson = tmpProto.find('#user_experiences_user_experience_referencedPeople');
-		    var index = $container.find(':input').length;
-
-
-			$('#add_training').click(function() {
-				$('#add_activity').trigger('click', [$containerTraining]);
+			  $('input[name="user[experiences][0][period]"]').on('apply.daterangepicker', function(ev, picker) {
+			      $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+			  });
 			});
 
-			$('#add_experience').click(function() {
-				$('#add_activity').trigger('click', [$containerExperience]);
-			});
-			$('#add_skill').click(function() {
-				$('#add_activity').trigger('click', [$containerSkill]);
-			});
-		    $('#add_activity').click(function(e, $c){
-		    	if (typeof $c === "undefined") {
-		    		$c = $container;
-		    	}
-		        addExtraWorkActivity($c);
-		        e.preventDefault();
-		        return false;
-		    });
-			
-		    if (index == 0) {
-		        addExtraWorkActivity($container);
-		        addExtraWorkActivity($containerTraining);
-		        addExtraWorkActivity($containerExperience);
-		        addExtraWorkActivity($containerSkill);
-		    } else {
-		        $container.children('div').each(function(){
-		            addDeleteLink($(this));
-		        });
-		        $containerTraining.children('div').each(function(){
-		            addDeleteLink($(this));
-		        });
-		        $containerExperience.children('div').each(function(){
-		            addDeleteLink($(this));
-		            addAddLink($(this));
-		        });
-		        $containerSkill.children('div').each(function(){
-		            addDeleteLink($(this));
-		        });
-		        $($containerReferencedPerson).children('div:first').each(function(){
-		           $(this).css('backgroundColor', 'yellow');
-		        });
-				$containerReferencedPerson.children('div').each(function(){
-		            addDeleteLink($(this));
-		            addAddLink($(this));
-		        });
-		    }
 
-		    function addExtraWorkActivity($c) {
-		        var template = $c.attr('data-prototype')
-		            .replace(/__name__label__/g, 'Activité ' + (index + 1))
-		            .replace(/__name__/g, index);
-		        var $prototype = $(template);
-		        addDeleteLink($prototype);
-		        $c.append($prototype);
-		        index++;
-		    }
-
-			function addReferencedPerson($cont) {
-		        var template = $cont.attr('data-prototype')
-		            .replace(/personne_referencelabel__/g, 'Personne de reference n°' + (index + 1))
-		            .replace(/personne_reference/g, index);
-					console.log(template);
-		        var $prototype = $(template);
-		        addDeleteLink($prototype);
-				// trouver le bon endroit pour append
-		        $('#user_experiences_0').append($prototype);
-		        index++;
-			}
-
-		    function addDeleteLink($prototype) {
-		        var $deleteLink = $('<a href="#" class="fa fa-remove deleteThis" title="Supprimer">Supprimer</a>');
-		        $prototype.append($deleteLink);
-		        $deleteLink.click(function(e) { 
-		            $prototype.remove();
-		            e.preventDefault();
-		            return false;
-		        });
-		    }
-		    function addAddLink($prototype) {
-		        var $addLink = $('<a href="#c3" class="add_referencedPersonne" title="Ajouter personne de reference"><i class="fa fa-plus text-success"></i>Add Personne réf</a>');
-		        $prototype.append($addLink);
-				$(this).closest('div').append($prototype);
-		        $addLink.click(function(e) {
-		        	console.log($prototype);
-		        	addReferencedPerson($containerReferencedPerson);
-		            e.preventDefault();
-		            return false;
-		        });
-		    }
-		}) #}
 	</script>
 {% endblock %}

@@ -29,7 +29,7 @@ class SecurityService
             return new User();
         }
         $user = $token->getUser();
-        if ( ! $user instanceof User) {
+        if (! $user instanceof User) {
             return new User();
         }
 

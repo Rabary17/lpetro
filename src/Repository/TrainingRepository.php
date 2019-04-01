@@ -22,7 +22,7 @@ class TrainingRepository extends ServiceEntityRepository
     /**
      * @return Training[] Returns an array of Training objects
      */
-    public function fetchByUser($userId): ?Array
+    public function fetchByUser($userId): ?array
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.user = :user')

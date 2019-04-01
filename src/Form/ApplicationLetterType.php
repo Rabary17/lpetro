@@ -32,10 +32,10 @@ class ApplicationLetterType extends AbstractType
 {
     /**
      * Formbuilder
-     * 
+     *
      * @param FormBuilderInterface $builder formbuilder
      * @param array                $options options
-     * 
+     *
      * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -43,7 +43,8 @@ class ApplicationLetterType extends AbstractType
         $builder
             ->add(
                 'content',
-                TextareaType::class, [
+                TextareaType::class,
+                [
                     'label' => 'CONTENU',
                     'label_attr' => [
                         'class' => 'mylabel'
@@ -57,9 +58,9 @@ class ApplicationLetterType extends AbstractType
 
     /**
      * ConfigureOptions
-     * 
+     *
      * @param OptionsResolver $resolver resolver
-     * 
+     *
      * @return void
      */
     public function configureOptions(OptionsResolver $resolver)

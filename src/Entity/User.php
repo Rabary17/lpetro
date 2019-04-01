@@ -76,7 +76,7 @@ class User extends BaseUser
 
     /**
      * @Vich\UploadableField(mapping="profil", fileNameProperty="profileName")
-     * 
+     *
      * @var File
      */
     private $profileFile;
@@ -533,4 +533,4 @@ class User extends BaseUser
 
         return $this;
     }
- }
+}

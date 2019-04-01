@@ -25,19 +25,19 @@ class UserController extends AbstractController
      */
     public function index()
     {
-		$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $user = $this->getUser();
-		if ($user) {
-			return $this->render('user/profile.html.twig', ['user' => $user]);
-		}
-		return $this->redirectToRoute('fos_user_security_login');
+        if ($user) {
+            return $this->render('user/profile.html.twig', ['user' => $user]);
+        }
+        return $this->redirectToRoute('fos_user_security_login');
     }
 
     /**
      * @Route("/encode-cv", name="user_cv_send")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function sendCvs($id)
+    public function sendCvs()
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $user = $this->getUser();
@@ -55,9 +55,9 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, $id)
     {
-    	$em = $this->getDoctrine()->getManager();
-    	$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-    	$user = $em->getRepository('App:User')->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $em->getRepository('App:User')->find($id);
         $form = $this->createForm(UserType::class, $user);
 
         if ($request->getMethod() == 'POST') {
@@ -67,9 +67,9 @@ class UserController extends AbstractController
             }
         }
 
-    	return  $this->render('user/edit_profile.html.twig', [
-    				'user' => $user,
-    				'form' => $form->createView()
-    			]);
+        return  $this->render('user/edit_profile.html.twig', [
+                    'user' => $user,
+                    'form' => $form->createView()
+                ]);
     }
 }

@@ -13,8 +13,8 @@ class SkillController extends AbstractController
      */
     public function index()
     {
- 		$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-    	$em = $this->getDoctrine()->getManager();
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $skills = $em->getRepository('App:Skill')->fetchByUser($user->getId());
         return $this->render('skill/index.html.twig', [
