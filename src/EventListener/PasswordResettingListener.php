@@ -40,6 +40,7 @@ class PasswordResettingListener implements EventSubscriberInterface
 
     /**
      * @param  FormEvent $event
+     * 
      * @return void
      */
     public function onPasswordResettingSuccess(FormEvent $event)
@@ -52,6 +53,7 @@ class PasswordResettingListener implements EventSubscriberInterface
 
     /**
      * @param  GetResponseUserEvent $event
+     * 
      * @return void
      */
     public function onResettingResetRequest(GetResponseUserEvent $event)

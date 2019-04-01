@@ -10,13 +10,18 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 /**
- * This will suppress all the PMD warnings in
- * this class.
- *
  * @SuppressWarnings(PHPMD)
  */
 class TrainingType extends AbstractType
 {
+    /**
+     * Formbuilder
+     *
+     * @param FormBuilderInterface $builder formbuilder
+     * @param array                $options options
+     *
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -28,19 +33,28 @@ class TrainingType extends AbstractType
                     'attr' => [
                         'class' => 'form-control'
                     ]
-                ])
-            ->add('description', null, ['label' => 'DESCRIPTION',
-            'attr' => [
-                'class' => 'form-control'
+                ]
+            )
+            ->add('description', null, [
+                'label' => 'DESCRIPTION',
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ]
-            ])
-        ;
+        );
     }
 
+    /**
+     * ConfigureOptions
+     *
+     * @param OptionsResolver $resolver resolver
+     *
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Training::class,
+            'data_class' => Training::class
         ]);
     }
 }

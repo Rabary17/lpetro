@@ -30,6 +30,7 @@ class UserController extends AbstractController
         if ($user) {
             return $this->render('user/profile.html.twig', ['user' => $user]);
         }
+        
         return $this->redirectToRoute('fos_user_security_login');
     }
 

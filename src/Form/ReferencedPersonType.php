@@ -10,13 +10,18 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
- * This will suppress all the PMD warnings in
- * this class.
- *
  * @SuppressWarnings(PHPMD)
  */
 class ReferencedPersonType extends AbstractType
 {
+    /**
+     * Formbuilder
+     *
+     * @param FormBuilderInterface $builder formbuilder
+     * @param array                $options options
+     *
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -28,7 +33,8 @@ class ReferencedPersonType extends AbstractType
                     'attr' => [
                         'class' => 'form-control'
                     ]
-                ])
+                ]
+            )
             ->add('position', TextType::class, [
                     'label' => 'POSTE',
                     'label_attr' => [
@@ -37,7 +43,8 @@ class ReferencedPersonType extends AbstractType
                     'attr' => [
                         'class' => 'form-control'
                     ]
-                ])
+                ]
+            )
             ->add('email', TextType::class, [
                     'label' => 'EMAIL',
                     'label_attr' => [
@@ -46,7 +53,8 @@ class ReferencedPersonType extends AbstractType
                     'attr' => [
                         'class' => 'form-control'
                     ]
-                ])
+                ]
+            )
             ->add('phone', TextType::class, [
                     'label' => 'NUMERO TELEPHONE',
                     'label_attr' => [
@@ -55,10 +63,17 @@ class ReferencedPersonType extends AbstractType
                     'attr' => [
                         'class' => 'form-control'
                     ]
-                ])
-        ;
+                ]
+            );
     }
 
+    /**
+     * ConfigureOptions
+     *
+     * @param OptionsResolver $resolver resolver
+     *
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

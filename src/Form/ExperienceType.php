@@ -12,17 +12,21 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 /**
- * This will suppress all the PMD warnings in
- * this class.
- *
  * @SuppressWarnings(PHPMD)
  */
 class ExperienceType extends AbstractType
 {
+    /**
+     * Formbuilder
+     *
+     * @param FormBuilderInterface $builder formbuilder
+     * @param array                $options options
+     *
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('period', TextType::class, [
+        $builder->add('period', TextType::class, [
                 'label' => 'PERIODE DU - AU',
                 'label_attr' => [
                     'class' => 'mylabel'
@@ -96,6 +100,12 @@ class ExperienceType extends AbstractType
         ;
     }
 
+    /**
+     * configureOptions
+     * @param  OptionsResolver $resolver
+     * 
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
