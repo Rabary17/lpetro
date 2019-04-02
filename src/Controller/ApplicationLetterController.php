@@ -29,7 +29,7 @@ class ApplicationLetterController extends AbstractController
                 $application->setUser($user);
                 $em->persist($application);
                 $em->flush();
-                
+
                 return $this->redirectToRoute('application_letter');
             }
         }
@@ -38,7 +38,7 @@ class ApplicationLetterController extends AbstractController
             'application_letter/index.html.twig',
             [
                 'user' => $user,
-                'form' => $form->createView()
+                'form' => $form->createView(),
             ]
         );
     }

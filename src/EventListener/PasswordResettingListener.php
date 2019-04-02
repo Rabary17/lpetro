@@ -30,11 +30,11 @@ class PasswordResettingListener implements EventSubscriberInterface
     {
         return array(
             FOSUserEvents::RESETTING_RESET_REQUEST => [
-                ['onResettingResetRequest', -20]
+                ['onResettingResetRequest', -20],
             ],
             FOSUserEvents::RESETTING_RESET_SUCCESS => [
-                ['onPasswordResettingSuccess', -20]
-            ]
+                ['onPasswordResettingSuccess', -20],
+            ],
         );
     }
 
@@ -60,7 +60,11 @@ class PasswordResettingListener implements EventSubscriberInterface
     {
         $url = $this->router->generate('home');
         $session = $event->getRequest()->getSession();
-        $session->getFlashBag()->add('user_confirm_notice', "Un e-mail a été envoyé à votre adresse email. Merci de consulter votre boite email pour pouvoir réinitialiser votre mot de passe");
+        $session->getFlashBag()->add(
+            'user_confirm_notice',
+            "Un e-mail a été envoyé à votre adresse email.
+            Merci de consulter votre boite email pour pouvoir réinitialiser votre mot de passe"
+        );
         $event->setResponse(new RedirectResponse($url));
     }
 }

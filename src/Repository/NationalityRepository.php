@@ -14,6 +14,10 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class NationalityRepository extends ServiceEntityRepository
 {
+    /**
+     * [__construct description]
+     * @param RegistryInterface $registry [description]
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Nationality::class);

@@ -24,6 +24,7 @@ class SkillRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param string $userId description
      * @return Skill[] Returns an array of Skill objects
      */
     public function fetchByUser($userId): ?array

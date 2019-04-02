@@ -24,6 +24,7 @@ class TrainingRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param string $userId description
      * @return Training[] Returns an array of Training objects
      */
     public function fetchByUser($userId): ?array
