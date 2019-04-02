@@ -14,7 +14,7 @@ body{
 	padding: 10px 5%;
 }
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     z-index: 2;
     text-align: center;
