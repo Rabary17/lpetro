@@ -8652,8 +8652,8 @@
   }
   
   .resume-position-time {
-    font-size: 0.875rem;
-    color: #aab4c3;
+    font-size: 1.4rem;
+    color: #000;
   }
   
   .resume-position-title {
@@ -8892,4 +8892,17 @@ margin-left: 10%;
 padding: 5px;
 background-color: #d1d1d1;
 margin-bottom: 10px;
+}
+
+input[class*="not-show"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  display: none;
+}
+input[class*="date-range"] {
+  width: 45%;
+  float: left;
+  height: 45%;
+  margin: 0 2%;
 }
