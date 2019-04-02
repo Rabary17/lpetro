@@ -23,7 +23,7 @@
 					    </div><!--//secondary-info-->
 					    <div class="secondary-info ml-md-auto mt-2">
 							{% if app.user.submit %}
-							<a class="btn-edit-cv" href="#">CV Soumis</a>
+							<span class="btn-edit-cv">CV déjà soumis</span>
 							{% else %}
 							<a class="btn-edit-cv" href="{{ path('user_cv_send', {'id' : user.id}) }}">Soumettre mon cv pour validation</a>
 							{% endif %}

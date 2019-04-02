@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 /**
  * @SuppressWarnings(PHPMD)
@@ -47,8 +48,17 @@ class SkillType extends AbstractType
                     'label_attr' => [
                         'class' => 'mylabel'
                     ],
-            ]
-        );
+                ]
+            )
+            ->add('level', null, ['label' => 'NIVEAU (1 - 5)',
+                    'attr' => [
+                        'class' => 'form-control'
+                    ],
+                    'label_attr' => [
+                        'class' => 'mylabel'
+                    ],
+                ]
+            );
     }
 
     /**
