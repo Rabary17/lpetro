@@ -9,8 +9,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
+/**
+ * @SuppressWarnings(PHPMD)
+ */
 class SkillType extends AbstractType
 {
+    /**
+     * Formbuilder
+     *
+     * @param FormBuilderInterface $builder formbuilder
+     * @param array                $options options
+     *
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -22,7 +33,8 @@ class SkillType extends AbstractType
                     'attr' => [
                         'class' => 'form-control'
                     ]
-                ])
+                ]
+            )
             ->add('description', TextareaType::class, ['label' => 'DESCRIPTION',
                     'attr' => [
                         'class' => 'form-control'
@@ -30,14 +42,21 @@ class SkillType extends AbstractType
                     'label_attr' => [
                         'class' => 'mylabel'
                     ],
-            ])
-        ;
+            ]
+        );
     }
 
+    /**
+     * ConfigureOptions
+     *
+     * @param OptionsResolver $resolver resolver
+     *
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Skill::class,
+            'data_class' => Skill::class
         ]);
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Form;
 
 use App\Entity\ApplicationLetter;
@@ -9,27 +8,44 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+/**
+ * @SuppressWarnings(PHPMD)
+ */
 class ApplicationLetterType extends AbstractType
 {
+    /**
+     * Formbuilder
+     *
+     * @param FormBuilderInterface $builder formbuilder
+     * @param array                $options options
+     *
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content', TextareaType::class, [
-                'label' => 'CONTENU',
-                'label_attr' => [
-                    'class' => 'mylabel'
-                ],
-                'attr' => [
-                    'class' => 'form-control ckeditor'
+            ->add('content', TextareaType::class,
+                [
+                    'label' => 'CONTENU',
+                    'label_attr' => [
+                        'class' => 'mylabel'
+                    ],
+                    'attr' => [
+                        'class' => 'form-control ckeditor'
+                    ]
                 ]
-            ])
-        ;
+            );
     }
 
+    /**
+     * ConfigureOptions
+     *
+     * @param OptionsResolver $resolver resolver
+     *
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => ApplicationLetter::class,
-        ]);
+        $resolver->setDefaults(['data_class' => ApplicationLetter::class]);
     }
 }

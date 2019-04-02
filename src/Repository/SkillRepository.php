@@ -22,7 +22,7 @@ class SkillRepository extends ServiceEntityRepository
     /**
      * @return Skill[] Returns an array of Skill objects
      */
-    public function fetchByUser($userId): ?Array
+    public function fetchByUser($userId): ?array
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.user = :user')
