@@ -12,8 +12,8 @@ class RhHomeController extends AbstractController
      */
     public function index()
     {
-    	$em = $this->getDoctrine()->getManager();
-    	$candidates = $em->getRepository('App:User')->fetchAllCandidates();
+        $em = $this->getDoctrine()->getManager();
+        $candidates = $em->getRepository('App:User')->fetchAllCandidates();
 
         return $this->render('rh_home/index.html.twig', [
             'candidates' => $candidates

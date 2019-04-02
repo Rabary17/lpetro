@@ -24,7 +24,10 @@ class ReferencedPersonType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', TextType::class, [
+        $builder->add(
+            'name',
+            TextType::class,
+            [
                     'label' => 'NOM & PRENOM',
                     'label_attr' => [
                         'class' => 'mylabel'
@@ -34,7 +37,10 @@ class ReferencedPersonType extends AbstractType
                     ]
                 ]
             )
-            ->add('position', TextType::class, [
+            ->add(
+                'position',
+                TextType::class,
+                [
                     'label' => 'POSTE',
                     'label_attr' => [
                         'class' => 'mylabel'
@@ -44,7 +50,10 @@ class ReferencedPersonType extends AbstractType
                     ]
                 ]
             )
-            ->add('email', TextType::class, [
+            ->add(
+                'email',
+                TextType::class,
+                [
                     'label' => 'EMAIL',
                     'label_attr' => [
                         'class' => 'mylabel'
@@ -54,7 +63,10 @@ class ReferencedPersonType extends AbstractType
                     ]
                 ]
             )
-            ->add('phone', TextType::class, [
+            ->add(
+                'phone',
+                TextType::class,
+                [
                     'label' => 'NUMERO TELEPHONE',
                     'label_attr' => [
                         'class' => 'mylabel'

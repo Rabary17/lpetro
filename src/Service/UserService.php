@@ -22,11 +22,11 @@ class UserService
         $this->em = $em;
     }
 
-	public function cvViewed($id)
-	{
-		$candidat = $this->em->getRepository('App:User')->find($id);
-		$candidat->setSeen(1);
-		$this->em->flush();
-		return $candidat;
-	}
+    public function cvViewed($id)
+    {
+        $candidat = $this->em->getRepository('App:User')->find($id);
+        $candidat->setSeen(1);
+        $this->em->flush();
+        return $candidat;
+    }
 }

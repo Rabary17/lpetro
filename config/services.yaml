@@ -27,5 +27,8 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    App\Controller\RegistrationController:
+        class: App\Controller\RegistrationController
+        arguments: ['@fos_user.registration.form.factory', '@event_dispatcher', '@fos_user.user_manager', '@fos_user.mailer.default']
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous onesZ

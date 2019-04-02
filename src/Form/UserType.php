@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use App\Entity\Hobby;
 use App\Entity\Sport;
+use App\Entity\Nationality;
 use App\Form\ExtraWorkActivityType;
 use App\Form\TrainingType;
 use App\Form\ExperienceType;
@@ -16,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 /**
  * @SuppressWarnings(PHPMD)
@@ -40,11 +42,25 @@ class UserType extends AbstractType
                     'required' => false
                 ])
             ->add('placeOfBirth')
-            ->add('maritalStatus')
+            ->add('maritalStatus', ChoiceType::class, [
+                'choices'  => [
+                    'Célibataire' => 'Célibataire',
+                    'Marié(e)' => 'Marié(e)',
+                    'Divorcé(e)' => 'Divorcé(e)',
+                    'Veuf(ve)' => 'Veuf(ve)'
+                ],
+                'attr' => array(
+                    'class' => 'form-control'
+                )
+            ])
             ->add('conjointName')
             ->add('nbChildren')
             ->add('address')
-            ->add('nationality')
+            ->add('nationality', EntityType::class, [
+                    'class' => nationality::class,
+                    'choice_label' => 'nationality'
+                ]
+            )
             ->add('phoneNumber')
             ->add('hobbies', EntityType::class, [
                     'class' => Hobby::class,

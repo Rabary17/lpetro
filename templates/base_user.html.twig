@@ -31,12 +31,11 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
       <link rel="stylesheet" type="text/css" href="{{ asset('assets/dist/css/custom.css') }}">
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+      <link rel="stylesheet" href="{{ asset('assets/dist/css/intlTelInput.min.css') }}">
       <title>{% block title %}LPCS{% endblock %}</title>
       {% block stylesheets %}
-
       {% endblock %}
+      <script src='https://www.google.com/recaptcha/api.js'async defer></script>
   </head>
   <body class="skin-blue" style="font-size:16px;">
       <header class="main-header main-header-user">

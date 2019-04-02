@@ -79,4 +79,7 @@ label.required:not(.mylabel) {
     border: 2px solid green;
     padding: 5px;
     margin-top: 5px;
-}  
+} 
+.login-box, .register-box {
+    width: 400px !important;
+}

@@ -24,13 +24,13 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-	/**
-	 * @param string $role
-	 *
-	 * @return array
-	 */
-	public function fetchAllCandidates()
-	{
+    /**
+     * @param string $role
+     *
+     * @return array
+     */
+    public function fetchAllCandidates()
+    {
         $role = 'ROLE_CANDIDAT';
 
         return $this->createQueryBuilder('u')
@@ -38,10 +38,10 @@ class UserRepository extends ServiceEntityRepository
             ->andWhere('u.seen = :seen')
             ->andWhere('u.enabled = :enabled')
             ->setParameter('roles', '%"'.$role.'"%')
-            ->setParameter('seen', false )
-            ->setParameter('enabled', true )
+            ->setParameter('seen', false)
+            ->setParameter('enabled', true)
             ->getQuery()
             ->getArrayResult()
         ;
-	}
+    }
 }

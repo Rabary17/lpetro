@@ -97,7 +97,7 @@ class ExperienceType extends AbstractType
     /**
      * configureOptions
      * @param  OptionsResolver $resolver
-     * 
+     *
      * @return void
      */
     public function configureOptions(OptionsResolver $resolver)

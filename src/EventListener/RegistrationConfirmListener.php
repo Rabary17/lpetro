@@ -37,7 +37,7 @@ class RegistrationConfirmListener implements EventSubscriberInterface
     /**
      * Registraton success
      * @param  \FOS\UserBundle\Event\FormEvent $event
-     * 
+     *
      * @return void
      */
     public function onRegistrationSuccess(\FOS\UserBundle\Event\FormEvent $event)
@@ -51,7 +51,7 @@ class RegistrationConfirmListener implements EventSubscriberInterface
     /**
      * Registration confirm
      * @param  \FOS\UserBundle\Event\GetResponseUserEvent $event
-     * 
+     *
      * @return void
      */
     public function onRegistrationConfirm(\FOS\UserBundle\Event\GetResponseUserEvent $event)

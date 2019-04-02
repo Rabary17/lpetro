@@ -24,7 +24,10 @@ class SkillType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title', TextType::class, [
+        $builder->add(
+            'title',
+            TextType::class,
+            [
                     'label' => 'TITRE DE LA COMPETENCE',
                     'label_attr' => [
                         'class' => 'mylabel'
@@ -34,7 +37,10 @@ class SkillType extends AbstractType
                     ]
                 ]
             )
-            ->add('description', TextareaType::class, ['label' => 'DESCRIPTION',
+            ->add(
+                'description',
+                TextareaType::class,
+                ['label' => 'DESCRIPTION',
                     'attr' => [
                         'class' => 'form-control'
                     ],

@@ -34,7 +34,9 @@ class ApplicationLetterController extends AbstractController
             }
         }
 
-        return $this->render('application_letter/index.html.twig', [
+        return $this->render(
+            'application_letter/index.html.twig',
+            [
                 'user' => $user,
                 'form' => $form->createView()
             ]

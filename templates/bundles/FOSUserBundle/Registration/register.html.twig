@@ -25,7 +25,7 @@
         <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">Veuillez remplir les informations</p>
-            <form id="fosRegister" action="{{ path('fos_user_registration_register') }}" }} method="POST" id="fosRegistration">
+            <form id="fosRegister" action="{{ path('fos.user.registration') }}" method="POST" id="fosRegistration">
                 <div class="form-group has-feedback">
                     {{ form_widget(form.firstName, { 'attr': {'class': 'form-control', 'placeholder': 'Prénom', 'autocomplete': 'off' } }) }}
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -51,6 +51,8 @@
                     <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                     <span class="text-danger">{{ form_errors(form.plainPassword.second) }}</span>
                 </div>
+                <div class="g-recaptcha" data-sitekey="6LfBBXcUAAAAAATo9Nt5feyvtooEWO8YgMuMVhpq"></div>
+                <br/>
                     {{ form_rest(form) }}
                     <input class="btn btn-primary btn-block btn-flat" type="submit" value="{{ 'registration.submit'|trans }}">
             </form>

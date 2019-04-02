@@ -24,7 +24,10 @@ class TrainingType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', TextType::class, [
+        $builder->add(
+            'name',
+            TextType::class,
+            [
                     'label' => 'TITRE DE LA FORMATION',
                     'label_attr' => [
                         'class' => 'mylabel'
@@ -34,7 +37,10 @@ class TrainingType extends AbstractType
                     ]
                 ]
             )
-            ->add('description', null, [
+            ->add(
+                'description',
+                null,
+                [
                 'label' => 'DESCRIPTION',
                 'attr' => [
                     'class' => 'form-control'
