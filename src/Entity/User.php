@@ -148,6 +148,11 @@ class User extends BaseUser
      */
     private $applicationLetters;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $submit;
+
     public function __construct()
     {
         parent::__construct();
@@ -583,6 +588,18 @@ class User extends BaseUser
     public function setSendOn(?\DateTimeInterface $sendOn): self
     {
         $this->sendOn = $sendOn;
+
+        return $this;
+    }
+
+    public function getSubmit(): ?bool
+    {
+        return $this->submit;
+    }
+
+    public function setSubmit(?bool $submit): self
+    {
+        $this->submit = $submit;
 
         return $this;
     }
