@@ -27,16 +27,37 @@ class UserRepository extends ServiceEntityRepository
     /**
      * @return array
      */
-    public function fetchAllCandidates()
+    public function fetchAllRecentCandidates()
     {
         $role = 'ROLE_CANDIDAT';
 
         return $this->createQueryBuilder('u')
             ->andWhere('u.roles LIKE :roles')
             ->andWhere('u.seen = :seen')
+            ->andWhere('u.submit = :submit')
             ->andWhere('u.enabled = :enabled')
             ->setParameter('roles', '%"' . $role . '"%')
             ->setParameter('seen', false)
+            ->setParameter('submit', true)
+            ->setParameter('enabled', true)
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
+
+    /**
+     * @return array
+     */
+    public function fetchAllCandidates()
+    {
+        $role = 'ROLE_CANDIDAT';
+
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :roles')
+            ->andWhere('u.submit = :submit')
+            ->andWhere('u.enabled = :enabled')
+            ->setParameter('roles', '%"' . $role . '"%')
+            ->setParameter('submit', true)
             ->setParameter('enabled', true)
             ->getQuery()
             ->getArrayResult()
