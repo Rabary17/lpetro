@@ -19,10 +19,14 @@
 						    </ul>
 					    </div><!--//primary-info-->
 					    <div class="secondary-info ml-md-auto mt-2">
-							<a class="btn-edit-cv" href="{{ path('user_profile_edit', {'id': user.id }) }}">Editer mon cv</a>
+							<a class="btn-edit-cv" href="{{ path('user_profile_edit', {'id' : user.id }) }}">Editer mon cv</a>
 					    </div><!--//secondary-info-->
 					    <div class="secondary-info ml-md-auto mt-2">
-							<a class="btn-edit-cv" href="{{ path('user_cv_send') }}">Soumettre mon cv</a>
+							{% if app.user.submit %}
+							<a class="btn-edit-cv" href="#">CV Soumis</a>
+							{% else %}
+							<a class="btn-edit-cv" href="{{ path('user_cv_send', {'id' : user.id}) }}">Soumettre mon cv pour validation</a>
+							{% endif %}
 					    </div><!--//secondary-info-->
 					    
 				    </div><!--//media-body-->
@@ -58,7 +62,7 @@
 											        <h3 class="resume-position-title font-weight-bold mb-1">{{ experience.position }} <small class="text-muted">({{ experience.status }})</small></h3>
 											        <div class="resume-company-name ml-auto">{{ experience.company }}</div>
 											    </div>
-											    <div class="resume-position-time">{{ experience.period }}</div>
+											    <div class="resume-position-time">du {{ experience.DateDebut|date('d-m-Y') }} jusqu'à {{ experience.DateFin|date('d-m-Y') }}</div>
 										    </div>
 										    <div class="resume-timeline-item-desc">
 											    <p>{{ experience.achievements|nl2br}}</p>

@@ -35,15 +35,21 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/encode-cv", name="user_cv_send")
+     * @Route("/encode-cv/{id}", name="user_cv_send")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function sendCvs()
+    public function sendCvs($id)
     {
+        $em = $this->getDoctrine()->getManager();
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $user = $this->getUser();
         if ($user) {
-            return $this->render('user/profile.html.twig', ['user' => $user]);
+            $submission = $em->getRepository('App:User')->find($id);
+            $submission->setSubmit(true);
+            $em->flush();
+            return $this->render('user/profile.html.twig', [
+                   'user' => $user
+                   ]);
         }
         return $this->redirectToRoute('fos_user_security_login');
     }

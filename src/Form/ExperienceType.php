@@ -10,6 +10,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 /**
  * @SuppressWarnings(PHPMD)
@@ -27,13 +29,39 @@ class ExperienceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('period', TextType::class, [
-                'label' => 'PERIODE DU - AU',
+        ->add('label', TextType::class, [
+            'label_attr' => [
+                    'class' => 'mylabel',
+            ],
+            'label' => 'Date début et date fin du contrat',
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control not-show',
+                ]
+            ])
+            ->add('date_debut', DateType::class, [
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control date-range',
+                ]
+            ])->add('date_fin', DateType::class, [
+                'widget' => 'single_text',
+                'attr' => [
+                    'class' => 'form-control date-range',
+                ]
+            ])->add('type', ChoiceType::class, [
                 'label_attr' => [
-                    'class' => 'mylabel'
+                    'class' => 'mylabel',
+                ],
+                'label' => 'Type du contrat',
+                    'choices'  => [
+                    'Emploi CDI' => null,
+                    'Emploi CDD' => true,
+                    'Stage' => false,
                 ],
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 ]
             ])->add('position', TextType::class, [
                 'label' => 'POSTE',

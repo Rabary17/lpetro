@@ -23,7 +23,7 @@ phpcs:
   script:
     - git clone https://github.com/Endouble/Symfony3-custom-coding-standard.git && composer install -d ./Symfony3-custom-coding-standard
     - ./Symfony3-custom-coding-standard/vendor/bin/phpcs --config-set installed_paths ../../../../Symfony3-custom-coding-standard
-    - ./Symfony3-custom-coding-standard/vendor/bin/phpcs -d memory_limit=512M --standard=Symfony3Custom --ignore=*/vendor/*,*/var/*,*/config/*,*/bin/*,*/public/*,*/DataFixtures/*,*/tests/*,*/Symfony3Custom/*,*/Migrations/*,*/Entity/*,*/src/Kernel.php $application_path/ --report=full
+    - ./Symfony3-custom-coding-standard/vendor/bin/phpcs -d memory_limit=512M --standard=Symfony3Custom --ignore=*/vendor/*,*/var/*,*/config/*,*/bin/*,*/public/*,*/DataFixtures/*,*/tests/*,*/Symfony3Custom/*,*/Migrations/*,*/Entity/*,*/Form/*,*/src/Kernel.php $application_path/ --report=full
 
 phpmd:
   stage: test

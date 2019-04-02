@@ -19,9 +19,9 @@ class Experience
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=200)
+     * @ORM\Column(type="string", nullable=true, length=255)
      */
-    private $period;
+    private $type;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -58,6 +58,16 @@ class Experience
      */
     private $referencedPeople;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $Date_debut;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $Date_fin;
+
     public function __construct()
     {
         $this->referencedPeople = new ArrayCollection();
@@ -67,18 +77,6 @@ class Experience
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getPeriod(): ?string
-    {
-        return $this->period;
-    }
-
-    public function setPeriod(string $period): self
-    {
-        $this->period = $period;
-
-        return $this;
     }
 
     public function getPosition(): ?string
@@ -183,4 +181,41 @@ class Experience
 
         return $this;
     }
+
+    public function getDateDebut(): ?\DateTimeInterface
+    {
+        return $this->Date_debut;
+    }
+
+    public function setDateDebut(\DateTimeInterface $Date_debut): self
+    {
+        $this->Date_debut = $Date_debut;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->Date_fin;
+    }
+
+    public function setDateFin(\DateTimeInterface $Date_fin): self
+    {
+        $this->Date_fin = $Date_fin;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
 }

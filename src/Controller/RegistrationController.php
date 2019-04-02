@@ -67,8 +67,8 @@ class RegistrationController extends BaseController
             } else {
                 $this->addFlash(
                     'user_confirm_notice',
-                    'Vous devez tester le recaptcha'
-                  );
+                    'Vous devez tester le reCAPTCHA'
+                );
             }
             $event = new FormEvent($form, $request);
             $this->dispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILURE, $event);
