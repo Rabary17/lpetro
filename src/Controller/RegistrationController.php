@@ -72,7 +72,7 @@ class RegistrationController extends BaseController
                 );
 
                 return $response;
-            } else {
+            } elseif (!$this->captchaverify($request->get('g-recaptcha-response'))) {
                 $this->addFlash(
                     'user_confirm_notice',
                     'Vous devez tester le reCAPTCHA'
