@@ -25,8 +25,6 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param string $role
-     *
      * @return array
      */
     public function fetchAllCandidates()
@@ -37,7 +35,7 @@ class UserRepository extends ServiceEntityRepository
             ->andWhere('u.roles LIKE :roles')
             ->andWhere('u.seen = :seen')
             ->andWhere('u.enabled = :enabled')
-            ->setParameter('roles', '%"'.$role.'"%')
+            ->setParameter('roles', '%"' . $role . '"%')
             ->setParameter('seen', false)
             ->setParameter('enabled', true)
             ->getQuery()

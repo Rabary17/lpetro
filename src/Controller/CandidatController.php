@@ -31,8 +31,9 @@ class CandidatController extends AbstractController
         $candidat = $em->getRepository('App:User')->find($id);
         if ($candidat) {
             $viewCandidat = $this->userService->cvViewed($id);
+
             return $this->render('candidat/index.html.twig', [
-                'candidat' => $viewCandidat
+                'candidat' => $viewCandidat,
             ]);
         }
 

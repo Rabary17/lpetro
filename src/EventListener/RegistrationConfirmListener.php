@@ -14,6 +14,10 @@ class RegistrationConfirmListener implements EventSubscriberInterface
 {
     private $router;
 
+    /**
+     * Constructor
+     * @param UrlGeneratorInterface $router
+     */
     public function __construct(UrlGeneratorInterface $router)
     {
         $this->router = $router;
@@ -26,17 +30,17 @@ class RegistrationConfirmListener implements EventSubscriberInterface
     {
         return array(
                 FOSUserEvents::REGISTRATION_SUCCESS => [
-                ['onRegistrationSuccess', -10],
-            ],
+                    ['onRegistrationSuccess', -10],
+                ],
                 FOSUserEvents::REGISTRATION_CONFIRM => [
-                ['onRegistrationConfirm', -10],
-            ],
-        );
+                    ['onRegistrationConfirm', -10],
+                ],
+            );
     }
 
     /**
      * Registraton success
-     * @param  \FOS\UserBundle\Event\FormEvent $event
+     * @param \FOS\UserBundle\Event\FormEvent $event
      *
      * @return void
      */
@@ -44,13 +48,17 @@ class RegistrationConfirmListener implements EventSubscriberInterface
     {
         $url = $this->router->generate('home');
         $session = $event->getRequest()->getSession();
-        $session->getFlashBag()->add('user_confirm_notice', 'Un e-mail a été envoyé à l\'adresse ' . $event->getForm()['email']->getData() . ". Merci de consulter votre boite email pour valider votre création de compte chez LP");
+        $session->getFlashBag()->add(
+            'user_confirm_notice',
+            'Un e-mail a été envoyé à l\'adresse ' . $event->getForm()['email']->getData() .
+            " .Merci de consulter votre boite email pour valider votre création de compte chez LP"
+        );
         $event->setResponse(new RedirectResponse($url));
     }
 
     /**
      * Registration confirm
-     * @param  \FOS\UserBundle\Event\GetResponseUserEvent $event
+     * @param \FOS\UserBundle\Event\GetResponseUserEvent $event
      *
      * @return void
      */

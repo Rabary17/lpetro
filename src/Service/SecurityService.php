@@ -13,6 +13,10 @@ class SecurityService
      */
     public $securityToken;
 
+    /**
+     * [__construct description]
+     * @param TokenStorageInterface $securityToken [description]
+     */
     public function __construct(TokenStorageInterface $securityToken)
     {
         $this->securityToken = $securityToken;

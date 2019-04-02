@@ -17,15 +17,16 @@ class TrainingController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $trainings = $em->getRepository('App:Training')->fetchByUser($user->getId());
-        
+
         return $this->render('training/index.html.twig', [
             'trainings' => $trainings,
-            'user' => $user->getId()
+            'user' => $user->getId(),
         ]);
     }
 
     /**
      * @Route("/training/delete/{id}", name="delete_training")
+     * @param string $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function delete($id)

@@ -14,6 +14,10 @@ class UserController extends AbstractController
 {
     private $userService;
 
+    /**
+     * contructor
+     * @param UserService $userService
+     */
     public function __construct(UserService $userService)
     {
         $this->userService = $userService;
@@ -30,12 +34,13 @@ class UserController extends AbstractController
         if ($user) {
             return $this->render('user/profile.html.twig', ['user' => $user]);
         }
-        
+
         return $this->redirectToRoute('fos_user_security_login');
     }
 
     /**
      * @Route("/encode-cv/{id}", name="user_cv_send")
+     * @param datatype $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function sendCvs($id)
@@ -47,18 +52,20 @@ class UserController extends AbstractController
             $submission = $em->getRepository('App:User')->find($id);
             $submission->setSubmit(true);
             $em->flush();
+
             return $this->render('user/profile.html.twig', [
-                   'user' => $user
-                   ]);
+                   'user' => $user,
+            ]);
         }
+
         return $this->redirectToRoute('fos_user_security_login');
     }
 
     /**
      * @Route("/profile/edit/{id}", name="user_profile_edit")
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param string                                    $id
      * @return \Symfony\Component\HttpFoundation\Response
-     * @param Request $request
-     * @param string $request
      */
     public function edit(Request $request, $id)
     {
@@ -76,7 +83,7 @@ class UserController extends AbstractController
 
         return  $this->render('user/edit_profile.html.twig', [
                     'user' => $user,
-                    'form' => $form->createView()
-                ]);
+                    'form' => $form->createView(),
+        ]);
     }
 }

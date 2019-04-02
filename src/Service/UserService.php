@@ -17,16 +17,26 @@ class UserService
      */
     protected $em;
 
+    /**
+     * Constructor
+     * @param EntityManagerInterface $em
+     */
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }
 
+    /**
+     * cvViewed
+     * @param  string $id [description]
+     * @return array
+     */
     public function cvViewed($id)
     {
         $candidat = $this->em->getRepository('App:User')->find($id);
         $candidat->setSeen(1);
         $this->em->flush();
+
         return $candidat;
     }
 }

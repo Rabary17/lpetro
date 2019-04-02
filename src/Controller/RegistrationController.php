@@ -28,8 +28,12 @@ class RegistrationController extends BaseController
      * @param UserManagerInterface     $userManager [description]
      * @param Mailer                   $mailer      [description]
      */
-    public function __construct(FactoryInterface $formFactory, EventDispatcherInterface $dispatcher, UserManagerInterface $userManager, Mailer $mailer)
-    {
+    public function __construct(
+        FactoryInterface $formFactory,
+        EventDispatcherInterface $dispatcher,
+        UserManagerInterface $userManager,
+        Mailer $mailer
+    ) {
         $this->formFactory = $formFactory;
         $this->dispatcher = $dispatcher;
         $this->userManager = $userManager;
@@ -50,7 +54,7 @@ class RegistrationController extends BaseController
         if (null !== $event->getResponse()) {
             return $event->getResponse();
         }
-        $form = $this->formFactory->createForm(array('csrf_protection' => false, 'allow_extra_fields'=> true));
+        $form = $this->formFactory->createForm(array('csrf_protection' => false, 'allow_extra_fields' => true));
         $form->setData($user);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
@@ -62,7 +66,11 @@ class RegistrationController extends BaseController
                     $url = $this->generateUrl('fos_user_registration_confirmed');
                     $response = new RedirectResponse($url);
                 }
-                $this->dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+                $this->dispatcher->dispatch(
+                    FOSUserEvents::REGISTRATION_COMPLETED,
+                    new FilterUserResponseEvent($user, $request, $response)
+                );
+
                 return $response;
             } else {
                 $this->addFlash(
@@ -76,12 +84,18 @@ class RegistrationController extends BaseController
                 return $response;
             }
         }
+
         return $this->render('bundles/FOSUserBundle/Registration/register.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ));
     }
 
-    function captchaverify($recaptcha)
+    /**
+     * Verify recaptcha
+     * @param  string $recaptcha
+     * @return boolean
+     */
+    private function captchaverify($recaptcha)
     {
         $url = "https://www.google.com/recaptcha/api/siteverify";
         $ch = curl_init();
@@ -90,13 +104,13 @@ class RegistrationController extends BaseController
         }
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); 
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-            "secret"=>"6LfBBXcUAAAAAJP7RCk6NYxgKlHz5PDJYfeBejkA",
-            "response"=>$recaptcha)
-        );
+            "secret" => "6LfBBXcUAAAAAJP7RCk6NYxgKlHz5PDJYfeBejkA",
+            "response" => $recaptcha,
+        ));
         $response = curl_exec($ch);
         if ($response === false) {
             throw new Exception(curl_error($ch), curl_errno($ch));
@@ -104,6 +118,6 @@ class RegistrationController extends BaseController
         curl_close($ch);
         $data = json_decode($response);
 
-        return $data->success;        
+        return $data->success;
     }
 }

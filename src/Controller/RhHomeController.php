@@ -9,6 +9,7 @@ class RhHomeController extends AbstractController
 {
     /**
      * @Route("/rh/home", name="rh_home")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index()
     {
@@ -16,8 +17,7 @@ class RhHomeController extends AbstractController
         $candidates = $em->getRepository('App:User')->fetchAllCandidates();
 
         return $this->render('rh_home/index.html.twig', [
-            'candidates' => $candidates
-
+            'candidates' => $candidates,
         ]);
     }
 }
