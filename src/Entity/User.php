@@ -163,6 +163,11 @@ class User extends BaseUser
      */
     private $statut;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $rhvalidate;
+
     public function __construct()
     {
         parent::__construct();
@@ -653,6 +658,18 @@ class User extends BaseUser
     public function setStatut(?UserStatut $statut): self
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getRhvalidate(): ?bool
+    {
+        return $this->rhvalidate;
+    }
+
+    public function setRhvalidate(?bool $rhvalidate): self
+    {
+        $this->rhvalidate = $rhvalidate;
 
         return $this;
     }
