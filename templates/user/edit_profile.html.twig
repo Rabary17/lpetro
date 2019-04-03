@@ -185,6 +185,7 @@
         }
 
 		jQuery(document).ready(function($) {
+			
 			$('#user_experiences').addClass('container');
 			$('#trig-upl').on('click', function(){
 				$('#user_profileFile').trigger('click');
@@ -225,17 +226,6 @@
 						// ...
 					}]
 				});
-
-			  $('input[name="user[experiences][0][period]"]').daterangepicker({
-			      autoUpdateInput: false,
-			      locale: {
-			          cancelLabel: 'Clear'
-			      }
-			  });
-
-			  $('input[name="user[experiences][0][period]"]').on('apply.daterangepicker', function(ev, picker) {
-			      $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-			  });
 			});
 
 

@@ -58,7 +58,7 @@
 											        <h3 class="resume-position-title font-weight-bold mb-1">{{ experience.position }} <small class="text-muted">({{ experience.status }})</small></h3>
 											        <div class="resume-company-name ml-auto">{{ experience.company }}</div>
 											    </div>
-											    <div class="resume-position-time">{{ experience.period }}</div>
+											    <div class="resume-position-time">du {{ experience.DateDebut|date('d-m-Y') }} jusqu'à {{ experience.DateFin|date('d-m-Y') }}</div>
 										    </div>
 										    <div class="resume-timeline-item-desc">
 											    <p>{{ experience.achievements|nl2br}}</p>
