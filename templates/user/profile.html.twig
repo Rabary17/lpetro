@@ -23,7 +23,7 @@
 					    </div><!--//secondary-info-->
 					    <div class="secondary-info ml-md-auto mt-2">
 							{% if app.user.submit %}
-							<a class="btn-edit-cv" href="#">CV Soumis</a>
+							<span class="btn-edit-cv">CV déjà soumis</span>
 							{% else %}
 							<a class="btn-edit-cv" href="{{ path('user_cv_send', {'id' : user.id}) }}">Soumettre mon cv pour validation</a>
 							{% endif %}
@@ -116,23 +116,6 @@
 					    </section><!--//extra-work-activity-->
 				    </div>
 				    <div class="col-lg-3">
-					    <section class="resume-section education-section mb-5">
-						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Etudes</h2>
-						    <div class="resume-section-content">
-							    <ul class="list-unstyled">
-								    <li class="mb-2">
-								        <div class="resume-degree font-weight-bold">MSc in Computer Science</div>
-								        <div class="resume-degree-org">University College London</div>
-								        <div class="resume-degree-time">2010 - 2011</div>
-								    </li>
-								    <li>
-								        <div class="resume-degree font-weight-bold">BSc Maths and Physics</div>
-								        <div class="resume-degree-org">Imperial College London</div>
-								        <div class="resume-degree-time">2007 - 2010</div>
-								    </li>
-							    </ul>
-						    </div>
-					    </section><!--//education-section-->
 					    <section class="resume-section reference-section mb-5">
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Formations</h2>
 						    <div class="resume-section-content">

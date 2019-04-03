@@ -102,6 +102,12 @@
             <p>{{ message }}</p>
         </div>
       {% endfor %}
+      {% for message in app.flashes('success_submit') %}
+            <div class="alert-dismissible" id="confirm_email">
+                <a href="#" class="close" data-dismiss="alert" id="close" aria-label="close">&times;</a>
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
       <footer>
           Copyright &copy; 2019 by <a href="https://passion4humanity.com">Passion for Humanity</a>
       </footer>

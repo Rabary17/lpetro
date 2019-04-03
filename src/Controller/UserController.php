@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\UserType;
 use App\Service\UserService;
+use Swift_Mailer;
 
 class UserController extends AbstractController
 {
@@ -43,7 +44,7 @@ class UserController extends AbstractController
      * @param datatype $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function sendCvs($id)
+    public function sendCvs($id , \Swift_Mailer $mailer)
     {
         $em = $this->getDoctrine()->getManager();
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
@@ -52,7 +53,15 @@ class UserController extends AbstractController
             $submission = $em->getRepository('App:User')->find($id);
             $submission->setSubmit(true);
             $em->flush();
+            
+            $message = (new \Swift_Message('Envoi de CV'))
+                ->setFrom('r.herriniaina@gmail.com')
+                ->setTo('philipperazakatsara@gmail.com')
+                ->setBody($this->renderView('emails/submit-cv-confirmation-email.html.twig',['user' => $user]), 'text/html');
 
+            $mailer->send($message);
+
+            $this->addFlash('success_submit', 'Votre CV a été soumis à LP. Un mail vous a été envoyé pour confirmer sa réception par LP');
             return $this->render('user/profile.html.twig', [
                    'user' => $user,
             ]);
