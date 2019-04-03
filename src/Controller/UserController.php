@@ -19,7 +19,8 @@ class UserController extends AbstractController
 
     /**
      * contructor
-     * @param UserService $userService
+     * @param UserService     $userService
+     * @param LpMailerService $mailer      mailer
      */
     public function __construct(UserService $userService, LpMailerService $mailer)
     {
@@ -56,10 +57,14 @@ class UserController extends AbstractController
             $submission = $em->getRepository('App:User')->find($id);
             $submission->setSubmit(true);
             $em->flush();
-            
-            $this->mailer->sendMail(htmlentities($user), 'LP | Confirmation CV reçu', $this->renderView(
-                'emails/submit-cv-confirmation-email.html.twig',
-                ['user' => $user]),
+
+            $this->mailer->sendMail(
+                htmlentities($user),
+                'LP | Confirmation CV reçu',
+                $this->renderView(
+                    'emails/submit-cv-confirmation-email.html.twig',
+                    ['user' => $user]
+                ),
                 'user_confirm_notice',
                 'Votre CV a été soumis à LP. Un mail vous a été envoyé pour confirmer sa réception par LP'
             );

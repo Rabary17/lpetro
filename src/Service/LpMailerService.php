@@ -12,8 +12,9 @@ class LpMailerService
 
     /**
      * [__construct description]
-     * @param \Swift_Mailer $mailer [description]
-     * @param [type]        $sender [description]
+     * @param \Swift_Mailer     $mailer   [description]
+     * @param string            $sender   [description]
+     * @param FlashBagInterface $flashBag description
      */
     public function __construct(\Swift_Mailer $mailer, $sender, FlashBagInterface $flashBag)
     {
@@ -24,12 +25,12 @@ class LpMailerService
 
     /**
      * [sendMail description]
-     * @param  string $to      [description]
-     * @param  string $subject [description]
-     * @param  string $body    [description]
-     * @param  string $flashTitle titre du message flash [optionnel]
+     * @param  string $to           [description]
+     * @param  string $subject      [description]
+     * @param  string $body         [description]
+     * @param  string $flashTitle   titre du message flash [optionnel]
      * @param  string $flashMessage contentu du message flash [optionnel]
-     * @return array          [description]
+     * @return array                [description]
      */
     public function sendMail($to, $subject, $body, $flashTitle = '', $flashMessage = '')
     {
