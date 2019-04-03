@@ -29,6 +29,7 @@ security:
                 failure_path:   null
                 always_use_default_target_path: false
                 default_target_path:            /profile
+                success_handler: App\EventListener\AfterLoginRedirection
             logout:       true
             anonymous:    true
 

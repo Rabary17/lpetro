@@ -24,8 +24,7 @@ class ExtraWorkActivityType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('name', TextType::class, [
+        $builder->add('name', TextType::class, [
                 'label' => 'ACTIVITE',
                 'label_attr' => [
                     'class' => 'mylabel'

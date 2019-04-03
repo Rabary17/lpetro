@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\File\File;
  * @ORM\Entity
  * @ORM\Table(name="app_user")
  * @Vich\Uploadable
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User extends BaseUser
 {
@@ -73,6 +74,21 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     private $nationality;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $seen = false;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $send = false;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $sendOn;
 
     /**
      * @Vich\UploadableField(mapping="profil", fileNameProperty="profileName")
@@ -145,6 +161,7 @@ class User extends BaseUser
         $this->experiences = new ArrayCollection();
         $this->skills = new ArrayCollection();
         $this->applicationLetters = new ArrayCollection();
+        $this->roles = array('ROLE_CANDIDAT');
     }
 
     public function getId(): ?string
@@ -530,6 +547,42 @@ class User extends BaseUser
                 $applicationLetter->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSeen(): ?bool
+    {
+        return $this->seen;
+    }
+
+    public function setSeen(?bool $seen): self
+    {
+        $this->seen = $seen;
+
+        return $this;
+    }
+
+    public function getSend(): ?bool
+    {
+        return $this->send;
+    }
+
+    public function setSend(?bool $send): self
+    {
+        $this->send = $send;
+
+        return $this;
+    }
+
+    public function getSendOn(): ?\DateTimeInterface
+    {
+        return $this->sendOn;
+    }
+
+    public function setSendOn(?\DateTimeInterface $sendOn): self
+    {
+        $this->sendOn = $sendOn;
 
         return $this;
     }
