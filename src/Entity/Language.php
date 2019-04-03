@@ -22,9 +22,15 @@ class Language
     private $name;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $level;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="languages", cascade={"persist"})
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
     public function getId(): ?int
     {
@@ -43,14 +49,26 @@ class Language
         return $this;
     }
 
-    public function getLevel(): ?int
+    public function getLevel(): ?string
     {
         return $this->level;
     }
 
-    public function setLevel(?int $level): self
+    public function setLevel(?string $level): self
     {
         $this->level = $level;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
