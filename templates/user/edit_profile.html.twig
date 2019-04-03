@@ -134,6 +134,12 @@
 								</div>
 								<br/>
 
+								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="training">LANGUES</h2>
+								<div id="extra-work-activity"  class="container" style="min-height: 50px;">
+								{% form_theme form 'collection/jquery.collection.html.twig' %}
+									{{ form_row(form.languages) }}	
+								</div>
+
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="training">FORMATIONS</h2>
 								<div id="extra-work-activity"  class="container" style="min-height: 50px;">
 								{% form_theme form 'collection/jquery.collection.html.twig' %}
@@ -225,6 +231,7 @@
 			});
 			$('#user_maritalStatus').select2();
 			$('#user_nationality').select2();
+			$('.language_level').select2();
 			$('#user_experiences').addClass('container');
 			$('#trig-upl').on('click', function(){
 				$('#user_profileFile').trigger('click');
@@ -246,8 +253,14 @@
 					allow_down: false,
 					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
 					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
-				});
-				$('.collection-selector-user-experience').collection({
+			});
+			$('.collection-selector-user-languages').collection({
+					allow_up: false,
+					allow_down: false,
+					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+			});
+			$('.collection-selector-user-experience').collection({
 					allow_up: false,
 					allow_down: false,
 					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',

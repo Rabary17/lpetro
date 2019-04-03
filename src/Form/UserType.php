@@ -10,6 +10,7 @@ use App\Form\ExtraWorkActivityType;
 use App\Form\TrainingType;
 use App\Form\ExperienceType;
 use App\Form\SkillType;
+use App\Form\LanguageType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -92,6 +93,16 @@ class UserType extends AbstractType
                     'prototype' => true,
                     'attr' => array(
                         'class' => 'collection-selector-user-trainings'
+                    )
+                ])
+            ->add('languages', CollectionType::class, [
+                    'entry_type' => LanguageType::class,
+                    'allow_add' => true,
+                    'allow_delete'=> true,
+                    'by_reference' => false,
+                    'prototype' => true,
+                    'attr' => array(
+                        'class' => 'collection-selector-user-languages'
                     )
                 ])
             ->add('experiences', CollectionType::class, [

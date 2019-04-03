@@ -71,7 +71,7 @@ class User extends BaseUser
     private $address;
 
     /**
-     * @ORM\Column(type="string", length=200, nullable=true)
+     *@ORM\OneToOne(targetEntity="Nationality")
      */
     private $nationality;
 
@@ -134,6 +134,11 @@ class User extends BaseUser
     private $trainings;
 
     /**
+    * @ORM\OneToMany(targetEntity="Language", mappedBy="user", cascade={"persist", "remove"})
+    */
+    private $languages;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Experience", mappedBy="user", cascade={"persist", "remove"})
      */
     private $experiences;
@@ -177,6 +182,7 @@ class User extends BaseUser
         $this->skills = new ArrayCollection();
         $this->applicationLetters = new ArrayCollection();
         $this->roles = array('ROLE_CANDIDAT');
+        $this->languages = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -280,17 +286,6 @@ class User extends BaseUser
         return $this;
     }
 
-    public function getNationality(): ?string
-    {
-        return $this->nationality;
-    }
-
-    public function setNationality(string $nationality): self
-    {
-        $this->nationality = $nationality;
-
-        return $this;
-    }
     public function setEmail($email)
     {
         $email = is_null($email) ? '' : $email;
@@ -612,6 +607,47 @@ class User extends BaseUser
         $this->submit = $submit;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Language[]
+     */
+    public function getLanguages(): Collection
+    {
+        return $this->languages;
+    }
+
+    public function addLanguage(Language $language): self
+    {
+        if (!$this->languages->contains($language)) {
+            $this->languages[] = $language;
+            $language->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLanguage(Language $language): self
+    {
+        if ($this->languages->contains($language)) {
+            $this->languages->removeElement($language);
+            // set the owning side to null (unless already changed)
+            if ($language->getUser() === $this) {
+                $language->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getNationality(): ?Nationality
+    {
+        return $this->nationality;
+    }
+
+    public function setNationality(?Nationality $nationality): self
+    {
+        $this->nationality = $nationality;
     }
 
     public function getStatut(): ?UserStatut

@@ -8732,6 +8732,8 @@
   .btn-edit-cv{
     padding: 10px;
     border: 1px solid white;
+    float: right;
+    margin: 3px;
   }
 
   .resume-header{
@@ -8907,7 +8909,7 @@ input[class*="date-range"] {
   margin: 0 2%;
 }
 
-.intl-tel-input{
+.intl-tel-input{  
   width: 100%;
 }
 .intl-tel-input .country-list{
@@ -8918,7 +8920,7 @@ input[class*="date-range"] {
   color: black;
 }
 
-.select2-container .select2-selection--single{
+.select2-container .select2-selection--single{  
   height: 34px !important;
 }
 
@@ -8934,5 +8936,9 @@ input[class*="date-range"] {
 
 .select2-user_maritalStatus-result-zymo-Célibataire:hover{
   color:white;
-  background-color: #90b2b2 !important;
+  background-color: #7c97a1  !important;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header{
+  height: auto !important;
 }
