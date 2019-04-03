@@ -18,7 +18,7 @@ footer {
     bottom: 0;
     z-index: 2;
     text-align: center;
-    background-color: #90b2b2;
+    background-color: #7c97a1 ;
     width: 100%;
     padding: 1rem;
     color: white;
@@ -33,7 +33,7 @@ footer {
 	list-style-type: none;
 }
 .skin-blue .main-header-user li.user-header {
-    background-color: #90b2b2 !important;
+    background-color: #7c97a1  !important;
 }
 .form-control{
 	font-size: 16px;
@@ -53,7 +53,7 @@ label.required:not(.mylabel) {
 #confirm_email {
     position: fixed;
     width: 30%;
-    background-color: #90b2b299;
+    background-color: #7c97a199;
     color: white;
     bottom: 0px;
     z-index: 999;
