@@ -8906,3 +8906,33 @@ input[class*="date-range"] {
   height: 45%;
   margin: 0 2%;
 }
+
+.intl-tel-input{
+  width: 100%;
+}
+.intl-tel-input .country-list{
+  position: fixed;
+}
+
+#country-listbox li{
+  color: black;
+}
+
+.select2-container .select2-selection--single{
+  height: 34px !important;
+}
+
+.select2-container--default .select2-selection--single{
+  border: 1px solid #d2d2d2 !important;
+    border-radius: 2px !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected]{
+  background-color: #434e5e !important;
+  color: white;
+}
+
+.select2-user_maritalStatus-result-zymo-Célibataire:hover{
+  color:white;
+  background-color: #90b2b2 !important;
+}

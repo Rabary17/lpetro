@@ -2,6 +2,7 @@
 {% block stylesheets %}
     {{ parent() }}
 	<link rel="stylesheet" href="{{ asset('assets/dist/css/profil.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/select2.css')}}">
 {% endblock %}
 {% block body %}
     <article class="resume-wrapper text-center position-relative">
@@ -173,6 +174,7 @@
 <script src="{{ asset('assets/dist/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/dist/js/intlTelInput.min.js') }}"></script>
 <script src="{{ asset('assets/dist/js/intlTelInput-jquery.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/select2.min.js') }}"></script>
 <script src="{{ asset('assets/dist/js/jquery.collection.js') }}"></script>
 	<script type="text/javascript">
      	function readURL(input) {
@@ -220,9 +222,9 @@
 				separateDialCode: false,
 				// specify the path to the libphonenumber script to enable validation/formatting
 				utilsScript: ""
-
 			});
-
+			$('#user_maritalStatus').select2();
+			$('#user_nationality').select2();
 			$('#user_experiences').addClass('container');
 			$('#trig-upl').on('click', function(){
 				$('#user_profileFile').trigger('click');
