@@ -56,7 +56,6 @@ class RhHomeController extends AbstractController
     public function rhValidate($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $candidat = $em->getRepository('App:User')->find($id);
         $this->userService->cvRhValidate($id);
 
         return $this->redirectToRoute('rh_view_cvs');
