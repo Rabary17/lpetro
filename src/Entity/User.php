@@ -153,6 +153,11 @@ class User extends BaseUser
      */
     private $submit;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\UserStatut", inversedBy="users")
+     */
+    private $statut;
+
     public function __construct()
     {
         parent::__construct();
@@ -600,6 +605,18 @@ class User extends BaseUser
     public function setSubmit(?bool $submit): self
     {
         $this->submit = $submit;
+
+        return $this;
+    }
+
+    public function getStatut(): ?UserStatut
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(?UserStatut $statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }
