@@ -4,7 +4,44 @@
 	<link rel="stylesheet" href="{{ asset('assets/dist/css/profil.css')}}">
 {% endblock %}
 {% block body %}
-	{{ form(form) }}
+    <article class="resume-wrapper text-center position-relative">
+	    <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
+		    <header class="resume-header pt-4 pt-md-0">
+			    <div class="media flex-column flex-md-row">
+				    <img class="mr-3 img-fluid picture mx-auto" src="{{ asset('uploads/photos/' ~ candidat.profileName) }}" alt="">
+				    <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
+					    <div class="primary-info col-sm-6 col-md-8 col-lg-8">
+						    <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">{{candidat.firstname}} {{candidat.lastName}}</h1>
+						    <ul class="list-unstyled">
+							    <li class="mb-2"><a href="#"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{candidat.email}}</a></li>
+							    <li><a href="#"><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ candidat.phoneNumber }}</a></li>
+						    </ul>
+					    </div><!--//primary-info-->
+					</div><!--//primary-info-->
+				</div><!--//media-->
+		    </header>
+			<div class="row">
+				<div class="col-lg-9">
+					<section class="resume-section experience-section mb-5">
+						<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">PLUS D'INFO POUR RH</h2>
+						<p>
+							<label for="status">STATUS:</label>
+							{{ form_widget(form.statut, {attr:{'class': 'form-control', 'id': 'status', 'required': false}}) }}
+							<span class="text-danger">{{ form_errors(form.statut) }}</span>
+						</p>
+						<p>
+							<label for="tags">TAGS:</label>
+							{{ form_widget(form.tags, {attr:{'class': 'form-control tag-input', 'id': 'status', 'required': false}}) }}
+							<span class="text-danger">{{ form_errors(form.tags) }}</span>
+						</p>
+						<p>
+							<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="btn btn-default">Annuler</a>
+							{{ form_widget(form.submit, {attr:{'class': 'btn btn-primary', 'id': 'submit'}}) }}
+						</p>
+					</section>
+				</div>
+			</div>
+   </article>
 {% endblock body %}
 {% block javascripts %}
 	<script type="text/javascript">
