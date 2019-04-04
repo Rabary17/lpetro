@@ -55,8 +55,8 @@ class UserController extends AbstractController
             $em->flush();
             
             $message = (new \Swift_Message('Envoi de CV'))
-                ->setFrom('r.herriniaina@gmail.com')
-                ->setTo('philipperazakatsara@gmail.com')
+                ->setFrom('r.herriniaina@gmail.com','LOGISTIQUE PETROLIERE')
+                ->setTo(htmlentities($user))
                 ->setBody($this->renderView('emails/submit-cv-confirmation-email.html.twig',['user' => $user]), 'text/html');
 
             $mailer->send($message);
