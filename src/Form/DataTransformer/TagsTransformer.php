@@ -5,14 +5,16 @@
 	use Doctrine\Common\Persistence\ObjectManager;
 	use App\Entity\Tag;
 	
-	class TagsTransformer implements DataTransformerInterface {
+	class TagsTransformer implements DataTransformerInterface
+	{
 		private $manager;
 
 		/**
 		 * [__construct description]
 		 * @param ObjectManager $manager [description]
 		 */
-		public function __construct(ObjectManager $manager) {
+		public function __construct(ObjectManager $manager)
+		{
 			$this->manager = $manager;
 		}
 
@@ -21,7 +23,8 @@
 		 * @param  string $value tag
 		 * @return string        [description]
 		 */
-		public function transform($value) {
+		public function transform($value)
+		{
 			return implode(',', $value);
 		}
 
@@ -30,8 +33,9 @@
 		 * @param  string $string [description]
 		 * @return array          [description]
 		 */
-		public function reverseTransform($string) {
-			$names = explode(',', $string);
+		public function reverseTransform($string)
+		{
+			$names = array_unique(array_filter(array_map('trim', explode(',', $string))));
 			$tags = $this->manager->getRepository('App:Tag')->findByName($names);
 			$newNames =  array_diff($names, $tags);
 

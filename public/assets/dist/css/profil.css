@@ -8942,3 +8942,11 @@ input[class*="date-range"] {
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header{
   height: auto !important;
 }
+.tt-menu {
+  background-color: white;
+  padding: 20px;
+}
+.tt-cursor {
+  background: #7c97a1;
+  color: white;
+}

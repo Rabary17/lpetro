@@ -184,19 +184,3 @@
     </article>
 
 {% endblock body %}
-{% block javacripts %}
-<script type="text/javascript">
-	var tags = new Bloodhound({
-	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-	  queryTokenizer: Bloodhound.tokenizers.whitespace,
-	  prefetch: {
-	    url: '/tags',
-	    filter: function(list) {
-	      return $.map(list, function(tagname) {
-	        return { name: tagname }; });
-	    }
-	  }
-	});
-</script>
-
-{% endblock %}

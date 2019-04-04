@@ -6,3 +6,24 @@
 {% block body %}
 	{{ form(form) }}
 {% endblock body %}
+{% block javascripts %}
+	<script type="text/javascript">
+		var tags = new Bloodhound({
+			prefetch: 'http://localhost:8000/tags',
+			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+			queryTokenizer: Bloodhound.tokenizers.whitespace,
+		});
+		$(document).ready(function(){
+			$('.tag-input').tagsinput({
+				typeaheadjs: [{
+					highlights: true,
+				},{
+					name: 'tags',
+					display: 'name',
+					value: 'name',
+					source: tags
+				}]
+			});
+		});
+	</script>
+{% endblock %}
