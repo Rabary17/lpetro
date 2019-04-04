@@ -17,6 +17,7 @@ class UserRepository extends ServiceEntityRepository
 
     /**
      * Constructor
+     *
      * @param RegistryInterface $registry
      */
     public function __construct(RegistryInterface $registry)
@@ -41,8 +42,7 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('submit', true)
             ->setParameter('enabled', true)
             ->getQuery()
-            ->getArrayResult()
-        ;
+            ->getArrayResult();
     }
 
     /**
@@ -60,7 +60,6 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('submit', true)
             ->setParameter('enabled', true)
             ->getQuery()
-            ->getArrayResult()
-        ;
+            ->getArrayResult();
     }
 }

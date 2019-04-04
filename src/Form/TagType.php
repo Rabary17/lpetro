@@ -16,25 +16,29 @@ class TagType extends AbstractType
 {
     private $manager;
 
-    public function __construct(ObjectManager $manager) {
+    public function __construct(ObjectManager $manager)
+    {
         $this->manager = $manager;
     }
     
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->addModelTransformer(new CollectionToArrayTransformer(), true)
-                ->addModelTransformer(new TagsTransformer($this->manager), true);
+            ->addModelTransformer(new TagsTransformer($this->manager), true);
     }
 
-    public function getParent() {
+    public function getParent()
+    {
         return TextType::class;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault('attr', [
+        $resolver->setDefault(
+            'attr', [
             'class' => 'form-control tag-input'
-        ]);
+            ]
+        );
         $resolver->setDefault('required', false);
     }
 }

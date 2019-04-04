@@ -8734,6 +8734,12 @@
     border: 1px solid white;
     float: right;
     margin: 3px;
+    text-align: center;
+  }
+
+    .btn-edit-cv:hover{
+      text-decoration: none;
+      background-color: #7c97a1;
   }
 
   .resume-header{
@@ -8950,4 +8956,14 @@ input[class*="date-range"] {
 .tt-cursor {
   background: #7c97a1;
   color: white;
+}
+
+.tag-badge{
+    font-size: 14px;
+    font-weight: normal;
+    background-color: #7c97a1;
+    padding: 3px 8px;
+    border-radius: 5px;
+    margin: 0 5px;
+    color: white;
 }

@@ -9,7 +9,6 @@ use App\Service\LpMailerService;
 
 class RhHomeController extends AbstractController
 {
-
     private $userService;
     private $mailer;
 
@@ -40,7 +39,7 @@ class RhHomeController extends AbstractController
 
     /**
      * @Route("/rh/cvs", name="rh_view_cvs")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return           \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function listCvs()
     {
@@ -54,8 +53,8 @@ class RhHomeController extends AbstractController
 
     /**
      * @Route("/rh/validate/{id}", name="rh_validate_cv")
-     * @param datatype $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param                      datatype $id
+     * @return                     \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function rhValidate($id)
     {

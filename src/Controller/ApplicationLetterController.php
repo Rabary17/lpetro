@@ -12,8 +12,8 @@ class ApplicationLetterController extends AbstractController
 {
     /**
      * @Route("/application-letter", name="application_letter")
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param                        Request $request
+     * @return                       \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index(Request $request)
     {

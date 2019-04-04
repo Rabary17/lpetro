@@ -9,7 +9,7 @@ class TrainingController extends AbstractController
 {
     /**
      * @Route("/training", name="training")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return             \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index()
     {
@@ -26,8 +26,8 @@ class TrainingController extends AbstractController
 
     /**
      * @Route("/training/delete/{id}", name="delete_training")
-     * @param string $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param                          string $id
+     * @return                         \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function delete($id)
     {

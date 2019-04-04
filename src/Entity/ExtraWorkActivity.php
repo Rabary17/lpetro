@@ -28,7 +28,7 @@ class ExtraWorkActivity
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="extraWorkActivities", cascade={"persist"})
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id",     referencedColumnName="id")
      */
     private $user;
 

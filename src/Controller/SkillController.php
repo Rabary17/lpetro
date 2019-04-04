@@ -9,7 +9,7 @@ class SkillController extends AbstractController
 {
     /**
      * @Route("/skill", name="skill")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return          \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index()
     {
@@ -26,8 +26,8 @@ class SkillController extends AbstractController
 
     /**
      * @Route("/skill/delete/{id}", name="delete_skill")
-     * @param string $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param                       string $id
+     * @return                      \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function delete($id)
     {

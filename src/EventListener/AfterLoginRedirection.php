@@ -29,7 +29,7 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
 
     /**
      * @SuppressWarnings(PHPMD)
-     * @param Request        $request
+     * @param                   Request        $request
      *
      * @param TokenInterface $token
      *
@@ -39,9 +39,12 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
     {
         $roles = $token->getRoles();
 
-        $rolesTab = array_map(function ($role) {
-            return $role->getRole();
-        }, $roles);
+        $rolesTab = array_map(
+            function ($role) {
+                return $role->getRole();
+            },
+            $roles
+        );
 
         if (in_array('ROLE_RH', $rolesTab, true)) {
             return new RedirectResponse($this->router->generate('rh_home'));

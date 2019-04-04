@@ -17,6 +17,7 @@ class CandidatController extends AbstractController
 
     /**
      * User service
+     *
      * @param UserService $userService [description]
      */
     public function __construct(UserService $userService)
@@ -46,9 +47,9 @@ class CandidatController extends AbstractController
 
     /**
      * @Route("/candidat/edit/{id}", name="candidat_edit")
-     * @param Request $request description
-     * @param string  $id      id candidat
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param                        Request $request description
+     * @param                        string  $id      id candidat
+     * @return                       \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function edit(Request $request, $id)
     {

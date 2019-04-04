@@ -83,3 +83,14 @@ label.required:not(.mylabel) {
 .login-box, .register-box {
     width: 400px !important;
 }
+
+.bootstrap-tagsinput .tag {
+    margin-right: 2px;
+    color: white;
+    font-size: 13px;
+    font-weight: normal;
+    background-color: #7c97a1 !important;
+}
+.bootstrap-tagsinput {
+    width: 100% !important;
+}

@@ -20,10 +20,12 @@
 					</div><!--//primary-info-->
 				</div><!--//media-->
 		    </header>
-			<div class="row">
+			</br>
+			<div class="container">
 				<div class="col-lg-9">
 					<section class="resume-section experience-section mb-5">
 						<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">PLUS D'INFO POUR RH</h2>
+						{{ form_start(form) }}
 						<p>
 							<label for="status">STATUS:</label>
 							{{ form_widget(form.statut, {attr:{'class': 'form-control', 'id': 'status', 'required': false}}) }}
@@ -38,6 +40,7 @@
 							<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="btn btn-default">Annuler</a>
 							{{ form_widget(form.submit, {attr:{'class': 'btn btn-primary', 'id': 'submit'}}) }}
 						</p>
+						{{ form_end(form) }}
 					</section>
 				</div>
 			</div>

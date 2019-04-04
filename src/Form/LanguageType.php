@@ -17,7 +17,8 @@ class LanguageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, [
+            ->add(
+                'name', TextType::class, [
                     'label' => 'NOM',
                     'label_attr' => [
                         'class' => 'mylabel'
@@ -27,7 +28,8 @@ class LanguageType extends AbstractType
                     ]
                 ]
             )
-            ->add('level', ChoiceType::class, [
+            ->add(
+                'level', ChoiceType::class, [
                 'label' => 'NIVEAU',
                 'label_attr' => [
                     'class' => 'mylabel'
@@ -42,14 +44,16 @@ class LanguageType extends AbstractType
                     'Avancé' => 'Avancé',
                     'Langue Maternelle' => 'Langue Maternelle'
                 ],
-            ])
-        ;
+                ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => Language::class,
-        ]);
+            ]
+        );
     }
 }

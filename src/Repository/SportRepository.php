@@ -16,6 +16,7 @@ class SportRepository extends ServiceEntityRepository
 {
     /**
      * Constructor
+     *
      * @param RegistryInterface $registry
      */
     public function __construct(RegistryInterface $registry)

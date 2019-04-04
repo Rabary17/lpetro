@@ -28,7 +28,7 @@ class Language
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="languages", cascade={"persist"})
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id",     referencedColumnName="id")
      */
     private $user;
 

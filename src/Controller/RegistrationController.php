@@ -23,6 +23,7 @@ class RegistrationController extends BaseController
 
     /**
      * [__construct description]
+     *
      * @param FactoryInterface         $formFactory [description]
      * @param EventDispatcherInterface $dispatcher  [description]
      * @param UserManagerInterface     $userManager [description]
@@ -92,6 +93,7 @@ class RegistrationController extends BaseController
 
     /**
      * Verify recaptcha
+     *
      * @param  string $recaptcha
      * @return boolean
      */
@@ -108,8 +110,8 @@ class RegistrationController extends BaseController
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-            "secret" => "6LfBBXcUAAAAAJP7RCk6NYxgKlHz5PDJYfeBejkA",
-            "response" => $recaptcha,
+                "secret" => "6LfBBXcUAAAAAJP7RCk6NYxgKlHz5PDJYfeBejkA",
+                "response" => $recaptcha,
         ));
         $response = curl_exec($ch);
         if ($response === false) {

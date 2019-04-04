@@ -15,14 +15,15 @@ class UserStatutType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('statut')
-        ;
+            ->add('statut');
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => UserStatut::class,
-        ]);
+            ]
+        );
     }
 }
