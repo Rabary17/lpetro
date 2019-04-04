@@ -30,7 +30,7 @@ class RhHomeController extends AbstractController
         $candidates = $em->getRepository('App:User')->fetchAllRecentCandidates();
 
         return $this->render('rh_home/index.html.twig', [
-            'candidates' => $candidates,
+                'candidates' => $candidates,
         ]);
     }
 
@@ -55,7 +55,6 @@ class RhHomeController extends AbstractController
      */
     public function rhValidate($id)
     {
-        $em = $this->getDoctrine()->getManager();
         $this->userService->cvRhValidate($id);
 
         return $this->redirectToRoute('rh_view_cvs');

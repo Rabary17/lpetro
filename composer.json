@@ -18,11 +18,13 @@
         "symfony/orm-pack": "^1.0",
         "symfony/profiler-pack": "^1.0",
         "symfony/security-bundle": "*",
+        "symfony/serializer": "4.1.*",
         "symfony/swiftmailer-bundle": "^3.2",
         "symfony/translation": "*",
         "symfony/twig-bundle": "*",
         "symfony/yaml": "*",
-        "vich/uploader-bundle": "^1.9"},
+        "vich/uploader-bundle": "^1.9"
+    },
     "require-dev": {
         "phpmd/phpmd": "^2.6",
         "phpmetrics/phpmetrics": "^2.4",

@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
+use App\Concern\TaggableTrait;
 
 /**
  * @ORM\Entity
@@ -19,6 +20,8 @@ use Symfony\Component\HttpFoundation\File\File;
  */
 class User extends BaseUser
 {
+    use TaggableTrait;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="string", length=36)
@@ -183,6 +186,7 @@ class User extends BaseUser
         $this->applicationLetters = new ArrayCollection();
         $this->roles = array('ROLE_CANDIDAT');
         $this->languages = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): ?string

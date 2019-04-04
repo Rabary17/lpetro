@@ -36,3 +36,8 @@ services:
         arguments: ['@swiftmailer.mailer', '%sender_email%', '@session.flash_bag']
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous onesZ
+    #tag.form.type.tags:
+    #    class: App\Form\Type\TagType
+    #    arguments: ['@doctrine.orm.entity_manager']
+    #    tags:
+    #        - { name: form.type }

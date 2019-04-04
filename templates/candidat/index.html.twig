@@ -17,7 +17,9 @@
 							    <li><a href="#"><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ candidat.phoneNumber }}</a></li>
 						    </ul>
 					    </div><!--//primary-info-->
-					    
+					    <div>
+					    	<a class="btn-edit-cv" href="{{ path('candidat_edit', {'id' : candidat.id }) }}">Editer mon cv</a>
+					    </div>
 				    </div><!--//media-body-->
 			    </div><!--//media-->
 		    </header>
@@ -169,8 +171,23 @@
 			    </div><!--//row-->
 		    </div><!--//resume-body-->
 		    
-		    
 	    </div>
     </article>
 
 {% endblock body %}
+{% block javacripts %}
+<script type="text/javascript">
+	var tags = new Bloodhound({
+	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+	  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  prefetch: {
+	    url: '/tags',
+	    filter: function(list) {
+	      return $.map(list, function(tagname) {
+	        return { name: tagname }; });
+	    }
+	  }
+	});
+</script>
+
+{% endblock %}
