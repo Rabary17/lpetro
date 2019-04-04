@@ -15,14 +15,14 @@
 						    <ul class="list-unstyled">
 							    <li class="mb-2"><a href="#"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{candidat.email}}</a></li>
 							    <li><a href="#"><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ candidat.phoneNumber }}</a></li>
+								<li>{{ candidat.statut }}</li>
 						    </ul>
 					    </div><!--//primary-info-->
-					    <div>
-					    	<a class="btn-edit-cv" href="{{ path('candidat_edit', {'id' : candidat.id }) }}">Editer mon cv</a>
+					    <div class="col-sm-6 col-md-2 col-lg-2">
+					    	<a class="btn-edit-cv" href="{{ path('candidat_edit', {'id' : candidat.id }) }}">Suivre ce CV</a>
 					    </div>
-						</div><!--//primary-info-->
 						
-						<div style="display:block" class="col-sm-6 col-md-4 col-lg-4">
+						<div style="display:block" class="col-sm-6 col-md-2 col-lg-2">
 							{% if candidat.rhvalidate  %}
 								<a class="btn-edit-cv">CV validé</a>
 								{% else %}
@@ -32,6 +32,7 @@
 				    </div><!--//media-body-->
 			    </div><!--//media-->
 		    </header>
+		
 		    <div class="resume-body p-5">
 			    <section class="resume-section summary-section mb-5">
 				    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">OBJECTIF</h2>
@@ -113,6 +114,18 @@
 							    
 						    </div>
 					    </section><!--//extra-work-activity-->
+
+					    <section class="resume-section experience-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Etiquettes</h2>
+						    <div class="resume-section-content">
+							    <div class="resume-timeline position-relative">
+							    	{% for tag in candidat.tags %}
+							    		<span class="badge">{{ tag.name }}</span>
+							    	{% endfor %}
+							    </div>
+							</div>
+						</section>
+
 				    </div>
 				    <div class="col-lg-3">
 					    <section class="resume-section education-section mb-5">
@@ -179,8 +192,7 @@
 				    </div>
 			    </div><!--//row-->
 		    </div><!--//resume-body-->
-		    
-	    </div>
+		</div>
     </article>
 
 {% endblock body %}

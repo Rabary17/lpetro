@@ -19,19 +19,13 @@
 						    </ul>
 					    </div><!--//primary-info-->
 						<div style="display:block" class="col-sm-6 col-md-4 col-lg-4">
-							{# <div class="secondary-info ml-md-auto mt-2"> #}
-								<a class="btn-edit-cv" href="{{ path('user_profile_edit', {'id' : candidat.id }) }}">Editer mon cv</a>
-							{# </div> #}
-
-							{# <div class="secondary-info ml-md-auto mt-2"> #}
-								{% if app.user.submit %}
+							<a class="btn-edit-cv" href="{{ path('user_profile_edit', {'id' : user.id }) }}">Editer mon cv</a>
+							{% if app.user.submit %}
 								<a class="btn-edit-cv">CV déjà soumis</a>
 								{% else %}
 								<a class="btn-edit-cv" href="{{ path('user_cv_send', {'id' : user.id}) }}">Soumettre mon cv pour validation</a>
-								{% endif %}
-							{# </div> #}
+							{% endif %}
 						</div>
-					    
 				    </div><!--//media-body-->
 			    </div><!--//media-->
 		    </header>
@@ -51,7 +45,7 @@
 						    <p>Situation familiale: {{ user.maritalStatus }}</p>
 						    <p>Nom du conjoint: {{ user.conjointName }}</p>
 						    <p>Nombre d'enfant: {{ user.nbChildren }}</p>
-						    <p>Nationalité: {{ user.nationality }}</p>
+						    <p>Nationalité: {{ user.nationality.nationality }}</p>
 						    <p>Adresse: {{ user.address }}</p>
 						</section>
 					    <section class="resume-section experience-section mb-5">

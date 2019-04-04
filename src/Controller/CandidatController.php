@@ -26,11 +26,10 @@ class CandidatController extends AbstractController
 
     /**
      * @Route("/candidat/{id}", name="candidat_view")
-     * @param Request $request description
-     * @param string  $id      id candidat
+     * @param string $id id candidat
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function index(Request $request, $id)
+    public function index($id)
     {
         $em = $this->getDoctrine()->getManager();
         $candidat = $em->getRepository('App:User')->find($id);

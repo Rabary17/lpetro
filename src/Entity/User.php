@@ -186,7 +186,7 @@ class User extends BaseUser
         $this->applicationLetters = new ArrayCollection();
         $this->roles = array('ROLE_CANDIDAT');
         $this->languages = new ArrayCollection();
-        $this->tags = new \Doctrine\Common\Collections\Collection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): ?string
