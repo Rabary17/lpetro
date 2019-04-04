@@ -19,7 +19,8 @@ class ExperienceController extends AbstractController
         $experiences = $em->getRepository('App:Experience')->findAll();
 
         return $this->render(
-            'experience/index.html.twig', [
+            'experience/index.html.twig',
+            [
             'experiences' => $experiences,
             'user' => $user->getId(),
             ]

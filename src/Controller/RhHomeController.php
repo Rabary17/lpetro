@@ -30,7 +30,8 @@ class RhHomeController extends AbstractController
         $candidates = $em->getRepository('App:User')->fetchAllRecentCandidates();
 
         return $this->render(
-            'rh_home/index.html.twig', [
+            'rh_home/index.html.twig',
+            [
                 'candidates' => $candidates,
             ]
         );
@@ -46,7 +47,8 @@ class RhHomeController extends AbstractController
         $candidates = $em->getRepository('App:User')->fetchAllCandidates();
 
         return $this->render(
-            'rh_home/index.html.twig', [
+            'rh_home/index.html.twig',
+            [
             'candidates' => $candidates,
             ]
         );

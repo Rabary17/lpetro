@@ -30,7 +30,9 @@ class ExperienceType extends AbstractType
     {
         $builder
             ->add(
-                'label', TextType::class, [
+                'label',
+                TextType::class,
+                [
                 'label_attr' => [
                     'class' => 'mylabel',
                 ],
@@ -43,21 +45,27 @@ class ExperienceType extends AbstractType
                 ]
             )
             ->add(
-                'date_debut', DateType::class, [
+                'date_debut',
+                DateType::class,
+                [
                 'widget' => 'single_text',
                 'attr' => [
                     'class' => 'form-control date-range',
                 ]
                 ]
             )->add(
-                'date_fin', DateType::class, [
+                'date_fin',
+                DateType::class,
+                [
                     'widget' => 'single_text',
                     'attr' => [
                     'class' => 'form-control date-range',
                     ]
                     ]
             )->add(
-                'type', ChoiceType::class, [
+                'type',
+                ChoiceType::class,
+                [
                     'label_attr' => [
                     'class' => 'mylabel',
                     ],
@@ -72,7 +80,9 @@ class ExperienceType extends AbstractType
                     ]
                     ]
             )->add(
-                'position', TextType::class, [
+                'position',
+                TextType::class,
+                [
                     'label' => 'POSTE',
                     'label_attr' => [
                     'class' => 'mylabel'
@@ -82,7 +92,9 @@ class ExperienceType extends AbstractType
                     ]
                     ]
             )->add(
-                'status', TextType::class, [
+                'status',
+                TextType::class,
+                [
                     'label' => 'STATUS (internat, junior, senior...)',
                     'required' => false,
                     'label_attr' => [
@@ -93,7 +105,9 @@ class ExperienceType extends AbstractType
                     ]
                     ]
             )->add(
-                'company', TextType::class, [
+                'company',
+                TextType::class,
+                [
                     'label' => 'DENOMINATION DE LA SOCIETE',
                     'label_attr' => [
                     'class' => 'mylabel'
@@ -103,7 +117,9 @@ class ExperienceType extends AbstractType
                     ]
                     ]
             )->add(
-                'achievements', TextareaType::class, [
+                'achievements',
+                TextareaType::class,
+                [
                     'label' => 'MISSIONS',
                     'label_attr' => [
                     'class' => 'mylabel'
@@ -113,7 +129,9 @@ class ExperienceType extends AbstractType
                     ]
                     ]
             )->add(
-                'others', TextareaType::class, [
+                'others',
+                TextareaType::class,
+                [
                     'label' => 'AUTRES',
                     'required' => false,
                     'label_attr' => [
@@ -124,7 +142,9 @@ class ExperienceType extends AbstractType
                     ]
                     ]
             )->add(
-                'referencedPeople', CollectionType::class, [
+                'referencedPeople',
+                CollectionType::class,
+                [
                     'label' => 'Personne de référence',
                     'label_attr' => [
                     'class' => 'Reference_label'

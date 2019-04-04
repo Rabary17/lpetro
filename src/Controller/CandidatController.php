@@ -39,7 +39,8 @@ class CandidatController extends AbstractController
             $viewCandidat = $this->userService->cvViewed($id);
 
             return $this->render(
-                'candidat/index.html.twig', [
+                'candidat/index.html.twig',
+                [
                 'candidat' => $viewCandidat,
                 ]
             );
@@ -68,7 +69,8 @@ class CandidatController extends AbstractController
         }
 
         return $this->render(
-            'candidat/edit.html.twig', [
+            'candidat/edit.html.twig',
+            [
             'candidat' => $candidat,
             'form' => $form->createView(),
             ]

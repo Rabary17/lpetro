@@ -51,7 +51,9 @@ class SkillType extends AbstractType
                 ]
             )
             ->add(
-                'level', null, ['label' => 'NIVEAU (1 - 5)',
+                'level',
+                null,
+                ['label' => 'NIVEAU (1 - 5)',
                     'attr' => [
                         'class' => 'form-control'
                     ],

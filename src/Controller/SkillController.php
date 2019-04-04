@@ -19,7 +19,8 @@ class SkillController extends AbstractController
         $skills = $em->getRepository('App:Skill')->fetchByUser($user->getId());
 
         return $this->render(
-            'skill/index.html.twig', [
+            'skill/index.html.twig',
+            [
             'skills' => $skills,
             'user' => $user->getId(),
             ]
@@ -45,7 +46,8 @@ class SkillController extends AbstractController
         }
 
         return $this->render(
-            'skill/index.html.twig', [
+            'skill/index.html.twig',
+            [
             'skills' => $skill,
             'error' => 'Impossible de supprimé ce compétence',
             'user' => $user->getId(),
