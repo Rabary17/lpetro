@@ -8829,7 +8829,7 @@ padding: 0;
 }
 
 #user_experiences > div,
-#user_skills > div{
+#user_skills > div, #user_languages > div{
   width: 45%;
   float: left;
   padding: 10px;
@@ -8865,7 +8865,8 @@ padding: 0;
 
 .user_extraWorkActivities-collection-actions,
 .user_trainings-collection-actions,
-.user_experiences-parent-actions{
+.user_experiences-parent-actions,
+.user_languages-collection-actions{
   text-align: right;
   border-top: 1px solid #ddd;
   

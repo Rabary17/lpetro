@@ -139,7 +139,7 @@
 								{% form_theme form 'collection/jquery.collection.html.twig' %}
 									{{ form_row(form.languages) }}	
 								</div>
-
+								<br/>
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="training">FORMATIONS</h2>
 								<div id="extra-work-activity"  class="container" style="min-height: 50px;">
 								{% form_theme form 'collection/jquery.collection.html.twig' %}
@@ -195,6 +195,13 @@
         }
 
 		jQuery(document).ready(function($) {
+			jQuery(document).on('click', function(e){
+				$(document).find('select').each(function(event){
+					$(this).selectize({
+					allowEmptyOption: true,
+					create: true
+				});
+			})
 			$("#user_phoneNumber").intlTelInput({
 				// whether or not to allow the dropdown
 				allowDropdown: true,
@@ -229,9 +236,9 @@
 				// specify the path to the libphonenumber script to enable validation/formatting
 				utilsScript: ""
 			});
-			$('#user_maritalStatus').select2();
-			$('#user_nationality').select2();
-			$('.language_level').select2();
+			// $('#user_maritalStatus').select2();
+			// $('#user_nationality').select2();
+			// $('.language_level').select2();
 			$('#user_experiences').addClass('container');
 			$('#trig-upl').on('click', function(){
 				$('#user_profileFile').trigger('click');
@@ -279,5 +286,6 @@
 					}]
 				});
 			});
+		});
 	</script>
 {% endblock %}
