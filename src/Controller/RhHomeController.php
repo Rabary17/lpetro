@@ -14,6 +14,7 @@ class RhHomeController extends AbstractController
 
     /**
      * User service
+     *
      * @param UserService     $userService [description]
      * @param LpMailerService $mailer      mailer
      */
@@ -25,16 +26,19 @@ class RhHomeController extends AbstractController
 
     /**
      * @Route("/rh/home", name="rh_home")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return            \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index()
     {
         $em = $this->getDoctrine()->getManager();
         $candidates = $em->getRepository('App:User')->fetchAllRecentCandidates();
 
-        return $this->render('rh_home/index.html.twig', [
+        return $this->render(
+            'rh_home/index.html.twig',
+            [
                 'candidates' => $candidates,
-        ]);
+            ]
+        );
     }
 
     /**
@@ -46,9 +50,12 @@ class RhHomeController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $candidates = $em->getRepository('App:User')->fetchAllCandidates();
 
-        return $this->render('rh_home/index.html.twig', [
+        return $this->render(
+            'rh_home/index.html.twig',
+            [
             'candidates' => $candidates,
-        ]);
+            ]
+        );
     }
 
     /**
