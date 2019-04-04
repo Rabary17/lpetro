@@ -20,6 +20,15 @@
 					    <div>
 					    	<a class="btn-edit-cv" href="{{ path('candidat_edit', {'id' : candidat.id }) }}">Editer mon cv</a>
 					    </div>
+						</div><!--//primary-info-->
+						
+						<div style="display:block">
+							{% if candidat.rhvalidate  %}
+								<a class="btn-edit-cv">CV validé</a>
+								{% else %}
+								<a href="{{ path('rh_validate_cv', {id: candidat.id}) }}" class="btn-edit-cv">Valider le CV</a>
+								{% endif %}		
+						</div>
 				    </div><!--//media-body-->
 			    </div><!--//media-->
 		    </header>

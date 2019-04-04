@@ -80,7 +80,7 @@
                 margin: 10px;
                 margin-right: 10px;
                 margin-right: 0;
-            }">
+            ">
               <!-- User image -->
               <li class="user-header" style="background-color: #7c97a1;">
                 <img src="{% if app.user.profileName is defined %}{{ asset('uploads/photos/' ~ app.user.profileName) }}{% else %}{{ asset('assets/dist/img/user-avatar.jpg') }}{% endif %}" class="img-circle" alt="User Image">
