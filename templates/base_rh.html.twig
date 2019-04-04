@@ -31,16 +31,16 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <header class="main-header">
+  <header class="main-header" >
     <!-- Logo -->
-    <a href="{{ path('rh_home') }}" class="logo">
+    <a href="{{ path('rh_home') }}" class="logo"  style="height: 60px;line-height: 60px;background-color: #cc1b27;">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>LP</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg">LP Dashboard</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top" style="display: block">
+    <nav class="navbar navbar-static-top" style="display: block;background-color: #7c97a1 ;padding: 5px 10px 0 10px;">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
@@ -75,9 +75,13 @@
               <img src="{% if app.user.profileName %}{{ asset('uploads/photos/' ~ app.user.profileName) }}{% else %}{{ asset('assets/dist/img/user-avatar.jpg') }}{% endif %}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ app.user.lastName }}</span>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" style="border: none;
+                margin: 10px;
+                margin-right: 10px;
+                margin-right: 0;
+            }">
               <!-- User image -->
-              <li class="user-header">
+              <li class="user-header" style="background-color: #7c97a1;">
                 <img src="{% if app.user.profileName %}{{ asset('uploads/photos/' ~ app.user.profileName) }}{% else %}{{ asset('assets/dist/img/user-avatar.jpg') }}{% endif %}" class="img-circle" alt="User Image">
 
                 <p>
@@ -88,13 +92,13 @@
 
               </li>
               <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profil</a>
-                </div>
-                <div class="pull-right">
-                  <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Se déconnecter</a>
-                </div>
+              <li class="user-footer" style="display: flex;">
+                <a href="{{ path('user_profile') }}" class="" ass="btn btn-default btn-flat" style="width: 50%;height: 28.5px;float:left;line-height: 20px;text-align: center;">
+                      Profil
+                </a>
+                <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat" style="width: 50%;height: 28.5px;line-height: 20px;text-align: center;">
+                      Se déconnecter
+                </a>
               </li>
             </ul>
           </li>
@@ -103,7 +107,7 @@
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
+  <aside class="main-sidebar" style="background-color: #434E5E;padding-top:60px;">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
