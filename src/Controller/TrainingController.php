@@ -18,10 +18,9 @@ class TrainingController extends AbstractController
         $user = $this->getUser();
         $trainings = $em->getRepository('App:Training')->fetchByUser($user->getId());
 
-        return $this->render('training/index.html.twig',
-            [
-                'trainings' => $trainings,
-                'user' => $user->getId(),
+        return $this->render('training/index.html.twig', [
+            'trainings' => $trainings,
+            'user' => $user->getId(),
         ]);
     }
 
