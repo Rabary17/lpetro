@@ -9,6 +9,9 @@ use Symfony\Bridge\Doctrine\Form\DataTransformer\CollectionToArrayTransformer;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * @SuppressWarnings(PHPMD)
+ */
 class TagType extends AbstractType
 {
     private $manager;

@@ -11,6 +11,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use App\Form\TagType;
 
+/**
+ * @SuppressWarnings(PHPMD)
+ */
 class UserEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)

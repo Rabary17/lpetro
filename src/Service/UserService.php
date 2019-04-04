@@ -56,7 +56,7 @@ class UserService
 
     /**
      * cvStatut
-     * @param  string $id [description]
+     * @param  string $id       [description]
      * @param  string $idstatut [description]
      * @return array
      */
