@@ -5,19 +5,23 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\UserService;
+use App\Service\LpMailerService;
 
 class RhHomeController extends AbstractController
 {
 
     private $userService;
+    private $mailer;
 
     /**
      * User service
-     * @param UserService $userService [description]
+     * @param UserService     $userService [description]
+     * @param LpMailerService $mailer      mailer
      */
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, LpMailerService $mailer)
     {
         $this->userService = $userService;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -55,7 +59,19 @@ class RhHomeController extends AbstractController
      */
     public function rhValidate($id)
     {
-        $this->userService->cvRhValidate($id);
+        $candidat = $this->userService->cvRhValidate($id);
+        if ($candidat) {
+            $this->mailer->sendMail(
+                htmlentities($candidat),
+                'LP | CV validé',
+                $this->renderView(
+                    'emails/validated-cv-confirmation-email.html.twig',
+                    ['user' => $candidat]
+                ),
+                'user_confirm_notice',
+                'Mail pour confirmation de validation de cv envoyé.'
+            );
+        }
 
         return $this->redirectToRoute('rh_view_cvs');
     }

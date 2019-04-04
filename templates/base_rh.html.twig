@@ -178,6 +178,18 @@
         <title>{% block title %}LPCS{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
+    {% for message in app.flashes('user_confirm_notice') %}
+      <div class="alert-dismissible" id="confirm_email">
+          <a href="#" class="close" data-dismiss="alert" id="close" aria-label="close">&times;</a>
+          <p>{{ message }}</p>
+      </div>
+    {% endfor %}
+    {% for message in app.flashes('success_submit') %}
+          <div class="alert-dismissible" id="confirm_email">
+              <a href="#" class="close" data-dismiss="alert" id="close" aria-label="close">&times;</a>
+              <p>{{ message }}</p>
+          </div>
+      {% endfor %}
     <body>
         {% block body %}{% endblock %}
     <!-- jQuery 3 -->

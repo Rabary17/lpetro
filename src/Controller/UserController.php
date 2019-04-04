@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\UserType;
 use App\Service\UserService;
 use App\Service\LpMailerService;
-use Swift_Mailer;
 
 class UserController extends AbstractController
 {
