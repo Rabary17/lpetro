@@ -16,6 +16,7 @@ class RegistrationConfirmListener implements EventSubscriberInterface
 
     /**
      * Constructor
+     *
      * @param UrlGeneratorInterface $router
      */
     public function __construct(UrlGeneratorInterface $router)
@@ -40,6 +41,7 @@ class RegistrationConfirmListener implements EventSubscriberInterface
 
     /**
      * Registraton success
+     *
      * @param \FOS\UserBundle\Event\FormEvent $event
      *
      * @return void
@@ -58,6 +60,7 @@ class RegistrationConfirmListener implements EventSubscriberInterface
 
     /**
      * Registration confirm
+     *
      * @param \FOS\UserBundle\Event\GetResponseUserEvent $event
      *
      * @return void

@@ -9,7 +9,7 @@ class SkillController extends AbstractController
 {
     /**
      * @Route("/skill", name="skill")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return          \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index()
     {
@@ -18,16 +18,18 @@ class SkillController extends AbstractController
         $user = $this->getUser();
         $skills = $em->getRepository('App:Skill')->fetchByUser($user->getId());
 
-        return $this->render('skill/index.html.twig', [
+        return $this->render(
+            'skill/index.html.twig', [
             'skills' => $skills,
             'user' => $user->getId(),
-        ]);
+            ]
+        );
     }
 
     /**
      * @Route("/skill/delete/{id}", name="delete_skill")
-     * @param string $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param                       string $id
+     * @return                      \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function delete($id)
     {
@@ -42,10 +44,12 @@ class SkillController extends AbstractController
             return $this->redirectToRoute('skill');
         }
 
-        return $this->render('skill/index.html.twig', [
+        return $this->render(
+            'skill/index.html.twig', [
             'skills' => $skill,
             'error' => 'Impossible de supprimé ce compétence',
             'user' => $user->getId(),
-        ]);
+            ]
+        );
     }
 }

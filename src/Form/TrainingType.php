@@ -25,7 +25,8 @@ class TrainingType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', TextType::class, [
+        $builder->add(
+            'name', TextType::class, [
                     'label' => 'TITRE DE LA FORMATION',
                     'label_attr' => [
                         'class' => 'mylabel'
@@ -34,7 +35,7 @@ class TrainingType extends AbstractType
                         'class' => 'form-control'
                     ]
                 ]
-            )
+        )
             ->add(
                 'description',
                 null,
@@ -45,7 +46,8 @@ class TrainingType extends AbstractType
                     ]
                 ]
             )
-            ->add('startDate', DateType::class, [
+            ->add(
+                'startDate', DateType::class, [
                     'widget' => 'single_text',
                     'required' => false,
                     'label' => 'DEBUT DE LA FORMATION',
@@ -57,7 +59,8 @@ class TrainingType extends AbstractType
                     ]
                 ]
             )
-            ->add('endDate', DateType::class, [
+            ->add(
+                'endDate', DateType::class, [
                     'widget' => 'single_text',
                     'required' => false,
                     'label' => 'FIN DE LA FORMATION',
@@ -69,7 +72,8 @@ class TrainingType extends AbstractType
                     ]
                 ]
             )
-            ->add('level', TextType::class, [
+            ->add(
+                'level', TextType::class, [
                     'required' => false,
                     'label' => 'NIVEAU',
                     'label_attr' => [
@@ -80,7 +84,8 @@ class TrainingType extends AbstractType
                     ]
                 ]
             )
-            ->add('school', TextType::class, [
+            ->add(
+                'school', TextType::class, [
                     'required' => false,
                     'label' => 'ETABLISSEMENT',
                     'label_attr' => [
@@ -90,8 +95,7 @@ class TrainingType extends AbstractType
                         'class' => 'form-control'
                     ]
                 ]
-            )
-            ;
+            );
     }
 
     /**
@@ -103,8 +107,10 @@ class TrainingType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => Training::class
-        ]);
+            ]
+        );
     }
 }

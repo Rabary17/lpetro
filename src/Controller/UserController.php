@@ -19,6 +19,7 @@ class UserController extends AbstractController
 
     /**
      * contructor
+     *
      * @param UserService     $userService
      * @param LpMailerService $mailer      mailer
      */
@@ -30,7 +31,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/profile", name="user_profile")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return            \Symfony\Component\HttpFoundation\Response
      */
     public function index()
     {
@@ -45,8 +46,8 @@ class UserController extends AbstractController
 
     /**
      * @Route("/encode-cv/{id}", name="user_cv_send")
-     * @param datatype $id
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param                    datatype $id
+     * @return                   \Symfony\Component\HttpFoundation\Response
      */
     public function sendCvs($id)
     {
@@ -77,9 +78,9 @@ class UserController extends AbstractController
 
     /**
      * @Route("/profile/edit/{id}", name="user_profile_edit")
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param string                                    $id
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param                       \Symfony\Component\HttpFoundation\Request $request
+     * @param                       string                                    $id
+     * @return                      \Symfony\Component\HttpFoundation\Response
      */
     public function edit(Request $request, $id)
     {
@@ -95,9 +96,11 @@ class UserController extends AbstractController
             }
         }
 
-        return  $this->render('user/edit_profile.html.twig', [
+        return  $this->render(
+            'user/edit_profile.html.twig', [
                     'user' => $user,
                     'form' => $form->createView(),
-        ]);
+            ]
+        );
     }
 }

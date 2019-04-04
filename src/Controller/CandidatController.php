@@ -17,6 +17,7 @@ class CandidatController extends AbstractController
 
     /**
      * User service
+     *
      * @param UserService $userService [description]
      */
     public function __construct(UserService $userService)
@@ -26,9 +27,9 @@ class CandidatController extends AbstractController
 
     /**
      * @Route("/candidat/{id}", name="candidat_view")
-     * @param Request $request description
-     * @param string  $id      id candidat
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param                   Request $request description
+     * @param                   string  $id      id candidat
+     * @return                  \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index(Request $request, $id)
     {
@@ -37,9 +38,11 @@ class CandidatController extends AbstractController
         if ($candidat) {
             $viewCandidat = $this->userService->cvViewed($id);
 
-            return $this->render('candidat/index.html.twig', [
+            return $this->render(
+                'candidat/index.html.twig', [
                 'candidat' => $viewCandidat,
-            ]);
+                ]
+            );
         }
 
         return $this->redirectToRoute('rh_home');
@@ -47,9 +50,9 @@ class CandidatController extends AbstractController
 
     /**
      * @Route("/candidat/edit/{id}", name="candidat_edit")
-     * @param Request $request description
-     * @param string  $id      id candidat
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param                        Request $request description
+     * @param                        string  $id      id candidat
+     * @return                       \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function edit(Request $request, $id)
     {
@@ -64,9 +67,11 @@ class CandidatController extends AbstractController
             }
         }
 
-        return $this->render('candidat/edit.html.twig', [
+        return $this->render(
+            'candidat/edit.html.twig', [
             'candidat' => $candidat,
             'form' => $form->createView(),
-        ]);
+            ]
+        );
     }
 }

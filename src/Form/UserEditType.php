@@ -52,14 +52,15 @@ class UserEditType extends AbstractType
             ->remove('sports')
             ->add('statut')
             ->add('tags', TagType::class)
-            ->add('submit', SubmitType::class)
-        ;
+            ->add('submit', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => User::class,
-        ]);
+            ]
+        );
     }
 }

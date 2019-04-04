@@ -23,7 +23,7 @@ class Training
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="trainings", cascade={"persist"})
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id",     referencedColumnName="id")
      */
     private $user;
 

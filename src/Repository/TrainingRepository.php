@@ -16,6 +16,7 @@ class TrainingRepository extends ServiceEntityRepository
 {
     /**
      * Constructor
+     *
      * @param RegistryInterface $registry
      */
     public function __construct(RegistryInterface $registry)
@@ -24,7 +25,7 @@ class TrainingRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param string $userId description
+     * @param  string $userId description
      * @return Training[] Returns an array of Training objects
      */
     public function fetchByUser($userId): ?array
@@ -33,7 +34,6 @@ class TrainingRepository extends ServiceEntityRepository
             ->andWhere('t.user = :user')
             ->setParameter('user', $userId)
             ->getQuery()
-            ->getArrayResult()
-        ;
+            ->getArrayResult();
     }
 }
