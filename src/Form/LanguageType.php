@@ -18,7 +18,9 @@ class LanguageType extends AbstractType
     {
         $builder
             ->add(
-                'name', TextType::class, [
+                'name',
+                TextType::class,
+                [
                     'label' => 'NOM',
                     'label_attr' => [
                         'class' => 'mylabel'
@@ -29,7 +31,9 @@ class LanguageType extends AbstractType
                 ]
             )
             ->add(
-                'level', ChoiceType::class, [
+                'level',
+                ChoiceType::class,
+                [
                 'label' => 'NIVEAU',
                 'label_attr' => [
                     'class' => 'mylabel'

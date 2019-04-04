@@ -35,7 +35,8 @@ class TagType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefault(
-            'attr', [
+            'attr',
+            [
             'class' => 'form-control tag-input'
             ]
         );

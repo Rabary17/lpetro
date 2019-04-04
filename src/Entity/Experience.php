@@ -217,5 +217,4 @@ class Experience
 
         return $this;
     }
-
 }

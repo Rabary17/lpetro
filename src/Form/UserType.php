@@ -39,14 +39,18 @@ class UserType extends AbstractType
             ->add('lastName')
             ->add('firstName')
             ->add(
-                'dateOfBirth', DateType::class, [
+                'dateOfBirth',
+                DateType::class,
+                [
                     'widget' => 'single_text',
                     'required' => false
                 ]
             )
             ->add('placeOfBirth')
             ->add(
-                'maritalStatus', ChoiceType::class, [
+                'maritalStatus',
+                ChoiceType::class,
+                [
                 'choices'  => [
                     'Célibataire' => 'Célibataire',
                     'Marié(e)' => 'Marié(e)',
@@ -62,14 +66,18 @@ class UserType extends AbstractType
             ->add('nbChildren')
             ->add('address')
             ->add(
-                'nationality', EntityType::class, [
+                'nationality',
+                EntityType::class,
+                [
                     'class' => nationality::class,
                     'choice_label' => 'nationality'
                 ]
             )
             ->add('phoneNumber')
             ->add(
-                'hobbies', EntityType::class, [
+                'hobbies',
+                EntityType::class,
+                [
                     'class' => Hobby::class,
                     'choice_label' => 'name',
                     'multiple' => true,
@@ -77,7 +85,9 @@ class UserType extends AbstractType
                 ]
             )
             ->add(
-                'sports', EntityType::class, [
+                'sports',
+                EntityType::class,
+                [
                     'class' => Sport::class,
                     'choice_label' => 'name',
                     'multiple' => true,
@@ -85,7 +95,9 @@ class UserType extends AbstractType
                 ]
             )
             ->add(
-                'extraWorkActivities', CollectionType::class, [
+                'extraWorkActivities',
+                CollectionType::class,
+                [
                     'entry_type' => ExtraWorkActivityType::class,
                     'allow_add' => true,
                     'allow_delete'=> true,
@@ -97,7 +109,9 @@ class UserType extends AbstractType
                 ]
             )
             ->add(
-                'trainings', CollectionType::class, [
+                'trainings',
+                CollectionType::class,
+                [
                     'entry_type' => TrainingType::class,
                     'allow_add' => true,
                     'allow_delete'=> true,
@@ -109,7 +123,9 @@ class UserType extends AbstractType
                 ]
             )
             ->add(
-                'languages', CollectionType::class, [
+                'languages',
+                CollectionType::class,
+                [
                     'entry_type' => LanguageType::class,
                     'allow_add' => true,
                     'allow_delete'=> true,
@@ -121,7 +137,9 @@ class UserType extends AbstractType
                 ]
             )
             ->add(
-                'experiences', CollectionType::class, [
+                'experiences',
+                CollectionType::class,
+                [
                     'entry_type' => ExperienceType::class,
                     'allow_add' => true,
                     'allow_delete'=> true,
@@ -134,7 +152,9 @@ class UserType extends AbstractType
                 ]
             )
             ->add(
-                'skills', CollectionType::class, [
+                'skills',
+                CollectionType::class,
+                [
                     'entry_type' => SkillType::class,
                     'allow_add' => true,
                     'allow_delete'=> true,
@@ -146,7 +166,9 @@ class UserType extends AbstractType
                 ]
             )
             ->add(
-                'profileFile', FileType::class, [
+                'profileFile',
+                FileType::class,
+                [
                     'required' => false
                 ]
             );
