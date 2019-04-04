@@ -18,16 +18,19 @@
 							    <li><a href="#"><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ user.phoneNumber }}</a></li>
 						    </ul>
 					    </div><!--//primary-info-->
-					    <div class="secondary-info ml-md-auto mt-2">
-							<a class="btn-edit-cv" href="{{ path('user_profile_edit', {'id' : user.id }) }}">Editer mon cv</a>
-					    </div><!--//secondary-info-->
-					    <div class="secondary-info ml-md-auto mt-2">
-							{% if app.user.submit %}
-							<span class="btn-edit-cv">CV déjà soumis</span>
-							{% else %}
-							<a class="btn-edit-cv" href="{{ path('user_cv_send', {'id' : user.id}) }}">Soumettre mon cv pour validation</a>
-							{% endif %}
-					    </div><!--//secondary-info-->
+						<div style="display:block">
+							{# <div class="secondary-info ml-md-auto mt-2"> #}
+								<a class="btn-edit-cv" href="{{ path('user_profile_edit', {'id' : user.id }) }}">Editer mon cv</a>
+							{# </div> #}
+
+							{# <div class="secondary-info ml-md-auto mt-2"> #}
+								{% if app.user.submit %}
+								<a class="btn-edit-cv">CV déjà soumis</a>
+								{% else %}
+								<a class="btn-edit-cv" href="{{ path('user_cv_send', {'id' : user.id}) }}">Soumettre mon cv pour validation</a>
+								{% endif %}
+							{# </div> #}
+						</div>
 					    
 				    </div><!--//media-body-->
 			    </div><!--//media-->
