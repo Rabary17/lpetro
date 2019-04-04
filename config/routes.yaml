@@ -1,6 +1,6 @@
 fos.user.registration:
     path: /register
     controller: App\Controller\RegistrationController::registerAction
-
+    
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

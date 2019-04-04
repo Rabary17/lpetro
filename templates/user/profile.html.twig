@@ -45,7 +45,7 @@
 						    <p>Situation familiale: {{ user.maritalStatus }}</p>
 						    <p>Nom du conjoint: {{ user.conjointName }}</p>
 						    <p>Nombre d'enfant: {{ user.nbChildren }}</p>
-						    <p>Nationalité: {{ user.nationality.nationality }}</p>
+						    <p>Nationalité: {% if user.nationality.nationality is defined %}{{ user.nationality.nationality }}{% endif %}</p>
 						    <p>Adresse: {{ user.address }}</p>
 						</section>
 					    <section class="resume-section experience-section mb-5">
