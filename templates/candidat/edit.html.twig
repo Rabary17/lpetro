@@ -2,6 +2,7 @@
 {% block stylesheets %}
     {{ parent() }}
 	<link rel="stylesheet" href="{{ asset('assets/dist/css/profil.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/select2.css')}}">
 {% endblock %}
 {% block body %}
     <article class="resume-wrapper text-center position-relative">
@@ -36,6 +37,13 @@
 							{{ form_widget(form.tags, {attr:{'class': 'form-control tag-input', 'id': 'status', 'required': false}}) }}
 							<span class="text-danger">{{ form_errors(form.tags) }}</span>
 						</p>
+
+						<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">INTERVIEWS</h2>
+						<div id="extra-work-activity" class="container" style="min-height: 50px;">
+						{% form_theme form 'collection/jquery.collection.html.twig' %}
+						{{ form_row(form.interviews) }}
+						</div>
+						
 						<p>
 							<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="btn btn-default">Annuler</a>
 							{{ form_widget(form.submit, {attr:{'class': 'btn btn-primary', 'id': 'submit'}}) }}
@@ -47,6 +55,8 @@
    </article>
 {% endblock body %}
 {% block javascripts %}
+<script src="{{ asset('assets/dist/js/select2.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/jquery.collection.js') }}"></script>
 	<script type="text/javascript">
 		var tags = new Bloodhound({
 			prefetch: 'http://localhost:8000/tags',
@@ -64,6 +74,13 @@
 					source: tags
 				}]
 			});
+		});
+
+		$('.collection-selector-user-interviews').collection({
+			allow_up: false,
+			allow_down: false,
+			add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+			remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
 		});
 	</script>
 {% endblock %}

@@ -171,6 +171,11 @@ class User extends BaseUser
      */
     private $rhvalidate;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Interview", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $interviews;
+
     public function __construct()
     {
         parent::__construct();
@@ -187,6 +192,7 @@ class User extends BaseUser
         $this->roles = array('ROLE_CANDIDAT');
         $this->languages = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->interviews = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -675,6 +681,37 @@ class User extends BaseUser
     public function setRhvalidate(?bool $rhvalidate): self
     {
         $this->rhvalidate = $rhvalidate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Interview[]
+     */
+    public function getInterviews(): Collection
+    {
+        return $this->interviews;
+    }
+
+    public function addInterview(Interview $interview): self
+    {
+        if (!$this->interviews->contains($interview)) {
+            $this->interviews[] = $interview;
+            $interview->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInterview(Interview $interview): self
+    {
+        if ($this->interviews->contains($interview)) {
+            $this->interviews->removeElement($interview);
+            // set the owning side to null (unless already changed)
+            if ($interview->getUser() === $this) {
+                $interview->setUser(null);
+            }
+        }
 
         return $this;
     }
