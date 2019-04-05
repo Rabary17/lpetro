@@ -53,4 +53,19 @@ class UserService
 
         return $candidat;
     }
+
+    /**
+     * cvStatut
+     * @param  string $id [description]
+     * @param  string $idstatut [description]
+     * @return array
+     */
+    public function cvStatut($id, $idstatut)
+    {
+        $candidat = $this->em->getRepository('App:User')->find($id);
+        $candidat->setStatut($idstatut);
+        $this->em->flush();
+
+        return $candidat;
+    }
 }

@@ -27,6 +27,7 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/dist/css/bootstrap-tagsinput.css') }}">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -72,8 +73,8 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{% if app.user.profileName %}{{ asset('uploads/photos/' ~ app.user.profileName) }}{% else %}{{ asset('assets/dist/img/user-avatar.jpg') }}{% endif %}" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{ app.user.lastName }}</span>
+              <img src="{% if app.user.profileName is defined %}{{ asset('uploads/photos/' ~ app.user.profileName) }}{% else %}{{ asset('assets/dist/img/user-avatar.jpg') }}{% endif %}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{% if app.user.lastName is defined %}{{ app.user.lastName }}{% endif %}</span>
             </a>
             <ul class="dropdown-menu" style="border: none;
                 margin: 10px;
@@ -82,10 +83,10 @@
             ">
               <!-- User image -->
               <li class="user-header" style="background-color: #7c97a1;">
-                <img src="{% if app.user.profileName %}{{ asset('uploads/photos/' ~ app.user.profileName) }}{% else %}{{ asset('assets/dist/img/user-avatar.jpg') }}{% endif %}" class="img-circle" alt="User Image">
+                <img src="{% if app.user.profileName is defined %}{{ asset('uploads/photos/' ~ app.user.profileName) }}{% else %}{{ asset('assets/dist/img/user-avatar.jpg') }}{% endif %}" class="img-circle" alt="User Image">
 
                 <p>
-                  {{ app.user.lastName }} - Responsable RH
+                  {% if app.user.lastName is defined %}{{ app.user.lastName }} {% endif %} - Responsable RH
                   <small>Premier responsable</small>
                 </p>
               </li>
@@ -198,5 +199,8 @@
     <script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/dist/js/bootstrap-tagsinput.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/dist/js/bootstrap-tagsinput-angular.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/dist/js/typeahead.js') }}"></script>
     </body>
 </html>
