@@ -55,7 +55,7 @@ class RhHomeController extends AbstractController
         return $this->render(
             'rh_home/index.html.twig',
             [
-            'candidates' => $candidates,
+                'candidates' => $candidates,
             ]
         );
     }

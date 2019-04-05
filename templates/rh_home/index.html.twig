@@ -6,46 +6,73 @@
 
 {% block body %}
 	<div class="banner">
-		{% for candidat in candidates %}
-			{# <div class="card" style="width: 18rem;">
-			  <img class="card-img-top" src="{{ asset('uploads/photos/' ~ candidat.profileName) }}" alt="Photo de {{ candidat.lastName }}" width="100px" height="100px">
-			  <div class="card-body">
-			    <h5 class="card-title">CV {{ candidat.lastName }}</h5>
-			    <p class="card-text">{{ candidat.firstName }}</p>
-					<p class="card-text">{{ candidat.email }}</p>
-					{% if candidat.rhvalidate  %}
-						<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="btn btn-primary"><i class="fa fa-eye"></i> Voir</a>
-					{% else %}
-						<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="btn btn-primary"><i class="fa fa-eye"></i> Voir</a>
-						<a href="{{ path('rh_validate_cv', {id: candidat.id}) }}" class="btn btn-success">Valider le CV</a>
-					{% endif %}
-			  </div>
-			</div> #}
-
-        <div>
-            <!-- Team member -->
-            <div class="col-xs-12 col-sm-4 col-md-2">
-							<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="cv_show" title="Voir le CV">
-									<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-											<div class="mainflip">
-													<div class="frontside">
-															<div class="card">
-																	<div class="card-body text-center">
-																			<p><img class="img-fluid img-cv-list" src="{{ asset('uploads/photos/' ~ candidat.profileName) }}" alt="Photo de {{ candidat.lastName }}" alt="card image"></p>
-																			<div>
-																				<h2 class="card-title">{{ candidat.lastName }}</h2>
-																				<p class="card-title" style="font-size: 18px;">{{ candidat.firstName }}</p>
-																				<p class="card-text" style="font-weight:normal">{{ candidat.email }}</p>
-																			</div>
-																	</div>
-															</div>
-													</div>
+		<input type="search" name="q" class="form-control" placeholder="Tapez le nom/prénom (en entier ou partiel) ou l'adresse email du candidat" onchange="searchCandidat(this)">
+		<br/>
+		<div class="ajax-content">
+			{% for candidat in candidates %}
+		        <div>
+		            <!-- Team member -->
+		            <div class="col-xs-12 col-sm-4 col-md-2">
+						<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="cv_show" title="Voir le CV">
+							<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+								<div class="mainflip">
+									<div class="frontside">
+										<div class="card">
+											<div class="card-body text-center">
+												<p><img class="img-fluid img-cv-list" src="{{ asset('uploads/photos/' ~ candidat.profileName) }}" alt="Photo de {{ candidat.lastName }}" alt="card image"></p>
+												<div>
+													<h2 class="card-title">{{ candidat.lastName }}</h2>
+													<p class="card-title" style="font-size: 18px;">{{ candidat.firstName }}</p>
+													<p class="card-text" style="font-weight:normal">{{ candidat.email }}</p>
+												</div>
 											</div>
+										</div>
 									</div>
-							</a>
-						</div>
+								</div>
+							</div>
+						</a>
+					</div>
 				</div>
-
-		{% endfor %}
+			{% endfor %}
+		</div>
 	</div>
+{% endblock %}
+{% block javascripts %}
+	<script type="text/javascript">
+		function searchCandidat(query) {
+			$.post({
+				url: '/candidat/filter/list/candidat',
+				method: 'POST',
+				data: {q: query.value},
+				success: function(data) {
+					var html = '';
+					for (var i = 0; i < data.length; i++) {
+				        html += '<div>';
+				        html += '<div class="col-xs-12 col-sm-4 col-md-2">';
+						html += '<a href="/candidat/'+ data[i].id +'" class="cv_show" title="Voir le CV">';
+						html += '<div class="image-flip" ontouchstart="this.classList.toggle("hover");">';
+						html += '<div class="mainflip">';
+						html += '<div class="frontside">';
+						html += '<div class="card">';
+						html += '<div class="card-body text-center">';
+						html += '<p><img class="img-fluid img-cv-list" src="/uploads/photos/' + data[i].profileName +'" alt="Photo de ' + data[i].lastName +'" alt="card image"></p>';
+						html += '<div>';
+						html += '<h2 class="card-title">' + data[i].lastName +'</h2>';
+						html += '<p class="card-title" style="font-size: 18px;">' + data[i].firstName +'</p>';
+						html += '<p class="card-text" style="font-weight:normal">' + data[i].username +'</p>';
+						html += '</div>';
+						html += '</div>';
+						html += '</div>';
+						html += '</div>';
+						html += '</div>';
+						html += '</div>';
+						html += '</a>';
+						html += '</div>';
+						html += '</div>'
+					}
+					$('.ajax-content').html(html);
+				}
+			});
+		}
+	</script>
 {% endblock %}
