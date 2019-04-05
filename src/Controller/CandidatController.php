@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\UserService;
 use App\Form\TagType;
@@ -75,5 +76,19 @@ class CandidatController extends AbstractController
             'form' => $form->createView(),
             ]
         );
+    }
+
+    /**
+     * @Route("/candidat/filter/list/candidat", name="candidat_list")
+     * @param  Request $request description
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function list(Request $request)
+    {
+        $q = $request->request->get('q');
+        $em = $this->getDoctrine()->getManager();
+        $candidates = $em->getRepository('App:User')->fetchFilteredCandidates($q);
+
+        return $this->json($candidates);
     }
 }

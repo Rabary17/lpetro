@@ -62,4 +62,29 @@ class UserRepository extends ServiceEntityRepository
             ->getQuery()
             ->getArrayResult();
     }
+
+    /**
+     * @param string $q description
+     * @return array
+     */
+    public function fetchFilteredCandidates($q)
+    {
+        $role = 'ROLE_CANDIDAT';
+
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :roles')
+            ->andWhere('u.submit = :submit')
+            ->andWhere('u.enabled = :enabled')
+            ->andWhere('u.lastName LIKE :lastName')
+            ->orWhere('u.firstName LIKE :firstName')
+            ->orWhere('u.username LIKE :username')
+            ->setParameter('roles', '%"' . $role . '"%')
+            ->setParameter('lastName', '%' . $q . '%')
+            ->setParameter('firstName', '%' . $q . '%')
+            ->setParameter('username', '%' . $q . '%')
+            ->setParameter('submit', true)
+            ->setParameter('enabled', true)
+            ->getQuery()
+            ->getArrayResult();
+    }
 }
