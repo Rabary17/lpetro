@@ -1,7 +1,7 @@
 	{% trans_default_domain 'FOSUserBundle' %}
 	{% block subject %}
 	{%- autoescape false -%}
-		LP | Confirmation du compte
+		
 	{%- endautoescape -%}
 	{% endblock %}
 	{% block body_text %}
@@ -239,7 +239,9 @@
 								<tr>
 									<td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
 										<h1 style="margin: 0 0 10px; font-size: 25px; line-height: 30px; color: #333333; font-weight: 900;">Bonjour {{ user.lastName }}!</h1>
-										<p style="margin: 0 0 10px;">Nous avons bien reçu votre CV. Merci</p>
+										<p style="margin: 0 0 10px;">Nous avons bien reçu votre CV. Vous pouvez quand-même modifier votre CV à tout moment pourque les information soient bien à jour. Merci</p>
+										<p>Cordialement,</p>
+										<p>L'equipe LOGISTIQUE PETROLIERE</p>
 									</td>
 								</tr>
 							</table>

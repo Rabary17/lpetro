@@ -39,4 +39,18 @@ class UserService
 
         return $candidat;
     }
+
+    /**
+     * cvRhValidate
+     * @param  string $id [description]
+     * @return array
+     */
+    public function cvRhValidate($id)
+    {
+        $candidat = $this->em->getRepository('App:User')->find($id);
+        $candidat->setrhValidate(1);
+        $this->em->flush();
+
+        return $candidat;
+    }
 }

@@ -12,8 +12,13 @@
 			  <div class="card-body">
 			    <h5 class="card-title">CV {{ candidat.lastName }}</h5>
 			    <p class="card-text">{{ candidat.firstName }}</p>
-			    <p class="card-text">{{ candidat.email }}</p>
-			    <a href="{{ path('candidat_view', {id: candidat.id}) }}" class="btn btn-primary"><i class="fa fa-eye"></i> Voir</a>
+					<p class="card-text">{{ candidat.email }}</p>
+					{% if candidat.rhvalidate  %}
+						<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="btn btn-primary"><i class="fa fa-eye"></i> Voir</a>
+					{% else %}
+						<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="btn btn-primary"><i class="fa fa-eye"></i> Voir</a>
+						<a href="{{ path('rh_validate_cv', {id: candidat.id}) }}" class="btn btn-success">Valider le CV</a>
+					{% endif %}
 			  </div>
 			</div> #}
 

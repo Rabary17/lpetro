@@ -5,7 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
-
+    sender_email: 'r.herriniaina@gmail.com'
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -30,5 +30,9 @@ services:
     App\Controller\RegistrationController:
         class: App\Controller\RegistrationController
         arguments: ['@fos_user.registration.form.factory', '@event_dispatcher', '@fos_user.user_manager', '@fos_user.mailer.default']
+
+    App\Service\LpMailerService:
+        class: App\Service\LpMailerService
+        arguments: ['@swiftmailer.mailer', '%sender_email%', '@session.flash_bag']
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous onesZ

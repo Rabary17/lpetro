@@ -9,19 +9,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\UserType;
 use App\Service\UserService;
+use App\Service\LpMailerService;
 use Swift_Mailer;
 
 class UserController extends AbstractController
 {
     private $userService;
+    private $mailer;
 
     /**
      * contructor
-     * @param UserService $userService
+     * @param UserService     $userService
+     * @param LpMailerService $mailer      mailer
      */
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, LpMailerService $mailer)
     {
         $this->userService = $userService;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -44,7 +48,7 @@ class UserController extends AbstractController
      * @param datatype $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function sendCvs($id , \Swift_Mailer $mailer)
+    public function sendCvs($id)
     {
         $em = $this->getDoctrine()->getManager();
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
@@ -53,18 +57,19 @@ class UserController extends AbstractController
             $submission = $em->getRepository('App:User')->find($id);
             $submission->setSubmit(true);
             $em->flush();
-            
-            $message = (new \Swift_Message('Envoi de CV'))
-                ->setFrom('r.herriniaina@gmail.com','LOGISTIQUE PETROLIERE')
-                ->setTo(htmlentities($user))
-                ->setBody($this->renderView('emails/submit-cv-confirmation-email.html.twig',['user' => $user]), 'text/html');
 
-            $mailer->send($message);
+            $this->mailer->sendMail(
+                htmlentities($user),
+                'LP | Confirmation CV reçu',
+                $this->renderView(
+                    'emails/submit-cv-confirmation-email.html.twig',
+                    ['user' => $user]
+                ),
+                'user_confirm_notice',
+                'Votre CV a été soumis à LP. Un mail vous a été envoyé pour confirmer sa réception par LP'
+            );
 
-            $this->addFlash('success_submit', 'Votre CV a été soumis à LP. Un mail vous a été envoyé pour confirmer sa réception par LP');
-            return $this->render('user/profile.html.twig', [
-                   'user' => $user,
-            ]);
+            return $this->redirectToRoute('user_profile');
         }
 
         return $this->redirectToRoute('fos_user_security_login');
