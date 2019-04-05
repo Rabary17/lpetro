@@ -651,6 +651,8 @@ class User extends BaseUser
     public function setNationality(?Nationality $nationality): self
     {
         $this->nationality = $nationality;
+
+        return $this;
     }
 
     public function getStatut(): ?UserStatut

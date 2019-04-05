@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\UserService;
 use App\Service\LpMailerService;
+use Symfony\Component\HttpFoundation\Request;
+use App\Form\UserType;
 
 class RhHomeController extends AbstractController
 {
@@ -80,5 +82,49 @@ class RhHomeController extends AbstractController
         }
 
         return $this->redirectToRoute('rh_view_cvs');
+    }
+
+    /**
+     * @Route("/rh/profile", name="rh_profile")
+     * @return            \Symfony\Component\HttpFoundation\Response
+     */
+    public function profile()
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+        if ($user) {
+            return $this->render('rh/rh_profile.html.twig', ['user' => $user]);
+        }
+
+        return $this->redirectToRoute('fos_user_security_login');
+    }
+
+    /**
+     * @Route("/rh/profile/edit/{id}", name="rh_profile_edit")
+     * @param                       \Symfony\Component\HttpFoundation\Request $request
+     * @param                       string                                    $id
+     * @return                      \Symfony\Component\HttpFoundation\Response
+     */
+    public function edit(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $rh = $em->getRepository('App:User')->find($id);
+        $form = $this->createForm(UserType::class, $rh);
+
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em->flush();
+            }
+        }
+
+        return  $this->render(
+            'rh/edit_rh_profile.html.twig',
+            [
+            'user' => $rh,
+            'form' => $form->createView(),
+            ]
+        );
     }
 }

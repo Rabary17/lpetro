@@ -1,0 +1,234 @@
+{% extends 'base_user.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/profil.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/select2.css')}}">
+{% endblock %}
+{% block body %}
+    <article class="resume-wrapper text-center position-relative">
+		<form method="POST" enctype="multipart/form-data">
+			{{form_widget(form._token)}}
+			<div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
+				<header class="resume-header pt-4 pt-md-0">
+				
+					<div class="media flex-column flex-md-row" style="position: relative;">
+						
+						<div id="preview" style="min-height: 250px;width: 220px;background-size: cover; background-image:url('{{ asset('./uploads/photos/' ~ user.profileName) }}')">
+							<span style="position:absolute;width:1px;overflow: hidden;">
+								{{ form_widget(form.profileFile, {attr:{'onchange':'readURL(this)'}}) }} 
+								<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
+							</span>
+						</div>
+						<div class="btn-div" id="trig-upl" style="position: absolute;
+							position: absolute;
+							width: 140px;
+							text-align: center;
+							padding: 5px;
+							border: 1px solid white;
+							color: white;
+							background-color: #323232;
+							top: 50%;
+							margin: 0 40px;"
+						>
+							<i class="fa fa-picture-o"></i> Modifier
+						</div>
+							<div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
+							<div class="primary-info">
+								<ul class="list-unstyled">
+									<li>
+										<label for="firstName">NOM:</label>
+										{{ form_widget(form.firstName, {attr:{'class': 'form-control', 'id': 'firstName'}}) }}
+										<span class="text-danger">{{ form_errors(form.firstName) }}</span>
+									</li>
+									<li>
+										<label for="lastName">PRENOM:</label>
+										{{ form_widget(form.lastName, {attr:{'class': 'form-control', 'id': 'lastName'}}) }}
+										<span class="text-danger">{{ form_errors(form.lastName) }}</span>
+									</li>
+									<li class="mb-2">
+										<label for="email">EMAIL:</label>
+										{{ form_widget(form.email, {attr:{'class': 'form-control', 'id': 'email'}}) }}
+										<span class="text-danger">{{ form_errors(form.email) }}</span>
+									</a></li>
+									<li>
+										<label for="email"> PHONE:</label>
+										{{ form_widget(form.phoneNumber, {attr:{'class': 'form-control', 'id': 'phone'}}) }}
+										<span class="text-danger">{{ form_errors(form.phoneNumber) }}</span>
+									</li>
+								</ul>
+							</div><!--//primary-info-->
+							<div class="secondary-info ml-md-auto mt-2">
+								<a class="btn-edit-cv btn-div" href="{{ path('rh_profile') }}"><i class="fa fa-times"></i> Revenir</a>
+							</div><!--//secondary-info-->
+							
+						</div><!--//media-body-->
+					</div><!--//media-->
+				</header>
+				<div class="resume-body p-5">
+					<div class="row">
+						<div class="col-lg-9">
+							<section class="resume-section experience-section mb-5">
+								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">MES INFOS</h2>
+								<p>
+									<label for="dateOfBirth">DATE DE NAISSANCE:</label>
+									{{ form_widget(form.dateOfBirth, {attr:{'class': 'form-control', 'id': 'dateOfBirth', 'type': 'date', 'required': false}}) }}
+									<span class="text-danger">{{ form_errors(form.dateOfBirth) }}</span>
+								</p>
+								<p>
+									<label for="placeOfBirth">LIEU DE NAISSANCE:</label>
+									{{ form_widget(form.placeOfBirth, {attr:{'class': 'form-control', 'id': 'placeOfBirth'}}) }}
+									<span class="text-danger">{{ form_errors(form.placeOfBirth) }}</span>
+								</p>
+								<p>
+									<label for="maritalStatus">SITUATION MATRIMONIALE:</label>
+									{{ form_widget(form.maritalStatus, {attr:{'class': 'form-control', 'id': 'maritalStatus'}}) }}
+									<span class="text-danger">{{ form_errors(form.maritalStatus) }}</span>
+								</p>
+								<p>
+									<label for="conjointName">NOM CONJOINT(E):</label>
+									{{ form_widget(form.conjointName, {attr:{'class': 'form-control', 'id': 'conjointName'}}) }}
+									<span class="text-danger">{{ form_errors(form.conjointName) }}</span>
+								</p>
+								<p>
+									<label for="nbChildren">NOMBRE D'ENFANTS:</label>
+									{{ form_widget(form.nbChildren, {attr:{'class': 'form-control', 'id': 'nbChildren'}}) }}
+									<span class="text-danger">{{ form_errors(form.nbChildren) }}</span>
+								</p>
+								<p>
+									<label for="nbChildren">NATIONALITE</label>
+									{{ form_widget(form.nationality, {attr:{'class': 'form-control', 'id': 'nationality'}}) }}
+									<span class="text-danger">{{ form_errors(form.nationality) }}</span>
+								</p>
+								<p>	
+									<label for="addressaddress">ADRESSE:</label>
+									{{ form_widget(form.address, {attr:{'class': 'form-control', 'id': 'address', 'rows': 5}}) }}
+									<span class="text-danger">{{ form_errors(form.address) }}</span>
+								</p>
+								<br/>
+
+								<div style="padding:20px; margin-top:30px;text-align:center;">
+									<input style="font-size:15px;" type="submit" class="btn btn-primary" value="Sauvegarder"> ou 
+									<a href="{{ path('user_profile') }}"class="btn btn-default" style="font-size:15px;"><i class="fa fa-times"></i> Revenir</a>
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</article>
+
+{% endblock body %}
+{% block javascripts %}
+<script src="{{ asset('assets/dist/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/intlTelInput.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/intlTelInput-jquery.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/select2.min.js') }}"></script>
+<script src="{{ asset('assets/dist/js/jquery.collection.js') }}"></script>
+	<script type="text/javascript">
+     	function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#preview')
+                        .css('backgroundImage', 'url(' + e.target.result +')');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+		jQuery(document).ready(function($) {
+			jQuery(document).on('mouseup', function(e){
+				$(document).find('select').each(function(event){
+					$(this).selectize({
+					allowEmptyOption: true,
+					create: true
+				});
+			})
+			$("#user_phoneNumber").intlTelInput({
+				// whether or not to allow the dropdown
+				allowDropdown: true,
+				// if there is just a dial code in the input: remove it on blur, and re-add it on focus
+				autoHideDialCode: false,
+				// add a placeholder in the input with an example number for the selected country
+				autoPlaceholder: "polite",
+				// modify the auto placeholder
+				customPlaceholder: null,
+				// append menu to specified element
+				dropdownContainer: null,
+				// don't display these countries
+				excludeCountries: [],
+				// format the input value during initialisation and on setNumber
+				formatOnDisplay: true,
+				// geoIp lookup function
+				geoIpLookup: null,
+				// inject a hidden input with this name, and on submit, populate it with the result of getNu
+				hiddenInput: "",
+				// initial country
+				initialCountry: "mg",
+				// localized country names e.g. { 'de': 'Deutschland' }
+				localizedCountries: {'fr': 'France'},
+				// don't insert international dial codes
+				nationalMode: false,
+				// number type to use for placeholders
+				placeholderNumberType: "MOBILE",
+				// the countries at the top of the list. defaults to united states and united kingdom
+				preferredCountries: [ "mg", "fr" ],
+				// display the country dial code next to the selected flag so it's not part of the typed number
+				separateDialCode: false,
+				// specify the path to the libphonenumber script to enable validation/formatting
+				utilsScript: ""
+			});
+			// $('#user_maritalStatus').select2();
+			// $('#user_nationality').select2();
+			// $('.language_level').select2();
+			$('#user_experiences').addClass('container');
+			$('#trig-upl').on('click', function(){
+				$('#user_profileFile').trigger('click');
+			})
+			$('.collection-selector-user-extraWorkActivities').collection({
+					allow_up: false,
+					allow_down: false,
+					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+				});
+			$('.collection-selector-user-trainings').collection({
+					allow_up: false,
+					allow_down: false,
+					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+				});
+			$('.collection-selector-user-skills').collection({
+					allow_up: false,
+					allow_down: false,
+					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+			});
+			$('.collection-selector-user-languages').collection({
+					allow_up: false,
+					allow_down: false,
+					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+			});
+			$('.collection-selector-user-experience').collection({
+					allow_up: false,
+					allow_down: false,
+					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+					prefix: 'parent',
+					add_at_the_end: true,
+					children: [{
+						selector: '.collection-selector-people-reference',
+						prefix: 'child',
+						allow_up: false,
+						allow_down: false,
+						add_at_the_end: true,
+						add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i><span style="font-size:10px;">Ajouter une personne de référence</span></a>',
+						remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+						// ...
+					}]
+				});
+			});
+		});
+	</script>
+{% endblock %}
