@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use App\Form\TagType;
+use App\Form\InterviewType;
 
 /**
  * @SuppressWarnings(PHPMD)
@@ -52,6 +53,20 @@ class UserEditType extends AbstractType
             ->remove('sports')
             ->add('statut')
             ->add('tags', TagType::class)
+            ->add(
+                'interviews',
+                CollectionType::class,
+                [
+                    'entry_type' => InterviewType::class,
+                    'allow_add' => true,
+                    'allow_delete'=> true,
+                    'by_reference' => false,
+                    'prototype' => true,
+                    'attr' => array(
+                        'class' => 'collection-selector-user-interviews'
+                    )
+                ]
+            )
             ->add('submit', SubmitType::class);
     }
 
