@@ -28,6 +28,8 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/dist/css/bootstrap-tagsinput.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/dist/css/custom.css') }}">
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -178,7 +180,6 @@
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
     <!-- jQuery 3 -->
     <script src="{{ asset('assets/dist/js/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -200,7 +201,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
     <script type="text/javascript" src="{{ asset('assets/dist/js/bootstrap-tagsinput.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/dist/js/bootstrap-tagsinput-angular.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/dist/js/typeahead.js') }}"></script>
+    {% block javascripts %}{% endblock %}
     </body>
 </html>

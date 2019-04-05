@@ -18,7 +18,6 @@
         "symfony/orm-pack": "^1.0",
         "symfony/profiler-pack": "^1.0",
         "symfony/security-bundle": "*",
-        "symfony/serializer": "4.1.*",
         "symfony/swiftmailer-bundle": "^3.2",
         "symfony/translation": "*",
         "symfony/twig-bundle": "*",

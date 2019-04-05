@@ -7,7 +7,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use App\Form\TagType;
 
+/**
+ * @SuppressWarnings(PHPMD)
+ */
 class UserEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -45,7 +51,7 @@ class UserEditType extends AbstractType
             ->remove('hobbies')
             ->remove('sports')
             ->add('statut')
-            ->add('tags')
+            ->add('tags', TagType::class)
             ->add('submit', SubmitType::class)
         ;
     }

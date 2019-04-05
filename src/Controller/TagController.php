@@ -17,6 +17,6 @@ class TagController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $tags = $em->getRepository('App:Tag')->findAll();
 
-        return new JsonResponse($tags);
+        return $this->json($tags, 200, [], ['groups' => ['public']]);
     }
 }
