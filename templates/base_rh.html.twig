@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/dist/css/bootstrap-tagsinput.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/dist/css/custom.css') }}">
-
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/select2.css')}}">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -202,6 +202,19 @@
     <script src="dist/js/demo.js"></script>
     <script type="text/javascript" src="{{ asset('assets/dist/js/bootstrap-tagsinput.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/dist/js/typeahead.js') }}"></script>
+    <script src="{{ asset('assets/dist/js/select2.min.js') }}"></script>
+    <script>
+    	jQuery(document).ready(function($) {
+        jQuery(document).on('mouseup', function(e){
+          $(document).find('select').each(function(event){
+            $(this).selectize({
+            allowEmptyOption: true,
+            create: true
+          });
+          })
+			})
+      })
+    </script>
     {% block javascripts %}{% endblock %}
     </body>
 </html>

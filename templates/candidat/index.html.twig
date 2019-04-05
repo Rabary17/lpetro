@@ -15,7 +15,7 @@
 						    <ul class="list-unstyled">
 							    <li class="mb-2"><a href="#"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{candidat.email}}</a></li>
 							    <li><a href="#"><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ candidat.phoneNumber }}</a></li>
-								<li>{{ candidat.statut }}</li>
+								<li><a href="#"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i>{{ candidat.statut }}</a></li>
 						    </ul>
 					    </div><!--//primary-info-->
 					    <div class="col-sm-6 col-md-2 col-lg-2">
@@ -120,7 +120,7 @@
 						    <div class="resume-section-content">
 							    <div class="resume-timeline position-relative">
 							    	{% for tag in candidat.tags %}
-							    		<span class="badge">{{ tag.name }}</span>
+							    		<span class="tag-badge">{{ tag.name }}</span>
 							    	{% endfor %}
 							    </div>
 							</div>
