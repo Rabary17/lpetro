@@ -10,7 +10,7 @@
 			    <div class="media flex-column flex-md-row">
 				    <img class="mr-3 img-fluid picture mx-auto" src="{{ asset('uploads/photos/' ~ candidat.profileName) }}" alt="">
 				    <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
-					    <div class="primary-info">
+					    <div class="primary-info col-sm-6 col-md-8 col-lg-8">
 						    <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">{{candidat.firstname}} {{candidat.lastName}}</h1>
 						    <ul class="list-unstyled">
 							    <li class="mb-2"><a href="#"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{candidat.email}}</a></li>
@@ -18,7 +18,7 @@
 						    </ul>
 						</div><!--//primary-info-->
 						
-						<div style="display:block">
+						<div style="display:block" class="col-sm-6 col-md-4 col-lg-4">
 							{% if candidat.rhvalidate  %}
 								<a class="btn-edit-cv">CV validé</a>
 								{% else %}
