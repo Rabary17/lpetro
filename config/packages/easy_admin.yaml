@@ -1,0 +1,41 @@
+easy_admin:
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'
+    site_name: 'LPSA Admin'
+    design:
+        menu:
+            - label: MENU PRINCIPAL
+            - { entity: 'User', label: 'Utilisateurs', params:{ action: 'list' }, icon: 'user' }
+            - label: CV
+              icon: copy
+              children:
+                    - { entity: 'Sport', label: 'Sport', params:{ action: 'list' } }
+                    - { entity: 'Hobby', label: 'Hobbies', params:{ action: 'list' }}
+                    - { entity: 'Nationality', label: 'Nationalité', params:{ action: 'list' }}
+    entities:
+        User:
+            class: App\Entity\User
+            label: 'Utilisateurs'
+            list:
+                title: "Liste d'utilisateurs"
+                max_results: 10
+                fields: [{ property: 'lastName', label: 'Nom' }, { property: 'firstName', label: 'Prénom' }, { property: 'phoneNumber', label: 'Numéro phone' }, { property: 'enabled', label: 'Activé/Désactivé' }, { property: 'roles', label: 'Rôles'}]
+        Sport:
+            class: App\Entity\Sport
+            label: 'Sports disponible'
+            list:
+                fields: [{ property: 'name', label: 'Nom' }]
+
+        Hobby:
+            class: App\Entity\Hobby
+            label: 'Hobbies'
+            list:
+                fields: [{property: 'name', label: 'Nom'}]
+
+        Nationality:
+            class: App\Entity\Nationality
+            label: 'Nationalités'
+            list:
+                fields: [{property: 'nationality', label: 'Nationalité'}, {property: 'countryCode', label: 'Code Pays'}]
