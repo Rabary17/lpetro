@@ -10,7 +10,7 @@ class TagController extends AbstractController
 {
     /**
      * @Route("/tags", name="tag")
-     * @return Symfony\Component\HttpFoundation\JsonResponse  description
+     * @return         Symfony\Component\HttpFoundation\JsonResponse  description
      */
     public function index()
     {

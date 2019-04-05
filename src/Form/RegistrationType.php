@@ -24,8 +24,7 @@ class RegistrationType extends AbstractType
     {
         $builder->add('lastName')
             ->add('firstName')
-            ->remove('username')
-        ;
+            ->remove('username');
     }
 
     /**
@@ -37,13 +36,16 @@ class RegistrationType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => User::class
-        ]);
+            ]
+        );
     }
 
     /**
      * Get parent form type
+     *
      * @return string FOS\UserBundle\Form\Type\RegistrationFormType
      */
     public function getParent()

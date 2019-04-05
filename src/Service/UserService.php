@@ -19,6 +19,7 @@ class UserService
 
     /**
      * Constructor
+     *
      * @param EntityManagerInterface $em
      */
     public function __construct(EntityManagerInterface $em)
@@ -28,6 +29,7 @@ class UserService
 
     /**
      * cvViewed
+     *
      * @param  string $id [description]
      * @return array
      */
@@ -42,6 +44,7 @@ class UserService
 
     /**
      * cvRhValidate
+     *
      * @param  string $id [description]
      * @return array
      */
@@ -56,6 +59,7 @@ class UserService
 
     /**
      * cvStatut
+     *
      * @param  string $id       [description]
      * @param  string $idstatut [description]
      * @return array

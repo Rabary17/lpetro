@@ -16,6 +16,7 @@ class ReferencedPersonRepository extends ServiceEntityRepository
 {
     /**
      * Constructor
+     *
      * @param RegistryInterface $registry
      */
     public function __construct(RegistryInterface $registry)

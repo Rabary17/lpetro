@@ -74,7 +74,7 @@ class User extends BaseUser
     private $address;
 
     /**
-     *@ORM\OneToOne(targetEntity="Nationality")
+     * @ORM\OneToOne(targetEntity="Nationality")
      */
     private $nationality;
 
@@ -111,34 +111,34 @@ class User extends BaseUser
      * @ORM\Column(type="datetime")
      *
      * @var \DateTime
-    */
+     */
     private $updatedAt;
 
     /**
-     *@ORM\ManyToMany(targetEntity="Hobby", inversedBy="users")
-     *@ORM\JoinTable(name="user_hobbies")
+     * @ORM\ManyToMany(targetEntity="Hobby", inversedBy="users")
+     * @ORM\JoinTable(name="user_hobbies")
      */
     protected $hobbies;
 
     /**
-     *@ORM\ManyToMany(targetEntity="Sport")
-     *@ORM\JoinTable(name="user_sports")
+     * @ORM\ManyToMany(targetEntity="Sport")
+     * @ORM\JoinTable(name="user_sports")
      */
     protected $sports;
 
     /**
-    * @ORM\OneToMany(targetEntity="ExtraWorkActivity", mappedBy="user", cascade={"persist", "remove"})
-    */
+     * @ORM\OneToMany(targetEntity="ExtraWorkActivity", mappedBy="user", cascade={"persist", "remove"})
+     */
     private $extraWorkActivities;
 
     /**
-    * @ORM\OneToMany(targetEntity="Training", mappedBy="user", cascade={"persist", "remove"})
-    */
+     * @ORM\OneToMany(targetEntity="Training", mappedBy="user", cascade={"persist", "remove"})
+     */
     private $trainings;
 
     /**
-    * @ORM\OneToMany(targetEntity="Language", mappedBy="user", cascade={"persist", "remove"})
-    */
+     * @ORM\OneToMany(targetEntity="Language", mappedBy="user", cascade={"persist", "remove"})
+     */
     private $languages;
 
     /**
@@ -333,8 +333,7 @@ class User extends BaseUser
 
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $profile
-     *
-    */
+     */
     public function setProfileFile(File $profile = null)
     {
         $this->profileFile = $profile;

@@ -12,6 +12,7 @@ class LpMailerService
 
     /**
      * [__construct description]
+     *
      * @param \Swift_Mailer     $mailer   [description]
      * @param string            $sender   [description]
      * @param FlashBagInterface $flashBag description
@@ -25,6 +26,7 @@ class LpMailerService
 
     /**
      * [sendMail description]
+     *
      * @param  string $to           [description]
      * @param  string $subject      [description]
      * @param  string $body         [description]
@@ -35,12 +37,12 @@ class LpMailerService
     public function sendMail($to, $subject, $body, $flashTitle = '', $flashMessage = '')
     {
         $message = (new \Swift_Message($subject))
-        ->setSubject($subject)
-        ->setFrom([$this->sender])
-        ->setTo($to)
-        ->setCharset('utf-8')
-        ->setContentType('text/html')
-        ->setBody($body);
+            ->setSubject($subject)
+            ->setFrom([$this->sender])
+            ->setTo($to)
+            ->setCharset('utf-8')
+            ->setContentType('text/html')
+            ->setBody($body);
 
         $response = $this->mailer->send($message);
 

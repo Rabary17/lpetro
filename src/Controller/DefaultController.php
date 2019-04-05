@@ -11,7 +11,7 @@ class DefaultController extends AbstractController
 {
     /**
      * @Route("/", name="home", methods={"GET"})
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return     \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index()
     {

@@ -24,7 +24,8 @@ class ExtraWorkActivityType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', TextType::class, [
+        $builder->add(
+            'name', TextType::class, [
                 'label' => 'ACTIVITE',
                 'label_attr' => [
                     'class' => 'mylabel'
@@ -32,16 +33,18 @@ class ExtraWorkActivityType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ]
-            ])
-            ->add('description', TextareaType::class, [
+            ]
+        )
+            ->add(
+                'description', TextareaType::class, [
                 'label' => 'DESCRIPTION',
                 'required' => false,
                 'attr' => [
                     'class' => 'form-control'
 
                 ]
-            ])
-        ;
+                ]
+            );
     }
 
     /**
@@ -53,8 +56,10 @@ class ExtraWorkActivityType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => ExtraWorkActivity::class,
-        ]);
+            ]
+        );
     }
 }

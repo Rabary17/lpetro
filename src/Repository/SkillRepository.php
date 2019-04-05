@@ -16,6 +16,7 @@ class SkillRepository extends ServiceEntityRepository
 {
     /**
      * Constructor
+     *
      * @param RegistryInterface $registry
      */
     public function __construct(RegistryInterface $registry)
@@ -24,7 +25,7 @@ class SkillRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param string $userId description
+     * @param  string $userId description
      * @return Skill[] Returns an array of Skill objects
      */
     public function fetchByUser($userId): ?array
@@ -33,7 +34,6 @@ class SkillRepository extends ServiceEntityRepository
             ->andWhere('s.user = :user')
             ->setParameter('user', $userId)
             ->getQuery()
-            ->getArrayResult()
-        ;
+            ->getArrayResult();
     }
 }

@@ -37,7 +37,7 @@ class SkillType extends AbstractType
                         'class' => 'form-control'
                     ]
                 ]
-            )
+        )
             ->add(
                 'description',
                 TextareaType::class,
@@ -50,7 +50,8 @@ class SkillType extends AbstractType
                     ],
                 ]
             )
-            ->add('level', null, ['label' => 'NIVEAU (1 - 5)',
+            ->add(
+                'level', null, ['label' => 'NIVEAU (1 - 5)',
                     'attr' => [
                         'class' => 'form-control'
                     ],
@@ -70,8 +71,10 @@ class SkillType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => Skill::class
-        ]);
+            ]
+        );
     }
 }

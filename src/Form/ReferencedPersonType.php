@@ -36,7 +36,7 @@ class ReferencedPersonType extends AbstractType
                         'class' => 'form-control'
                     ]
                 ]
-            )
+        )
             ->add(
                 'position',
                 TextType::class,
@@ -87,8 +87,10 @@ class ReferencedPersonType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => ReferencedPerson::class,
-        ]);
+            ]
+        );
     }
 }
