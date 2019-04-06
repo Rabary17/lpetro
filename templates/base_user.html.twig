@@ -60,15 +60,14 @@
                     left: auto;
                     margin: 5px;
                     background-color: #7c97a199;
-                    border-radius: 10px;
-                    overflow: hidden;
+                      border:none;
                 ">
-                    <li class="user-header" style="background-color: #7c97a133 !important">
+                    <li class="user-header" style="background-color: #7c97a1cc !important">
                       <img src="{% if app.user.profileName %}{{ asset('uploads/photos/' ~ app.user.profileName) }}{% else %}{{ asset('assets/dist/img/user-avatar.jpg') }}{% endif %}" class="img-circle" alt="User Image">
                       <p>
                       {{ app.user.firstName | upper }} {{ app.user.lastName}}
                       </p>
-                      <p style="color:white !important;font-size:12px;"><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></p>
+                      <p style="color:white !important;font-size:12px;"><a style="color:white" href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></p>
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer" style="display: flex;">
