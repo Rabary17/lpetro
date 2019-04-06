@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\UserType;
 use App\Service\UserService;
 use App\Service\LpMailerService;
-use Swift_Mailer;
 
 class UserController extends AbstractController
 {
@@ -97,9 +96,10 @@ class UserController extends AbstractController
         }
 
         return  $this->render(
-            'user/edit_profile.html.twig', [
-                    'user' => $user,
-                    'form' => $form->createView(),
+            'user/edit_profile.html.twig',
+            [
+            'user' => $user,
+            'form' => $form->createView(),
             ]
         );
     }

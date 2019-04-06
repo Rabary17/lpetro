@@ -89,8 +89,8 @@
 
                 <p>
                   {% if app.user.lastName is defined %}{{ app.user.lastName }} {% endif %} - Responsable RH
-                  <small>Premier responsable</small>
                 </p>
+                <p style="color:white !important;font-size:12px;"><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></p>
               </li>
 
               </li>
@@ -178,8 +178,21 @@
         <title>{% block title %}LPCS{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
+    {% for message in app.flashes('user_confirm_notice') %}
+      <div class="alert-dismissible" id="confirm_email">
+          <a href="#" class="close" data-dismiss="alert" id="close" aria-label="close">&times;</a>
+          <p>{{ message }}</p>
+      </div>
+    {% endfor %}
+    {% for message in app.flashes('success_submit') %}
+          <div class="alert-dismissible" id="confirm_email">
+              <a href="#" class="close" data-dismiss="alert" id="close" aria-label="close">&times;</a>
+              <p>{{ message }}</p>
+          </div>
+      {% endfor %}
     <body>
         {% block body %}{% endblock %}
+        {% block fos_user_content %}{% endblock %}
     <!-- jQuery 3 -->
     <script src="{{ asset('assets/dist/js/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->

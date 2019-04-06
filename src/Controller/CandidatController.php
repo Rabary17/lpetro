@@ -27,8 +27,7 @@ class CandidatController extends AbstractController
 
     /**
      * @Route("/candidat/{id}", name="candidat_view")
-     * @param                   Request $request description
-     * @param                   string  $id      id candidat
+     * @param                   string $id id candidat
      * @return                  \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index($id)
@@ -39,7 +38,8 @@ class CandidatController extends AbstractController
             $viewCandidat = $this->userService->cvViewed($id);
 
             return $this->render(
-                'candidat/index.html.twig', [
+                'candidat/index.html.twig',
+                [
                 'candidat' => $viewCandidat,
                 ]
             );
@@ -68,7 +68,8 @@ class CandidatController extends AbstractController
         }
 
         return $this->render(
-            'candidat/edit.html.twig', [
+            'candidat/edit.html.twig',
+            [
             'candidat' => $candidat,
             'form' => $form->createView(),
             ]

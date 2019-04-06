@@ -12,6 +12,8 @@
 /readme.html
 /sitemap.xml
 /sitemap.xml.gz
+.php_cs.cache
+php-cs-fixer-v2.phar
 
 #
 # Project specific excludes

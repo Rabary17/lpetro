@@ -87,7 +87,8 @@ class RegistrationController extends BaseController
         }
 
         return $this->render(
-            'bundles/FOSUserBundle/Registration/register.html.twig', array(
+            'bundles/FOSUserBundle/Registration/register.html.twig',
+            array(
             'form' => $form->createView(),
             )
         );
@@ -112,9 +113,11 @@ class RegistrationController extends BaseController
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt(
-            $ch, CURLOPT_POSTFIELDS, array(
-            "secret" => "6LfBBXcUAAAAAJP7RCk6NYxgKlHz5PDJYfeBejkA",
-            "response" => $recaptcha,
+            $ch,
+            CURLOPT_POSTFIELDS,
+            array(
+                "secret" => "6LfBBXcUAAAAAJP7RCk6NYxgKlHz5PDJYfeBejkA",
+                "response" => $recaptcha,
             )
         );
         $response = curl_exec($ch);

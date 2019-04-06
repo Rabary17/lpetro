@@ -42,7 +42,8 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
         $rolesTab = array_map(
             function ($role) {
                 return $role->getRole();
-            }, $roles
+            },
+            $roles
         );
 
         if (in_array('ROLE_RH', $rolesTab, true)) {

@@ -26,7 +26,9 @@ class TrainingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add(
-            'name', TextType::class, [
+            'name',
+            TextType::class,
+            [
                     'label' => 'TITRE DE LA FORMATION',
                     'label_attr' => [
                         'class' => 'mylabel'
@@ -47,7 +49,9 @@ class TrainingType extends AbstractType
                 ]
             )
             ->add(
-                'startDate', DateType::class, [
+                'startDate',
+                DateType::class,
+                [
                     'widget' => 'single_text',
                     'required' => false,
                     'label' => 'DEBUT DE LA FORMATION',
@@ -60,7 +64,9 @@ class TrainingType extends AbstractType
                 ]
             )
             ->add(
-                'endDate', DateType::class, [
+                'endDate',
+                DateType::class,
+                [
                     'widget' => 'single_text',
                     'required' => false,
                     'label' => 'FIN DE LA FORMATION',
@@ -73,7 +79,9 @@ class TrainingType extends AbstractType
                 ]
             )
             ->add(
-                'level', TextType::class, [
+                'level',
+                TextType::class,
+                [
                     'required' => false,
                     'label' => 'NIVEAU',
                     'label_attr' => [
@@ -85,7 +93,9 @@ class TrainingType extends AbstractType
                 ]
             )
             ->add(
-                'school', TextType::class, [
+                'school',
+                TextType::class,
+                [
                     'required' => false,
                     'label' => 'ETABLISSEMENT',
                     'label_attr' => [
