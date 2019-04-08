@@ -8,6 +8,7 @@ use App\Service\UserService;
 use App\Service\LpMailerService;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\UserType;
+use App\Entity\Interview;
 
 class RhHomeController extends AbstractController
 {
@@ -124,6 +125,26 @@ class RhHomeController extends AbstractController
             [
             'user' => $rh,
             'form' => $form->createView(),
+            ]
+        );
+    }
+
+    /**
+     * @Route("/rh/actions", name="rh_actions")
+     * @return            \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function rhActions()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $candidates = 'rh actions';
+        $interview = $em->getRepository('App:Interview')->findAll();
+
+        return $this->render(
+            'rh/rh_actions.html.twig',
+            [
+                'candidates' => $candidates,
+                'interview' => $interview,
             ]
         );
     }

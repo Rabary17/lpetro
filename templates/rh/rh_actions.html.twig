@@ -1,0 +1,11 @@
+{% extends 'base_rh.html.twig' %}
+{% block body %}
+<h1>{{candidates}}</h1>
+
+    {% for interviews in interview %}
+        <p>Interview de {{interviews.User}} par {{interviews.interviewBy}} le {{interviews.interviewDate | date('d/m/Y') }}</p>
+        <hr>
+    {% endfor %}
+
+{% endblock %}
+{% block javascripts %}{% endblock %}
