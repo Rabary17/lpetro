@@ -22,7 +22,7 @@ class Language
     private $name;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $level;
 
@@ -49,12 +49,12 @@ class Language
         return $this;
     }
 
-    public function getLevel(): ?string
+    public function getLevel(): ?int
     {
         return $this->level;
     }
 
-    public function setLevel(?string $level): self
+    public function setLevel(?int $level): self
     {
         $this->level = $level;
 
