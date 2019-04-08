@@ -4,7 +4,7 @@ security:
 
     role_hierarchy:
         ROLE_CANDIDAT:    ROLE_USER
-        ROLE_RH:          [ROLE_USER, ROLE_CANDIDAT]
+        ROLE_RH:          [ROLE_CANDIDAT]
         ROLE_ADMIN:       [ROLE_USER, ROLE_RH, ROLE_CANDIDAT, ROLE_ALLOWED_TO_SWITCH]
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers

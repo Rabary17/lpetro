@@ -34,6 +34,8 @@ easy_admin:
                 max_results: 10
                 dql_filter: "entity.roles LIKE '%%ROLE_RH%%'"
                 fields: [{ property: 'lastName', label: 'Nom' }, { property: 'firstName', label: 'Prénom' }, { property: 'phoneNumber', label: 'Numéro phone' }, { property: 'enabled', label: 'Activé/Désactivé' }, { property: 'roles', label: 'Rôles'}]
+            edit:
+                fields: [{ property: 'lastName', label: 'Nom' }, { property: 'firstName', label: 'Prénom' }, { property: 'email', label: 'Email' }, { property: 'phoneNumber', label: 'Numéro phone' }, { property: 'maritalStatus', label: 'Situation Matrimoniale' }, { property: 'password', type: 'password', label: 'Mot de passe' }, { property: 'roles', label: 'Rôles'}]
         
         Sport:
             class: App\Entity\Sport

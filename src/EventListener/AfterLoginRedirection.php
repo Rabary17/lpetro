@@ -48,6 +48,8 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
 
         if (in_array('ROLE_RH', $rolesTab, true)) {
             return new RedirectResponse($this->router->generate('rh_home'));
+        } elseif (in_array('ROLE_ADMIN', $rolesTab, true)) {
+            return new RedirectResponse($this->router->generate('easyadmin'));
         }
 
         return new RedirectResponse($this->router->generate('home'));
