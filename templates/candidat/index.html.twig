@@ -29,7 +29,7 @@
 						    </ul>
 					    </div><!--//primary-info-->
 						<div style="display:block" class="col-sm-6 col-md-4 col-lg-4">
-							<a class="btn-edit-cv" href="{{ path('user_profile_edit', {'id' : candidat.id }) }}" title="éditer mon cv"><i class="fa fa-pencil"></i></a>
+							<a class="btn-edit-cv" href="{{ path('candidat_edit', {'id' : candidat.id }) }}" title="éditer mon cv"><i class="fa fa-pencil"></i></a>
 							{% if candidat.rhvalidate %}
 								<a class="btn-edit-cv" style="background-color: green;color:white" title="CV validé"><i class="fa fa-check"></i></a>
 								{% else %}
@@ -168,7 +168,22 @@
 							    </div>
 							    
 						    </div>
-					    </section><!--//extra-work-activity-->
+						</section><!--//extra-work-activity-->
+						<section class="resume-section experience-section mb-5">
+							<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">* Interviews</h2>
+							<div class="resume-section-content">
+								<div class="resume-timeline position-relative">
+									{% for interview in candidat.interviews %}
+										<div>
+											<h4 class="resume-position-title font-weight-bold mb-1">Interview par :</h4><p>{{ interview.interviewBy }}</p>
+											<h4 class="resume-position-title font-weight-bold mb-1">Date de l'interview :</h4><p>{{ interview.interviewDate | date('d/m/Y') }}</p>
+											<h4 class="resume-position-title font-weight-bold mb-1">Résumé</h4><p>{{ interview.interviewResume }}</p>
+										</div>
+										<hr>
+									{% endfor %}
+								</div>
+							</div>
+						</section><!--//extra-work-activity-->
 				    </div>
 				    <div class="col-lg-3">
 					    <section class="resume-section reference-section mb-5">
