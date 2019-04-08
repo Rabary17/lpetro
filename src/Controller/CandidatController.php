@@ -14,7 +14,6 @@ use App\Form\UserEditType;
 use App\Entity\Tag;
 use App\Entity\Interview;
 
-
 class CandidatController extends AbstractController
 {
     private $userService;
