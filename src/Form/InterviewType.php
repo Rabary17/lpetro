@@ -10,6 +10,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
+/**
+ * @SuppressWarnings(PHPMD)
+ */
 class InterviewType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
