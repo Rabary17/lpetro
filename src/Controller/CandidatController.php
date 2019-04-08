@@ -12,6 +12,8 @@ use App\Form\TagType;
 use App\Form\InterviewType;
 use App\Form\UserEditType;
 use App\Entity\Tag;
+use App\Entity\Interview;
+
 
 class CandidatController extends AbstractController
 {

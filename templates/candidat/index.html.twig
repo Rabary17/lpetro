@@ -125,6 +125,21 @@
 							    </div>
 							</div>
 						</section>
+						
+						<section class="resume-section experience-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Interviews</h2>
+						    <div class="resume-section-content">
+							    <div class="resume-timeline position-relative">
+							    	{% for interview in candidat.interviews %}
+										<div>
+											<h3 class="resume-position-title font-weight-bold mb-1">{{ interview.interviewBy }}</h3>
+											<p>Date de l'interview: {{ interview.interviewDate | date('d/m/Y') }}</p>
+											<p>{{ interview.interviewResume }}</p>
+										</div>
+							    	{% endfor %}
+							    </div>
+							</div>
+						</section>
 
 				    </div>
 				    <div class="col-lg-3">
