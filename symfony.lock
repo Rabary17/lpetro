@@ -80,8 +80,8 @@
             "ref": "0a51040a43c6f2172a3a0135cd15daf2043905d7"
         },
         "files": [
-            "./config/packages/easy_admin.yaml",
-            "./config/routes/easy_admin.yaml"
+            "config/packages/easy_admin.yaml",
+            "config/routes/easy_admin.yaml"
         ]
     },
     "egulias/email-validator": {

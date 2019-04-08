@@ -8814,11 +8814,11 @@ input[type=radio   ]:not(old) + label{
 position: relative;
 padding: 0;
 }
-#user_experiences, #user_skills {
+#user_experiences, #user_skills, #user_edit_interviews {
     display: flex;
     flex-wrap: wrap;
 }
-#user_extraWorkActivities > div, #user_trainings > div{
+#user_extraWorkActivities > div, #user_trainings > div, #user_edit_interviews > div{
   width: 30%;
   float: left;
   padding: 10px;
@@ -8872,7 +8872,8 @@ padding: 0;
 .user_extraWorkActivities-collection-actions,
 .user_trainings-collection-actions,
 .user_experiences-parent-actions,
-.user_languages-collection-actions{
+.user_languages-collection-actions,
+.user_edit_interviews-collection-actions{
   text-align: right;
   border-top: 1px solid #ddd;
   

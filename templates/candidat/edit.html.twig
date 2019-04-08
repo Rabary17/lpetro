@@ -43,8 +43,8 @@
 						{% form_theme form 'collection/jquery.collection.html.twig' %}
 						{{ form_row(form.interviews) }}
 						</div>
-						
-						<p>
+
+						<p style="margin-top:30px">
 							<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="btn btn-default">Annuler</a>
 							{{ form_widget(form.submit, {attr:{'class': 'btn btn-primary', 'id': 'submit'}}) }}
 						</p>

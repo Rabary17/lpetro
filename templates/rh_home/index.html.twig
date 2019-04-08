@@ -5,8 +5,13 @@
 {% endblock %}
 
 {% block body %}
-	<div class="banner">
-		<input type="search" name="q" class="form-control" placeholder="Tapez le nom/prénom (en entier ou partiel) ou l'adresse email du candidat" onchange="searchCandidat(this)">
+	<div class="banner" style="padding: 0 2%;margin: 0 2%;">
+	<div style="display:flex">
+		<div style="line-height: 20px;flex: 1;background-color: #7c97a1;"><i class="fa fa-search" style="line-height: 33px;"></i></div>
+		<div style="flex: 15;">
+			<input type="search" name="q" class="form-control" placeholder="Tapez le nom/prénom (en entier ou partiel) ou l'adresse email du candidat" onchange="searchCandidat(this)">
+		</div>
+	</div>
 		<br/>
 		<div class="ajax-content">
 			{% for candidat in candidates %}

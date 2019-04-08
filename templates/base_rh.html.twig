@@ -218,7 +218,7 @@
     <script src="{{ asset('assets/dist/js/select2.min.js') }}"></script>
     <script>
     	jQuery(document).ready(function($) {
-        jQuery(document).on('mouseup', function(e){
+        jQuery(document).on('load', function(e){
           $(document).find('select').each(function(event){
             $(this).selectize({
             allowEmptyOption: true,
