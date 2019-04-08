@@ -9,6 +9,7 @@ easy_admin:
             - label: MENU PRINCIPAL
             - { entity: 'Candidat', label: 'Candidats', params:{ action: 'list' }, icon: 'users' }
             - { entity: 'Rh', label: 'RH', params:{ action: 'list' }, icon: 'user' }
+            - { entity: 'Cv', label: 'Liste CVs', params:{ action: 'show' }, icon: 'copy' }
             - label: CVs Options
               icon: copy
               children:
@@ -36,7 +37,18 @@ easy_admin:
                 fields: [{ property: 'lastName', label: 'Nom' }, { property: 'firstName', label: 'Prénom' }, { property: 'phoneNumber', label: 'Numéro phone' }, { property: 'enabled', label: 'Activé/Désactivé' }, { property: 'roles', label: 'Rôles'}]
             edit:
                 fields: [{ property: 'lastName', label: 'Nom' }, { property: 'firstName', label: 'Prénom' }, { property: 'email', label: 'Email' }, { property: 'phoneNumber', label: 'Numéro phone' }, { property: 'maritalStatus', label: 'Situation Matrimoniale' }, { property: 'password', type: 'password', label: 'Mot de passe' }, { property: 'roles', label: 'Rôles'}]
-        
+
+        Cv:
+            class: App\Entity\User
+            label: 'CV'
+            disabled_actions: ['delete', 'edit']
+            list:
+                title: "Liste de CVs"
+                max_results: 10
+                dql_filter: "entity.submit = 1 AND entity.roles LIKE '%%ROLE_CANDIDAT%%'"
+                actions: ['show', 'search']
+                fields: [{ property: 'profileName', type: 'image', label: 'Photo', base_path: '%app.path.profil%' }, { property: 'lastName', label: 'Nom' }, { property: 'firstName', label: 'Prénom' }, { property: 'email', label: 'Email' }, { property: 'phoneNumber', label: 'Numéro phone' }]
+
         Sport:
             class: App\Entity\Sport
             label: 'Sports disponible'
