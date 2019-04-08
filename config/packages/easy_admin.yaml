@@ -17,6 +17,7 @@ easy_admin:
                     - { entity: 'Hobby', label: 'Hobbies', params:{ action: 'list' }}
                     - { entity: 'Nationality', label: 'Nationalité', params:{ action: 'list' }}
             - { entity: 'Interview', label: 'Interviews', params:{ action: 'list' }, icon: 'microphone' }
+            - { entity: 'Tag', label: 'Tags', params:{ action: 'list' }, icon: 'tag' }
     entities:
         Candidat:
             class: App\Entity\User
@@ -71,6 +72,12 @@ easy_admin:
             label: 'Interviews'
             list:
                 fields: [{property: 'interviewBy', label: 'Interviewer'}, {property: 'user', label: 'Interviewee'}, {property: 'interviewResume', label: 'Résumé'}, {property: 'interviewDate', label: 'Date'}]
+
+        Tag:
+            class: App\Entity\Tag
+            label: 'Les tags'
+            list:
+                fields: [{property: 'name', label: 'Tag'}]
 
         User:
             class: App\Entity\User
