@@ -35,7 +35,7 @@ class InterviewType extends AbstractType
                 'interviewResume',
                 TextareaType::class,
                 [
-                'label' => 'Résumé',
+                'label' => 'Détails interview',
                 'required' => false,
                 'attr' => [
                     'class' => 'form-control'
@@ -48,7 +48,11 @@ class InterviewType extends AbstractType
                 DateType::class,
                 [
                     'widget' => 'single_text',
-                    'required' => false
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'form-control'
+
+                    ]
                 ]
             )
             //->add('user')
