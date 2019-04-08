@@ -1,0 +1,214 @@
+{% extends '@EasyAdmin/default/layout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/profil.css')}}">
+{% endblock %}
+{% block main %}
+	<h1>Fiche candidat</h1>
+    <article class="resume-wrapper text-center position-relative">
+	    <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
+		    <header class="resume-header pt-4 pt-md-0">
+			    <div class="media flex-column flex-md-row">
+				    <img class="mr-3 img-fluid picture mx-auto" src="{{ asset('uploads/photos/' ~ candidat.profileName) }}" alt="">
+				    <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
+					    <div class="primary-info col-sm-6 col-md-8 col-lg-8">
+						    <h1 class="name mt-0 mb-1 text-white text-uppercase text-uppercase">{{candidat.firstname}} {{candidat.lastName}}</h1>
+						    <ul class="list-unstyled">
+							    <li class="mb-2"><a href="#"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{candidat.email}}</a></li>
+							    <li><a href="#"><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ candidat.phoneNumber }}</a></li>
+								<li><a href="#"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i>{{ candidat.statut }}</a></li>
+						    </ul>
+					    </div><!--//primary-info-->
+					    <div class="col-sm-6 col-md-2 col-lg-2">
+					    	<a class="btn-edit-cv" href="{{ path('candidat_edit', {'id' : candidat.id }) }}">Suivre ce CV</a>
+					    </div>
+						
+						<div style="display:block" class="col-sm-6 col-md-2 col-lg-2">
+							{% if candidat.rhvalidate  %}
+								<a class="btn-edit-cv">CV validé</a>
+								{% else %}
+								<a href="{{ path('rh_validate_cv', {id: candidat.id}) }}" class="btn-edit-cv">Valider le CV</a>
+								{% endif %}		
+						</div>
+				    </div><!--//media-body-->
+			    </div><!--//media-->
+		    </header>
+		
+		    <div class="resume-body p-5">
+			    <section class="resume-section summary-section mb-5">
+				    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">OBJECTIF</h2>
+				    <div class="resume-section-content">
+					    <p class="mb-0">Summarise your career here. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+				    </div>
+			    </section><!--//summary-section-->
+			    <div class="row">
+				    <div class="col-lg-9">
+					    <section class="resume-section experience-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Etat civil</h2>
+						    <p>Date de naissance: {{ candidat.dateOfBirth | date('d/m/Y') }}</p>
+						    <p>Lieu de naissance: {{ candidat.placeOfBirth }}</p>
+						    <p>Situation familiale: {{ candidat.maritalStatus }}</p>
+						    <p>Nom du conjoint: {{ candidat.conjointName }}</p>
+						    <p>Nombre d'enfant: {{ candidat.nbChildren }}</p>
+						    <p>Nationalité: {{ candidat.nationality }}</p>
+						    <p>Adresse: {{ candidat.address }}</p>
+						</section>
+					    <section class="resume-section experience-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Expérience Professionnelle</h2>
+						    <div class="resume-section-content">
+							    <div class="resume-timeline position-relative">		    
+								    <article class="resume-timeline-item position-relative">
+									    {% for experience in candidat.experiences %}
+										    <div class="resume-timeline-item-header mb-2">
+											    <div class="d-flex flex-column flex-md-row">
+											        <h3 class="resume-position-title font-weight-bold mb-1">{{ experience.position }} <small class="text-muted">({{ experience.status }})</small></h3>
+											        <div class="resume-company-name ml-auto">{{ experience.company }}</div>
+											    </div>
+											    <div class="resume-position-time">Du {{ experience.DateDebut|date('d-m-Y') }} jusqu'au {{ experience.DateFin|date('d-m-Y')  }}</div>
+										    </div>
+										    <div class="resume-timeline-item-desc">
+											    <p>{{ experience.achievements|nl2br}}</p>
+											    <h4 class="resume-timeline-item-desc-heading font-weight-bold">Technologies used:</h4>
+											    <p>{{ experience.others|nl2br}}</p>
+										    </div>
+									    {% endfor %}
+								    </article>
+							    </div>
+						    </div>
+					    </section>
+					    <section class="resume-section experience-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Mes competences</h2>
+						    <div class="resume-section-content">
+							    <div class="resume-timeline position-relative">		    
+								    <article class="resume-timeline-item position-relative">
+									    {% for skill in candidat.skills %}
+										    <div class="resume-timeline-item-header mb-2">
+											    <div class="d-flex flex-column flex-md-row">
+											        <h3 class="resume-position-title font-weight-bold mb-1">{{ skill.title }}</h3>
+											    </div>
+										    </div>
+										    <div class="resume-timeline-item-desc">
+											    <p>{{ skill.description|nl2br}}</p>
+										    </div>
+									    {% endfor %}
+									    <a href="{{ path('skill') }}">Voir toutes mes competences </a>
+								    </article>
+							    </div>
+						    </div>
+					    </section>
+					    <section class="resume-section experience-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Activités extra-professionnelles</h2>
+						    <div class="resume-section-content">
+							    <div class="resume-timeline position-relative">
+								    <article class="resume-timeline-item position-relative pb-5">
+									    <div class="resume-timeline-item-header mb-2">
+									    	{% for activity in candidat.extraWorkActivities %}
+											    <div>
+											        <h3 class="resume-position-title font-weight-bold mb-1">{{ activity.name }}</h3>
+													<p>{{ activity.description }}</p>
+											    </div><!--//row-->
+										    {% endfor %}
+									    </div><!--//resume-timeline-item-header-->
+
+								    </article><!--//resume-timeline-item-->
+							    </div><!--//resume-timeline-->
+							    
+						    </div>
+					    </section><!--//extra-work-activity-->
+
+					    <section class="resume-section experience-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Etiquettes</h2>
+						    <div class="resume-section-content">
+							    <div class="resume-timeline position-relative">
+							    	{% for tag in candidat.tags %}
+							    		<span class="tag-badge">{{ tag.name }}</span>
+							    	{% endfor %}
+							    </div>
+							</div>
+						</section>
+						
+						<section class="resume-section experience-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Interviews</h2>
+						    <div class="resume-section-content">
+							    <div class="resume-timeline position-relative">
+							    	{% for interview in candidat.interviews %}
+										<div>
+											<h4 class="resume-position-title font-weight-bold mb-1">Interview par :</h4><p>{{ interview.interviewBy }}</p>
+											<h4 class="resume-position-title font-weight-bold mb-1">Date de l'interview :</h4><p>{{ interview.interviewDate | date('d/m/Y') }}</p>
+											<h4 class="resume-position-title font-weight-bold mb-1">Résumé</h4><p>{{ interview.interviewResume }}</p>
+										</div>
+										<hr>
+							    	{% endfor %}
+							    </div>
+							</div>
+						</section>
+
+				    </div>
+				    <div class="col-lg-3">
+					    <section class="resume-section education-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Etudes</h2>
+						    <div class="resume-section-content">
+							    <ul class="list-unstyled">
+								    <li class="mb-2">
+								        <div class="resume-degree font-weight-bold">MSc in Computer Science</div>
+								        <div class="resume-degree-org">University College London</div>
+								        <div class="resume-degree-time">2010 - 2011</div>
+								    </li>
+								    <li>
+								        <div class="resume-degree font-weight-bold">BSc Maths and Physics</div>
+								        <div class="resume-degree-org">Imperial College London</div>
+								        <div class="resume-degree-time">2007 - 2010</div>
+								    </li>
+							    </ul>
+						    </div>
+					    </section><!--//education-section-->
+					    <section class="resume-section reference-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Formations</h2>
+						    <div class="resume-section-content">
+							    <ul class="list-unstyled resume-awards-list">
+							    	{% for training in candidat.trainings %}
+									    <li class="mb-2 pl-4 position-relative">
+									        <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
+									        <div class="resume-award-name">{{ training.name }}</div>
+									        <div class="resume-award-desc">{{ training.description }}</div>
+									    </li>
+								    {% endfor %}
+							    </ul>
+						    </div>
+					    </section><!--//interests-section-->
+					    <section class="resume-section language-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Langue</h2>
+						    <div class="resume-section-content">
+							    <ul class="list-unstyled resume-lang-list">
+								    <li class="mb-2"><span class="resume-lang-name font-weight-bold">English</span> <small class="text-muted font-weight-normal">(Native)</small></li>
+								    <li class="mb-2 align-middle"><span class="resume-lang-name font-weight-bold">French</span> <small class="text-muted font-weight-normal">(Professional)</small></li>
+								    <li><span class="resume-lang-name font-weight-bold">Spanish</span> <small class="text-muted font-weight-normal">(Professional)</small></li>
+							    </ul>
+						    </div>
+					    </section><!--//language-section-->
+					    <section class="resume-section interests-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Hobbies</h2>
+						    <div class="resume-section-content">
+							    <ul class="list-unstyled">
+							    	{% for hobby in candidat.hobbies %}
+								    	<li class="mb-1">{{ hobby.name }}</li>
+								    {% endfor %}
+							    </ul>
+						    </div>
+					    </section><!--//interests-section-->
+					    <section class="resume-section interests-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Sports</h2>
+						    <div class="resume-section-content">
+							    <ul class="list-unstyled">
+							    	{% for sport in candidat.sports %}
+								    	<li class="mb-1">{{ sport.name }}</li>
+								    {% endfor %}
+							    </ul>
+						    </div>
+					    </section><!--//interests-section-->
+				    </div>
+			    </div><!--//row-->
+		    </div><!--//resume-body-->
+		</div>
+    </article>
+{% endblock main %}

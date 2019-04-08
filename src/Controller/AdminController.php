@@ -7,18 +7,24 @@ use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use App\Service\UserService;
 
 class AdminController extends BaseAdminController
 {
     private $passwordEncoder;
+    private $userService;
 
     /**
      * [__construct description]
      * @param UserPasswordEncoderInterface $passwordEncoder [description]
+     * @param UserService                  $userService     description
      */
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder, UserService $userService)
     {
         $this->passwordEncoder = $passwordEncoder;
+        $this->userService = $userService;
     }
 
     /**
@@ -57,5 +63,29 @@ class AdminController extends BaseAdminController
         $user->setPassword(
             $this->passwordEncoder->encodePassword($user, $user->getPassword())
         );
+    }
+
+    /**
+     * @param Request $request description
+     * @Route(path = "/admin/cv/show", name = "show_cv")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function showCv(Request $request)
+    {
+        $id = $request->query->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $candidat = $em->getRepository('App:User')->find($id);
+        if ($candidat) {
+            $viewCandidat = $this->userService->cvViewed($id);
+
+            return $this->render(
+                'admin/cv.html.twig',
+                [
+                    'candidat' => $viewCandidat,
+                ]
+            );
+        }
+
+        return $this->redirectToRoute('easyadmin');
     }
 }
