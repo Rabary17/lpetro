@@ -15,25 +15,11 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 class SkillRepository extends ServiceEntityRepository
 {
     /**
-     * Constructor
-     *
-     * @param RegistryInterface $registry
+     * [__construct description]
+     * @param RegistryInterface $registry [description]
      */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Skill::class);
-    }
-
-    /**
-     * @param  string $userId description
-     * @return Skill[] Returns an array of Skill objects
-     */
-    public function fetchByUser($userId): ?array
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.user = :user')
-            ->setParameter('user', $userId)
-            ->getQuery()
-            ->getArrayResult();
     }
 }

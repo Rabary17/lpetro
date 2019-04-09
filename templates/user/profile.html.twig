@@ -110,14 +110,14 @@
 						    <div class="resume-section-content">
 							    <div class="resume-timeline position-relative">		    
 								    <article class="resume-timeline-item position-relative">
-									    {% for skill in user.skills %}
+									    {% for userskill in user.skills %}
 										    <div class="resume-timeline-item-header mb-2">
 											    <div class="d-flex flex-column flex-md-row">
-											        <h3 class="resume-position-title font-weight-bold mb-1">{{ skill.title }}</h3>
+											        <h3 class="resume-position-title font-weight-bold mb-1">{{ userskill.skill.title }}</h3>
 											    </div>
 										    </div>
 										    <div class="resume-timeline-item-desc">
-											    <p>{{ skill.description|nl2br}}</p>
+											    <p>{{ userskill.description|nl2br}}</p>
 										    </div>
 									    {% endfor %}
 									    <a href="{{ path('skill') }}">Voir toutes mes competences </a>

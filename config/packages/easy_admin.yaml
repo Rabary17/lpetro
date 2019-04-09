@@ -20,6 +20,7 @@ easy_admin:
                     - { entity: 'UserStatut', label: 'Statuts', params:{ action: 'list' }}
             - { entity: 'Interview', label: 'Interviews', params:{ action: 'list' }, icon: 'microphone' }
             - { entity: 'Tag', label: 'Tags', params:{ action: 'list' }, icon: 'tag' }
+            - { entity: 'Skill', label: 'Compétences', params:{ action: 'list' }, icon: 'certificate' }
     entities:
         Candidat:
             class: App\Entity\User
@@ -88,6 +89,11 @@ easy_admin:
                 fields: [{property: 'statut', label: 'Statuts'}]
             form:
                 fields: ['statut']
+        Skill:
+            class: App\Entity\Skill
+            label: 'Les Compétences'
+            list:
+                fields: [{property: 'title', label: 'Titre'}]
 
         User:
             class: App\Entity\User
