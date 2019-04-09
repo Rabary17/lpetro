@@ -5,6 +5,7 @@ easy_admin:
         datetime: 'd/m/Y H:i:s'
     site_name: 'LPSA Admin'
     design:
+        brand_color: '#7C97A1'
         menu:
             - label: MENU PRINCIPAL
             - { entity: 'Candidat', label: 'Candidats', params:{ action: 'list' }, icon: 'users' }
@@ -16,6 +17,7 @@ easy_admin:
                     - { entity: 'Sport', label: 'Sport', params:{ action: 'list' } }
                     - { entity: 'Hobby', label: 'Hobbies', params:{ action: 'list' }}
                     - { entity: 'Nationality', label: 'Nationalité', params:{ action: 'list' }}
+                    - { entity: 'UserStatut', label: 'Statuts', params:{ action: 'list' }}
             - { entity: 'Interview', label: 'Interviews', params:{ action: 'list' }, icon: 'microphone' }
             - { entity: 'Tag', label: 'Tags', params:{ action: 'list' }, icon: 'tag' }
     entities:
@@ -78,6 +80,14 @@ easy_admin:
             label: 'Les tags'
             list:
                 fields: [{property: 'name', label: 'Tag'}]
+
+        UserStatut:
+            class: App\Entity\UserStatut
+            label: 'Statuts'
+            list:
+                fields: [{property: 'statut', label: 'Statuts'}]
+            form:
+                fields: ['statut']
 
         User:
             class: App\Entity\User
