@@ -125,6 +125,22 @@
 							    </div>
 							</div>
 						</section>
+						
+						<section class="resume-section experience-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Interviews</h2>
+						    <div class="resume-section-content">
+							    <div class="resume-timeline position-relative">
+							    	{% for interview in candidat.interviews %}
+										<div>
+											<h4 class="resume-position-title font-weight-bold mb-1">Interview par :</h4><p>{{ interview.interviewBy }}</p>
+											<h4 class="resume-position-title font-weight-bold mb-1">Date de l'interview :</h4><p>{{ interview.interviewDate | date('d/m/Y') }}</p>
+											<h4 class="resume-position-title font-weight-bold mb-1">Résumé</h4><p>{{ interview.interviewResume }}</p>
+										</div>
+										<hr>
+							    	{% endfor %}
+							    </div>
+							</div>
+						</section>
 
 				    </div>
 				    <div class="col-lg-3">

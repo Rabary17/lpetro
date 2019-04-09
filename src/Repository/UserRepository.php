@@ -64,6 +64,24 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
+     * @return array
+     */
+    public function fetchAdmin()
+    {
+        $role = 'ROLE_ADMIN';
+
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :roles')
+            ->andWhere('u.submit = :submit')
+            ->andWhere('u.enabled = :enabled')
+            ->setParameter('roles', '%"' . $role . '"%')
+            ->setParameter('submit', true)
+            ->setParameter('enabled', true)
+            ->getQuery()
+            ->getArrayResult();
+    }
+
+    /**
      * @param string $q description
      * @return array
      */

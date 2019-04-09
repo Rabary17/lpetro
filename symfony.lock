@@ -432,7 +432,7 @@
             "ref": "ddb2e0a77773b7fd75d8d649545f174e664500ab"
         },
         "files": [
-            "config/packages/twig_extensions.yaml"
+            "./config/packages/twig_extensions.yaml"
         ]
     },
     "twig/twig": {

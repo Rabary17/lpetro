@@ -7,21 +7,34 @@ easy_admin:
     design:
         menu:
             - label: MENU PRINCIPAL
-            - { entity: 'User', label: 'Utilisateurs', params:{ action: 'list' }, icon: 'user' }
-            - label: CV
+            - { entity: 'Candidat', label: 'Candidats', params:{ action: 'list' }, icon: 'users' }
+            - { entity: 'Rh', label: 'RH', params:{ action: 'list' }, icon: 'user' }
+            - label: CVs Options
               icon: copy
               children:
                     - { entity: 'Sport', label: 'Sport', params:{ action: 'list' } }
                     - { entity: 'Hobby', label: 'Hobbies', params:{ action: 'list' }}
                     - { entity: 'Nationality', label: 'Nationalité', params:{ action: 'list' }}
+            - { entity: 'Interview', label: 'Interviews', params:{ action: 'list' }, icon: 'microphone' }
     entities:
-        User:
+        Candidat:
             class: App\Entity\User
-            label: 'Utilisateurs'
+            label: 'Candidats'
             list:
-                title: "Liste d'utilisateurs"
+                title: "Liste de candidats"
                 max_results: 10
+                dql_filter: "entity.roles LIKE '%%ROLE_CANDIDAT%%'"
                 fields: [{ property: 'lastName', label: 'Nom' }, { property: 'firstName', label: 'Prénom' }, { property: 'phoneNumber', label: 'Numéro phone' }, { property: 'enabled', label: 'Activé/Désactivé' }, { property: 'roles', label: 'Rôles'}]
+        
+        Rh:
+            class: App\Entity\User
+            label: 'Rh'
+            list:
+                title: "Liste RH"
+                max_results: 10
+                dql_filter: "entity.roles LIKE '%%ROLE_RH%%'"
+                fields: [{ property: 'lastName', label: 'Nom' }, { property: 'firstName', label: 'Prénom' }, { property: 'phoneNumber', label: 'Numéro phone' }, { property: 'enabled', label: 'Activé/Désactivé' }, { property: 'roles', label: 'Rôles'}]
+        
         Sport:
             class: App\Entity\Sport
             label: 'Sports disponible'
@@ -39,3 +52,17 @@ easy_admin:
             label: 'Nationalités'
             list:
                 fields: [{property: 'nationality', label: 'Nationalité'}, {property: 'countryCode', label: 'Code Pays'}]
+
+        Interview:
+            class: App\Entity\Interview
+            label: 'Interviews'
+            list:
+                fields: [{property: 'interviewBy', label: 'Interviewer'}, {property: 'user', label: 'Interviewee'}, {property: 'interviewResume', label: 'Résumé'}, {property: 'interviewDate', label: 'Date'}]
+
+        User:
+            class: App\Entity\User
+            label: 'Candidats'
+            list:
+                title: "Liste des Utilisateurs"
+                max_results: 10
+                fields: [{ property: 'lastName', label: 'Nom' }, { property: 'firstName', label: 'Prénom' }, { property: 'phoneNumber', label: 'Numéro phone' }, { property: 'enabled', label: 'Activé/Désactivé' }, { property: 'roles', label: 'Rôles'}]
