@@ -8317,7 +8317,7 @@
   }
   
   .font-weight-bold {
-    font-weight: 700 !important;
+    font-weight: 600 !important;
   }
   
   .font-italic {
@@ -8553,8 +8553,8 @@
   }
   
   .resume-header {
-    background: #434E5E;
-    color: rgba(255, 255, 255, 0.9);
+    padding-top: 30px !important;
+    color: black;
     height: 220px;
   }
   
@@ -8572,9 +8572,9 @@
     font-size: 1.5rem;
   }
   
-  .resume-header a {
+  /* .resume-header a {
     color: rgba(255, 255, 255, 0.6);
-  }
+  } */
   
   .resume-header a:hover {
     color: white;
@@ -8617,7 +8617,7 @@
     padding-left: 2rem;
   }
   
-  .resume-timeline:before {
+  /* .resume-timeline:before {
     content: "";
     display: inline-block;
     width: 3px;
@@ -8626,8 +8626,8 @@
     left: 6px;
     top: 4px;
     position: absolute;
-  }
-  
+  } */
+/*   
   .resume-timeline-item:before {
     content: "";
     display: inline-block;
@@ -8639,7 +8639,7 @@
     border: 4px solid #58677c;
     background: white;
     border-radius: 50%;
-  }
+  } */
   
   .resume-progress {
     height: 0.6rem;
@@ -8731,15 +8731,19 @@
 
   .btn-edit-cv{
     padding: 10px;
-    border: 1px solid white;
     float: right;
     margin: 3px;
     text-align: center;
+    background-color: #7c97a1;
+    border-radius: 50%;
+    width: 45px;
+    cursor: pointer;
   }
 
     .btn-edit-cv:hover{
       text-decoration: none;
-      background-color: #7c97a1;
+      color: white;
+      background-color: #667d86;
   }
 
   .resume-header{
