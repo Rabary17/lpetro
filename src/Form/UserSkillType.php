@@ -58,7 +58,7 @@ class UserSkillType extends AbstractType
             ->add(
                 'level',
                 null,
-                ['label' => 'NIVEAU (1 - 5)',
+                ['label' => 'NIVEAU DE COMPTETENCE',
                     'attr' => [
                         'class' => 'form-control'
                     ],

@@ -33,7 +33,7 @@ class UserSkill
     private $user;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\SkillLevel")
      */
     private $level;
 
@@ -72,18 +72,6 @@ class UserSkill
         return $this;
     }
 
-    public function getLevel(): ?int
-    {
-        return $this->level;
-    }
-
-    public function setLevel(?int $level): self
-    {
-        $this->level = $level;
-
-        return $this;
-    }
-
     public function __toString()
     {
         return $this->skill->getTitle();
@@ -97,6 +85,18 @@ class UserSkill
     public function setSkill(?Skill $skill): self
     {
         $this->skill = $skill;
+
+        return $this;
+    }
+
+    public function getLevel(): ?SkillLevel
+    {
+        return $this->level;
+    }
+
+    public function setLevel(?SkillLevel $level): self
+    {
+        $this->level = $level;
 
         return $this;
     }
