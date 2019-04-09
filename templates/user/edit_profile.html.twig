@@ -10,69 +10,69 @@
 			{{form_widget(form._token)}}
 			<div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
 				<header class="resume-header pt-4 pt-md-0">
-				
-					<div class="media flex-column flex-md-row" style="position: relative;">
-						
-						<div id="preview" style="min-height: 250px;width: 220px;background-size: cover; background-image:url('{{ asset('./uploads/photos/' ~ user.profileName) }}')">
-							<span style="position:absolute;width:1px;overflow: hidden;">
-								{{ form_widget(form.profileFile, {attr:{'onchange':'readURL(this)'}}) }} 
-								<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
-							</span>
-						</div>
-						<div class="btn-div" id="trig-upl" style="position: absolute;
-							position: absolute;
-							width: 140px;
-							text-align: center;
-							padding: 5px;
-							border: 1px solid white;
-							color: white;
-							background-color: #323232;
-							top: 50%;
-							margin: 0 40px;"
-						>
-							<i class="fa fa-picture-o"></i> Modifier
-						</div>
-							<div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
-							<div class="primary-info">
-								<ul class="list-unstyled">
-									<li>
-										<label for="firstName">NOM:</label>
-										{{ form_widget(form.firstName, {attr:{'class': 'form-control', 'id': 'firstName'}}) }}
-										<span class="text-danger">{{ form_errors(form.firstName) }}</span>
-									</li>
-									<li>
-										<label for="lastName">PRENOM:</label>
-										{{ form_widget(form.lastName, {attr:{'class': 'form-control', 'id': 'lastName'}}) }}
-										<span class="text-danger">{{ form_errors(form.lastName) }}</span>
-									</li>
-									<li class="mb-2">
-										<label for="email">EMAIL:</label>
-										{{ form_widget(form.email, {attr:{'class': 'form-control', 'id': 'email'}}) }}
-										<span class="text-danger">{{ form_errors(form.email) }}</span>
-									</a></li>
-									<li>
-										<label for="email"> PHONE:</label>
-										{{ form_widget(form.phoneNumber, {attr:{'class': 'form-control', 'id': 'phone'}}) }}
-										<span class="text-danger">{{ form_errors(form.phoneNumber) }}</span>
-									</li>
-								</ul>
-							</div><!--//primary-info-->
-							<div class="secondary-info ml-md-auto mt-2">
-								<a class="btn-edit-cv btn-div" href="{{ path('user_profile') }}"><i class="fa fa-times"></i> Annuler</a>
+				<div class="secondary-info ml-md-auto mt-2">
+								<a class="btn-edit-cv btn-div" href="{{ path('user_profile') }}" title="Annuler"><i class="fa fa-times"></i></a>
 							</div><!--//secondary-info-->
-							
-						</div><!--//media-body-->
-					</div><!--//media-->
+
 				</header>
+									<div class="row">
+				<div class="col-lg-9">
 				<div class="resume-body p-5">
-					<section class="resume-section summary-section mb-5">
-						<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">OBJECTIF</h2>
-						<div class="resume-section-content">
-							<p class="mb-0">Summarise your career here. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-						</div>
-					</section><!--//summary-section-->
-					<div class="row">
-						<div class="col-lg-9">
+							<div class="" style="position: relative;">
+								
+								<div id="preview" style="min-height: 250px;width: 220px;background-size: cover; opacity: 0.5;background-image:url('{{ asset('./uploads/photos/' ~ user.profileName) }}')">
+									<span style="position:absolute;width:1px;overflow: hidden;">
+										{{ form_widget(form.profileFile, {attr:{'onchange':'readURL(this)'}}) }} 
+										<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
+									</span>
+								</div>
+								<div class="btn-div" id="trig-upl" style="position: absolute;
+									position: absolute;
+									width: 140px;
+									text-align: center;
+									padding: 5px;
+									border: 1px solid white;
+									color: white;
+									background-color: #323232;
+									top: 20%;
+									margin: 0 40px;"
+								>
+									<i class="fa fa-picture-o"></i> Modifier
+								</div>
+
+								<section class="resume-section experience-section mb-5">
+									<ul class="list-unstyled">
+										<li>
+											<label for="firstName">NOM:</label>
+											{{ form_widget(form.firstName, {attr:{'class': 'form-control', 'id': 'firstName'}}) }}
+											<span class="text-danger">{{ form_errors(form.firstName) }}</span>
+										</li>
+										<li>
+											<label for="lastName">PRENOM:</label>
+											{{ form_widget(form.lastName, {attr:{'class': 'form-control', 'id': 'lastName'}}) }}
+											<span class="text-danger">{{ form_errors(form.lastName) }}</span>
+										</li>
+										<li class="mb-2">
+											<label for="email">EMAIL:</label>
+											{{ form_widget(form.email, {attr:{'class': 'form-control', 'id': 'email'}}) }}
+											<span class="text-danger">{{ form_errors(form.email) }}</span>
+										</a></li>
+										<li>
+											<label for="email"> PHONE:</label>
+											{{ form_widget(form.phoneNumber, {attr:{'class': 'form-control', 'id': 'phone'}}) }}
+											<span class="text-danger">{{ form_errors(form.phoneNumber) }}</span>
+										</li>
+									</ul>
+								</section><!--//primary-info-->
+							</div><!--//media-->
+
+							<section class="resume-section summary-section mb-5">
+								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">OBJECTIF</h2>
+								<div class="resume-section-content">
+									<p class="mb-0">Summarise your career here. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+								</div>
+							</section><!--//summary-section-->
+
 							<section class="resume-section experience-section mb-5">
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Etat civil</h2>
 								<p>

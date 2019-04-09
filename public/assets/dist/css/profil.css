@@ -145,7 +145,8 @@
   
   b,
   strong {
-    font-weight: bolder;
+    font-weight: normal;
+    font-size: 14px;
   }
   
   small {

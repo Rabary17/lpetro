@@ -9,7 +9,7 @@
 			<div class="resume-body p-5">
 			    <section class="resume-section summary-section mb-5">
 				    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">MES PARCOURS PROFESSIONNELLES</h2>
-				    {% for experience in experiences %}
+				    {# {% for experience in experiences %}
 					    <div class="resume-section-content">
 							<div class="d-flex flex-column flex-md-row">
 						        <h3 class="resume-position-title font-weight-bold mb-1">{{ experience.position }} <small class="text-muted">({{ experience.status }})</small></h3>
@@ -25,7 +25,29 @@
 						    {% endfor %}
 					    </div>
 					    <br/>
-				    {% endfor %}
+				    {% endfor %} #}
+
+					{% for experience in experiences %}
+						<div class="resume-section-content container" style="margin-top: 20px;border-top: 1px solid #eee;padding-top: 20px;">
+							<div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
+								du {{ experience.DateDebut|date('d-m-Y') }} à {{ experience.DateFin|date('d-m-Y') }}
+							</div>
+							<div class="rcol-lg-7 col-md-7 col-sm-7"><span class="font-weight-bold">{{ experience.position }}</span></br>
+																		<span style="color:#288edc">{{ experience.company }}</span> </br>
+																		<small class="text-muted">Niveau : ({{ experience.status }})</br>
+																		{{ experience.achievements|nl2br}}</br>
+																		{{ experience.others|nl2br}}</small></br>
+							</div>
+						</div>
+						<h4 class="resume-timeline-item-desc-heading font-weight-bold">Personne de référence:</h4>
+						<small class="text-muted">
+						    {% for referencedPerson in experience.referencedPeople %}
+						    	{{ referencedPerson.name }} </br> {{ referencedPerson.position }} </br>
+						    	{{ referencedPerson.email }} </br> {{ referencedPerson.phone }}
+						    {% endfor %}
+						</small>
+						</br>
+					{% endfor %}
 			    </section><!--//summary-section-->
 				<div>
 					<a href="{{ path('user_profile_edit', {id:user})  ~ '#experience' }}" class="btn btn-primary">Ajouter/Modifier</a>		
