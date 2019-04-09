@@ -8819,17 +8819,9 @@ input[type=radio   ]:not(old) + label{
 position: relative;
 padding: 0;
 }
-#user_experiences, #user_skills, #user_edit_interviews {
+#user_experiences, #user_skills, #user_edit_interviews, #user_trainings, #user_extraWorkActivities {
     display: flex;
     flex-wrap: wrap;
-}
-#user_extraWorkActivities > div, #user_trainings > div, #user_edit_interviews > div{
-  width: 30%;
-  float: left;
-  padding: 10px;
-  margin: 5px;
-  position: relative;
-  background-color: #eee;
 }
 
 #add_activity, #add_training, #add_experience{
@@ -8840,7 +8832,8 @@ padding: 0;
 }
 
 #user_experiences > div,
-#user_skills > div, #user_languages > div{
+#user_skills > div, #user_languages > div,
+#user_extraWorkActivities > div, #user_trainings > div, #user_edit_interviews > div #user_trainings > div, #user_extraWorkActivities > div{
   width: 45%;
   float: left;
   padding: 10px;
