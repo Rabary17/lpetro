@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SkillController extends AbstractController
+class UserSkillController extends AbstractController
 {
     /**
      * @Route("/skill", name="skill")
@@ -16,13 +16,13 @@ class SkillController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $skills = $em->getRepository('App:Skill')->fetchByUser($user->getId());
+        $skills = $em->getRepository('App:UserSkill')->fetchByUser($user->getId());
 
         return $this->render(
-            'skill/index.html.twig',
+            'user_skill/index.html.twig',
             [
-            'skills' => $skills,
-            'user' => $user->getId(),
+                'skills' => $skills,
+                'user' => $user->getId(),
             ]
         );
     }
@@ -37,7 +37,7 @@ class SkillController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $skill = $em->getRepository('App:Skill')->find($id);
+        $skill = $em->getRepository('App:UserSkill')->find($id);
         if ($skill) {
             $em->remove($skill);
             $em->flush();
@@ -46,7 +46,7 @@ class SkillController extends AbstractController
         }
 
         return $this->render(
-            'skill/index.html.twig',
+            'user_skill/index.html.twig',
             [
             'skills' => $skill,
             'error' => 'Impossible de supprimé ce compétence',

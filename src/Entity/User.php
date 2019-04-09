@@ -147,7 +147,7 @@ class User extends BaseUser
     private $experiences;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Skill", mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\UserSkill", mappedBy="user", cascade={"persist", "remove"})
      */
     private $skills;
 
@@ -516,7 +516,7 @@ class User extends BaseUser
         return $this->skills;
     }
 
-    public function addSkill(Skill $skill): self
+    public function addSkill(UserSkill $skill): self
     {
         if (!$this->skills->contains($skill)) {
             $this->skills[] = $skill;
@@ -526,7 +526,7 @@ class User extends BaseUser
         return $this;
     }
 
-    public function removeSkill(Skill $skill): self
+    public function removeSkill(UserSkill $skill): self
     {
         if ($this->skills->contains($skill)) {
             $this->skills->removeElement($skill);

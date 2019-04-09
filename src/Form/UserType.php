@@ -9,7 +9,7 @@ use App\Entity\Nationality;
 use App\Form\ExtraWorkActivityType;
 use App\Form\TrainingType;
 use App\Form\ExperienceType;
-use App\Form\SkillType;
+use App\Form\UserSkillType;
 use App\Form\LanguageType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -155,7 +155,7 @@ class UserType extends AbstractType
                 'skills',
                 CollectionType::class,
                 [
-                    'entry_type' => SkillType::class,
+                    'entry_type' => UserSkillType::class,
                     'allow_add' => true,
                     'allow_delete'=> true,
                     'by_reference' => false,

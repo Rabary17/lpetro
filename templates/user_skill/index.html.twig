@@ -12,10 +12,10 @@
 			<div class="resume-body p-5">
 			    <section class="resume-section summary-section mb-5">
 				    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">MES COMPETENCES</h2>
-				    {% for skill in skills %}
+				    {% for userskill in skills %}
 					    <div class="resume-section-content">
-							<h3 class="resume-position-title font-weight-bold mb-1">{{ skill.title }} <a  data-toggle="modal" data-target="#modal-default" href="#" id="skill-{{ skill.id }}" title="Supprimer" onclick="deleteSkill('{{ skill.id }}')"><i class="text-danger">&times;</i></a></h3>
-						    <p class="mb-0">{{ skill.description }}</p>
+							<h3 class="resume-position-title font-weight-bold mb-1">{{ userskill.skill.title }} <a  data-toggle="modal" data-target="#modal-default" href="#" id="skill-{{ userskill.id }}" title="Supprimer" onclick="deleteSkill('{{ userskill.id }}')"><i class="text-danger">&times;</i></a></h3>
+						    <p class="mb-0">{{ userskill.description }}</p>
 					    </div>
 					    <br/>
 				    {% endfor %}
