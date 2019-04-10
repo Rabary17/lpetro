@@ -102,7 +102,10 @@ class TrainingType extends AbstractType
                     ]
                 ]
             )
-            ->add('school', EntityType::class, [
+            ->add(
+                'school',
+                EntityType::class,
+                [
                     'class' => School::class,
                     'label' => 'ETABLISSEMENT',
                     'mapped' => true,
@@ -113,7 +116,7 @@ class TrainingType extends AbstractType
                         'class' => 'form-control'
                     ]
                 ]
-            )->addEventListener(FormEvents::PRE_SUBMIT, function(FormEvent $event) {
+            )->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
                 $data = $event->getData();
                 $form = $event->getForm();
                 if (!empty($data['newSchool']['name'])) {
@@ -123,7 +126,7 @@ class TrainingType extends AbstractType
                         'property_path' => 'school',
                     ));
                 }
-            })->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
+            })->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
                 $data = $event->getData();
                 $form = $event->getForm();
 
