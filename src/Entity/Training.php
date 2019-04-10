@@ -48,9 +48,9 @@ class Training
     private $level;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\School", inversedBy="trainings")
+     * @ORM\ManyToOne(targetEntity="App\Entity\School", inversedBy="trainings", cascade={"persist"})
      */
-    private $schools;
+    private $school;
 
     public function __construct()
     {
@@ -140,14 +140,14 @@ class Training
         return $this->name;
     }
 
-    public function getSchools(): ?School
+    public function getSchool(): ?School
     {
-        return $this->schools;
+        return $this->school;
     }
 
-    public function setSchools(?School $schools): self
+    public function setSchool(?School $school): self
     {
-        $this->schools = $schools;
+        $this->school = $school;
 
         return $this;
     }

@@ -19,12 +19,12 @@ class School
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Training", mappedBy="schools")
+     * @ORM\OneToMany(targetEntity="App\Entity\Training", mappedBy="school", cascade={"persist"})
      */
     private $trainings;
 
@@ -43,7 +43,7 @@ class School
         return $this->name;
     }
 
-    public function setName(?string $name): self
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -62,7 +62,7 @@ class School
     {
         if (!$this->trainings->contains($training)) {
             $this->trainings[] = $training;
-            $training->setSchools($this);
+            $training->setSchool($this);
         }
 
         return $this;
@@ -73,11 +73,16 @@ class School
         if ($this->trainings->contains($training)) {
             $this->trainings->removeElement($training);
             // set the owning side to null (unless already changed)
-            if ($training->getSchools() === $this) {
-                $training->setSchools(null);
+            if ($training->getSchool() === $this) {
+                $training->setSchool(null);
             }
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

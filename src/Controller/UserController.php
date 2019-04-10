@@ -93,13 +93,15 @@ class UserController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
                 $em->flush();
             }
+
+            return $this->redirectToRoute('user_profile');
         }
 
         return  $this->render(
             'user/edit_profile.html.twig',
             [
-            'user' => $user,
-            'form' => $form->createView(),
+                'user' => $user,
+                'form' => $form->createView(),
             ]
         );
     }
