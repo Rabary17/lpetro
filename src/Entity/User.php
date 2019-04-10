@@ -74,7 +74,7 @@ class User extends BaseUser
     private $address;
 
     /**
-     * @ORM\OneToOne(targetEntity="Nationality")
+     * @ORM\ManyToOne(targetEntity="Nationality")
      */
     private $nationality;
 
@@ -650,18 +650,6 @@ class User extends BaseUser
         return $this;
     }
 
-    public function getNationality(): ?Nationality
-    {
-        return $this->nationality;
-    }
-
-    public function setNationality(?Nationality $nationality): self
-    {
-        $this->nationality = $nationality;
-
-        return $this;
-    }
-
     public function getStatut(): ?UserStatut
     {
         return $this->statut;
@@ -713,6 +701,18 @@ class User extends BaseUser
                 $interview->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNationality(): ?Nationality
+    {
+        return $this->nationality;
+    }
+
+    public function setNationality(?Nationality $nationality): self
+    {
+        $this->nationality = $nationality;
 
         return $this;
     }

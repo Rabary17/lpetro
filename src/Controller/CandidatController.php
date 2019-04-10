@@ -92,4 +92,37 @@ class CandidatController extends AbstractController
 
         return $this->json($candidates);
     }
+
+    /**
+     * @Route("/candidat/filter/all", name="candidat_list")
+     * @param  Request $request description
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function filter(Request $request)
+    {
+        $rhValidated = $request->request->get('rh_validated');
+        $status = $request->request->get('status');
+        $nationality = $request->request->get('nationality');
+        $em = $this->getDoctrine()->getManager();
+
+        $candidates = [];
+
+        if (isset($rhValidated) && isset($status) && isset($nationality)) {
+            $candidates = $em->getRepository('App:User')->fetchByStatusNationalityRhValidated($status, $nationality);
+        } elseif (isset($status) && isset($nationality)) {
+            $candidates = $em->getRepository('App:User')->fetchByStatusNationality($status, $nationality);
+        } elseif (isset($rhValidated) && isset($status)) {
+            $candidates = $em->getRepository('App:User')->fetchByStatusRhValidated($status);
+        } elseif (isset($rhValidated) && isset($nationality)) {
+            $candidates = $em->getRepository('App:User')->fetchByNationalityRhValidate($nationality);
+        } elseif (isset($nationality)) {
+            $candidates = $em->getRepository('App:User')->fetchByNationality($nationality);
+        } elseif (isset($status)) {
+            $candidates = $em->getRepository('App:User')->fetchByStatus($status);
+        } elseif (isset($rhValidated)) {
+            $candidates = $em->getRepository('App:User')->fetchByRhValidated();
+        }
+
+        return $this->json($candidates);
+    }
 }

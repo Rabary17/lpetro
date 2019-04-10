@@ -12,6 +12,25 @@
 			<input type="search" name="q" class="form-control" placeholder="Tapez le nom/prénom (en entier ou partiel) ou l'adresse email du candidat" onchange="searchCandidat(this)">
 		</div>
 	</div>
+		<div>
+			<fieldset>
+				<legend>Filtrer</legend>
+				<select name="nationality" id="nationality">
+					<option>Nationalité</option>
+				{% for nationality in nationalities %}
+					<option value="{{ nationality.id }}">{{ nationality.nationality }}</option>
+				{% endfor %}
+				</select>
+				<select name="status" id="status">
+					<option>Statut</option>
+				{% for stat in status %}
+					<option value="{{ stat.id }}">{{ stat.statut }}</option>
+				{% endfor %}
+				</select>
+				<input type="checkbox" name="rh_validated" value="true" id="rh_validated">Validé par le RH
+				<button class="btn btn-primary" title="filtrer" id="filter"><i class="fa fa-filter"></i></button>
+			</fieldset>
+		</div>
 		<br/>
 		<div class="ajax-content">
 			{% for candidat in candidates %}
@@ -50,34 +69,53 @@
 				method: 'POST',
 				data: {q: query.value},
 				success: function(data) {
-					var html = '';
-					for (var i = 0; i < data.length; i++) {
-				        html += '<div>';
-				        html += '<div class="col-xs-12 col-sm-4 col-md-2">';
-						html += '<a href="/candidat/'+ data[i].id +'" class="cv_show" title="Voir le CV">';
-						html += '<div class="image-flip" ontouchstart="this.classList.toggle("hover");">';
-						html += '<div class="mainflip">';
-						html += '<div class="frontside">';
-						html += '<div class="card">';
-						html += '<div class="card-body text-center">';
-						html += '<p><img class="img-fluid img-cv-list" src="/uploads/photos/' + data[i].profileName +'" alt="Photo de ' + data[i].lastName +'" alt="card image"></p>';
-						html += '<div>';
-						html += '<h2 class="card-title">' + data[i].lastName +'</h2>';
-						html += '<p class="card-title" style="font-size: 18px;">' + data[i].firstName +'</p>';
-						html += '<p class="card-text" style="font-weight:normal">' + data[i].username +'</p>';
-						html += '</div>';
-						html += '</div>';
-						html += '</div>';
-						html += '</div>';
-						html += '</div>';
-						html += '</div>';
-						html += '</a>';
-						html += '</div>';
-						html += '</div>'
-					}
-					$('.ajax-content').html(html);
+					showView(data);
 				}
 			});
+		}
+
+		$('#filter').click(function() {
+			var status = $('#status').val();
+			var nationality = $('#nationality').val();
+			var rh_validated = $('#rh_validated').val();
+
+			$.post({
+				url: '/candidat/filter/all',
+				method: 'POST',
+				data: { 'status': status, 'rh_validated': rh_validated, 'nationality': nationality },
+				success: function(data) {
+					showView(data);
+				}
+			});
+		});
+
+		function showView(data) {
+			var html = '';
+			for (var i = 0; i < data.length; i++) {
+		        html += '<div>';
+		        html += '<div class="col-xs-12 col-sm-4 col-md-2">';
+				html += '<a href="/candidat/'+ data[i].id +'" class="cv_show" title="Voir le CV">';
+				html += '<div class="image-flip" ontouchstart="this.classList.toggle("hover");">';
+				html += '<div class="mainflip">';
+				html += '<div class="frontside">';
+				html += '<div class="card">';
+				html += '<div class="card-body text-center">';
+				html += '<p><img class="img-fluid img-cv-list" src="/uploads/photos/' + data[i].profileName +'" alt="Photo de ' + data[i].lastName +'" alt="card image"></p>';
+				html += '<div>';
+				html += '<h2 class="card-title">' + data[i].lastName +'</h2>';
+				html += '<p class="card-title" style="font-size: 18px;">' + data[i].firstName +'</p>';
+				html += '<p class="card-text" style="font-weight:normal">' + data[i].username +'</p>';
+				html += '</div>';
+				html += '</div>';
+				html += '</div>';
+				html += '</div>';
+				html += '</div>';
+				html += '</div>';
+				html += '</a>';
+				html += '</div>';
+				html += '</div>'
+			}
+			$('.ajax-content').html(html);
 		}
 	</script>
 {% endblock %}

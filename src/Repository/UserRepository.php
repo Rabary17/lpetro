@@ -64,6 +64,164 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param integer $statut      description
+     * @param integer $nationality description
+     * @return array
+     */
+    public function fetchByStatusNationalityRhValidated($statut, $nationality)
+    {
+        $role = 'ROLE_CANDIDAT';
+
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :roles')
+            ->andWhere('u.submit = :submit')
+            ->andWhere('u.enabled = :enabled')
+            ->andWhere('u.statut = :statut')
+            ->andWhere('u.nationality = :nationality')
+            ->andWhere('u.rhvalidate = :rhvalidate')
+            ->setParameter('roles', '%"' . $role . '"%')
+            ->setParameter('statut', $statut)
+            ->setParameter('nationality', $nationality)
+            ->setParameter('rhvalidate', true)
+            ->setParameter('submit', true)
+            ->setParameter('enabled', true)
+            ->getQuery()
+            ->getArrayResult();
+    }
+
+    /**
+     * @param integer $statut description
+     * @return array
+     */
+    public function fetchByStatusRhValidated($statut)
+    {
+        $role = 'ROLE_CANDIDAT';
+
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :roles')
+            ->andWhere('u.submit = :submit')
+            ->andWhere('u.enabled = :enabled')
+            ->andWhere('u.statut = :statut')
+            ->andWhere('u.rhvalidate = :rhvalidate')
+            ->setParameter('roles', '%"' . $role . '"%')
+            ->setParameter('statut', $statut)
+            ->setParameter('rhvalidate', true)
+            ->setParameter('submit', true)
+            ->setParameter('enabled', true)
+            ->getQuery()
+            ->getArrayResult();
+    }
+
+    /**
+     * @param integer $statut      description
+     * @param integer $nationality description
+     * @return array
+     */
+    public function fetchByStatusNationality($statut, $nationality)
+    {
+        $role = 'ROLE_CANDIDAT';
+
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :roles')
+            ->andWhere('u.submit = :submit')
+            ->andWhere('u.enabled = :enabled')
+            ->andWhere('u.statut = :statut')
+            ->andWhere('u.nationality = :nationality')
+            ->setParameter('roles', '%"' . $role . '"%')
+            ->setParameter('statut', $statut)
+            ->setParameter('nationality', $nationality)
+            ->setParameter('submit', true)
+            ->setParameter('enabled', true)
+            ->getQuery()
+            ->getArrayResult();
+    }
+
+    /**
+     * @param integer $statut description
+     * @return array
+     */
+    public function fetchByStatus($statut)
+    {
+        $role = 'ROLE_CANDIDAT';
+
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :roles')
+            ->andWhere('u.submit = :submit')
+            ->andWhere('u.enabled = :enabled')
+            ->andWhere('u.statut = :statut')
+            ->setParameter('roles', '%"' . $role . '"%')
+            ->setParameter('statut', $statut)
+            ->setParameter('submit', true)
+            ->setParameter('enabled', true)
+            ->getQuery()
+            ->getArrayResult();
+    }
+
+    /**
+     * @param integer $nationality description
+     * @return array
+     */
+    public function fetchByNationalityRhValidate($nationality)
+    {
+        $role = 'ROLE_CANDIDAT';
+
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :roles')
+            ->andWhere('u.submit = :submit')
+            ->andWhere('u.enabled = :enabled')
+            ->andWhere('u.nationality = :nationality')
+            ->andWhere('u.rhvalidate = :rhvalidate')
+            ->setParameter('roles', '%"' . $role . '"%')
+            ->setParameter('nationality', $nationality)
+            ->setParameter('rhvalidate', true)
+            ->setParameter('submit', true)
+            ->setParameter('enabled', true)
+            ->getQuery()
+            ->getArrayResult();
+    }
+
+    /**
+     * @param integer $nationality description
+     * @return array
+     */
+    public function fetchByNationality($nationality)
+    {
+        $role = 'ROLE_CANDIDAT';
+
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :roles')
+            ->andWhere('u.submit = :submit')
+            ->andWhere('u.enabled = :enabled')
+            ->andWhere('u.nationality = :nationality')
+            ->setParameter('roles', '%"' . $role . '"%')
+            ->setParameter('nationality', $nationality)
+            ->setParameter('submit', true)
+            ->setParameter('enabled', true)
+            ->getQuery()
+            ->getArrayResult();
+    }
+
+    /**
+     * @return array
+     */
+    public function fetchByRhValidated()
+    {
+        $role = 'ROLE_CANDIDAT';
+
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :roles')
+            ->andWhere('u.submit = :submit')
+            ->andWhere('u.enabled = :enabled')
+            ->andWhere('u.rhvalidate = :rhvalidate')
+            ->setParameter('roles', '%"' . $role . '"%')
+            ->setParameter('rhvalidate', true)
+            ->setParameter('submit', true)
+            ->setParameter('enabled', true)
+            ->getQuery()
+            ->getArrayResult();
+    }
+
+    /**
      * @param string $q description
      * @return array
      */
