@@ -26,6 +26,7 @@ easy_admin:
               children:
                 - { entity: 'Skill', label: 'Liste', params:{ action: 'list' } }
                 - { entity: 'SkillLevel', label: 'Niveau de compétence', params:{ action: 'list' } }
+
     entities:
         Candidat:
             class: App\Entity\User
