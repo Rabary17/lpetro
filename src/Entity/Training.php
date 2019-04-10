@@ -48,9 +48,9 @@ class Training
     private $level;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\School", inversedBy="trainings")
      */
-    private $school;
+    private $schools;
 
     public function __construct()
     {
@@ -135,20 +135,20 @@ class Training
         return $this;
     }
 
-    public function getSchool(): ?string
-    {
-        return $this->school;
-    }
-
-    public function setSchool(?string $school): self
-    {
-        $this->school = $school;
-
-        return $this;
-    }
-
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getSchools(): ?School
+    {
+        return $this->schools;
+    }
+
+    public function setSchools(?School $schools): self
+    {
+        $this->schools = $schools;
+
+        return $this;
     }
 }
