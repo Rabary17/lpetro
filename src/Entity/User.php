@@ -115,7 +115,7 @@ class User extends BaseUser
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Hobby", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="Hobby", inversedBy="users", cascade={"persist"})
      * @ORM\JoinTable(name="user_hobbies")
      */
     protected $hobbies;

@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Training;
 use App\Entity\School;
 use App\Entity\Filiere;
+use App\Entity\TrainingResult;
 use App\Form\SchoolType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -109,6 +110,11 @@ class TrainingType extends AbstractType
                 [
                     'class' => Filiere::class,
                     'label' => 'FILIERE',
+                'result',
+                null,
+                [
+                    'class' => TrainingResult::class,
+                    'label' => 'RESULTAT OBTENU',
                     'mapped' => true,
                     'label_attr' => [
                         'class' => 'mylabel'
@@ -132,7 +138,8 @@ class TrainingType extends AbstractType
                         'class' => 'form-control'
                     ]
                 ]
-            )->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
+            )
+            ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
                 $data = $event->getData();
                 $form = $event->getForm();
                 if (!empty($data['newSchool']['name'])) {

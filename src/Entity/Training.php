@@ -59,6 +59,11 @@ class Training
      */
     private $Filiere;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TrainingResult", inversedBy="trainings")
+     */
+    private $result;
+
     public function __construct()
     {
         $stringHelpers = new StringHelpers();
@@ -168,6 +173,18 @@ class Training
     {
         $this->Filiere = $Filiere;
 
+        return $this;
+    }
+
+    public function getResult(): ?TrainingResult
+    {
+        return $this->result;
+    }
+
+    public function setResult(?TrainingResult $result): self
+    {
+        $this->result = $result;
+        
         return $this;
     }
 }
