@@ -53,6 +53,12 @@ class Training
      */
     private $school;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Filiere", inversedBy="trainings", cascade={"persist"})
+     * @ORM\JoinColumn(referencedColumnName="id",  onDelete="SET NULL")
+     */
+    private $Filiere;
+
     public function __construct()
     {
         $stringHelpers = new StringHelpers();
@@ -149,6 +155,18 @@ class Training
     public function setSchool(?School $school): self
     {
         $this->school = $school;
+
+        return $this;
+    }
+
+    public function getFiliere(): ?Filiere
+    {
+        return $this->Filiere;
+    }
+
+    public function setFiliere(?Filiere $Filiere): self
+    {
+        $this->Filiere = $Filiere;
 
         return $this;
     }

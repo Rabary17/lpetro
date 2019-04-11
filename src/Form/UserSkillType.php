@@ -28,9 +28,9 @@ class UserSkillType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add(
-                'skill',
-                EntityType::class,
-                [
+            'skill',
+            EntityType::class,
+            [
                     'class' => Skill::class,
                     'choice_label' => 'title',
                     'label' => 'TITRE DE LA COMPETENCE',
