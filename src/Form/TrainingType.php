@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Training;
 use App\Entity\School;
+use App\Entity\Filiere;
 use App\Form\SchoolType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -94,6 +95,21 @@ class TrainingType extends AbstractType
                 [
                     'required' => false,
                     'label' => 'NIVEAU',
+                    'label_attr' => [
+                        'class' => 'mylabel'
+                    ],
+                    'attr' => [
+                        'class' => 'form-control'
+                    ]
+                ]
+            )
+            ->add(
+                'filiere',
+                EntityType::class,
+                [
+                    'class' => Filiere::class,
+                    'label' => 'FILIERE',
+                    'mapped' => true,
                     'label_attr' => [
                         'class' => 'mylabel'
                     ],
