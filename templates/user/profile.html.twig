@@ -110,16 +110,31 @@
 						    <div class="resume-section-content">
 							    <div class="resume-timeline position-relative">		    
 								    <article class="resume-timeline-item position-relative">
-									    {% for userskill in user.skills %}
+									    {# {% for userskill in user.skills %}
 										    <div class="resume-timeline-item-header mb-2">
 											    <div class="d-flex flex-column flex-md-row">
-											        <h3 class="resume-position-title font-weight-bold mb-1">{{ userskill.skill.title }}</h3>
+											        <h3 class="resume-position-title font-weight-bold mb-1">{{ userskill.skill.title }} : {{ userskill.level }}</h3>
 											    </div>
 										    </div>
 										    <div class="resume-timeline-item-desc">
 											    <p>{{ userskill.description|nl2br}}</p>
 										    </div>
-									    {% endfor %}
+									    {% endfor %} #}
+										<ul style="padding: 0;">
+											{% for userskill in user.skills %}
+											
+												<li class="mb-1" style="display:flex">{{ userskill.skill.title }}
+													{# <div class="star-ratings-css">
+														<div style="height: 20px;    line-height: 27px;">
+															<div class="star-ratings-css-top" style="width: {{ userskill.level * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+															<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+														</div>
+													</div> #}
+													<p>{{ userskill.description|nl2br}}</p>
+												</li>
+											
+											{% endfor %}
+										</ul>
 									    <a href="{{ path('skill') }}">Voir toutes mes competences </a>
 								    </article>
 							    </div>
@@ -180,9 +195,19 @@
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Langues</h2>
 						    <div class="resume-section-content">
 							    <ul class="list-unstyled resume-lang-list">
-								    <li class="mb-2"><span class="resume-lang-name font-weight-bold">English</span> <small class="text-muted font-weight-normal">(Native)</small></li>
+									{% for langue in user.languages %}
+								    <li class="mb-1" style="display:flex">{{ langue.name }} 
+										<div class="star-ratings-css">
+											<div style="height: 20px;    line-height: 27px;">
+												<div class="star-ratings-css-top" style="width: {{ langue.level * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											</div>
+										</div>
+									</li>
+								    {% endfor %}
+								    {# <li class="mb-2"><span class="resume-lang-name font-weight-bold">English</span> <small class="text-muted font-weight-normal">(Native)</small></li>
 								    <li class="mb-2 align-middle"><span class="resume-lang-name font-weight-bold">French</span> <small class="text-muted font-weight-normal">(Professional)</small></li>
-								    <li><span class="resume-lang-name font-weight-bold">Spanish</span> <small class="text-muted font-weight-normal">(Professional)</small></li>
+								    <li><span class="resume-lang-name font-weight-bold">Spanish</span> <small class="text-muted font-weight-normal">(Professional)</small></li> #}
 							    </ul>
 						    </div>
 					    </section><!--//language-section-->

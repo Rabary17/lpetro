@@ -1,14 +1,18 @@
+@font-face {
+    font-family: "Avenir Next";
+    src: url("./assets/webfonts/AvenirNextLTPro-Regular.woff") format("woff");
+}
 .banner {
     text-align: center;
 padding: 2%;
 margin: 2%;
 }
 .home-picture {
-    height: 300px;
+    height: 200px;
 }
 .title-home{
     font-family: Anton;
-    font-size: 4em;
+    font-size: 3em;
     color: white;
 }
 .subtitle-home{
@@ -16,7 +20,7 @@ margin: 2%;
     color: white;
 }
 .paraph-home{
-    font-size: 1.3em;
+    font-size: 1.2em;
     color: white;
     line-height: 24px;
 }
@@ -51,4 +55,25 @@ margin: 2%;
     width: 100%;
     border-radius: 50px;
     border: 1px solid #eae4e4;
+}
+
+#filter-rh > div {
+    width: 30%;
+    margin: 0 1%;
+}
+
+#filter-rh > button {
+    margin-left: 3%;
+    height: 34px;
+}
+
+#filter-rh .check-rh{
+    height: 40px;
+    line-height: 40px;
+}
+
+#filter-rh .check-rh input{
+    position: relative;
+    top: 3px;
+    margin: 0 10px;
 }
