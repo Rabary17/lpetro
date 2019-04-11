@@ -11,6 +11,7 @@ easy_admin:
             - { entity: 'Candidat', label: 'Candidats', params:{ action: 'list' }, icon: 'users' }
             - { entity: 'Rh', label: 'RH', params:{ action: 'list' }, icon: 'user' }
             - { entity: 'Cv', label: 'Liste CVs', params:{ action: 'list' }, icon: 'copy' }
+            - { entity: 'Archived', label: 'Archives', params:{ action: 'list' }, icon: 'copy' }
             - label: CVs Options
               icon: copy
               children:
@@ -56,6 +57,16 @@ easy_admin:
                 title: "Liste de CVs"
                 max_results: 10
                 dql_filter: "entity.submit = 1 AND entity.roles LIKE '%%ROLE_CANDIDAT%%'"
+                actions: ['-new', '-edit', '-show', '-delete', { name: 'show_cv', type: 'route', label: 'Voir détail Cv' }]
+                fields: [{ property: 'profileName', type: 'image', label: 'Photo', base_path: '%app.path.profil%' }, { property: 'lastName', label: 'Nom' }, { property: 'firstName', label: 'Prénom' }, { property: 'email', label: 'Email' }, { property: 'phoneNumber', label: 'Numéro phone' }, { property: 'archived', label: 'Archivé/Non archivé' }]
+
+        Archived:
+            class: App\Entity\User
+            label: 'Cv'
+            list:
+                title: "Archives"
+                max_results: 10
+                dql_filter: "entity.archived = 1 AND entity.submit = 1 AND entity.roles LIKE '%%ROLE_CANDIDAT%%'"
                 actions: ['-new', '-edit', '-show', '-delete', { name: 'show_cv', type: 'route', label: 'Voir détail Cv' }]
                 fields: [{ property: 'profileName', type: 'image', label: 'Photo', base_path: '%app.path.profil%' }, { property: 'lastName', label: 'Nom' }, { property: 'firstName', label: 'Prénom' }, { property: 'email', label: 'Email' }, { property: 'phoneNumber', label: 'Numéro phone' }]
 
