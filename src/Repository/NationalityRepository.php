@@ -24,6 +24,15 @@ class NationalityRepository extends ServiceEntityRepository
         parent::__construct($registry, Nationality::class);
     }
 
+    /**
+     * [getAll description]
+     * @return array [description]
+     */
+    public function getAll()
+    {
+        return $this->findBy(array(), array('nationality' => 'ASC'));
+    }
+
     // /**
     //  * @return Nationality[] Returns an array of Nationality objects
     //  */

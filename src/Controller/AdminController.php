@@ -97,6 +97,7 @@ class AdminController extends BaseAdminController
     public function cvArchived($id)
     {
         $candidat = $this->userService->cvArchived($id);
-        return$this->redirectToRoute('easyadmin', array('entity' => 'Cv', 'action' => 'list'));
+
+        return $this->redirectToRoute('easyadmin', array('entity' => 'Cv', 'action' => 'list'));
     }
 }

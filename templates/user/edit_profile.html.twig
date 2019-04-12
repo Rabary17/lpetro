@@ -190,7 +190,7 @@
         }
 
 		var hobbies = new Bloodhound({
-			prefetch: 'http://localhost:8000/hobbies',
+			prefetch: window.location.origin + '/lpsa/hobbies',
 			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
 			queryTokenizer: Bloodhound.tokenizers.whitespace,
 		});
