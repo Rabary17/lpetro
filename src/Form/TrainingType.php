@@ -91,6 +91,20 @@ class TrainingType extends AbstractType
                 ]
             )
             ->add(
+                'filiere',
+                EntityType::class,
+                [
+                    'class' => Filiere::class,
+                    'label' => 'FILIERE',
+                    'label_attr' => [
+                        'class' => 'mylabel'
+                    ],
+                    'attr' => [
+                        'class' => 'form-control'
+                    ]
+                ]
+            )
+            ->add(
                 'level',
                 TextType::class,
                 [
@@ -104,13 +118,7 @@ class TrainingType extends AbstractType
                     ]
                 ]
             )
-            ->add(
-                'filiere',
-                EntityType::class,
-                [
-                    'class' => Filiere::class,
-                    'label' => 'FILIERE',
-                'result',
+            ->add('result',
                 null,
                 [
                     'class' => TrainingResult::class,
@@ -122,7 +130,6 @@ class TrainingType extends AbstractType
                     'attr' => [
                         'class' => 'form-control'
                     ]
-                ]
                 ]
             )
             ->add(

@@ -55,6 +55,7 @@ class ReferencedPersonType extends AbstractType
                 TextType::class,
                 [
                     'label' => 'EMAIL',
+                    'required' => false,
                     'label_attr' => [
                         'class' => 'mylabel'
                     ],
@@ -68,6 +69,7 @@ class ReferencedPersonType extends AbstractType
                 TextType::class,
                 [
                     'label' => 'NUMERO TELEPHONE',
+                    'required' => false,
                     'label_attr' => [
                         'class' => 'mylabel'
                     ],

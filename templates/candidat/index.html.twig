@@ -94,15 +94,14 @@
 											        du {{ experience.DateDebut|date('d-m-Y') }} à {{ experience.DateFin|date('d-m-Y') }}
 											    </div>
 											    <div class="rcol-lg-7 col-md-7 col-sm-7"><span class="font-weight-bold">{{ experience.position }}</span></br>
-																						 <span style="color:#288edc">{{ experience.company }}</span> </br>
-																						 <small class="text-muted">Niveau : ({{ experience.status }})</br>
+													<span style="color:#288edc">{{ experience.company }}</span> </br>
+													<small class="text-muted">Niveau : ({{ experience.status }})</br>
 																						 {{ experience.achievements|nl2br}}</br>
 																						 {{ experience.others|nl2br}}</small></br>
 												</div>
 										    </div>
 											</br>
 									    {% endfor %}
-									    <a href="{{ path('experience') }}">Voir toutes mes expériences déjà encodés </a>
 								    </article>
 							    </div>
 						    </div>
@@ -113,10 +112,9 @@
 							    <div class="resume-timeline position-relative">		    
 								    <article class="resume-timeline-item position-relative">
 									    {% for skill in candidat.skills %}
-
 										    <div class="resume-timeline-item-header mb-2">
 											    <div class="d-flex flex-column flex-md-row">
-											        <h3 class="resume-position-title font-weight-bold mb-1">{{ skill.title }}</h3>
+											        <h3 class="resume-position-title font-weight-bold mb-1">{{ skill.skill.title }}</h3>
 											    </div>
 										    </div>
 										    <div class="resume-timeline-item-desc">
@@ -126,7 +124,6 @@
 											</br>
 
 									    {% endfor %}
-									    <a href="{{ path('skill') }}">Voir toutes mes competences </a>
 								    </article>
 							    </div>
 						    </div>
