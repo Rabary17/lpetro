@@ -72,4 +72,19 @@ class UserService
 
         return $candidat;
     }
+
+    /**
+     * cvArchived
+     *
+     * @param  string $id [description]
+     * @return array
+     */
+    public function cvArchived($id)
+    {
+        $candidat = $this->em->getRepository('App:User')->find($id);
+        $candidat->setArchived(1);
+        $this->em->flush();
+
+        return $candidat;
+    }
 }
