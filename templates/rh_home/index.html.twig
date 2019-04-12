@@ -41,30 +41,28 @@
 	{% endif %}
 </div>
 		<br/>
-	<div class="ajax-content container">
+	<div class="ajax-content container row">
 			{% for candidat in candidates %}
-		        <div>
-		            <!-- Team member -->
-		            <div class="col-xs-12 col-sm-4 col-md-2">
-						<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="cv_show" title="Voir le CV">
-							<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-								<div class="mainflip">
-									<div class="frontside">
-										<div class="card">
-											<div class="card-body text-center">
-												<p><img class="img-fluid img-cv-list" src="{{ asset('uploads/photos/' ~ candidat.profileName) }}" alt="Photo de {{ candidat.lastName }}" alt="card image"></p>
-												<div>
-													<h2 class="card-title">{{ candidat.lastName }}</h2>
-													<p class="card-title" style="font-size: 18px;">{{ candidat.firstName }}</p>
-													<p class="card-text" style="font-weight:normal">{{ candidat.email }}</p>
-												</div>
+	            <!-- Team member -->
+	            <div class="col-md-4" style="min-height:100px !important">
+					<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="cv_show" title="Voir le CV">
+						<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+							<div class="mainflip">
+								<div class="frontside">
+									<div class="card">
+										<div class="card-body text-center">
+											<p><img src="{{ asset('uploads/photos/' ~ candidat.profileName) }}" alt="Photo de {{ candidat.lastName }}" alt="card image" width="100px" height="100px"></p>
+											<div>
+												<h2 class="card-title">{{ candidat.lastName }}</h2>
+												<p class="card-title" style="font-size: 18px;">{{ candidat.firstName }}</p>
+												<p class="card-text" style="font-weight:normal">{{ candidat.email }}</p>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</a>
-					</div>
+						</div>
+					</a>
 				</div>
 			{% endfor %}
 			{% if not candidates %}
@@ -119,7 +117,7 @@
 			var html = '';
 			for (var i = 0; i < data.length; i++) {
 		        html += '<div>';
-		        html += '<div class="col-xs-12 col-sm-4 col-md-2">';
+		        html += '<div class="col-xs-12 col-sm-6 col-md-4">';
 				html += '<a href="/candidat/'+ data[i].id +'" class="cv_show" title="Voir le CV">';
 				html += '<div class="image-flip" ontouchstart="this.classList.toggle("hover");">';
 				html += '<div class="mainflip">';

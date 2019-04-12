@@ -94,7 +94,7 @@ class CandidatController extends AbstractController
     }
 
     /**
-     * @Route("/candidat/filter/all", name="candidat_list")
+     * @Route("/candidat/filter/all", name="candidat_filter")
      * @param  Request $request description
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
