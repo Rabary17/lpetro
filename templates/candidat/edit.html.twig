@@ -59,7 +59,7 @@
 <script src="{{ asset('assets/dist/js/jquery.collection.js') }}"></script>
 	<script type="text/javascript">
 		var tags = new Bloodhound({
-			prefetch: 'http://localhost:8000/tags',
+			prefetch: window.location.origin + '/tags',
 			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
 			queryTokenizer: Bloodhound.tokenizers.whitespace,
 		});
