@@ -54,9 +54,16 @@
 							{% if candidat.rhvalidate %}
 								<a class="btn-edit-cv" style="background-color: green;color:white" title="CV validé"><i class="fa fa-check"></i></a>
 								{% else %}
-								<a class="btn-edit-cv" href="{{ path('user_cv_send', {'id' : candidat.id}) }}" title="Valider le CV"><i class="fa fa-paper-plane"></i></a>
-							{% endif %}
+								<a href="{{ path('rh_validate_cv', {id: candidat.id}) }}" class="btn-edit-cv">Valider le CV</a>
+							{% endif %}		
 						</div>
+						<div class="col-sm-6 col-md-2 col-lg-2">
+					    	{% if candidat.archived  %}
+								<a class="btn-edit-cv">CV Archivé</a>
+								{% else %}
+								<a href="{{ path('admin_archived_cv', {id: candidat.id}) }}" class="btn-edit-cv">Archiver le CV</a>
+							{% endif %}	
+					    </div>
 				    </div><!--//media-body-->
 			    </div><!--//media-->
 
