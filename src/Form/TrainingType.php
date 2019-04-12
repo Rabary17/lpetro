@@ -123,6 +123,7 @@ class TrainingType extends AbstractType
                         'class' => 'form-control'
                     ]
                 ]
+                ]
             )
             ->add(
                 'school',

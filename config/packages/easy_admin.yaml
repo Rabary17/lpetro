@@ -67,7 +67,7 @@ easy_admin:
             class: App\Entity\User
             label: 'Cv'
             list:
-                title: "Archives"
+                title: "Gestion de l'archivage des CV"
                 max_results: 10
                 dql_filter: "entity.archived = 1 AND entity.submit = 1 AND entity.roles LIKE '%%ROLE_CANDIDAT%%'"
                 actions: ['-new', '-edit', '-show', '-delete', { name: 'show_cv', type: 'route', label: 'Voir détail Cv' }]
