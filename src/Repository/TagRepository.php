@@ -23,4 +23,13 @@ class TagRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Tag::class);
     }
+
+    /**
+     * [getAll description]
+     * @return array [description]
+     */
+    public function getAll()
+    {
+        return $this->findBy(array(), array('name' => 'ASC'));
+    }
 }

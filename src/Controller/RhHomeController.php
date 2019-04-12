@@ -53,9 +53,9 @@ class RhHomeController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $candidates = $em->getRepository('App:User')->fetchAllCandidates();
-        $nationalities = $em->getRepository('App:Nationality')->findAll();
+        $nationalities = $em->getRepository('App:Nationality')->getAll();
         $status = $em->getRepository('App:UserStatut')->findAll();
-        $tags = $em->getRepository('App:Tag')->findAll();
+        $tags = $em->getRepository('App:Tag')->getAll();
 
         return $this->render(
             'rh_home/index.html.twig',

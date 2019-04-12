@@ -17,19 +17,19 @@
 			<div id="filter-rh" style="display: flex;margin-top: 5px;">
 				{# <legend>Filtrer</legend> #}
 				<select name="nationality" id="nationality">
-					<option>Nationalité</option>
+					<option value="">Nationalité</option>
 				{% for nationality in nationalities %}
 					<option value="{{ nationality.id }}">{{ nationality.nationality }}</option>
 				{% endfor %}
 				</select>
 				<select name="status" id="status">
-					<option>Statut</option>
+					<option value="">Statut</option>
 				{% for stat in status %}
 					<option value="{{ stat.id }}">{{ stat.statut }}</option>
 				{% endfor %}
 				</select>
 				<select name="tags[]" id="tags" multiple="true">
-					<option>Tags</option>
+					<option value="">Tags</option>
 					{% for tag in tags %}
 						<option value="{{ tag.id }}">{{ tag.name }}</option>
 					{% endfor %}
