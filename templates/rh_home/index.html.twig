@@ -80,7 +80,7 @@
 	$('#status').selectize();
 		function searchCandidat(query) {
 			$.post({
-				url: '/candidat/filter/list/candidat',
+				url: '/lpsa/candidat/filter/list/candidat',
 				method: 'POST',
 				data: {q: query.value},
 				success: function(data) {
@@ -104,7 +104,7 @@
 			}
 
 			$.post({
-				url: '/candidat/filter/all',
+				url: '/lpsa/candidat/filter/all',
 				method: 'POST',
 				data: { 'status': status, 'rh_validated': rh_validated, 'nationality': nationality, 'tags': tags },
 				success: function(data) {
