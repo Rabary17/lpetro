@@ -118,7 +118,8 @@ class TrainingType extends AbstractType
                     ]
                 ]
             )
-            ->add('result',
+            ->add(
+                'result',
                 null,
                 [
                     'class' => TrainingResult::class,
