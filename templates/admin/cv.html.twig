@@ -52,18 +52,19 @@
 						<div style="display:block" class="col-sm-6 col-md-4 col-lg-4">
 							<a class="btn-edit-cv" href="{{ path('candidat_edit', {'id' : candidat.id }) }}" title="éditer mon cv"><i class="fa fa-pencil"></i></a>
 							{% if candidat.rhvalidate %}
-								<a class="btn-edit-cv" style="background-color: green;color:white" title="CV validé"><i class="fa fa-check"></i></a>
+								<a class="btn-edit-cv" style="background-color: green;color:white" title="CV validé" style="background-color:green;color:white;"><i class="fa fa-check"></i></a>
 								{% else %}
-								<a href="{{ path('rh_validate_cv', {id: candidat.id}) }}" class="btn-edit-cv">Valider le CV</a>
-							{% endif %}		
-						</div>
-						<div class="col-sm-6 col-md-2 col-lg-2">
-					    	{% if candidat.archived  %}
-								<a class="btn-edit-cv">CV Archivé</a>
+								<a href="{{ path('rh_validate_cv', {id: candidat.id}) }}" class="btn-edit-cv" title="Valider le CV"><i class="fa fa-check"></i></a>
+							{% endif %}
+							{% if candidat.archived  %}
+								<a class="btn-edit-cv" title="CV déjà archivé" style="background-color: green;color:white;"><i class="fa fa-archive"></i></a>
 								{% else %}
-								<a href="{{ path('admin_archived_cv', {id: candidat.id}) }}" class="btn-edit-cv">Archiver le CV</a>
+								<a href="{{ path('admin_archived_cv', {id: candidat.id}) }}" class="btn-edit-cv" title="Archiver le CV"><i class="fa fa-archive"></i></a>
 							{% endif %}	
-					    </div>
+						</div>
+						{# <div class="col-sm-6 col-md-2 col-lg-2">
+
+					    </div> #}
 				    </div><!--//media-body-->
 			    </div><!--//media-->
 
@@ -140,20 +141,26 @@
 						    <div class="resume-section-content">
 							    <div class="resume-timeline position-relative">		    
 								    <article class="resume-timeline-item position-relative">
-									    {% for skill in candidat.skills %}
+										
+											{% for skill in candidat.skills %}
 
-										    <div class="resume-timeline-item-header mb-2">
-											    <div class="d-flex flex-column flex-md-row">
-											        <h3 class="resume-position-title font-weight-bold mb-1">{{ skill.title }}</h3>
-											    </div>
-										    </div>
-										    <div class="resume-timeline-item-desc">
-											    <p>{{ skill.description|nl2br}}</p>
-										    </div>
+												<div class="resume-timeline-item-header mb-2">
+													<div class="d-flex flex-column flex-md-row">
+														<h3 class="resume-position-title font-weight-bold mb-1">
+															{% if skill.title is defined %}
+																{{ skill.title }}
+															{% endif %}
+														</h3>
+													</div>
+												</div>
+												<div class="resume-timeline-item-desc">
+													<p>{{ skill.description|nl2br}}</p>
+												</div>
 
-											</br>
+												</br>
 
-									    {% endfor %}
+											{% endfor %}
+										
 									    <a href="{{ path('skill') }}">Voir toutes mes competences </a>
 								    </article>
 							    </div>

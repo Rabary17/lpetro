@@ -51,9 +51,9 @@ margin: 2%;
 }
 
 
-.img-cv-list{
-    width: 100%;
-    border-radius: 50px;
+.img-cv-list {
+    width: 60%;
+    border-radius: 30px;
     border: 1px solid #eae4e4;
 }
 
@@ -66,6 +66,14 @@ margin: 2%;
     margin-left: 3%;
     height: 34px;
 }
+#filter-rh > button#filter{
+    margin-left: 3%;
+    height: 34px;
+    background-color: #cc1b27;
+    border-color: #cc1b27;
+}
+
+
 
 #filter-rh .check-rh{
     height: 40px;
@@ -76,4 +84,17 @@ margin: 2%;
     position: relative;
     top: 3px;
     margin: 0 10px;
+}
+
+.skin-blue .sidebar-menu>li.header {
+    color: #fff;
+    background: #cc1b27;
+}
+
+.user-panel {
+    margin: 7px;
+}
+
+.user-panel>.image>img {
+    height: 45px;
 }

@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block body %}
-	<div class="banner container" style="padding: 0 2%;margin: 0 2%;" class="container">
+<style>
+b, strong {
+    font-weight: inherit;
+}
+</style>
+	<div class="banner container" style="padding: 0;margin: 0 auto;width:calc(100% - 230px) !important;" class="container">
 	<div style="display:flex;padding: 0;" class="col-lg-12 col-md-12 col-sm-12">
 		<div style="line-height: 20px;flex: 1;background-color: #7c97a1;"><i class="fa fa-search" style="line-height: 33px;"></i></div>
 		<div style="flex: 15;">
@@ -29,9 +34,11 @@
 			</select>
 			<select name="tags[]" id="tags" multiple="true">
 				<option>Tags</option>
+				{% if tags is defined %}
 				{% for tag in tags %}
 					<option value="{{ tag.id }}">{{ tag.name }}</option>
 				{% endfor %}
+				{% endif %}
 			</select>
 			<div class="check-rh"><input type="checkbox" name="rh_validated" value="true" id="rh_validated">Validé par le RH</div>
 			<button class="btn btn-primary" title="filtrer" id="filter"><i class="fa fa-filter"></i></button>
@@ -41,11 +48,11 @@
 	</div>
 </div>
 		<br/>
-	<div class="ajax-content container">
+	<div class="ajax-content row">
 			{% for candidat in candidates %}
-		        <div>
+		        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 		            <!-- Team member -->
-		            <div class="col-xs-12 col-sm-4 col-md-2">
+		            <div style="margin: 5%;box-sizing: border-box;">
 						<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="cv_show" title="Voir le CV">
 							<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
 								<div class="mainflip">
@@ -74,6 +81,7 @@
 	<script type="text/javascript">
 	$('#nationality').selectize();
 	$('#status').selectize();
+	$('#tags').selectize();
 		function searchCandidat(query) {
 			$.post({
 				url: '/candidat/filter/list/candidat',
