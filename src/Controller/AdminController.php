@@ -88,4 +88,15 @@ class AdminController extends BaseAdminController
 
         return $this->redirectToRoute('easyadmin');
     }
+
+    /**
+     * @Route("/archived/{id}", name="admin_archived_cv")
+     * @param                      datatype $id
+     * @return                     \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function cvArchived($id)
+    {
+        $candidat = $this->userService->cvArchived($id);
+        return $this->redirectToRoute('easyadmin');
+    }
 }
