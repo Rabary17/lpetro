@@ -71,9 +71,9 @@ class ExperienceType extends AbstractType
                     ],
                     'label' => 'Type du contrat',
                     'choices'  => [
-                    'Emploi CDI' => null,
-                    'Emploi CDD' => true,
-                    'Stage' => false,
+                        'Emploi CDI' => 'Emploi CDI',
+                        'Emploi CDD' => 'Emploi CDD',
+                        'Stage' => 'Stage',
                     ],
                     'attr' => [
                     'class' => 'form-control',

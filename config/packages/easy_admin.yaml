@@ -28,6 +28,9 @@ easy_admin:
               children:
                 - { entity: 'Skill', label: 'Liste', params:{ action: 'list' } }
                 - { entity: 'SkillLevel', label: 'Niveau de compétence', params:{ action: 'list' } }
+            - label: Formation
+              children:
+                - { entity: 'TrainingResult', label: 'Résultat obtenu', params:{ action: 'list' } }
 
     entities:
         Candidat:
@@ -64,7 +67,7 @@ easy_admin:
             class: App\Entity\User
             label: 'Cv'
             list:
-                title: "Archives"
+                title: "Gestion de l'archivage des CV"
                 max_results: 10
                 dql_filter: "entity.archived = 1 AND entity.submit = 1 AND entity.roles LIKE '%%ROLE_CANDIDAT%%'"
                 actions: ['-new', '-edit', '-show', '-delete', { name: 'show_cv', type: 'route', label: 'Voir détail Cv' }]
@@ -135,6 +138,12 @@ easy_admin:
             label: 'Niveau de compétence'
             list:
                 fields: [{property: 'level', label: 'Niveau'}]
+
+        TrainingResult:
+            class: App\Entity\TrainingResult
+            label: 'Mention'
+            list:
+                fields: [{property: 'title', label: 'Mention'}]
 
         User:
             class: App\Entity\User

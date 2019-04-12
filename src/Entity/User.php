@@ -115,7 +115,7 @@ class User extends BaseUser
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Hobby", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="Hobby", inversedBy="users", cascade={"persist"})
      * @ORM\JoinTable(name="user_hobbies")
      */
     protected $hobbies;
@@ -178,9 +178,9 @@ class User extends BaseUser
     private $interviews;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean", options={"default":"0"})
      */
-    private $archived;
+    private $archived  = false;
 
     public function __construct()
     {

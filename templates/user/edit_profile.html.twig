@@ -11,7 +11,7 @@
 			<div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
 				<header class="resume-header pt-4 pt-md-0">
 				<div class="secondary-info ml-md-auto mt-2">
-								<a style="margin-right: 30px;" class="btn-edit-cv btn-div" href="{{ path('user_profile') }}" title="Annuler"><i class="fa fa-times"></i></a>
+								<a style="margin-right: 30px;" class="btn-edit-cv btn-div" href="{{ path('user_profile') }}" title="Fermer"><i class="fa fa-times"></i></a>
 							</div><!--//secondary-info-->
 
 				</header>
@@ -177,11 +177,6 @@
 
 {% endblock body %}
 {% block javascripts %}
-<script src="{{ asset('assets/dist/js/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/dist/js/intlTelInput.min.js') }}"></script>
-<script src="{{ asset('assets/dist/js/intlTelInput-jquery.min.js') }}"></script>
-<script src="{{ asset('assets/dist/js/select2.min.js') }}"></script>
-<script src="{{ asset('assets/dist/js/jquery.collection.js') }}"></script>
 	<script type="text/javascript">
      	function readURL(input) {
             if (input.files && input.files[0]) {
@@ -194,6 +189,12 @@
             }
         }
 
+		var hobbies = new Bloodhound({
+			prefetch: 'http://localhost:8000/hobbies',
+			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+			queryTokenizer: Bloodhound.tokenizers.whitespace,
+		});
+		
 		jQuery(document).ready(function($) {
 			jQuery(document).on('click', function(e){
 				$(document).find('select').each(function(event){
@@ -286,6 +287,24 @@
 					}]
 				});
 			});
+		});
+
+		$('.tag-input').tagsinput({
+			typeaheadjs: [{
+				highlights: true,
+			},{
+				name: 'hobbies',
+				display: 'name',
+				value: 'name',
+				source: this.hobbies
+			}]
+		});
+
+		$('.collection-selector-user-interviews').collection({
+			allow_up: false,
+			allow_down: false,
+			add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+			remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
 		});
 	</script>
 {% endblock %}
