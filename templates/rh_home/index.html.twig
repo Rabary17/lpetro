@@ -5,57 +5,67 @@
 {% endblock %}
 
 {% block body %}
-	<div class="banner container" style="padding: 0 2%;margin: 0 2%;" class="container">
+<style>
+b, strong {
+    font-weight: inherit;
+}
+</style>
+	<div class="banner container" style="padding: 0;margin: 0 auto;width:calc(100% - 230px) !important;" class="container">
 	{% if not new is defined %}
-		<div style="display:flex;padding: 0;" class="col-lg-12 col-md-12 col-sm-12">
-			<div style="line-height: 20px;flex: 1;background-color: #7c97a1;"><i class="fa fa-search" style="line-height: 33px;"></i></div>
-			<div style="flex: 15;">
-				<input type="search" name="q" class="form-control" placeholder="Tapez le nom/prénom (en entier ou partiel) ou l'adresse email du candidat" onchange="searchCandidat(this)">
-			</div>
+	<div style="display:flex;padding: 0;" class="col-lg-12 col-md-12 col-sm-12">
+		<div style="line-height: 20px;flex: 1;background-color: #7c97a1;"><i class="fa fa-search" style="line-height: 33px;"></i></div>
+		<div style="flex: 15;">
+			<input type="search" name="q" class="form-control" placeholder="Tapez le nom/prénom (en entier ou partiel) ou l'adresse email du candidat" onchange="searchCandidat(this)">
 		</div>
-		<div class="col-lg-12 col-md-12 col-sm-12" style="margin-top: 20px;background-color: #a3a6a561;padding: 10px;font-weight: 600;">
-			<div id="filter-rh" style="display: flex;margin-top: 5px;">
-				{# <legend>Filtrer</legend> #}
-				<select name="nationality" id="nationality">
-					<option value="">Nationalité</option>
-				{% for nationality in nationalities %}
-					<option value="{{ nationality.id }}">{{ nationality.nationality }}</option>
+	</div>
+	<div class="col-lg-12 col-md-12 col-sm-12" style="margin-top: 20px;background-color: #a3a6a561;padding: 10px;font-weight: 600;">
+		<div id="filter-rh" style="display: flex;margin-top: 5px;">
+			{# <legend>Filtrer</legend> #}
+			<select name="nationality" id="nationality">
+				<option>Nationalité</option>
+			{% for nationality in nationalities %}
+				<option value="{{ nationality.id }}">{{ nationality.nationality }}</option>
+			{% endfor %}
+			</select>
+			<select name="status" id="status">
+				<option>Statut</option>
+			{% for stat in status %}
+				<option value="{{ stat.id }}">{{ stat.statut }}</option>
+			{% endfor %}
+			</select>
+			<select name="tags[]" id="tags" multiple="true">
+				<option>Tags</option>
+				{% if tags is defined %}
+				{% for tag in tags %}
+					<option value="{{ tag.id }}">{{ tag.name }}</option>
 				{% endfor %}
-				</select>
-				<select name="status" id="status">
-					<option value="">Statut</option>
-				{% for stat in status %}
-					<option value="{{ stat.id }}">{{ stat.statut }}</option>
-				{% endfor %}
-				</select>
-				<select name="tags[]" id="tags" multiple="true">
-					<option value="">Tags</option>
-					{% for tag in tags %}
-						<option value="{{ tag.id }}">{{ tag.name }}</option>
-					{% endfor %}
-				</select>
-				<div class="check-rh"><input type="checkbox" name="rh_validated" value="true" id="rh_validated">Validé par le RH</div>
-				<button class="btn btn-primary" title="filtrer" id="filter"><i class="fa fa-filter"></i></button>
-			</div>
+				{% endif %}
+			</select>
+			<div class="check-rh"><input type="checkbox" name="rh_validated" value="true" id="rh_validated">Validé par le RH</div>
+			<button class="btn btn-primary" title="filtrer" id="filter"><i class="fa fa-filter"></i></button>
+			<!--button class="btn btn-default" type="reset" title="Annuler tout le filtre" id="cancel-filter"><i class="fa fa-remove"></i></button-->
+
 		</div>
 	{% endif %}
 </div>
 		<br/>
-	<div class="ajax-content container row">
+	<div class="ajax-content row">
 			{% for candidat in candidates %}
-	            <!-- Team member -->
-	            <div class="col-md-4" style="min-height:100px !important">
-					<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="cv_show" title="Voir le CV">
-						<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-							<div class="mainflip">
-								<div class="frontside">
-									<div class="card">
-										<div class="card-body text-center">
-											<p><img src="{{ asset('uploads/photos/' ~ candidat.profileName) }}" alt="Photo de {{ candidat.lastName }}" alt="card image" width="100px" height="100px"></p>
-											<div>
-												<h2 class="card-title">{{ candidat.lastName }}</h2>
-												<p class="card-title" style="font-size: 18px;">{{ candidat.firstName }}</p>
-												<p class="card-text" style="font-weight:normal">{{ candidat.email }}</p>
+		        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		            <!-- Team member -->
+		            <div style="margin: 5%;box-sizing: border-box;">
+						<a href="{{ path('candidat_view', {id: candidat.id}) }}" class="cv_show" title="Voir le CV">
+							<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+								<div class="mainflip">
+									<div class="frontside">
+										<div class="card">
+											<div class="card-body text-center">
+												<div style="min-height:100px"><img class="img-fluid img-cv-list" src="{{ asset('uploads/photos/' ~ candidat.profileName) }}" alt="Photo de {{ candidat.lastName }}" alt="card image"></div>
+												<div>
+													<h2 class="card-title">{{ candidat.lastName }}</h2>
+													<p class="card-title" style="font-size: 18px;">{{ candidat.firstName }}</p>
+													<p class="card-text" style="font-weight:normal">{{ candidat.email }}</p>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -78,6 +88,7 @@
 	<script type="text/javascript">
 	$('#nationality').selectize();
 	$('#status').selectize();
+	$('#tags').selectize();
 		function searchCandidat(query) {
 			$.post({
 				url: '/lpsa/candidat/filter/list/candidat',

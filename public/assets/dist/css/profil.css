@@ -8561,6 +8561,7 @@
   
   .resume-header .picture {
     width: 220px;
+    height: 220px;
   }
   
   .resume-header .name {
@@ -8598,6 +8599,7 @@
     font-size: 1.25rem;
     position: relative;
     color: #434E5E;
+    font-family: AvenirNext-bold;
   }
   
   .resume-section-title:after {
