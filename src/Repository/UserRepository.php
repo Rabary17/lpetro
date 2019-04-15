@@ -64,6 +64,10 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param  boolen    $rhvalidate  description
+     * @param  integer   $status      description
+     * @param  integer   $nationality description
+     * @param  integer[] $tags        description
      * @return array
      */
     public function filterCandidat($rhvalidate = false, $status = null, $nationality = null, $tags = [])
@@ -76,34 +80,34 @@ class UserRepository extends ServiceEntityRepository
             ->andWhere('u.submit = :submit')
             ->andWhere('u.enabled = :enabled');
 
-            if ($rhvalidate == true) {
-                $qb->andWhere('u.rhvalidate = :rhvalidate')
-                   ->setParameter('rhvalidate', true);
-            }
+        if ($rhvalidate == true) {
+            $qb->andWhere('u.rhvalidate = :rhvalidate')
+                ->setParameter('rhvalidate', true);
+        }
 
-            if ($status) {
-                $qb->andWhere('u.statut = :status')
-                   ->setParameter('status', $status);
-            }
+        if ($status) {
+            $qb->andWhere('u.statut = :status')
+               ->setParameter('status', $status);
+        }
 
-            if ($nationality) {
-                $qb->andWhere('u.nationality = :nationality')
-                   ->setParameter('nationality', $nationality);
-            }
+        if ($nationality) {
+            $qb->andWhere('u.nationality = :nationality')
+               ->setParameter('nationality', $nationality);
+        }
 
-            if ($tags) {
-                $qb->andWhere('t.id IN (:tags)')
-                    ->setParameter('tags', $tags);
-            }
+        if ($tags) {
+            $qb->andWhere('t.id IN (:tags)')
+               ->setParameter('tags', $tags);
+        }
 
-            $qb->setParameter('roles', '%"' . $role . '"%')
-                ->setParameter('submit', true)
-                ->setParameter('enabled', true);
+        $qb->setParameter('roles', '%"' . $role . '"%')
+           ->setParameter('submit', true)
+           ->setParameter('enabled', true);
 
-            $query = $qb->getQuery();
-            $result = $query->getArrayResult();
+        $query = $qb->getQuery();
+        $result = $query->getArrayResult();
 
-            return $result;
+        return $result;
     }
 
     /**

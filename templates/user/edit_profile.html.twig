@@ -204,20 +204,6 @@
 				});
 			})
 
-			var today = new Date();
-			var currDate = today.getFullYear()+'-'+((today.getMonth()+1).pad(2))+'-'+today.getDate();
-
-			console.log(currDate);
-
-			$('#user_dateOfBirth').change(function() {
-				var dateVal = $('#user_dateOfBirth').val();
-				var inputDateOfBirth = $('#user_dateOfBirth');
-				console.log('VALUE: ' + dateVal);
-				if (dateVal > currDate) {
-					inputDateOfBirth.val(currDate);
-				}
-			});
-
 			$("#user_phoneNumber").intlTelInput({
 				// whether or not to allow the dropdown
 				allowDropdown: true,
