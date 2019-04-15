@@ -108,36 +108,7 @@ class CandidatController extends AbstractController
 
         $candidates = [];
 
-        if (!empty($rhValidated) && !empty($status) && !empty($nationality) && !empty($tags)) {
-            $candidates = $em->getRepository('App:User')
-                ->fetchByRhValidateStatusNationalityTags($status, $nationality, $tags);
-        } elseif (!empty($rhValidated) && !empty($status) && !empty($nationality)) {
-            $candidates = $em->getRepository('App:User')->fetchByStatusNationalityRhValidated($status, $nationality);
-        } elseif (!empty($rhValidated) && !empty($status) && !empty($tags)) {
-            $candidates = $em->getRepository('App:User')->fetchByRhValidateStatusTags($status, $tags);
-        } elseif (!empty($rhValidated) && !empty($nationality) && !empty($tags)) {
-            $candidates = $em->getRepository('App:User')->fetchByRhValidateNationalityTags($nationality, $tags);
-        } elseif (!empty($rhValidated) && !empty($tags)) {
-            $candidates = $em->getRepository('App:User')->fetchByRhValidateTags($tags);
-        } elseif (!empty($status) && !empty($tags)) {
-            $candidates = $em->getRepository('App:User')->fetchByStatusTags($status, $tags);
-        } elseif (!empty($nationality) && !empty($tags)) {
-            $candidates = $em->getRepository('App:User')->fetchByNationalityTags($nationality, $tags);
-        } elseif (!empty($status) && !empty($nationality)) {
-            $candidates = $em->getRepository('App:User')->fetchByStatusNationality($status, $nationality);
-        } elseif (!empty($rhValidated) && !empty($status)) {
-            $candidates = $em->getRepository('App:User')->fetchByStatusRhValidated($status);
-        } elseif (!empty($rhValidated) && !empty($nationality)) {
-            $candidates = $em->getRepository('App:User')->fetchByNationalityRhValidate($nationality);
-        } elseif (!empty($nationality)) {
-            $candidates = $em->getRepository('App:User')->fetchByNationality($nationality);
-        } elseif (!empty($status)) {
-            $candidates = $em->getRepository('App:User')->fetchByStatus($status);
-        } elseif (!empty($rhValidated)) {
-            $candidates = $em->getRepository('App:User')->fetchByRhValidated();
-        } elseif (!empty($tags)) {
-            $candidates = $em->getRepository('App:User')->fetchByTags($tags);
-        }
+        $candidates = $em->getRepository('App:User')->filterCandidat($rhValidated, $status, $nationality, $tags);
 
         return $this->json($candidates);
     }

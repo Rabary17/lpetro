@@ -101,6 +101,7 @@ class UserController extends AbstractController
             'user/edit_profile.html.twig',
             [
                 'user' => $user,
+                'current' => new \DateTime('now'),
                 'form' => $form->createView(),
             ]
         );

@@ -64,348 +64,46 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param integer $statut      description
-     * @param integer $nationality description
      * @return array
      */
-    public function fetchByStatusNationalityRhValidated($statut, $nationality)
+    public function filterCandidat($rhvalidate = false, $status = null, $nationality = null, $tags = [])
     {
         $role = 'ROLE_CANDIDAT';
 
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.roles LIKE :roles')
-            ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('u.statut = :statut')
-            ->andWhere('u.nationality = :nationality')
-            ->andWhere('u.rhvalidate = :rhvalidate')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('statut', $statut)
-            ->setParameter('nationality', $nationality)
-            ->setParameter('rhvalidate', true)
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->getQuery()
-            ->getArrayResult();
-    }
-
-    /**
-     * @param integer $statut description
-     * @return array
-     */
-    public function fetchByStatusRhValidated($statut)
-    {
-        $role = 'ROLE_CANDIDAT';
-
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.roles LIKE :roles')
-            ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('u.statut = :statut')
-            ->andWhere('u.rhvalidate = :rhvalidate')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('statut', $statut)
-            ->setParameter('rhvalidate', true)
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->getQuery()
-            ->getArrayResult();
-    }
-
-    /**
-     * @param integer $statut      description
-     * @param integer $nationality description
-     * @return array
-     */
-    public function fetchByStatusNationality($statut, $nationality)
-    {
-        $role = 'ROLE_CANDIDAT';
-
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.roles LIKE :roles')
-            ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('u.statut = :statut')
-            ->andWhere('u.nationality = :nationality')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('statut', $statut)
-            ->setParameter('nationality', $nationality)
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->getQuery()
-            ->getArrayResult();
-    }
-
-    /**
-     * @param integer $statut description
-     * @return array
-     */
-    public function fetchByStatus($statut)
-    {
-        $role = 'ROLE_CANDIDAT';
-
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.roles LIKE :roles')
-            ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('u.statut = :statut')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('statut', $statut)
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->getQuery()
-            ->getArrayResult();
-    }
-
-    /**
-     * @param integer[] $tags description
-     * @return array
-     */
-    public function fetchByTags($tags)
-    {
-        $role = 'ROLE_CANDIDAT';
-
-        return $this->createQueryBuilder('u')
+        $qb = $this->createQueryBuilder('u')
             ->join('u.tags', 't')
             ->andWhere('u.roles LIKE :roles')
             ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('t.id IN (:tagids)')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->setParameter('tagids', $tags)
-            ->distinct()
-            ->getQuery()
-            ->getArrayResult();
-    }
+            ->andWhere('u.enabled = :enabled');
 
-    /**
-     * @param integer   $nationality description
-     * @param integer[] $tags        description
-     * @return array
-     */
-    public function fetchByNationalityTags($nationality, $tags)
-    {
-        $role = 'ROLE_CANDIDAT';
+            if ($rhvalidate == true) {
+                $qb->andWhere('u.rhvalidate = :rhvalidate')
+                   ->setParameter('rhvalidate', true);
+            }
 
-        return $this->createQueryBuilder('u')
-            ->join('u.tags', 't')
-            ->andWhere('u.roles LIKE :roles')
-            ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('u.nationality = :nationality')
-            ->andWhere('t.id IN (:tagid)')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->setParameter('tagid', $tags)
-            ->setParameter('nationality', $nationality)
-            ->distinct()
-            ->getQuery()
-            ->getArrayResult();
-    }
+            if ($status) {
+                $qb->andWhere('u.statut = :status')
+                   ->setParameter('status', $status);
+            }
 
-    /**
-     * @param integer   $status description
-     * @param integer[] $tags   description
-     * @return array
-     */
-    public function fetchByStatusTags($status, $tags)
-    {
-        $role = 'ROLE_CANDIDAT';
+            if ($nationality) {
+                $qb->andWhere('u.nationality = :nationality')
+                   ->setParameter('nationality', $nationality);
+            }
 
-        return $this->createQueryBuilder('u')
-            ->join('u.tags', 't')
-            ->andWhere('u.roles LIKE :roles')
-            ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('u.statut = :status')
-            ->andWhere('t.id IN (:tagid)')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->setParameter('tagid', $tags)
-            ->setParameter('status', $status)
-            ->distinct()
-            ->getQuery()
-            ->getArrayResult();
-    }
+            if ($tags) {
+                $qb->andWhere('t.id IN (:tags)')
+                    ->setParameter('tags', $tags);
+            }
 
-    /**
-     * @param integer   $status description
-     * @param integer[] $tags   description
-     * @return array
-     */
-    public function fetchByRhValidateStatusTags($status, $tags)
-    {
-        $role = 'ROLE_CANDIDAT';
+            $qb->setParameter('roles', '%"' . $role . '"%')
+                ->setParameter('submit', true)
+                ->setParameter('enabled', true);
 
-        return $this->createQueryBuilder('u')
-            ->join('u.tags', 't')
-            ->andWhere('u.roles LIKE :roles')
-            ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('u.statut = :status')
-            ->andWhere('u.rhvalidate = :rhvalidate')
-            ->andWhere('t.id IN (:tagid)')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->setParameter('tagid', $tags)
-            ->setParameter('status', $status)
-            ->setParameter('rhvalidate', true)
-            ->distinct()
-            ->getQuery()
-            ->getArrayResult();
-    }
+            $query = $qb->getQuery();
+            $result = $query->getArrayResult();
 
-    /**
-     * @param integer   $nationality description
-     * @param integer[] $tags        description
-     * @return array
-     */
-    public function fetchByRhValidateNationalityTags($nationality, $tags)
-    {
-        $role = 'ROLE_CANDIDAT';
-
-        return $this->createQueryBuilder('u')
-            ->join('u.tags', 't')
-            ->andWhere('u.roles LIKE :roles')
-            ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('u.nationality = :nationality')
-            ->andWhere('u.rhvalidate = :rhvalidate')
-            ->andWhere('t.id IN (:tagid)')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->setParameter('tagid', $tags)
-            ->setParameter('nationality', $nationality)
-            ->setParameter('rhvalidate', true)
-            ->distinct()
-            ->getQuery()
-            ->getArrayResult();
-    }
-
-    /**
-     * @param integer[] $tags description
-     * @return array
-     */
-    public function fetchByRhValidateTags($tags)
-    {
-        $role = 'ROLE_CANDIDAT';
-
-        return $this->createQueryBuilder('u')
-            ->join('u.tags', 't')
-            ->andWhere('u.roles LIKE :roles')
-            ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('u.rhvalidate = :rhvalidate')
-            ->andWhere('t.id IN (:tagid)')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->setParameter('tagid', $tags)
-            ->setParameter('rhvalidate', true)
-            ->distinct()
-            ->getQuery()
-            ->getArrayResult();
-    }
-
-    /**
-     * @param integer   $status      description
-     * @param integer   $nationality description
-     * @param integer[] $tags        description
-     * @return array
-     */
-    public function fetchByRhValidateStatusNationalityTags($status, $nationality, $tags)
-    {
-        $role = 'ROLE_CANDIDAT';
-
-        return $this->createQueryBuilder('u')
-            ->join('u.tags', 't')
-            ->andWhere('u.roles LIKE :roles')
-            ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('u.rhvalidate = :rhvalidate')
-            ->andWhere('u.statut = :status')
-            ->andWhere('u.nationality = :nationality')
-            ->andWhere('t.id IN (:tagids)')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->setParameter('tagids', $tags)
-            ->setParameter('rhvalidate', true)
-            ->setParameter('nationality', $nationality)
-            ->setParameter('status', $status)
-            ->distinct()
-            ->getQuery()
-            ->getArrayResult();
-    }
-
-    /**
-     * @param integer $nationality description
-     * @return array
-     */
-    public function fetchByNationalityRhValidate($nationality)
-    {
-        $role = 'ROLE_CANDIDAT';
-
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.roles LIKE :roles')
-            ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('u.nationality = :nationality')
-            ->andWhere('u.rhvalidate = :rhvalidate')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('nationality', $nationality)
-            ->setParameter('rhvalidate', true)
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->getQuery()
-            ->getArrayResult();
-    }
-
-    /**
-     * @param integer $nationality description
-     * @return array
-     */
-    public function fetchByNationality($nationality)
-    {
-        $role = 'ROLE_CANDIDAT';
-
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.roles LIKE :roles')
-            ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('u.nationality = :nationality')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('nationality', $nationality)
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->getQuery()
-            ->getArrayResult();
-    }
-
-    /**
-     * @return array
-     */
-    public function fetchByRhValidated()
-    {
-        $role = 'ROLE_CANDIDAT';
-
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.roles LIKE :roles')
-            ->andWhere('u.submit = :submit')
-            ->andWhere('u.enabled = :enabled')
-            ->andWhere('u.rhvalidate = :rhvalidate')
-            ->setParameter('roles', '%"' . $role . '"%')
-            ->setParameter('rhvalidate', true)
-            ->setParameter('submit', true)
-            ->setParameter('enabled', true)
-            ->getQuery()
-            ->getArrayResult();
+            return $result;
     }
 
     /**

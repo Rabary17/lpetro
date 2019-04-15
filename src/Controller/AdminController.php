@@ -104,6 +104,7 @@ class AdminController extends BaseAdminController
 
     /**
      * @Route("/profile/edit", name="admin_edit_profile")
+     * @param Request $request description
      * @return                     \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editProfile(Request $request)
@@ -132,9 +133,8 @@ class AdminController extends BaseAdminController
      * @Route("/profile", name="admin_profile")
      * @return                     \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function showProfile(Request $request)
+    public function showProfile()
     {
-        $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
         return $this->render(

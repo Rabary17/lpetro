@@ -44,6 +44,7 @@ class User extends BaseUser
     private $phoneNumber;
 
     /**
+     * @Assert\Date
      * @ORM\Column(type="date", nullable=true)
      */
     private $dateOfBirth;

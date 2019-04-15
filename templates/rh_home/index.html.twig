@@ -22,7 +22,7 @@ b, strong {
 		<div id="filter-rh" style="display: flex;margin-top: 5px;">
 			{# <legend>Filtrer</legend> #}
 			<select name="nationality" id="nationality">
-				<option>Nationalité</option>
+				<option value="">Nationalité</option>
 			{% for nationality in nationalities %}
 				<option value="{{ nationality.id }}">{{ nationality.nationality }}</option>
 			{% endfor %}
@@ -115,7 +115,7 @@ b, strong {
 			}
 
 			$.post({
-				url: '/lpsa/candidat/filter/all',
+				url: '/candidat/filter/all',
 				method: 'POST',
 				data: { 'status': status, 'rh_validated': rh_validated, 'nationality': nationality, 'tags': tags },
 				success: function(data) {
