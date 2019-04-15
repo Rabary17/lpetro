@@ -64,13 +64,13 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param  boolen    $rhvalidate  description
+     * @param  integer   $rhvalidate  description
      * @param  integer   $status      description
      * @param  integer   $nationality description
      * @param  integer[] $tags        description
      * @return array
      */
-    public function filterCandidat($rhvalidate = false, $status = null, $nationality = null, $tags = [])
+    public function filterCandidat($rhvalidate = '', $status = null, $nationality = null, $tags = [])
     {
         $role = 'ROLE_CANDIDAT';
 

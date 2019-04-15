@@ -147,6 +147,7 @@ class AdminController extends BaseAdminController
 
     /**
      * @Route("/dashboard", name="admin_dashboard")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function dashboard()
     {
