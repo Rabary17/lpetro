@@ -8,7 +8,11 @@ easy_admin:
         brand_color: '#7C97A1'
         templates:
             layout: 'base_admin.html.twig'
-        menu:
+        menu:            
+            - label: Dashboard
+              icon: dashboard
+              route: admin_dashboard
+              default: true
             - label: MENU PRINCIPAL
             - { entity: 'Candidat', label: 'Candidats', params:{ action: 'list' }, icon: 'users' }
             - { entity: 'Rh', label: 'RH', params:{ action: 'list' }, icon: 'user' }

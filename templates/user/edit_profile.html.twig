@@ -48,7 +48,7 @@
 											<span class="text-danger">{{ form_errors(form.firstName) }}</span>
 										</li>
 										<li>
-											<label for="lastName">PRENOM:</label>
+											<label for="lastName">PRENOM(S):</label>
 											{{ form_widget(form.lastName, {attr:{'class': 'form-control', 'id': 'lastName'}}) }}
 											<span class="text-danger">{{ form_errors(form.lastName) }}</span>
 										</li>
@@ -58,7 +58,7 @@
 											<span class="text-danger">{{ form_errors(form.email) }}</span>
 										</a></li>
 										<li>
-											<label for="email"> PHONE:</label>
+											<label for="email"> TELEPHONE:</label>
 											{{ form_widget(form.phoneNumber, {attr:{'class': 'form-control', 'id': 'phone'}}) }}
 											<span class="text-danger">{{ form_errors(form.phoneNumber) }}</span>
 										</li>
@@ -148,7 +148,7 @@
 
 								<br/>
 
-								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="experience">MES PARCOURS PROFESSIONELLES</h2>
+								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="experience">MES PARCOURS PROFESSIONELS</h2>
 								<div id="extra-work-activity"  class="container" style="min-height: 50px;">
 								{% form_theme form 'collection/jquery.collection.html.twig' %}
 									{{ form_row(form.experiences) }}
