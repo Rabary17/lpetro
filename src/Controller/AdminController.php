@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Service\UserService;
+use App\Form\AdminEditType;
 
 class AdminController extends BaseAdminController
 {
@@ -96,8 +97,51 @@ class AdminController extends BaseAdminController
      */
     public function cvArchived($id)
     {
-        $candidat = $this->userService->cvArchived($id);
+        $this->userService->cvArchived($id);
 
         return $this->redirectToRoute('easyadmin', array('entity' => 'Cv', 'action' => 'list'));
+    }
+
+    /**
+     * @Route("/profile/edit", name="admin_edit_profile")
+     * @return                     \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function editProfile(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $form = $this->createForm(AdminEditType::class, $user);
+
+        if ($request->getMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isSubmitted()) {
+                $em->flush();
+            }
+        }
+
+        return $this->render(
+            'admin/edit_profile.html.twig',
+            [
+                'user' => $user,
+                'form' => $form->createView(),
+            ]
+        );
+    }
+
+    /**
+     * @Route("/profile", name="admin_profile")
+     * @return                     \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function showProfile(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        return $this->render(
+            'admin/show_profile.html.twig',
+            [
+                'user' => $user,
+            ]
+        );
     }
 }

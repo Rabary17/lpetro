@@ -94,3 +94,10 @@ label.required:not(.mylabel) {
 .bootstrap-tagsinput {
     width: 100% !important;
 }
+/*for admin*/
+login-box-body {
+    background: #fff;
+    padding: 20px;
+    border-top: 0;
+    color: #666;    
+}

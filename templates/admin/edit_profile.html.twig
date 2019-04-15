@@ -1,0 +1,86 @@
+{% extends 'base_admin.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/profil.css')}}">
+{% endblock %}
+{% block main %}
+    <article class="resume-wrapper text-center position-relative">
+		<form method="POST" enctype="multipart/form-data">
+			{{form_widget(form._token)}}
+			<div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
+				<div class="row">
+					<div class="col-lg-9">
+						<div class="resume-body p-5">
+							<div class="" style="position: relative;">
+								<div id="preview" style="min-height: 250px;width: 220px;background-size: cover; opacity: 0.5;background-image:url('{{ asset('./uploads/photos/' ~ user.profileName) }}')">
+									<span style="position:absolute;width:1px;overflow: hidden;">
+										{{ form_widget(form.profileFile, {attr:{'onchange':'readURL(this)'}}) }} 
+										<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
+									</span>
+								</div>
+								<div class="btn-div" id="trig-upl" style="position: absolute;
+									position: absolute;
+									width: 140px;
+									text-align: center;
+									padding: 5px;
+									border: 1px solid white;
+									color: white;
+									background-color: #323232;
+									top: 20%;
+									margin: 0 40px;"
+								>
+									<i class="fa fa-picture-o"></i> Modifier
+								</div>
+
+								<section class="resume-section experience-section mb-5">
+									<ul class="list-unstyled">
+										<li>
+											<label for="firstName">NOM:</label>
+											{{ form_widget(form.firstName, {attr:{'class': 'form-control', 'id': 'firstName'}}) }}
+											<span class="text-danger">{{ form_errors(form.firstName) }}</span>
+										</li>
+										<li>
+											<label for="lastName">PRENOM:</label>
+											{{ form_widget(form.lastName, {attr:{'class': 'form-control', 'id': 'lastName'}}) }}
+											<span class="text-danger">{{ form_errors(form.lastName) }}</span>
+										</li>
+										<li class="mb-2">
+											<label for="email">EMAIL:</label>
+											{{ form_widget(form.email, {attr:{'class': 'form-control', 'id': 'email'}}) }}
+											<span class="text-danger">{{ form_errors(form.email) }}</span>
+										</a></li>
+										<li>
+											<input style="font-size:15px;" type="submit" class="btn btn-primary" value="Sauvegarder la modification">
+											<a style="font-size:15px;" class="btn btn-default" href="{{ path('admin_profile') }}">Annuler</a>
+										</li>
+									</ul>
+								</section><!--//primary-info-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</article>
+	<script src="{{ asset('assets/dist/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('assets/dist/js/intlTelInput.min.js') }}"></script>
+	<script src="{{ asset('assets/dist/js/intlTelInput-jquery.min.js') }}"></script>
+	<script src="{{ asset('assets/dist/js/select2.min.js') }}"></script>
+	<script src="{{ asset('assets/dist/js/jquery.collection.js') }}"></script>
+	<script type="text/javascript">
+     	function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#preview')
+                        .css('backgroundImage', 'url(' + e.target.result +')');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+		$('#trig-upl').on('click', function(){
+			$('#admin_edit_profileFile').trigger('click');
+		});
+	</script>
+{% endblock %}
