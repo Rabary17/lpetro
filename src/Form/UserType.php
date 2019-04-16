@@ -80,13 +80,7 @@ class UserType extends AbstractType
             )
             ->add(
                 'sports',
-                EntityType::class,
-                [
-                    'class' => Sport::class,
-                    'choice_label' => 'name',
-                    'multiple' => true,
-                    'expanded' => true
-                ]
+                SportType::class
             )
             ->add(
                 'extraWorkActivities',

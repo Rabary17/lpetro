@@ -128,7 +128,7 @@
 								<br/>
 
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">SPORTS</h2>
-								<div class="form-group">
+								<div id="user-sports">
 									{{ form_widget(form.sports, {attr:{'id': 'sports'}}) }}
 									<span class="text-danger">{{ form_errors(form.sports) }}</span>
 								</div>
@@ -190,11 +190,17 @@
         }
 
 		var hobbies = new Bloodhound({
-			prefetch: window.location.origin + '/lpsa/hobbies',
+			prefetch: window.location.origin + '/hobbies',
 			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
 			queryTokenizer: Bloodhound.tokenizers.whitespace,
 		});
-		
+
+		var sports = new Bloodhound({
+			prefetch: window.location.origin + '/sports',
+			datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+			queryTokenizer: Bloodhound.tokenizers.whitespace,
+		});
+
 		jQuery(document).ready(function($) {
 			$(document).find('select').each(function(event){
 				$(this).selectize({
@@ -344,6 +350,17 @@
 				display: 'name',
 				value: 'name',
 				source: this.hobbies
+			}]
+		});
+
+		$('.sports-tag-input').tagsinput({
+			typeaheadjs: [{
+				highlights: true,
+			},{
+				name: 'sports',
+				display: 'name',
+				value: 'name',
+				source: this.sports
 			}]
 		});
 
