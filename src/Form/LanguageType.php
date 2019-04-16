@@ -31,10 +31,62 @@ class LanguageType extends AbstractType
                 ]
             )
             ->add(
-                'level',
+                'readinglevel',
                 ChoiceType::class,
                 [
-                'label' => 'NIVEAU',
+                'label' => 'LU',
+                'label_attr' => [
+                    'class' => 'mylabel'
+                ],
+                'attr' => [
+                    'class' => 'form-control language_level'
+                ],
+                'choices'  => [
+                    'Selectionnez votre niveau' => '',
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                    '6' => '6',
+                    '7' => '7',
+                    '8' => '8',
+                    '9' => '9',
+                    '10' => '10'
+                ],
+                ]
+            )
+            ->add(
+                'speakinglevel',
+                ChoiceType::class,
+                [
+                'label' => 'PARLÉ',
+                'label_attr' => [
+                    'class' => 'mylabel'
+                ],
+                'attr' => [
+                    'class' => 'form-control language_level'
+                ],
+                'choices'  => [
+                    'Selectionnez votre niveau' => '',
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                    '6' => '6',
+                    '7' => '7',
+                    '8' => '8',
+                    '9' => '9',
+                    '10' => '10'
+                ],
+                ]
+            )
+            ->add(
+                'writinglevel',
+                ChoiceType::class,
+                [
+                'label' => 'ÉCRIT',
                 'label_attr' => [
                     'class' => 'mylabel'
                 ],

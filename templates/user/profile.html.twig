@@ -67,7 +67,7 @@
 									   		{% for training in user.trainings %}
 												<div class="resume-section-content container">
 													<div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
-													du {{ training.StartDate|date('d/m/Y') }} au {{ training.EndDate|date('d/m/Y') }}
+													du {{training.StartDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} au {{training.EndDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
 													</div>
 													
 													<div class="col-lg-7 col-md-7 col-sm-7">
@@ -89,7 +89,7 @@
 									    {% for experience in user.experiences %}
 										    <div class="resume-section-content container">
 											    <div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
-											        du {{ experience.DateDebut|date('d-m-Y') }} à {{ experience.DateFin|date('d-m-Y') }}
+											        du {{experience.DateDebut|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} au {{experience.DateFin|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
 											    </div>
 											    <div class="rcol-lg-7 col-md-7 col-sm-7"><span class="font-weight-bold">{{ experience.position }}</span></br>
 																						 <span style="color:#288edc">{{ experience.company }}</span> </br>
@@ -168,8 +168,23 @@
 									{% for langue in user.languages %}
 								    <li class="mb-1" style="display:flex">{{ langue.name }} 
 										<div class="star-ratings-css">
+											<!-- Lu -->
 											<div style="height: 20px;    line-height: 27px;">
-												<div class="star-ratings-css-top" style="width: {{ langue.level * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+												<div class="star-ratings-css-top" style="width: {{ langue.readinglevel * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											</div>
+										</div>
+										<div class="star-ratings-css">
+											<!-- Parlé -->
+											<div style="height: 20px;    line-height: 27px;">
+												<div class="star-ratings-css-top" style="width: {{ langue.speakinglevel * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											</div>
+										</div>
+										<div class="star-ratings-css">
+											<!-- Écrit -->
+											<div style="height: 20px;    line-height: 27px;">
+												<div class="star-ratings-css-top" style="width: {{ langue.writinglevel * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
 												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
 											</div>
 										</div>

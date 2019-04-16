@@ -24,13 +24,23 @@ class Language
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $level;
+    private $readinglevel;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="languages", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id",     referencedColumnName="id")
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $speakinglevel;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $writinglevel;
 
     public function getId(): ?int
     {
@@ -49,14 +59,14 @@ class Language
         return $this;
     }
 
-    public function getLevel(): ?int
+    public function getReadinglevel(): ?int
     {
-        return $this->level;
+        return $this->readinglevel;
     }
 
-    public function setLevel(?int $level): self
+    public function setReadinglevel(?int $readinglevel): self
     {
-        $this->level = $level;
+        $this->readinglevel = $readinglevel;
 
         return $this;
     }
@@ -76,5 +86,29 @@ class Language
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getSpeakinglevel(): ?int
+    {
+        return $this->speakinglevel;
+    }
+
+    public function setSpeakinglevel(?int $speakinglevel): self
+    {
+        $this->speakinglevel = $speakinglevel;
+
+        return $this;
+    }
+
+    public function getWritinglevel(): ?int
+    {
+        return $this->writinglevel;
+    }
+
+    public function setWritinglevel(?int $writinglevel): self
+    {
+        $this->writinglevel = $writinglevel;
+
+        return $this;
     }
 }
