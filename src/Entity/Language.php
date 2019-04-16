@@ -32,6 +32,16 @@ class Language
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $speakinglevel;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $writinglevel;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,5 +86,29 @@ class Language
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getSpeakinglevel(): ?int
+    {
+        return $this->speakinglevel;
+    }
+
+    public function setSpeakinglevel(?int $speakinglevel): self
+    {
+        $this->speakinglevel = $speakinglevel;
+
+        return $this;
+    }
+
+    public function getWritinglevel(): ?int
+    {
+        return $this->writinglevel;
+    }
+
+    public function setWritinglevel(?int $writinglevel): self
+    {
+        $this->writinglevel = $writinglevel;
+
+        return $this;
     }
 }
