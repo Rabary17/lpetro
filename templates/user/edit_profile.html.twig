@@ -310,6 +310,30 @@
 					selectedInput.val(today);
 				}
 			});
+
+			$('*[id*=startDate]').each(function(index) {
+				$(this).change(function() {
+					var startDate = $(this).val();
+					$('#user_trainings_'+ index +'_endDate').attr({'min': startDate});
+					$('#user_trainings_'+ index +'_endDate').change(function() {
+						if ($(this).val() < startDate) {
+							$('#user_trainings_'+ index +'_endDate').val(startDate);
+						}
+					});
+				})
+			});
+
+			$('*[id*=date_debut]').each(function(index) {
+				$(this).change(function() {
+					var startDate = $(this).val();
+					$('#user_experiences_'+ index +'_date_fin').attr({'min': startDate});
+					$('#user_experiences_'+ index +'_date_fin').change(function() {
+						if ($(this).val() < startDate) {
+							$('#user_experiences_'+ index +'_date_fin').val(startDate);
+						}
+					});
+				})
+			});
 		});
 
 		$('.tag-input').tagsinput({
