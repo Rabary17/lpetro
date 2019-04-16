@@ -77,7 +77,7 @@
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Etat civil</h2>
 								<p>
 									<label for="dateOfBirth">DATE DE NAISSANCE:</label>
-									{{ form_widget(form.dateOfBirth, {attr:{'class': 'form-control', 'id': 'dateOfBirth', 'type': 'date', 'required': false, 'max': "now"|date('Y-m-d')}}) }}
+									{{ form_widget(form.dateOfBirth, {attr:{'class': 'form-control', 'type': 'date', 'required': false, 'max': "now"|date('Y-m-d')}}) }}
 									<span class="text-danger">{{ form_errors(form.dateOfBirth) }}</span>
 								</p>
 								<p>
@@ -196,13 +196,12 @@
 		});
 		
 		jQuery(document).ready(function($) {
-			jQuery(document).on('click', function(e){
-				$(document).find('select').each(function(event){
-					$(this).selectize({
+			$(document).find('select').each(function(event){
+				$(this).selectize({
 					allowEmptyOption: true,
 					create: true
 				});
-			})
+			});
 
 			$("#user_phoneNumber").intlTelInput({
 				// whether or not to allow the dropdown
@@ -246,47 +245,70 @@
 				$('#user_profileFile').trigger('click');
 			})
 			$('.collection-selector-user-extraWorkActivities').collection({
-					allow_up: false,
-					allow_down: false,
-					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
-					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
-				});
+				allow_up: false,
+				allow_down: false,
+				add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+			});
 			$('.collection-selector-user-trainings').collection({
-					allow_up: false,
-					allow_down: false,
-					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
-					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
-				});
+				allow_up: false,
+				allow_down: false,
+				add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+			});
 			$('.collection-selector-user-skills').collection({
-					allow_up: false,
-					allow_down: false,
-					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
-					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+				allow_up: false,
+				allow_down: false,
+				add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
 			});
 			$('.collection-selector-user-languages').collection({
-					allow_up: false,
-					allow_down: false,
-					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
-					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+				allow_up: false,
+				allow_down: false,
+				add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
 			});
 			$('.collection-selector-user-experience').collection({
+				allow_up: false,
+				allow_down: false,
+				add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+				prefix: 'parent',
+				add_at_the_end: true,
+				children: [{
+					selector: '.collection-selector-people-reference',
+					prefix: 'child',
 					allow_up: false,
 					allow_down: false,
-					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
-					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
-					prefix: 'parent',
 					add_at_the_end: true,
-					children: [{
-						selector: '.collection-selector-people-reference',
-						prefix: 'child',
-						allow_up: false,
-						allow_down: false,
-						add_at_the_end: true,
-						add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i><span style="font-size:10px;">Ajouter une personne de référence</span></a>',
-						remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
-						// ...
-					}]
-				});
+					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i><span style="font-size:10px;">Ajouter une personne de référence</span></a>',
+					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+					// ...
+				}]
+			});
+
+			$('#user_dateOfBirth').change(function() {
+				var today = new Date();
+				var selectedDate = $('#user_dateOfBirth').val();
+				var selectedInput = $('#user_dateOfBirth');
+				var dd = today.getDate();
+				var mm = today.getMonth()+1; 
+				var yyyy = today.getFullYear();
+				if(dd < 10) 
+				{
+				    dd='0'+dd;
+				}
+
+				if(mm < 10) 
+				{
+				    mm='0'+mm;
+				}
+
+				today = yyyy+'-'+mm+'-'+dd;
+
+				if (selectedDate > today) {
+					selectedInput.val(today);
+				}
 			});
 		});
 
