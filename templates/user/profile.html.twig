@@ -168,8 +168,23 @@
 									{% for langue in user.languages %}
 								    <li class="mb-1" style="display:flex">{{ langue.name }} 
 										<div class="star-ratings-css">
+											<!-- Lu -->
 											<div style="height: 20px;    line-height: 27px;">
 												<div class="star-ratings-css-top" style="width: {{ langue.readinglevel * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											</div>
+										</div>
+										<div class="star-ratings-css">
+											<!-- Parlé -->
+											<div style="height: 20px;    line-height: 27px;">
+												<div class="star-ratings-css-top" style="width: {{ langue.speakinglevel * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											</div>
+										</div>
+										<div class="star-ratings-css">
+											<!-- Écrit -->
+											<div style="height: 20px;    line-height: 27px;">
+												<div class="star-ratings-css-top" style="width: {{ langue.writinglevel * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
 												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
 											</div>
 										</div>
