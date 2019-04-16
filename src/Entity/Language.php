@@ -24,7 +24,7 @@ class Language
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $level;
+    private $readinglevel;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="languages", cascade={"persist"})
@@ -59,14 +59,14 @@ class Language
         return $this;
     }
 
-    public function getLevel(): ?int
+    public function getReadinglevel(): ?int
     {
-        return $this->level;
+        return $this->readinglevel;
     }
 
-    public function setLevel(?int $level): self
+    public function setReadinglevel(?int $readinglevel): self
     {
-        $this->level = $level;
+        $this->readinglevel = $readinglevel;
 
         return $this;
     }

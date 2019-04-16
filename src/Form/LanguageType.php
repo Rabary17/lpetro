@@ -31,10 +31,10 @@ class LanguageType extends AbstractType
                 ]
             )
             ->add(
-                'level',
+                'readinglevel',
                 ChoiceType::class,
                 [
-                'label' => 'NIVEAU',
+                'label' => 'LU',
                 'label_attr' => [
                     'class' => 'mylabel'
                 ],
@@ -60,7 +60,7 @@ class LanguageType extends AbstractType
                 'speakinglevel',
                 ChoiceType::class,
                 [
-                'label' => 'NIVEAU ORAL',
+                'label' => 'PARLÉ',
                 'label_attr' => [
                     'class' => 'mylabel'
                 ],
@@ -86,7 +86,7 @@ class LanguageType extends AbstractType
                 'writinglevel',
                 ChoiceType::class,
                 [
-                'label' => 'NIVEAU ECRIT',
+                'label' => 'ÉCRIT',
                 'label_attr' => [
                     'class' => 'mylabel'
                 ],
