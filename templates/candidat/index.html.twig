@@ -70,7 +70,7 @@
 									   		{% for training in candidat.trainings %}
 												<div class="resume-section-content container">
 													<div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
-													de {{ training.StartDate|date('d-m-Y') }} à {{ training.EndDate|date('d-m-Y') }}
+														du {{training.StartDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} au {{training.EndDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
 													</div>
 													
 													<div class="col-lg-7 col-md-7 col-sm-7">
@@ -92,7 +92,7 @@
 									    {% for experience in candidat.experiences %}
 										    <div class="resume-section-content container">
 											    <div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
-											        du {{ experience.DateDebut|date('d-m-Y') }} à {{ experience.DateFin|date('d-m-Y') }}
+													du {{experience.DateDebut|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} au {{experience.DateFin|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
 											    </div>
 											    <div class="rcol-lg-7 col-md-7 col-sm-7"><span class="font-weight-bold">{{ experience.position }}</span></br>
 													<span style="color:#288edc">{{ experience.company }}</span> </br>
@@ -174,7 +174,7 @@
 									{% for interview in candidat.interviews %}
 										<div>
 											<h4 class="resume-position-title font-weight-bold mb-1">Interview par :</h4><p>{{ interview.interviewBy }}</p>
-											<h4 class="resume-position-title font-weight-bold mb-1">Date de l'interview :</h4><p>{{ interview.interviewDate | date('d/m/Y') }}</p>
+											<h4 class="resume-position-title font-weight-bold mb-1">Date de l'interview :</h4><p>{{interview.interviewDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}</p>
 											<h4 class="resume-position-title font-weight-bold mb-1">Résumé</h4><p>{{ interview.interviewResume }}</p>
 										</div>
 										<hr>
