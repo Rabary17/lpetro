@@ -12,42 +12,42 @@ b, strong {
 </style>
 	<div class="banner container" style="padding: 0;margin: 0 auto;width:calc(100% - 230px) !important;" class="container">
 	{% if not new is defined %}
-	<div style="display:flex;padding: 0;" class="col-lg-12 col-md-12 col-sm-12">
-		<div style="line-height: 20px;flex: 1;background-color: #7c97a1;"><i class="fa fa-search" style="line-height: 33px;"></i></div>
-		<div style="flex: 15;">
-			<input type="search" name="q" class="form-control" placeholder="Tapez le nom/prénom (en entier ou partiel) ou l'adresse email du candidat" onchange="searchCandidat(this)">
+		<div style="display:flex;padding: 0;" class="col-lg-12 col-md-12 col-sm-12">
+			<div style="line-height: 20px;flex: 1;background-color: #7c97a1;"><i class="fa fa-search" style="line-height: 33px;"></i></div>
+			<div style="flex: 15;">
+				<input type="search" name="q" class="form-control" placeholder="Tapez le nom/prénom (en entier ou partiel) ou l'adresse email du candidat" onchange="searchCandidat(this)">
+			</div>
 		</div>
-	</div>
-	<div class="col-lg-12 col-md-12 col-sm-12" style="margin-top: 20px;background-color: #a3a6a561;padding: 10px;font-weight: 600;">
-		<div id="filter-rh" style="display: flex;margin-top: 5px;">
-			{# <legend>Filtrer</legend> #}
-			<select name="nationality" id="nationality">
-				<option value="">Nationalité</option>
-			{% for nationality in nationalities %}
-				<option value="{{ nationality.id }}">{{ nationality.nationality }}</option>
-			{% endfor %}
-			</select>
-			<select name="status" id="status">
-				<option>Statut</option>
-			{% for stat in status %}
-				<option value="{{ stat.id }}">{{ stat.statut }}</option>
-			{% endfor %}
-			</select>
-			<select name="tags[]" id="tags" multiple="true">
-				<option>Tags</option>
-				{% if tags is defined %}
-				{% for tag in tags %}
-					<option value="{{ tag.id }}">{{ tag.name }}</option>
+		<div class="col-lg-12 col-md-12 col-sm-12" style="margin-top: 20px;background-color: #a3a6a561;padding: 10px;font-weight: 600;">
+			<div id="filter-rh" style="display: flex;margin-top: 5px;">
+				{# <legend>Filtrer</legend> #}
+				<select name="nationality" id="nationality">
+					<option value="">Nationalité</option>
+				{% for nationality in nationalities %}
+					<option value="{{ nationality.id }}">{{ nationality.nationality }}</option>
 				{% endfor %}
-				{% endif %}
-			</select>
-			<div class="check-rh"><input type="checkbox" name="rh_validated" value="true" id="rh_validated">Validé par le RH</div>
-			<button class="btn btn-primary" title="filtrer" id="filter"><i class="fa fa-filter"></i></button>
-			<!--button class="btn btn-default" type="reset" title="Annuler tout le filtre" id="cancel-filter"><i class="fa fa-remove"></i></button-->
+				</select>
+				<select name="status" id="status">
+					<option>Statut</option>
+				{% for stat in status %}
+					<option value="{{ stat.id }}">{{ stat.statut }}</option>
+				{% endfor %}
+				</select>
+				<select name="tags[]" id="tags" multiple="true">
+					<option>Tags</option>
+					{% if tags is defined %}
+					{% for tag in tags %}
+						<option value="{{ tag.id }}">{{ tag.name }}</option>
+					{% endfor %}
+					{% endif %}
+				</select>
+				<div class="check-rh"><input type="checkbox" name="rh_validated" value="true" id="rh_validated">Validé par le RH</div>
+				<button class="btn btn-primary" title="filtrer" id="filter"><i class="fa fa-filter"></i></button>
+				<!--button class="btn btn-default" type="reset" title="Annuler tout le filtre" id="cancel-filter"><i class="fa fa-remove"></i></button-->
 
+			</div>
 		</div>
 	{% endif %}
-</div>
 		<br/>
 	<div class="ajax-content row">
 			{% for candidat in candidates %}

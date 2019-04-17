@@ -67,19 +67,27 @@
 						    <div class="resume-section-content">
 							    <div class="resume-timeline position-relative">		    
 								    <article class="resume-timeline-item position-relative">
-									   		{% for training in candidat.trainings %}
+								   		{% for training in candidat.trainings %}
+								   			{% if trainingUpdated is defined %}
+								   				{% for tu in trainingUpdated if tu.subSectionId == training.id %}
+								   						<div class="resume-section-content container updated-section">
+								   					{% else %}
+								   						<div class="resume-section-content container">
+								   				{% endfor %}
+								   			{% else %}
 												<div class="resume-section-content container">
-													<div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
-														du {{training.StartDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} au {{training.EndDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
-													</div>
-													
-													<div class="col-lg-7 col-md-7 col-sm-7">
-														<h3 class="font-weight-bold mb-1">{{ training.name }}</h3>
-														<p class="mb-0">{{ training.description }}</p>
-													</div>
+											{% endif %}
+												<div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
+													du {{training.StartDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} au {{training.EndDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
 												</div>
-												<br/>
-											{% endfor %}
+												
+												<div class="col-lg-7 col-md-7 col-sm-7">
+													<h3 class="font-weight-bold mb-1">{{ training.name }}</h3>
+													<p class="mb-0">{{ training.description }}</p>
+												</div>
+											</div>
+											<br/>
+										{% endfor %}
 								    </article>
 							    </div>
 						    </div>
@@ -90,7 +98,15 @@
 							    <div class="resume-timeline position-relative">		    
 								    <article class="resume-timeline-item position-relative">
 									    {% for experience in candidat.experiences %}
-										    <div class="resume-section-content container">
+								   			{% if experienceUpdated is defined %}
+								   				{% for exp in experienceUpdated if exp.subSectionId == experience.id %}
+								   						<div class="resume-section-content container updated-section">
+								   					{% else %}
+								   						<div class="resume-section-content container">
+								   				{% endfor %}
+								   			{% else %}
+												<div class="resume-section-content container">
+											{% endif %}
 											    <div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
 													du {{experience.DateDebut|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} au {{experience.DateFin|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
 											    </div>
@@ -113,15 +129,24 @@
 							    <div class="resume-timeline position-relative">		    
 								    <article class="resume-timeline-item position-relative">
 									    {% for skill in candidat.skills %}
-										    <div class="resume-timeline-item-header mb-2">
-											    <div class="d-flex flex-column flex-md-row">
-											        <h3 class="resume-position-title font-weight-bold mb-1">{{ skill.skill.title }}</h3>
+								   			{% if skillUpdated is defined %}
+								   				{% for sk in skillUpdated if sk.subSectionId == skill.id %}
+								   						<div class="resume-section-content container updated-section">
+								   					{% else %}
+								   						<div class="resume-section-content container">
+								   				{% endfor %}
+								   			{% else %}
+												<div class="resume-section-content container">
+											{% endif %}
+											    <div class="resume-timeline-item-header mb-2">
+												    <div class="d-flex flex-column flex-md-row">
+												        <h3 class="resume-position-title font-weight-bold mb-1">{{ skill.skill.title }}</h3>
+												    </div>
 											    </div>
-										    </div>
-										    <div class="resume-timeline-item-desc">
-											    <p>{{ skill.description|nl2br}}</p>
-										    </div>
-
+											    <div class="resume-timeline-item-desc">
+												    <p>{{ skill.description|nl2br}}</p>
+											    </div>
+											</div>
 											</br>
 
 									    {% endfor %}
@@ -222,3 +247,19 @@
     </article>
 
 {% endblock body %}
+{% block javascripts %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(window).on('unload', function() {
+			  $.post({
+			  	url: '/cvupdated/delete/{{candidat.id }}',
+			  	method: 'POST',
+			  	success: function(data) {
+			  		alert(data);
+			  	}
+			  });
+			});			
+		});
+
+	</script>
+{% endblock %}

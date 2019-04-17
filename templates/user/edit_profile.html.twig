@@ -11,15 +11,14 @@
 			<div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
 				<header class="resume-header pt-4 pt-md-0">
 				<div class="secondary-info ml-md-auto mt-2">
-								<a style="margin-right: 30px;" class="btn-edit-cv btn-div" href="{{ path('user_profile') }}" title="Fermer"><i class="fa fa-times"></i></a>
-							</div><!--//secondary-info-->
+					<a style="margin-right: 30px;" class="btn-edit-cv btn-div" href="{{ path('user_profile') }}" title="Fermer"><i class="fa fa-times"></i></a>
+				</div><!--//secondary-info-->
 
 				</header>
-									<div class="row">
-				<div class="col-lg-9">
-				<div class="resume-body p-5">
+				<div class="row">
+					<div class="col-lg-9">
+						<div class="resume-body p-5">
 							<div class="" style="position: relative;">
-								
 								<div id="preview" style="min-height: 250px;width: 220px;background-size: cover; opacity: 0.5;background-image:url('{{ asset('./uploads/photos/' ~ user.profileName) }}')">
 									<span style="position:absolute;width:1px;overflow: hidden;">
 										{{ form_widget(form.profileFile, {attr:{'onchange':'readURL(this)'}}) }} 
@@ -56,7 +55,7 @@
 											<label for="email">EMAIL:</label>
 											{{ form_widget(form.email, {attr:{'class': 'form-control', 'id': 'email'}}) }}
 											<span class="text-danger">{{ form_errors(form.email) }}</span>
-										</a></li>
+										</li>
 										<li>
 											<label for="email"> TELEPHONE:</label>
 											{{ form_widget(form.phoneNumber, {attr:{'class': 'form-control', 'id': 'phone'}}) }}
@@ -65,14 +64,6 @@
 									</ul>
 								</section><!--//primary-info-->
 							</div><!--//media-->
-
-							{# <section class="resume-section summary-section mb-5">
-								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">OBJECTIF</h2>
-								<div class="resume-section-content">
-									<p class="mb-0">Summarise your career here. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-								</div>
-							</section> #}
-
 							<section class="resume-section experience-section mb-5">
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Etat civil</h2>
 								<p>
@@ -121,8 +112,8 @@
 
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">ACTIVITES EXTRA PROFESSIONNELLES</h2>
 								<div id="extra-work-activity" class="container" style="min-height: 50px;">
-								{% form_theme form 'collection/jquery.collection.html.twig' %}
-								{{ form_row(form.extraWorkActivities) }}
+									{% form_theme form 'collection/jquery.collection.html.twig' %}
+									{{ form_row(form.extraWorkActivities) }}
 								</div>
 
 								<br/>
@@ -136,16 +127,15 @@
 
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="training">LANGUES</h2>
 								<div id="extra-work-activity"  class="container" style="min-height: 50px;">
-								{% form_theme form 'collection/jquery.collection.html.twig' %}
+									{% form_theme form 'collection/jquery.collection.html.twig' %}
 									{{ form_row(form.languages) }}	
 								</div>
 								<br/>
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="training">FORMATIONS</h2>
 								<div id="extra-work-activity"  class="container" style="min-height: 50px;">
-								{% form_theme form 'collection/jquery.collection.html.twig' %}
+									{% form_theme form 'collection/jquery.collection.html.twig' %}
 									{{ form_row(form.trainings) }}	
 								</div>
-
 								<br/>
 
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="experience">MES PARCOURS PROFESSIONELS</h2>
@@ -153,7 +143,6 @@
 								{% form_theme form 'collection/jquery.collection.html.twig' %}
 									{{ form_row(form.experiences) }}
 								</div>
-
 								<br/>
 
 								<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="c4" style="margin-top: 50px">MES COMPETENCES</h2>
@@ -202,12 +191,12 @@
 		});
 
 		jQuery(document).ready(function($) {
-			$(document).find('select').each(function(event){
+			/*$(document).find('select').each(function(event){
 				$(this).selectize({
 					allowEmptyOption: true,
 					create: true
 				});
-			});
+			});*/
 
 			$("#user_phoneNumber").intlTelInput({
 				// whether or not to allow the dropdown
@@ -243,36 +232,33 @@
 				// specify the path to the libphonenumber script to enable validation/formatting
 				utilsScript: ""
 			});
-			// $('#user_maritalStatus').select2();
-			// $('#user_nationality').select2();
-			// $('.language_level').select2();
 			$('#user_experiences').addClass('container');
 			$('#trig-upl').on('click', function(){
 				$('#user_profileFile').trigger('click');
-			})
+			});
 			$('.collection-selector-user-extraWorkActivities').collection({
 				allow_up: false,
 				allow_down: false,
 				add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
-				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>'
 			});
 			$('.collection-selector-user-trainings').collection({
 				allow_up: false,
 				allow_down: false,
 				add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
-				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>'
 			});
 			$('.collection-selector-user-skills').collection({
 				allow_up: false,
 				allow_down: false,
 				add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
-				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>'
 			});
 			$('.collection-selector-user-languages').collection({
 				allow_up: false,
 				allow_down: false,
 				add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
-				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>'
 			});
 			$('.collection-selector-user-experience').collection({
 				allow_up: false,
@@ -288,7 +274,7 @@
 					allow_down: false,
 					add_at_the_end: true,
 					add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i><span style="font-size:10px;">Ajouter une personne de référence</span></a>',
-					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+					remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>'
 					// ...
 				}]
 			});
@@ -326,7 +312,7 @@
 							$('#user_trainings_'+ index +'_endDate').val(startDate);
 						}
 					});
-				})
+				});
 			});
 
 			$('*[id*=date_debut]').each(function(index) {
@@ -338,37 +324,37 @@
 							$('#user_experiences_'+ index +'_date_fin').val(startDate);
 						}
 					});
-				})
+				});
 			});
-		});
 
-		$('.tag-input').tagsinput({
-			typeaheadjs: [{
-				highlights: true,
-			},{
-				name: 'hobbies',
-				display: 'name',
-				value: 'name',
-				source: this.hobbies
-			}]
-		});
+			$('.tag-input').tagsinput({
+				typeaheadjs: [{
+					highlights: true,
+				},{
+					name: 'hobbies',
+					display: 'name',
+					value: 'name',
+					source: this.hobbies
+				}]
+			});
 
-		$('.sports-tag-input').tagsinput({
-			typeaheadjs: [{
-				highlights: true,
-			},{
-				name: 'sports',
-				display: 'name',
-				value: 'name',
-				source: this.sports
-			}]
-		});
+			$('.sports-tag-input').tagsinput({
+				typeaheadjs: [{
+					highlights: true,
+				},{
+					name: 'sports',
+					display: 'name',
+					value: 'name',
+					source: this.sports
+				}]
+			});
 
-		$('.collection-selector-user-interviews').collection({
-			allow_up: false,
-			allow_down: false,
-			add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
-			remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+			$('.collection-selector-user-interviews').collection({
+				allow_up: false,
+				allow_down: false,
+				add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
+				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
+			});
 		});
 	</script>
 {% endblock %}

@@ -30,20 +30,40 @@ class CandidatController extends AbstractController
 
     /**
      * @Route("/candidat/{id}", name="candidat_view")
-     * @param                   string $id id candidat
-     * @return                  \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param string $id id candidat
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index($id)
     {
         $em = $this->getDoctrine()->getManager();
         $candidat = $em->getRepository('App:User')->find($id);
+        $cvUpdated = $em->getRepository('App:CvUpdated')->fetchByCandidat($candidat);
+        $cvUpdatedTrainingSection = [];
+        $cvUpdatedExperienceSection = [];
+        $cvUpdatedSkillSection = [];
+
+        foreach ($cvUpdated as $value) {
+            $cvUpdatedTrainingSection = array_filter($cvUpdated, function($var) {
+                return $var->getSection() == 1;
+            });
+            $cvUpdatedExperienceSection = array_filter($cvUpdated, function($var) {
+                return $var->getSection() == 2;
+            });
+            $cvUpdatedSkillSection = array_filter($cvUpdated, function($var) {
+                return $var->getSection() == 3;
+            });
+        }
+
         if ($candidat) {
             $viewCandidat = $this->userService->cvViewed($id);
 
             return $this->render(
                 'candidat/index.html.twig',
                 [
-                'candidat' => $viewCandidat,
+                    'candidat' => $viewCandidat,
+                    'experienceUpdated' => $cvUpdatedExperienceSection,
+                    'trainingUpdated' => $cvUpdatedTrainingSection,
+                    'skillUpdated' => $cvUpdatedSkillSection,
                 ]
             );
         }

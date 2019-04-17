@@ -69,9 +69,43 @@ class RhHomeController extends AbstractController
     }
 
     /**
+     * @Route("/rh/cvs/edited", name="rh_edited_cvs")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function listEditedCvs()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $candidates = [];
+        $cvEdited = $em->getRepository('App:CvUpdated')->findAll();
+        $userIds = [];
+
+        foreach ($cvEdited as $key => $value) {
+            $userIds[] = $value->getUser();
+        }
+
+        $users = array_unique($userIds);
+        foreach ($users as $value) {
+            $candidates[] = $em->getRepository('App:User')->fetchByUser($value);
+        }
+        $nationalities = $em->getRepository('App:Nationality')->getAll();
+        $status = $em->getRepository('App:UserStatut')->findAll();
+        $tags = $em->getRepository('App:Tag')->getAll();
+
+        return $this->render(
+            'rh_home/index.html.twig',
+            [
+                'candidates' => $candidates[0],
+                'nationalities' => $nationalities,
+                'status' => $status,
+                'tags' => $tags,
+            ]
+        );
+    }
+
+    /**
      * @Route("/rh/validate/{id}", name="rh_validate_cv")
-     * @param                      datatype $id
-     * @return                     \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param datatype $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function rhValidate($id)
     {
