@@ -79,7 +79,7 @@ class RhHomeController extends AbstractController
         $cvEdited = $em->getRepository('App:CvUpdated')->findAll();
         $userIds = [];
 
-        foreach ($cvEdited as $key => $value) {
+        foreach ($cvEdited as $value) {
             $userIds[] = $value->getUser();
         }
 

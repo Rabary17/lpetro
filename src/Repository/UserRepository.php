@@ -64,6 +64,7 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param string $id description
      * @return array
      */
     public function fetchByUser($id)

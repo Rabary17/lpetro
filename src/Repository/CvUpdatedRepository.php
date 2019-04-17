@@ -24,6 +24,7 @@ class CvUpdatedRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param string $value description
      * @return CvUpdated[] Returns an array of CvUpdated objects
      */
     public function fetchByCandidat($value)

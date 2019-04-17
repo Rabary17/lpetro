@@ -43,13 +43,14 @@ class CandidatController extends AbstractController
         $cvUpdatedSkillSection = [];
 
         foreach ($cvUpdated as $value) {
-            $cvUpdatedTrainingSection = array_filter($cvUpdated, function($var) {
+            $value = $cvUpdated;
+            $cvUpdatedTrainingSection = array_filter($cvUpdated, function ($var) {
                 return $var->getSection() == 1;
             });
-            $cvUpdatedExperienceSection = array_filter($cvUpdated, function($var) {
+            $cvUpdatedExperienceSection = array_filter($cvUpdated, function ($var) {
                 return $var->getSection() == 2;
             });
-            $cvUpdatedSkillSection = array_filter($cvUpdated, function($var) {
+            $cvUpdatedSkillSection = array_filter($cvUpdated, function ($var) {
                 return $var->getSection() == 3;
             });
         }

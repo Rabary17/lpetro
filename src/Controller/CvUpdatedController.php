@@ -18,6 +18,7 @@ class CvUpdatedController extends AbstractController
     	$cvUpdated = $em->gerRepository('App:CvUpdated')->fetchByCandidat($iduser);
     	$em->remove($cvUpdated);
     	$em->flush();
+
     	return json(['success' => true]);
     }
 }
