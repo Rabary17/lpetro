@@ -10,6 +10,7 @@ use App\Form\DataTransformer\SportsTransformer;
 use Symfony\Bridge\Doctrine\Form\DataTransformer\CollectionToArrayTransformer;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 /**
  * @SuppressWarnings(PHPMD)
  */

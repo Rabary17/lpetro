@@ -22,7 +22,7 @@
 								
 								<div id="preview" style="min-height: 250px;width: 220px;background-size: cover; opacity: 0.5;background-image:url('{{ asset('./uploads/photos/' ~ user.profileName) }}')">
 									<span style="position:absolute;width:1px;overflow: hidden;">
-										{{ form_widget(form.profileFile, {attr:{'onchange':'readURL(this)'}}) }} 
+										{{ form_widget(form.profileFile) }} 
 										<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
 									</span>
 								</div>
@@ -387,5 +387,14 @@
 				$('.changeme').addClass('disabled');
 			}
 		});
+
+		var uploadField = document.getElementById("user_profileFile");
+		uploadField.onchange = function() {
+			if(this.files[0].size > 2200000){
+			alert("Le poid de la photo ne doit pas excéder les 2MB.");
+			this.value = "";
+			};
+			readURL(this);
+		};
 		</script>
 {% endblock %}
