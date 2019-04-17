@@ -167,9 +167,9 @@
 									<input style="font-size:15px;" type="submit" class="btn btn-primary" value="Sauvegarder"> ou 
 									<a href="{{ path('user_profile') }}"class="btn btn-default" style="font-size:15px;"><i class="fa fa-times"></i> Revenir</a>
 									{% if app.user.submit %}
-									<a class="btn btn-primary"title="CV déjà soumis"><i class="fa fa-check">CV Soumis</i></a>
+									<a class="btn btn-success" href="#" title="Soumettre mon cv pour validation">CV Soumis</a>
 									{% else %}
-									<a class="btn btn-primary" href="{{ path('user_cv_send', {'id' : user.id}) }}" title="Soumettre mon cv pour validation">Soumettre mon CV pour validation</a>
+									<a class="btn btn-primary changeme disabled" href="{{ path('user_cv_send', {'id' : user.id}) }}" title="Soumettre mon cv pour validation">Soumettre mon CV pour validation</a>
 									{% endif %}
 									<div>
 										<input type="checkbox" id="valide" name="valide">
@@ -379,5 +379,13 @@
 			add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
 			remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
 		});
-	</script>
+
+		$('#valide').change(function(){
+			if($(this).is(":checked")) {				
+				$('.changeme').removeClass('disabled');
+			} else {
+				$('.changeme').addClass('disabled');
+			}
+		});
+		</script>
 {% endblock %}
