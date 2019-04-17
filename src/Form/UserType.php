@@ -157,7 +157,11 @@ class UserType extends AbstractType
                 'profileFile',
                 FileType::class,
                 [
-                    'required' => false
+                    'required' => false,
+                    'attr' => array(
+                        'accept' => 'image/*'
+                    )
+                    
                 ]
             );
     }
