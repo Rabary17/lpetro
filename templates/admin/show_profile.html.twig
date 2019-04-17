@@ -12,15 +12,40 @@
 					
 				    <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
 					    <div class="primary-info col-sm-6 col-md-8 col-lg-8">
-						    <ul class="list-unstyled">
-							    <li>NOM: {{ user.lastName }}</li>
-							    <li>PRENOM: {{ user.firstName }}</li>
-							    <li>EMAIL: {{user.email}}</li>
-						    </ul>
+							<style>
+								table {
+								font-family: arial, sans-serif;
+								border-collapse: collapse;
+								width: 100%;
+								}
+
+								td, th {
+								border: 1px solid #dddddd;
+								text-align: left;
+								padding: 8px;
+								}
+							</style>
+
+								<h2>Votre profil</h2></br>
+
+								<table>
+								<tr>
+									<th>NOM</th>
+									<td>{{ user.lastName }}</td>
+								</tr>
+								<tr>
+									<th>PRENOM</th>
+									<td>{{ user.firstName }}</td>
+								</tr>
+								<tr>
+									<th>EMAIL</th>
+									<td>{{user.email}}</td>
+								</tr>
+								</table></br>
 					    </div><!--//primary-info-->
 
 						<div style="display:block" class="col-sm-6 col-md-4 col-lg-4">
-							<a class="btn btn-default" href="{{ path('admin_edit_profile') }}" title="Editer mon profil">Editer mon profil</a>
+							<a class="btn btn-default" href="{{ path('admin_edit_profile') }}" title="Editer mon profil"><i class="fa fa-pencil"></i> Editer</a>
 						</div>
 				    </div><!--//media-body-->
 			    </div><!--//media-->
