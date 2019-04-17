@@ -95,7 +95,7 @@ class ExperienceType extends AbstractType
                 'status',
                 TextType::class,
                 [
-                    'label' => 'STATUS (internat, junior, senior...)',
+                    'label' => 'STATUT (Junior, Senior ...)',
                     'required' => false,
                     'label_attr' => [
                     'class' => 'mylabel'

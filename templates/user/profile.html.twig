@@ -166,25 +166,36 @@
 						    <div class="resume-section-content">
 							    <ul class="list-unstyled resume-lang-list">
 									{% for langue in user.languages %}
-								    <li class="mb-1" style="display:flex">{{ langue.name }} 
-										<div class="star-ratings-css">
-											<!-- Lu -->
+								    <li class="mb-1"><p style="width:100%;margin:0">{{ langue.name }}</p>
+										<div class="star-ratings-css" id="langue_speaking">
 											<div style="height: 20px;    line-height: 27px;">
-												<div class="star-ratings-css-top" style="width: {{ langue.readinglevel * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
-												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
-											</div>
-										</div>
-										<div class="star-ratings-css">
-											<!-- Parlé -->
-											<div style="height: 20px;    line-height: 27px;">
+											{% if langue.speakinglevel is same as(null) %}
+												<div></div>
+											{% else %}
 												<div class="star-ratings-css-top" style="width: {{ langue.speakinglevel * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											{% endif %}
 												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
 											</div>
 										</div>
-										<div class="star-ratings-css">
-											<!-- Écrit -->
+										
+										<div class="star-ratings-css" id="langue_reading">
 											<div style="height: 20px;    line-height: 27px;">
+											{% if langue.readinglevel is same as(null) %}
+												<div></div>
+											{% else %}
+												<div class="star-ratings-css-top" style="width: {{ langue.readinglevel * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											{% endif %}
+												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											</div>
+										</div>
+																				
+										<div class="star-ratings-css" id="langue_writing">
+											<div style="height: 20px;    line-height: 27px;">
+											{% if langue.writinglevel is same as(null) %}
+												<div></div>
+											{% else %}
 												<div class="star-ratings-css-top" style="width: {{ langue.writinglevel * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											{% endif %}
 												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
 											</div>
 										</div>

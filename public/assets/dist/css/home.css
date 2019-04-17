@@ -98,3 +98,8 @@ margin: 2%;
 .user-panel>.image>img {
     height: 45px;
 }
+
+#langue_speaking:before{
+position : absolute;
+content:'Parlé';
+}

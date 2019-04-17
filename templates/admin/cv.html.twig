@@ -23,6 +23,36 @@
 		border-top: none;
 		background-color: #7c97a1;
 	}
+	#langue_speaking:before{
+    position: absolute;
+    content: 'Parlé';
+    left: -40px;
+    font-size: 12px;
+    font-weight: 300;
+    text-shadow: none;
+    color: #434E5E;
+	    top: 4px;
+	}
+	#langue_reading:before{
+    position: absolute;
+    content: 'Lu';
+    left: -40px;
+    font-size: 12px;
+    font-weight: 300;
+    text-shadow: none;
+    color: #434E5E;
+	    top: 4px;
+	}
+	#langue_writing:before{
+    position: absolute;
+    content: 'Ecrit';
+    left: -40px;
+    font-size: 12px;
+    font-weight: 300;
+    text-shadow: none;
+    color: #434E5E;
+	    top: 4px;
+	}
 	</style>
 
     <article class="resume-wrapper text-center position-relative">
@@ -96,9 +126,9 @@
 							    <div class="resume-timeline position-relative">		    
 								    <article class="resume-timeline-item position-relative">
 									   		{% for training in candidat.trainings %}
-												<div class="resume-section-content container">
-													<div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
-													de {{ training.StartDate|date('d-m-Y') }} à {{ training.EndDate|date('d-m-Y') }}
+												<div class="resume-section-content row">
+													<div class="col-lg-5 col-md-5 col-sm-5">
+													de {{ training.StartDate|localizeddate('none', 'none', null, null, 'dd MMMM Y') }} à {{ training.EndDate|localizeddate('none', 'none', null, null, 'dd MMMM Y') }}
 													</div>
 													
 													<div class="col-lg-7 col-md-7 col-sm-7">
@@ -118,11 +148,11 @@
 							    <div class="resume-timeline position-relative">		    
 								    <article class="resume-timeline-item position-relative">
 									    {% for experience in candidat.experiences %}
-										    <div class="resume-section-content container">
-											    <div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
-											        du {{ experience.DateDebut|date('d-m-Y') }} à {{ experience.DateFin|date('d-m-Y') }}
+										    <div class="resume-section-content row">
+											    <div class="col-lg-5 col-md-5 col-sm-5">
+											        du {{ experience.DateDebut|localizeddate('none', 'none', null, null, 'dd MMMM Y') }} à {{ experience.DateFin|localizeddate('none', 'none', null, null, 'dd MMMM Y') }}
 											    </div>
-											    <div class="rcol-lg-7 col-md-7 col-sm-7"><span class="font-weight-bold">{{ experience.position }}</span></br>
+											    <div class="col-lg-7 col-md-7 col-sm-7"><h3 class="font-weight-bold">{{ experience.position }}</h3>
 																						 <span style="color:#288edc">{{ experience.company }}</span> </br>
 																						 <small class="text-muted">Niveau : ({{ experience.status }})</br>
 																						 {{ experience.achievements|nl2br}}</br>
@@ -211,7 +241,7 @@
 									{% for interview in candidat.interviews %}
 										<div>
 											<h4 class="resume-position-title font-weight-bold mb-1">Interview par :</h4><p>{{ interview.interviewBy }}</p>
-											<h4 class="resume-position-title font-weight-bold mb-1">Date de l'interview :</h4><p>{{ interview.interviewDate | date('d/m/Y') }}</p>
+											<h4 class="resume-position-title font-weight-bold mb-1">Date de l'interview :</h4><p>{{ interview.interviewDate |localizeddate('none', 'none', null, null, 'dd MMMM Y') }}</p>
 											<h4 class="resume-position-title font-weight-bold mb-1">Résumé</h4><p>{{ interview.interviewResume }}</p>
 										</div>
 										<hr>
@@ -237,10 +267,36 @@
 						    <div class="resume-section-content">
 							    <ul class="list-unstyled resume-lang-list">
 									{% for langue in candidat.languages %}
-								    <li class="mb-1" style="display:flex">{{ langue.name }} 
-										<div class="star-ratings-css">
+								    <li class="mb-1"><p style="width:100%;margin:0">{{ langue.name }}</p>
+										<div class="star-ratings-css" id="langue_speaking">
 											<div style="height: 20px;    line-height: 27px;">
-												<div class="star-ratings-css-top" style="width: {{ langue.level * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											{% if langue.speakinglevel is same as(null) %}
+												<div></div>
+											{% else %}
+												<div class="star-ratings-css-top" style="width: {{ langue.speakinglevel * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											{% endif %}
+												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											</div>
+										</div>
+										
+										<div class="star-ratings-css" id="langue_reading">
+											<div style="height: 20px;    line-height: 27px;">
+											{% if langue.readinglevel is same as(null) %}
+												<div></div>
+											{% else %}
+												<div class="star-ratings-css-top" style="width: {{ langue.readinglevel * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											{% endif %}
+												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											</div>
+										</div>
+																				
+										<div class="star-ratings-css" id="langue_writing">
+											<div style="height: 20px;    line-height: 27px;">
+											{% if langue.writinglevel is same as(null) %}
+												<div></div>
+											{% else %}
+												<div class="star-ratings-css-top" style="width: {{ langue.writinglevel * 100 / 10 }}%"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
+											{% endif %}
 												<div class="star-ratings-css-bottom"><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span><span>•</span></div>
 											</div>
 										</div>

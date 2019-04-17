@@ -386,7 +386,7 @@
   }
   
   h3, .h3 {
-    font-size: 1.75rem;
+    font-size: 1.1rem;
   }
   
   h4, .h4 {
@@ -8997,5 +8997,36 @@ input[class*="date-range"] {
 
   .star-ratings-css-top, 
     .star-ratings-css-bottom{
-		padding: 0 5%;
+      padding: 0 5%;
 	}
+	#langue_speaking:before{
+    position: absolute;
+    content: 'Parlé';
+    left: -40px;
+    font-size: 12px;
+    font-weight: 300;
+    text-shadow: none;
+    color: #434E5E;
+	    top: 4px;
+	}
+	#langue_reading:before{
+    position: absolute;
+    content: 'Lu';
+    left: -40px;
+    font-size: 12px;
+    font-weight: 300;
+    text-shadow: none;
+    color: #434E5E;
+	    top: 4px;
+	}
+	#langue_writing:before{
+    position: absolute;
+    content: 'Ecrit';
+    left: -40px;
+    font-size: 12px;
+    font-weight: 300;
+    text-shadow: none;
+    color: #434E5E;
+	    top: 4px;
+  }
+  
