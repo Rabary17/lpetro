@@ -9,6 +9,7 @@
 		    <header class="resume-header pt-4 pt-md-0">
 			    <div class="media flex-column flex-md-row">
 				    <img class="mr-3 img-fluid picture mx-auto" src="{{ asset('uploads/photos/' ~ user.profileName) }}" alt="">
+					
 				    <div class="media-body p-4 d-flex flex-column flex-md-row mx-auto mx-lg-0">
 					    <div class="primary-info col-sm-6 col-md-8 col-lg-8">
 						    <ul class="list-unstyled">
@@ -17,6 +18,7 @@
 							    <li>EMAIL: {{user.email}}</li>
 						    </ul>
 					    </div><!--//primary-info-->
+
 						<div style="display:block" class="col-sm-6 col-md-4 col-lg-4">
 							<a class="btn btn-default" href="{{ path('admin_edit_profile') }}" title="Editer mon profil">Editer mon profil</a>
 						</div>

@@ -162,19 +162,20 @@
 									{{ form_row(form.skills) }}
 								</div>
 								<br/>
+								<div style="margin-top: 20px;">
+										<input type="checkbox" id="valide" name="valide">
+										<label for="valide" style="font-size: 16px;position: absolute;">Je déclare que les renseignements ci-dessus sont sincères et exactes.</label>
+									</div>
+								</br>
 
 								<div style="padding:20px; margin-top:30px;text-align:center;">
 									<input style="font-size:15px;" type="submit" class="btn btn-primary" value="Sauvegarder"> ou 
-									<a href="{{ path('user_profile') }}"class="btn btn-default" style="font-size:15px;"><i class="fa fa-times"></i> Revenir</a>
+									<a href="{{ path('user_profile') }}" class="btn btn-default" style="font-size:15px;"><i class="fa fa-times"></i> Revenir</a>
 									{% if app.user.submit %}
-									<a class="btn btn-primary"title="CV déjà soumis"><i class="fa fa-check">CV Soumis</i></a>
+									<a class="btn btn-primary" title="CV déjà soumis" style="color: white;font-size: 15px;"><i class="fa fa-check"></i> CV Soumis</a>
 									{% else %}
 									<a class="btn btn-primary" href="{{ path('user_cv_send', {'id' : user.id}) }}" title="Soumettre mon cv pour validation">Soumettre mon CV pour validation</a>
 									{% endif %}
-									<div>
-										<input type="checkbox" id="valide" name="valide">
-										<label for="valide">Je déclare que les renseignements ci-dessus sont sincères et exactes.</label>
-									</div>
 								</div>
 							</section>
 						</div>

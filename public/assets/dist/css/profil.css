@@ -8997,7 +8997,7 @@ input[class*="date-range"] {
 
   .star-ratings-css-top, 
     .star-ratings-css-bottom{
-		padding: 0 5%;
+      padding: 0 5%;
 	}
 	#langue_speaking:before{
     position: absolute;
