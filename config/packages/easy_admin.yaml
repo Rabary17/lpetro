@@ -37,6 +37,7 @@ easy_admin:
             - label: Formation
               children:
                 - { entity: 'TrainingResult', label: 'Résultat obtenu', params:{ action: 'list' } }
+                - { entity: 'TrainingLevel', label: 'Niveau de formation', params:{ action: 'list' } }
 
     entities:
         Candidat:
@@ -150,6 +151,15 @@ easy_admin:
             label: 'Mention'
             list:
                 fields: [{property: 'title', label: 'Mention'}]
+
+        TrainingLevel:
+            class: App\Entity\TrainingLevel
+            label: 'Niveau de Formation'
+            list:
+                fields: [{property: 'title', label: 'Niveau'}]
+            form:
+                fields: ['title']
+    
 
         User:
             class: App\Entity\User

@@ -9,16 +9,19 @@ class CvUpdatedController extends AbstractController
 {
     /**
      * @Route("/cvupdated/delete/{iduser}", name="cv_updated_delete")
-     * @param string $iduser description
-     * @return json description
+     * @param                               string $iduser description
+     * @return                              json description
      */
     public function deleteUpdatedCvViewed($iduser)
     {
         $em = $this->getDoctrine()->getManager();
-        $cvUpdated = $em->gerRepository('App:CvUpdated')->fetchByCandidat($iduser);
-        $em->remove($cvUpdated);
+        $cvUpdated = $em->getRepository('App:CvUpdated')->fetchByCandidat($iduser);
+
+        foreach ($cvUpdated as $value) {
+            $em->remove($value);
+        }
         $em->flush();
 
-        return json(['success' => true]);
+        return $this->json(['success' => true]);
     }
 }

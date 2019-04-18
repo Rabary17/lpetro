@@ -41,7 +41,7 @@ class UserSkillType extends AbstractType
                         'class' => 'mylabel'
                     ],
                 ]
-            )
+        )
             ->add(
                 'description',
                 TextareaType::class,

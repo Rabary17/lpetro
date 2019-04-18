@@ -19,6 +19,7 @@ class AdminController extends BaseAdminController
 
     /**
      * [__construct description]
+     *
      * @param UserPasswordEncoderInterface $passwordEncoder [description]
      * @param UserService                  $userService     description
      */
@@ -30,7 +31,8 @@ class AdminController extends BaseAdminController
 
     /**
      * [persistEntity description]
-     * @param string $entity [description]
+     *
+     * @param  string $entity [description]
      * @return void [description]
      */
     public function persistEntity($entity)
@@ -41,7 +43,8 @@ class AdminController extends BaseAdminController
 
     /**
      * [updateEntity description]
-     * @param string $entity [description]
+     *
+     * @param  string $entity [description]
      * @return void         [description]
      */
     public function updateEntity($entity)
@@ -52,6 +55,7 @@ class AdminController extends BaseAdminController
 
     /**
      * [encodePassword description]
+     *
      * @param  User $user [description]
      * @return void       [description]
      */
@@ -67,9 +71,9 @@ class AdminController extends BaseAdminController
     }
 
     /**
-     * @param Request $request description
+     * @param      Request $request description
      * @Route(path = "/admin/cv/show", name = "show_cv")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return     \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function showCv(Request $request)
     {
@@ -92,8 +96,8 @@ class AdminController extends BaseAdminController
 
     /**
      * @Route("/archived/{id}", name="admin_archived_cv")
-     * @param                      datatype $id
-     * @return                     \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param                   datatype $id
+     * @return                  \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function cvArchived($id)
     {
@@ -104,8 +108,8 @@ class AdminController extends BaseAdminController
 
     /**
      * @Route("/profile/edit", name="admin_edit_profile")
-     * @param Request $request description
-     * @return                     \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param                  Request $request description
+     * @return                 \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editProfile(Request $request)
     {
@@ -131,7 +135,7 @@ class AdminController extends BaseAdminController
 
     /**
      * @Route("/profile", name="admin_profile")
-     * @return                     \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return            \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function showProfile()
     {
@@ -147,7 +151,7 @@ class AdminController extends BaseAdminController
 
     /**
      * @Route("/dashboard", name="admin_dashboard")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return              \Symfony\Component\HttpFoundation\Response
      */
     public function dashboard()
     {

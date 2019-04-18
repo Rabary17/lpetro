@@ -16,6 +16,7 @@ class CvUpdatedRepository extends ServiceEntityRepository
 {
     /**
      * [__construct description]
+     *
      * @param RegistryInterface $registry [description]
      */
     public function __construct(RegistryInterface $registry)
@@ -24,7 +25,7 @@ class CvUpdatedRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param string $value description
+     * @param  string $value description
      * @return CvUpdated[] Returns an array of CvUpdated objects
      */
     public function fetchByCandidat($value)

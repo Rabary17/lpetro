@@ -51,7 +51,7 @@ class TrainingType extends AbstractType
                         'class' => 'form-control'
                     ]
                 ]
-            )
+        )
             ->add(
                 'description',
                 null,
@@ -111,7 +111,7 @@ class TrainingType extends AbstractType
                 null,
                 [
                     'class' => TrainingLevel::class,
-                    'label' => 'Niveau',
+                    'label' => 'NIVEAU DE FORMATION (DTS, M1, M2...)',
                     'mapped' => true,
                     'label_attr' => [
                         'class' => 'mylabel'
@@ -151,28 +151,36 @@ class TrainingType extends AbstractType
                     ]
                 ]
             )
-            ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
-                $data = $event->getData();
-                $form = $event->getForm();
-                if (!empty($data['newSchool']['name'])) {
-                    $form->add('newSchool', SchoolType::class, array(
-                        'mapped' => true,
-                        'required' => false,
-                        'property_path' => 'school',
-                    ));
+            ->addEventListener(
+                FormEvents::PRE_SUBMIT, function (FormEvent $event) {
+                    $data = $event->getData();
+                    $form = $event->getForm();
+                    if (!empty($data['newSchool']['name'])) {
+                        $form->add(
+                            'newSchool', SchoolType::class, array(
+                            'mapped' => true,
+                            'required' => false,
+                            'property_path' => 'school',
+                            )
+                        );
+                    }
                 }
-            })->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
-                $data = $event->getData();
-                $form = $event->getForm();
+            )->addEventListener(
+                FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+                        $data = $event->getData();
+                        $form = $event->getForm();
 
-                if (!$data) {
-                    $form->add('newSchool', SchoolType::class, array(
-                        'mapped' => false,
-                        'required' => false,
-                        'property_path' => 'school',
-                    ));
+                    if (!$data) {
+                        $form->add(
+                            'newSchool', SchoolType::class, array(
+                                'mapped' => false,
+                                'required' => false,
+                                'property_path' => 'school',
+                                )
+                        );
+                    }
                 }
-            });
+            );
     }
 
     /**

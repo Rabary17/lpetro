@@ -16,7 +16,8 @@ class SchoolType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, [
+            ->add(
+                'name', TextType::class, [
                     'label' => 'AUTRE ETABLISSEMENT (Si votre etablissement ne figure pas dans la liste du haut)',
                     'label_attr' => [
                         'class' => 'mylabel'
@@ -24,14 +25,16 @@ class SchoolType extends AbstractType
                     'attr' => [
                         'class' => 'form-control'
                     ]
-                ])
-        ;
+                ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => School::class,
-        ]);
+            ]
+        );
     }
 }
