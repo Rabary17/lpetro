@@ -62,7 +62,12 @@
 				<div class="media flex-column flex-md-row container">
 					<div class="col-md-5 col-lg-5 col-sm-12" style="text-align:center">
 						<div style="text-align: left">
-							<img class="mr-3 img-fluid picture mx-auto" src="{{ asset('uploads/photos/' ~ candidat.profileName) }}" alt="">
+						<div class="mr-3 img-fluid picture mx-auto" style="
+						background-image: url('{{ asset('uploads/photos/' ~ candidat.profileName) }}');
+						background-size: cover;
+						background-position: center;
+						background-repeat: no-repeat;
+						margin-left: 0 !important;"></div>
 							<div style="margin: 10px 0">
 								<h3 style="font-size: 22px;">{{candidat.firstname}} {{candidat.lastName}}</h3>
 								<h3 class="">{{candidat.statut}}</h3>
@@ -74,9 +79,15 @@
 				    <div class="col-md-7 col-lg-7 col-sm-12 row">
 					    <div class="primary-info col-sm-6 col-md-8 col-lg-8">
 						    <ul class="list-unstyled">
-							    <li class="mb-2"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{candidat.email}}</li>
-								<li class="mb-2"><i class="fa fa-map-marker fa-fw mr-2" data-fa-transform="grow-3"></i>{{candidat.address}}</li>
-							    <li><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ candidat.phoneNumber }}</li>
+							    <li class="mb-2"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{user.email}}</li>
+								<li class="mb-2"><i class="fa fa-map-marker fa-fw mr-2" data-fa-transform="grow-3"></i>{{user.address}}</li>
+							    <li><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ user.phoneNumber }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> {{ user.dateOfBirth |localizeddate('none', 'none', null, null, 'dd MMMM Y') }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> né(e) à {{ user.placeOfBirth }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Situation familiale: {{ user.maritalStatus }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Nom du conjoint: {{ user.conjointName }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Nombre d'enfant: {{ user.nbChildren }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Nationalité: {% if user.nationality.nationality is defined %}{{ user.nationality.nationality }}{% endif %}</li>
 						    </ul>
 					    </div><!--//primary-info-->
 						<div style="display:block" class="col-sm-6 col-md-4 col-lg-4">
