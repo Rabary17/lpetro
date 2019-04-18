@@ -44,13 +44,13 @@ class Training
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\School", inversedBy="trainings", cascade={"persist"})
-     * @ORM\JoinColumn(referencedColumnName="id",  onDelete="SET NULL")
+     * @ORM\JoinColumn(referencedColumnName="id",       onDelete="SET NULL")
      */
     private $school;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Filiere", inversedBy="trainings", cascade={"persist"})
-     * @ORM\JoinColumn(referencedColumnName="id",  onDelete="SET NULL")
+     * @ORM\JoinColumn(referencedColumnName="id",        onDelete="SET NULL")
      */
     private $Filiere;
 

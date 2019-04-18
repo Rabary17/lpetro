@@ -70,7 +70,7 @@ class RhHomeController extends AbstractController
 
     /**
      * @Route("/rh/cvs/edited", name="rh_edited_cvs")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return                  \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function listEditedCvs()
     {
@@ -94,7 +94,7 @@ class RhHomeController extends AbstractController
         return $this->render(
             'rh_home/index.html.twig',
             [
-                'candidates' => $candidates[0],
+                'candidates' => isset($candidates[0]) ? $candidates[0] : null,
                 'nationalities' => $nationalities,
                 'status' => $status,
                 'tags' => $tags,
@@ -104,8 +104,8 @@ class RhHomeController extends AbstractController
 
     /**
      * @Route("/rh/validate/{id}", name="rh_validate_cv")
-     * @param datatype $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param                      datatype $id
+     * @return                     \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function rhValidate($id)
     {
@@ -128,7 +128,7 @@ class RhHomeController extends AbstractController
 
     /**
      * @Route("/rh/profile", name="rh_profile")
-     * @return            \Symfony\Component\HttpFoundation\Response
+     * @return               \Symfony\Component\HttpFoundation\Response
      */
     public function profile()
     {
@@ -143,9 +143,9 @@ class RhHomeController extends AbstractController
 
     /**
      * @Route("/rh/profile/edit/{id}", name="rh_profile_edit")
-     * @param                       \Symfony\Component\HttpFoundation\Request $request
-     * @param                       string                                    $id
-     * @return                      \Symfony\Component\HttpFoundation\Response
+     * @param                          \Symfony\Component\HttpFoundation\Request $request
+     * @param                          string                                    $id
+     * @return                         \Symfony\Component\HttpFoundation\Response
      */
     public function edit(Request $request, $id)
     {
@@ -172,7 +172,7 @@ class RhHomeController extends AbstractController
 
     /**
      * @Route("/rh/actions", name="rh_actions")
-     * @return            \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return               \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function rhActions()
     {

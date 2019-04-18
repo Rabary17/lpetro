@@ -12,14 +12,15 @@ class TrainingLevelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-        ;
+            ->add('title');
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => TrainingLevel::class,
-        ]);
+            ]
+        );
     }
 }

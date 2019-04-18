@@ -12,6 +12,7 @@ use App\Entity\Experience;
 
 /**
  * Listener responsible to change the redirection at the end of the password resetting
+ *
  * @HasLifecycleCallbacks
  */
 class CvUpdatedListener implements EventSubscriberInterface
@@ -43,8 +44,8 @@ class CvUpdatedListener implements EventSubscriberInterface
 
     /**
      * @PostUpdate
-     * @param  LifecycleEventArgs $args [description]
-     * @return [type]                   [description]
+     * @param      LifecycleEventArgs $args [description]
+     * @return     [type]                   [description]
      */
     public function postUpdate(LifecycleEventArgs $args)
     {

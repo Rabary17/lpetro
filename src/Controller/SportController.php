@@ -9,7 +9,7 @@ class SportController extends AbstractController
 {
     /**
      * @Route("/sports", name="sport")
-     * @return Symfony\Component\HttpFoundation\JsonResponse  description
+     * @return           Symfony\Component\HttpFoundation\JsonResponse  description
      */
     public function index()
     {

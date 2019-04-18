@@ -19,15 +19,19 @@ class AdminEditType extends AbstractType
             ->add('email')
             ->add('lastName')
             ->add('firstName')
-            ->add('profileFile', FileType::class, [
+            ->add(
+                'profileFile', FileType::class, [
                     'required' => false
-            ]);
+                ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => User::class,
-        ]);
+            ]
+        );
     }
 }

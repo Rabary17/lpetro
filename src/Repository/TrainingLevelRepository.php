@@ -14,37 +14,12 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class TrainingLevelRepository extends ServiceEntityRepository
 {
+    /**
+     * [__construct description]
+     * @param RegistryInterface $registry [description]
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, TrainingLevel::class);
     }
-
-    // /**
-    //  * @return TrainingLevel[] Returns an array of TrainingLevel objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?TrainingLevel
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

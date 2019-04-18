@@ -164,7 +164,7 @@ class User extends BaseUser
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\UserStatut", inversedBy="users", cascade={"remove"})
-     * @ORM\JoinColumn(name="statut_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\JoinColumn(name="statut_id",                    referencedColumnName="id", onDelete="SET NULL")
      */
     private $statut;
 
