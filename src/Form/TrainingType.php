@@ -111,7 +111,7 @@ class TrainingType extends AbstractType
                 null,
                 [
                     'class' => TrainingLevel::class,
-                    'label' => 'Niveau',
+                    'label' => 'NIVEAU DE FORMATION (DTS, M1, M2...)',
                     'mapped' => true,
                     'label_attr' => [
                         'class' => 'mylabel'
