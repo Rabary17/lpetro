@@ -41,6 +41,7 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('seen', false)
             ->setParameter('submit', true)
             ->setParameter('enabled', true)
+            ->orderBy('u.firstName', 'ASC')
             ->getQuery()
             ->getArrayResult();
     }
@@ -59,6 +60,7 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('roles', '%"' . $role . '"%')
             ->setParameter('submit', true)
             ->setParameter('enabled', true)
+            ->orderBy('u.firstName', 'ASC')
             ->getQuery()
             ->getArrayResult();
     }
@@ -80,6 +82,7 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('submit', true)
             ->setParameter('enabled', true)
             ->setParameter('id', $id)
+            ->orderBy('u.firstName', 'ASC')
             ->getQuery()
             ->getArrayResult();
     }
@@ -124,7 +127,7 @@ class UserRepository extends ServiceEntityRepository
         $qb->setParameter('roles', '%"' . $role . '"%')
            ->setParameter('submit', true)
            ->setParameter('enabled', true);
-
+        $qb->orderBy('u.firstName', 'ASC');
         $query = $qb->getQuery();
         $result = $query->getArrayResult();
 
@@ -152,6 +155,7 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('username', '%' . $q . '%')
             ->setParameter('submit', true)
             ->setParameter('enabled', true)
+            ->orderBy('u.firstName', 'ASC')
             ->getQuery()
             ->getArrayResult();
     }
