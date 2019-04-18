@@ -157,6 +157,9 @@ easy_admin:
             label: 'Niveau de Formation'
             list:
                 fields: [{property: 'title', label: 'Niveau'}]
+            form:
+                fields: ['title']
+    
 
         User:
             class: App\Entity\User
