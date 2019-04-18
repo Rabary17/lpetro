@@ -94,7 +94,7 @@ class RhHomeController extends AbstractController
         return $this->render(
             'rh_home/index.html.twig',
             [
-                'candidates' => $candidates[0],
+                'candidates' => isset($candidates[0]) ? $candidates[0] : null,
                 'nationalities' => $nationalities,
                 'status' => $status,
                 'tags' => $tags,

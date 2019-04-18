@@ -250,16 +250,21 @@
 {% block javascripts %}
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$(window).on('unload', function() {
-			  $.post({
-			  	url: '/cvupdated/delete/{{candidat.id }}',
-			  	method: 'POST',
-			  	success: function(data) {
-			  		alert(data);
-			  	}
-			  });
-			});			
-		});
+			function removeCvUpdated() {
+			    $.post({
+			  		url: '/cvupdated/delete/{{candidat.id }}',
+			  		async: false,
+			  		method: 'POST',
+			  		error: function(err) {
+			  			console.log(err);
+			  		},
+			  		success: function(data) {
+			  			console.log(data);
+			  		}
+			  	});				
+			}
 
+			setTimeout(removeCvUpdated, 4000);
+		});
 	</script>
 {% endblock %}
