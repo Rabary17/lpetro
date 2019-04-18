@@ -183,6 +183,16 @@ class User extends BaseUser
      */
     private $archived  = false;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $stars;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $favoriteCandidate;
+
     public function __construct()
     {
         parent::__construct();
@@ -515,36 +525,6 @@ class User extends BaseUser
         return $this;
     }
 
-    /**
-     * @return Collection|UserSkill[]
-     */
-    public function getSkills(): Collection
-    {
-        return $this->skills;
-    }
-
-    public function addSkill(UserSkill $skill): self
-    {
-        if (!$this->skills->contains($skill)) {
-            $this->skills[] = $skill;
-            $skill->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSkill(UserSkill $skill): self
-    {
-        if ($this->skills->contains($skill)) {
-            $this->skills->removeElement($skill);
-            // set the owning side to null (unless already changed)
-            if ($skill->getUser() === $this) {
-                $skill->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|ApplicationLetter[]
@@ -731,6 +711,61 @@ class User extends BaseUser
     public function setArchived(bool $archived): self
     {
         $this->archived = $archived;
+
+        return $this;
+    }
+
+    public function getStars(): ?int
+    {
+        return $this->stars;
+    }
+
+    public function setStars(?int $stars): self
+    {
+        $this->stars = $stars;
+
+        return $this;
+    }
+
+    public function getFavoriteCandidate(): ?bool
+    {
+        return $this->favoriteCandidate;
+    }
+
+    public function setFavoriteCandidate(?bool $favoriteCandidate): self
+    {
+        $this->favoriteCandidate = $favoriteCandidate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|UserSkill[]
+     */
+    public function getSkills(): Collection
+    {
+        return $this->skills;
+    }
+
+    public function addSkill(UserSkill $skill): self
+    {
+        if (!$this->skills->contains($skill)) {
+            $this->skills[] = $skill;
+            $skill->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSkill(UserSkill $skill): self
+    {
+        if ($this->skills->contains($skill)) {
+            $this->skills->removeElement($skill);
+            // set the owning side to null (unless already changed)
+            if ($skill->getUser() === $this) {
+                $skill->setUser(null);
+            }
+        }
 
         return $this;
     }

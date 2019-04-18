@@ -107,3 +107,6 @@ login-box-body {
 .candidat-list {
     background-color: white;
 }
+.favorite {
+    color: red;
+}

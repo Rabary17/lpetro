@@ -44,9 +44,11 @@
 							<a class="btn-edit-cv" href="{{ path('candidat_edit', {'id' : candidat.id }) }}" title="Ajout info RH"><i class="fa fa-pencil"></i></a>
 							{% if candidat.rhvalidate %}
 								<a class="btn-edit-cv" style="background-color: green;color:white" title="CV validé"><i class="fa fa-check"></i></a>
-								{% else %}
+							{% else %}
 								<a class="btn-edit-cv" href="{{ path('user_cv_send', {'id' : candidat.id}) }}" title="Valider le CV"><i class="fa fa-paper-plane"></i></a>
 							{% endif %}
+							<a class="btn-edit-cv" href="#stars" title="Noter ce candidat"><i class="fa fa-star"></i></a>
+							<a class="btn-edit-cv" href="#" id="favorite" title="Mettre ce candidat dans favoris"><i class="fa fa-thumbs-up {% if candidat.favoriteCandidate %}favorite{% endif %}"></i></a>
 						</div>
 				    </div><!--//media-body-->
 			    </div><!--//media-->
@@ -218,6 +220,22 @@
 								</div>
 							</div>
 						</section><!--//extra-work-activity-->
+						<section class="resume-section experience-section mb-5">
+							<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3" id="stars">NOTES POUR CE CANDIDAT</h2>
+							<div class="resume-section-content">
+								<div class="resume-timeline position-relative">
+										<div>
+										<form id="rating">
+											Notes: 
+											{% for i in 1..10 %}
+												<input type="radio" {% if i == candidat.stars %}checked{% endif %} name="stars" value="{{ i }}">
+											{% endfor %}
+										</form>
+										</div>
+										<hr>
+								</div>
+							</div>
+						</section><!--//extra-work-activity-->
 				    </div>
 				    <div class="col-lg-3">
 					    <section class="resume-section language-section mb-5">
@@ -276,6 +294,31 @@
 			}
 
 			setTimeout(removeCvUpdated, 4000);
+			$('#favorite').click(function() {
+				$.post({
+					url: '/candidat/favorite/{{user.id}}',
+					method: 'POST',
+					success: function(data) {
+						if (data.success == 1) {
+							$('#favorite').addClass('favorite');
+						} else {
+							$('#favorite').removeClass('favorite');
+						}
+					}
+				});
+			});
+
+			$('#rating').change(function(){
+				var selected_value = $("input[name='stars']:checked").val();
+				$.post({
+					url: '/candidat/stars/{{user.id}}',
+					method: 'POST',
+					data: { stars: selected_value },
+					success: function(data) {
+						console.log('ok');
+					}
+				});
+	        });
 		});
 	</script>
 {% endblock %}

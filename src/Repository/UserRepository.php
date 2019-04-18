@@ -42,6 +42,8 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('submit', true)
             ->setParameter('enabled', true)
             ->orderBy('u.firstName', 'ASC')
+            ->orderBy('u.favoriteCandidate', 'DESC')
+            ->orderBy('u.stars', 'DESC')
             ->getQuery()
             ->getArrayResult();
     }
@@ -61,6 +63,8 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('submit', true)
             ->setParameter('enabled', true)
             ->orderBy('u.firstName', 'ASC')
+            ->orderBy('u.favoriteCandidate', 'DESC')
+            ->orderBy('u.stars', 'DESC')
             ->getQuery()
             ->getArrayResult();
     }
@@ -83,6 +87,8 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('enabled', true)
             ->setParameter('id', $id)
             ->orderBy('u.firstName', 'ASC')
+            ->orderBy('u.favoriteCandidate', 'DESC')
+            ->orderBy('u.stars', 'DESC')
             ->getQuery()
             ->getArrayResult();
     }
@@ -156,6 +162,8 @@ class UserRepository extends ServiceEntityRepository
             ->setParameter('submit', true)
             ->setParameter('enabled', true)
             ->orderBy('u.firstName', 'ASC')
+            ->orderBy('u.favoriteCandidate', 'DESC')
+            ->orderBy('u.stars', 'DESC')
             ->getQuery()
             ->getArrayResult();
     }
