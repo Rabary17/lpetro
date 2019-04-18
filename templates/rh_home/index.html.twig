@@ -153,7 +153,7 @@ b, strong {
             html += '<tbody>';
 		for (var i = 0; i < data.length; i++) {
 	        html += '<tr>';
-	        html += "<td><img class=\"img-fluid\" src=\"{{ asset('uploads/photos/" + data[i].profileName +"') }}\" alt=\"Photo de " + data[i].lastName +"\" alt='card image' width='50px' height='50px'></td>";
+	        html += '<td><img class="img-fluid" src="/uploads/photos/' + data[i].profileName + '" alt="Photo de ' + data[i].lastName +'" alt="card image" width="50px" height="50px"></td>';
 			html += '<td>'+ data[i].firstName +'</td>';
 			html += '<td>'+ data[i].lastName +'</td>';
 			html += '<td><a href="/candidat/' + data[i].id +'" class="btn btn-primary" title="Voir le CV">Voir details</a></td>';
