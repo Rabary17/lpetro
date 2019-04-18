@@ -161,9 +161,10 @@ class CandidatController extends AbstractController
                 $candidat->setStars(8);
                 $em->flush();
 
-                return $this->json(['success'=> $value]);
+                return $this->json(['success' => $value]);
             }
         }
+
         return $this->json(['success' => false]);
     }
 
@@ -187,9 +188,10 @@ class CandidatController extends AbstractController
                 }
                 $em->flush();
 
-                return $this->json(['success'=> $value]);
+                return $this->json(['success' => $value]);
             }
         }
+
         return $this->json(['success' => false]);
     }
 }
