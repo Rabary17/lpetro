@@ -14,11 +14,11 @@ class CvUpdatedController extends AbstractController
      */
     public function deleteUpdatedCvViewed($iduser)
     {
-    	$em = $this->getDoctrine()->getManager();
-    	$cvUpdated = $em->gerRepository('App:CvUpdated')->fetchByCandidat($iduser);
-    	$em->remove($cvUpdated);
-    	$em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $cvUpdated = $em->gerRepository('App:CvUpdated')->fetchByCandidat($iduser);
+        $em->remove($cvUpdated);
+        $em->flush();
 
-    	return json(['success' => true]);
+        return json(['success' => true]);
     }
 }
