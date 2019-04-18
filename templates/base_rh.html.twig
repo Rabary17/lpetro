@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/ionicons.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/dist/css/dataTables.bootstrap.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -119,6 +120,7 @@
           <ul class="treeview-menu">
             <li><a href="{{ path('rh_view_cvs') }}"><i class="fa fa-circle-o"></i> Tous</a></li>
             <li><a href="{{ path('rh_home') }}"><i class="fa fa-circle-o"></i> Nouveau</a></li>
+            <li><a href="{{ path('rh_edited_cvs') }}"><i class="fa fa-circle-o"></i> Modifié</a></li>
           </ul>
         </li>
         <li class="header">COMPTE</li>
@@ -174,6 +176,7 @@
         <script src="dist/js/demo.js"></script>
         <script type="text/javascript" src="{{ asset('assets/dist/js/bootstrap-tagsinput.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/dist/js/typeahead.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/dist/js/dataTables.bootstrap.min.js') }}"></script>
         <script src="{{ asset('assets/dist/js/select2.min.js') }}"></script>
         <script>
         	jQuery(document).ready(function($) {

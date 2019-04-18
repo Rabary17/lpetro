@@ -6,7 +6,9 @@ use App\Entity\Training;
 use App\Entity\School;
 use App\Entity\Filiere;
 use App\Entity\TrainingResult;
+use App\Entity\TrainingLevel;
 use App\Form\SchoolType;
+use App\Form\TrainingLevelType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -106,10 +108,11 @@ class TrainingType extends AbstractType
             )
             ->add(
                 'level',
-                TextType::class,
+                null,
                 [
-                    'required' => false,
-                    'label' => 'NIVEAU',
+                    'class' => TrainingLevel::class,
+                    'label' => 'Niveau',
+                    'mapped' => true,
                     'label_attr' => [
                         'class' => 'mylabel'
                     ],

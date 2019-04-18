@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Helpers\StringHelpers;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ExperienceRepository")
@@ -13,8 +14,7 @@ class Experience
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=36)
      */
     private $id;
 
@@ -70,11 +70,12 @@ class Experience
 
     public function __construct()
     {
+        $stringHelpers = new StringHelpers();
+        $this->id      = $stringHelpers->generateUuid();
         $this->referencedPeople = new ArrayCollection();
     }
 
-
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -152,7 +153,7 @@ class Experience
     }
 
     /**
-     * @return Collection|Experience[]
+     * @return Collection|ReferencedPerson[]
      */
     public function getReferencedPeople(): Collection
     {
@@ -169,7 +170,7 @@ class Experience
         return $this;
     }
 
-    public function removeReferencedPerson(Experience $referencedPerson): self
+    public function removeReferencedPerson(ReferencedPerson $referencedPerson): self
     {
         if ($this->referencedPeople->contains($referencedPerson)) {
             $this->referencedPeople->removeElement($referencedPerson);
@@ -211,7 +212,7 @@ class Experience
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 
