@@ -60,7 +60,8 @@ class Training
     private $result;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\TrainingLevel", inversedBy="trainings")
+     * @ORM\ManyToOne(targetEntity="App\Entity\TrainingLevel", inversedBy="trainings", cascade={"remove"})
+     * @ORM\JoinColumn(referencedColumnName="id", onDelete="SET NULL")
      */
     private $level;
 
