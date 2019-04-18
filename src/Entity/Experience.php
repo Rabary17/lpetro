@@ -153,7 +153,7 @@ class Experience
     }
 
     /**
-     * @return Collection|Experience[]
+     * @return Collection|ReferencedPerson[]
      */
     public function getReferencedPeople(): Collection
     {
@@ -170,7 +170,7 @@ class Experience
         return $this;
     }
 
-    public function removeReferencedPerson(Experience $referencedPerson): self
+    public function removeReferencedPerson(ReferencedPerson $referencedPerson): self
     {
         if ($this->referencedPeople->contains($referencedPerson)) {
             $this->referencedPeople->removeElement($referencedPerson);
@@ -212,7 +212,7 @@ class Experience
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 

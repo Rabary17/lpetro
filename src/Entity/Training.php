@@ -43,11 +43,6 @@ class Training
     private $endDate;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $level;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\School", inversedBy="trainings", cascade={"persist"})
      * @ORM\JoinColumn(referencedColumnName="id",  onDelete="SET NULL")
      */
@@ -63,6 +58,11 @@ class Training
      * @ORM\ManyToOne(targetEntity="App\Entity\TrainingResult", inversedBy="trainings")
      */
     private $result;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TrainingLevel", inversedBy="trainings")
+     */
+    private $level;
 
     public function __construct()
     {
@@ -135,12 +135,12 @@ class Training
         return $this;
     }
 
-    public function getLevel(): ?string
+    public function getLevel(): ?TrainingLevel
     {
         return $this->level;
     }
 
-    public function setLevel(?string $level): self
+    public function setLevel(?TrainingLevel $level): self
     {
         $this->level = $level;
 
@@ -184,7 +184,7 @@ class Training
     public function setResult(?TrainingResult $result): self
     {
         $this->result = $result;
-        
+
         return $this;
     }
 }

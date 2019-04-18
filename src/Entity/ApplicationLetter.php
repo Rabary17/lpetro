@@ -33,7 +33,7 @@ class ApplicationLetter
         $this->id      = $stringHelpers->generateUuid();
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
