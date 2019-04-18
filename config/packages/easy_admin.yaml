@@ -12,14 +12,13 @@ easy_admin:
             - label: Dashboard
               icon: dashboard
               route: admin_dashboard
-              default: true
             - label: MENU PRINCIPAL
             - { entity: 'Candidat', label: 'Candidats', params:{ action: 'list' }, icon: 'users' }
             - { entity: 'Rh', label: 'RH', params:{ action: 'list' }, icon: 'user' }
             - { entity: 'Cv', label: 'Liste CVs', params:{ action: 'list' }, icon: 'copy' }
-            - { entity: 'Archived', label: 'Archives', params:{ action: 'list' }, icon: 'copy' }
+            - { entity: 'Archived', label: 'Archives', params:{ action: 'list' }, icon: 'archive' }
             - label: CVs Options
-              icon: copy
+              icon: list
               children:
                     - { entity: 'Sport', label: 'Sport', params:{ action: 'list' } }
                     - { entity: 'Hobby', label: 'Hobbies', params:{ action: 'list' }}
@@ -35,9 +34,11 @@ easy_admin:
                 - { entity: 'Skill', label: 'Liste', params:{ action: 'list' } }
                 - { entity: 'SkillLevel', label: 'Niveau de compétence', params:{ action: 'list' } }
             - label: Formation
+              icon: leanpub
               children:
                 - { entity: 'TrainingResult', label: 'Résultat obtenu', params:{ action: 'list' } }
                 - { entity: 'TrainingLevel', label: 'Niveau de formation', params:{ action: 'list' } }
+            - { entity: 'JobOpening', label: 'Annonces', params:{ action: 'list' }, icon: 'bullhorn' }
 
     entities:
         Candidat:
@@ -159,7 +160,12 @@ easy_admin:
                 fields: [{property: 'title', label: 'Niveau'}]
             form:
                 fields: ['title']
-    
+
+        JobOpening:
+            class: App\Entity\JobOpening
+            label: 'Les annonces'
+            list:
+                fields: [{property: 'position', label: 'Poste'}, {property: 'missions', label: 'Missions'}, {property: 'profile', label: 'Profil requis'}]
 
         User:
             class: App\Entity\User
