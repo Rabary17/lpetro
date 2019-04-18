@@ -66,7 +66,7 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param string $id description
+     * @param  string $id description
      * @return array
      */
     public function fetchByUser($id)
@@ -111,22 +111,22 @@ class UserRepository extends ServiceEntityRepository
 
         if ($status) {
             $qb->andWhere('u.statut = :status')
-               ->setParameter('status', $status);
+                ->setParameter('status', $status);
         }
 
         if ($nationality) {
             $qb->andWhere('u.nationality = :nationality')
-               ->setParameter('nationality', $nationality);
+                ->setParameter('nationality', $nationality);
         }
 
         if ($tags) {
             $qb->andWhere('t.id IN (:tags)')
-               ->setParameter('tags', $tags);
+                ->setParameter('tags', $tags);
         }
 
         $qb->setParameter('roles', '%"' . $role . '"%')
-           ->setParameter('submit', true)
-           ->setParameter('enabled', true);
+            ->setParameter('submit', true)
+            ->setParameter('enabled', true);
         $qb->orderBy('u.firstName', 'ASC');
         $query = $qb->getQuery();
         $result = $query->getArrayResult();
@@ -135,7 +135,7 @@ class UserRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param string $q description
+     * @param  string $q description
      * @return array
      */
     public function fetchFilteredCandidates($q)

@@ -19,7 +19,7 @@
 					<div class="col-lg-9">
 						<div class="resume-body p-5">
 							<div class="" style="position: relative;">
-								<div id="preview" style="min-height: 250px;width: 220px;background-size: cover; opacity: 0.5;background-image:url('{{ asset('./uploads/photos/' ~ user.profileName) }}')">
+								<div id="preview" style="min-height: 250px;width: 220px;background-size: cover; opacity: 0.5;background-image:url('{{ asset('./uploads/photos/' ~ user.profileName) }}')" data-toggle="tooltip" data-placement="right" title="Dimension 300x300">
 									<span style="position:absolute;width:1px;overflow: hidden;">
 										{{ form_widget(form.profileFile) }} 
 										<span class="text-danger">{{ form_errors(form.profileFile) }}</span>
@@ -35,6 +35,9 @@
 									background-color: #323232;
 									top: 20%;
 									margin: 0 40px;"
+									data-toggle="tooltip"
+									data-placement="top"
+									title="Dimension 300x300"
 								>
 									<i class="fa fa-picture-o"></i> Modifier
 								</div>
@@ -383,5 +386,9 @@
 			};
 			readURL(this);
 		};
+
+		$(function () {
+			$('[data-toggle="tooltip"]').tooltip()
+		})
 		</script>
 {% endblock %}

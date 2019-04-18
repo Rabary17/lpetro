@@ -30,8 +30,8 @@ class CandidatController extends AbstractController
 
     /**
      * @Route("/candidat/{id}", name="candidat_view")
-     * @param string $id id candidat
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param                   string $id id candidat
+     * @return                  \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index($id)
     {
@@ -44,15 +44,24 @@ class CandidatController extends AbstractController
 
         foreach ($cvUpdated as $value) {
             $value = $cvUpdated;
-            $cvUpdatedTrainingSection = array_filter($cvUpdated, function ($var) {
-                return $var->getSection() == 1;
-            });
-            $cvUpdatedExperienceSection = array_filter($cvUpdated, function ($var) {
-                return $var->getSection() == 2;
-            });
-            $cvUpdatedSkillSection = array_filter($cvUpdated, function ($var) {
-                return $var->getSection() == 3;
-            });
+            $cvUpdatedTrainingSection = array_filter(
+                $cvUpdated,
+                function ($var) {
+                    return $var->getSection() == 1;
+                }
+            );
+            $cvUpdatedExperienceSection = array_filter(
+                $cvUpdated,
+                function ($var) {
+                    return $var->getSection() == 2;
+                }
+            );
+            $cvUpdatedSkillSection = array_filter(
+                $cvUpdated,
+                function ($var) {
+                    return $var->getSection() == 3;
+                }
+            );
         }
 
         if ($candidat) {
@@ -102,8 +111,8 @@ class CandidatController extends AbstractController
 
     /**
      * @Route("/candidat/filter/list/candidat", name="candidat_list")
-     * @param  Request $request description
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @param                                   Request $request description
+     * @return                                  \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function list(Request $request)
     {
@@ -116,8 +125,8 @@ class CandidatController extends AbstractController
 
     /**
      * @Route("/candidat/filter/all", name="candidat_filter")
-     * @param  Request $request description
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @param                         Request $request description
+     * @return                        \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function filter(Request $request)
     {

@@ -2,15 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\Skill;
+use App\Entity\TrainingLevel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-/**
- * @SuppressWarnings(PHPMD)
- */
-class SkillType extends AbstractType
+class TrainingLevelType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -22,7 +19,7 @@ class SkillType extends AbstractType
     {
         $resolver->setDefaults(
             [
-            'data_class' => Skill::class,
+            'data_class' => TrainingLevel::class,
             ]
         );
     }

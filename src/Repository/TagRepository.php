@@ -26,6 +26,7 @@ class TagRepository extends ServiceEntityRepository
 
     /**
      * [getAll description]
+     *
      * @return array [description]
      */
     public function getAll()

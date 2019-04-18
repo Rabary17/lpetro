@@ -9,7 +9,7 @@ class HobbyController extends AbstractController
 {
     /**
      * @Route("/hobbies", name="hobby")
-     * @return         Symfony\Component\HttpFoundation\JsonResponse  description
+     * @return            Symfony\Component\HttpFoundation\JsonResponse  description
      */
     public function index()
     {

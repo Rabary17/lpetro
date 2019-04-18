@@ -164,7 +164,7 @@ class User extends BaseUser
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\UserStatut", inversedBy="users", cascade={"remove"})
-     * @ORM\JoinColumn(name="statut_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\JoinColumn(name="statut_id",                    referencedColumnName="id", onDelete="SET NULL")
      */
     private $statut;
 
@@ -272,7 +272,7 @@ class User extends BaseUser
         return $this->conjointName;
     }
 
-    public function setConjointName(string $conjointName): self
+    public function setConjointName(?string $conjointName): self
     {
         $this->conjointName = $conjointName;
 
@@ -516,7 +516,7 @@ class User extends BaseUser
     }
 
     /**
-     * @return Collection|Skill[]
+     * @return Collection|UserSkill[]
      */
     public function getSkills(): Collection
     {
@@ -728,7 +728,7 @@ class User extends BaseUser
         return $this->archived;
     }
 
-    public function setArchived(?bool $archived): self
+    public function setArchived(bool $archived): self
     {
         $this->archived = $archived;
 

@@ -41,7 +41,7 @@ class CvUpdated
         return $this->user;
     }
 
-    public function setUser(?string $user): self
+    public function setUser(string $user): self
     {
         $this->user = $user;
 

@@ -6,7 +6,9 @@ use App\Entity\Training;
 use App\Entity\School;
 use App\Entity\Filiere;
 use App\Entity\TrainingResult;
+use App\Entity\TrainingLevel;
 use App\Form\SchoolType;
+use App\Form\TrainingLevelType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -49,7 +51,7 @@ class TrainingType extends AbstractType
                         'class' => 'form-control'
                     ]
                 ]
-            )
+        )
             ->add(
                 'description',
                 null,
@@ -106,10 +108,11 @@ class TrainingType extends AbstractType
             )
             ->add(
                 'level',
-                TextType::class,
+                null,
                 [
-                    'required' => false,
-                    'label' => 'NIVEAU',
+                    'class' => TrainingLevel::class,
+                    'label' => 'Niveau',
+                    'mapped' => true,
                     'label_attr' => [
                         'class' => 'mylabel'
                     ],
@@ -148,28 +151,36 @@ class TrainingType extends AbstractType
                     ]
                 ]
             )
-            ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
-                $data = $event->getData();
-                $form = $event->getForm();
-                if (!empty($data['newSchool']['name'])) {
-                    $form->add('newSchool', SchoolType::class, array(
-                        'mapped' => true,
-                        'required' => false,
-                        'property_path' => 'school',
-                    ));
+            ->addEventListener(
+                FormEvents::PRE_SUBMIT, function (FormEvent $event) {
+                    $data = $event->getData();
+                    $form = $event->getForm();
+                    if (!empty($data['newSchool']['name'])) {
+                        $form->add(
+                            'newSchool', SchoolType::class, array(
+                            'mapped' => true,
+                            'required' => false,
+                            'property_path' => 'school',
+                            )
+                        );
+                    }
                 }
-            })->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
-                $data = $event->getData();
-                $form = $event->getForm();
+            )->addEventListener(
+                FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+                        $data = $event->getData();
+                        $form = $event->getForm();
 
-                if (!$data) {
-                    $form->add('newSchool', SchoolType::class, array(
-                        'mapped' => false,
-                        'required' => false,
-                        'property_path' => 'school',
-                    ));
+                    if (!$data) {
+                        $form->add(
+                            'newSchool', SchoolType::class, array(
+                                'mapped' => false,
+                                'required' => false,
+                                'property_path' => 'school',
+                                )
+                        );
+                    }
                 }
-            });
+            );
     }
 
     /**

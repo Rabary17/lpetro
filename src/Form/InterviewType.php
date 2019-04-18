@@ -61,8 +61,10 @@ class InterviewType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => Interview::class,
-        ]);
+            ]
+        );
     }
 }

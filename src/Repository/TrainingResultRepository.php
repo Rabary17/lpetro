@@ -16,6 +16,7 @@ class TrainingResultRepository extends ServiceEntityRepository
 {
     /**
      * [__construct description]
+     *
      * @param RegistryInterface $registry [description]
      */
     public function __construct(RegistryInterface $registry)

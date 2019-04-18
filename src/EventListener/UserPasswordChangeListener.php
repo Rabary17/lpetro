@@ -38,6 +38,7 @@ class UserPasswordChangeListener implements EventSubscriberInterface
 
     /**
      * [onChangePasswordSuccess description]
+     *
      * @param  FormEvent $event [description]
      * @return [type]                      [description]
      */
