@@ -118,3 +118,6 @@ login-box-body {
 .job-opening-wrapper-link {
     color: black !important;
 }
+.application-letter-content-wrapper {
+    padding: 4%;
+}

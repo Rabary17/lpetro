@@ -46,6 +46,11 @@ class JobOpening
      */
     private $published;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $positionReference;
+
     public function __construct()
     {
         $stringHelpers = new StringHelpers();
@@ -125,6 +130,18 @@ class JobOpening
     public function setPublished(bool $published): self
     {
         $this->published = $published;
+
+        return $this;
+    }
+
+    public function getPositionReference(): ?string
+    {
+        return $this->positionReference;
+    }
+
+    public function setPositionReference(string $positionReference): self
+    {
+        $this->positionReference = $positionReference;
 
         return $this;
     }

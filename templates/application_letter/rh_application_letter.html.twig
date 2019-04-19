@@ -1,0 +1,56 @@
+{% extends 'base_rh.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/home.css')}}">
+{% endblock %}
+{% block body %}
+	<div class="container">
+		<table class="table table-bordered table-hover candidat-list">
+			<thead>
+	            <tr>
+	            	<th>POSTE</th>
+	            	<th>REFERENCE</th>
+	            	<th>NOM & PRENOM</th>
+	            	<th>EMAIL</th>
+	            	<th>ACTIONS</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+				{% for al in applicationLetters %}
+					<tr>
+				        <td>
+				        	{{ al.jobOpening.position }}
+				        </td>
+				        <td>
+				        	{{ al.jobOpening.positionReference }}
+				        </td>
+				        <td>
+				        	{{ al.user.firstName }} {{ al.user.lastName }}
+				        </td>
+				        <td>
+				        	{{ al.user.email }}
+				        </td>
+				        <td>
+				        	<a href="{{ path('candidat_view', {id: al.user.id}) }}" class="btn btn-primary" title="Voir le CV">CV</a>
+				        	<a href="{{ path('application_letter_view', {id: al.id}) }}" class="btn btn-primary" title="Voir la Lettre de motivation">LM</a>
+				        </td>						
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>		
+	</div>
+
+{% endblock body %}
+{% block javascripts %}
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.candidat-list').DataTable({
+			'paging'      : true,
+			'lengthChange': true,
+			'searching'   : false,
+			'ordering'    : true,
+	    });		
+	});	
+</script>
+
+{% endblock %}

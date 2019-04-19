@@ -35,6 +35,10 @@
       <link rel="stylesheet" type="text/css" href="{{ asset('assets/dist/css/bootstrap-tagsinput.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/webfonts/avenir.css')}}">
       <link rel="stylesheet" href="{{ asset('assets/webfonts/avenir-regular.css')}}">
+      {% block head_favicon %}
+          {% set favicon = easyadmin_config('design.assets.favicon') %}
+          <link rel="icon" type="{{ favicon.mime_type }}" href="{{ asset('assets/dist/img/favicon.png') }}" />
+      {% endblock %}
       <title>{% block title %}LPCS{% endblock %}</title>
       {% block stylesheets %}
       {% endblock %}

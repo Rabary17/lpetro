@@ -61,7 +61,7 @@ class ApplicationLetterController extends AbstractController
                     'Votre candidature a été envoyé à LP. Un mail vous a été envoyé pour confirmer sa réception par LP'
                 );
 
-                return $this->redirectToRoute('application_letter');
+                return $this->redirectToRoute('job_opening');
             }
         }
 

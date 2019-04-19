@@ -31,7 +31,6 @@ class ApplicationLetter
      */
     private $jobOpening;
 
-
     public function __construct()
     {
         $stringHelpers = new StringHelpers();
