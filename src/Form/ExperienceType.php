@@ -36,7 +36,7 @@ class ExperienceType extends AbstractType
                 'label_attr' => [
                     'class' => 'mylabel',
                 ],
-                'label' => 'Date début et date fin du contrat',
+                'label' => 'PERIODE',
                 'mapped' => false,
                 'required' => false,
                 'attr' => [
@@ -69,7 +69,7 @@ class ExperienceType extends AbstractType
                     'label_attr' => [
                     'class' => 'mylabel',
                     ],
-                    'label' => 'Type du contrat',
+                    'label' => 'TYPE DE CONTRAT',
                     'choices'  => [
                         'Emploi CDI' => 'Emploi CDI',
                         'Emploi CDD' => 'Emploi CDD',
