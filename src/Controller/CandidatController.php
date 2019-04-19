@@ -146,9 +146,9 @@ class CandidatController extends AbstractController
 
     /**
      * @Route("/candidat/favorite/{id}", name="candidat_favorite")
-     * @param  Request $request [description]
-     * @param  integer $id      [description]
-     * @return json           [description]
+     * @param                            Request $request [description]
+     * @param                            integer $id      [description]
+     * @return                           json           [description]
      */
     public function favoriteCandidat(Request $request, $id)
     {
@@ -170,9 +170,9 @@ class CandidatController extends AbstractController
 
     /**
      * @Route("/candidat/stars/{id}", name="candidat_stars")
-     * @param  Request $request [description]
-     * @param  integer $id      [description]
-     * @return json           [description]
+     * @param                         Request $request [description]
+     * @param                         integer $id      [description]
+     * @return                        json           [description]
      */
     public function noteCandidat(Request $request, $id)
     {

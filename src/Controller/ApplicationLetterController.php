@@ -17,8 +17,7 @@ class ApplicationLetterController extends AbstractController
     /**
      * contructor
      *
-     * @param UserService     $userService
-     * @param LpMailerService $mailer      mailer
+     * @param LpMailerService $mailer mailer
      */
     public function __construct(LpMailerService $mailer)
     {
@@ -27,8 +26,9 @@ class ApplicationLetterController extends AbstractController
 
     /**
      * @Route("/application-letter/{jobid}", name="application_letter")
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param                                Request $request
+     * @param                                string  $jobid   description
+     * @return                               \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function index(Request $request, $jobid)
     {
@@ -54,11 +54,12 @@ class ApplicationLetterController extends AbstractController
                         'emails/received-application-letter-confirmation-email.html.twig',
                         [
                             'user' => $user,
-                            'jobOpening' => $jobOpening
+                            'jobOpening' => $jobOpening,
                         ]
                     ),
                     'user_confirm_notice',
-                    'Votre candidature a été envoyé à LP. Un mail vous a été envoyé pour confirmer sa réception par LP'
+                    'Votre candidature a été envoyé à LP.
+                    Un mail vous a été envoyé pour confirmer sa réception par LP'
                 );
 
                 return $this->redirectToRoute('job_opening');

@@ -16,6 +16,7 @@ class JobOpeningRepository extends ServiceEntityRepository
 {
     /**
      * [__construct description]
+     *
      * @param RegistryInterface $registry [description]
      */
     public function __construct(RegistryInterface $registry)
@@ -35,5 +36,4 @@ class JobOpeningRepository extends ServiceEntityRepository
             ->getQuery()
             ->getArrayResult();
     }
-
 }
