@@ -26,6 +26,11 @@ class ApplicationLetter
      */
     private $user;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\JobOpening")
+     */
+    private $jobOpening;
+
 
     public function __construct()
     {
@@ -65,5 +70,17 @@ class ApplicationLetter
     public function __toString()
     {
         return $this->content;
+    }
+
+    public function getJobOpening(): ?JobOpening
+    {
+        return $this->jobOpening;
+    }
+
+    public function setJobOpening(?JobOpening $jobOpening): self
+    {
+        $this->jobOpening = $jobOpening;
+
+        return $this;
     }
 }

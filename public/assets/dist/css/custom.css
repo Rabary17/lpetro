@@ -110,3 +110,11 @@ login-box-body {
 .favorite {
     color: red;
 }
+.job-opening-wrapper {
+    background-color: white;
+    padding: 2% 4%;
+    margin-bottom: 1%;
+}
+.job-opening-wrapper-link {
+    color: black !important;
+}

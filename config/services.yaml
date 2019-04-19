@@ -48,3 +48,8 @@ services:
         class: App\EventListener\CvUpdatedListener
         tags:
             - { name: doctrine.event_listener, event: postUpdate, lazy: true }
+
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }

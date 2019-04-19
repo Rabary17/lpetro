@@ -22,4 +22,18 @@ class JobOpeningRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, JobOpening::class);
     }
+
+    /**
+     * @return array
+     */
+    public function fetchAll()
+    {
+        return $this->createQueryBuilder('jo')
+            ->andWhere('jo.published = :published')
+            ->setParameter('published', true)
+            ->orderBy('jo.updatedAt', 'DESC')
+            ->getQuery()
+            ->getArrayResult();
+    }
+
 }

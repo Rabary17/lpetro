@@ -165,7 +165,7 @@ easy_admin:
             class: App\Entity\JobOpening
             label: 'Les annonces'
             list:
-                fields: [{property: 'position', label: 'Poste'}, {property: 'missions', label: 'Missions'}, {property: 'profile', label: 'Profil requis'}]
+                fields: [{property: 'position', label: 'Poste'}, {property: 'missions', label: 'Missions'}, {property: 'profile', label: 'Profil requis'}, {property: 'published', label: 'Publié'}]
 
         User:
             class: App\Entity\User
