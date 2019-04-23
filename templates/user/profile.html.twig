@@ -32,7 +32,7 @@
 							    <li class="mb-2"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{user.email}}</li>
 								<li class="mb-2"><i class="fa fa-map-marker fa-fw mr-2" data-fa-transform="grow-3"></i>{{user.address}}</li>
 							    <li><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ user.phoneNumber }}</li>
-								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> {{ user.dateOfBirth |localizeddate('none', 'none', null, null, 'dd MMMM Y') }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> {{ user.dateOfBirth | date('d/m/Y') }}</li>
 								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> né(e) à {{ user.placeOfBirth }}</li>
 								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Situation familiale: {{ user.maritalStatus }}</li>
 								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Nom du conjoint: {{ user.conjointName }}</li>
@@ -79,7 +79,7 @@
 									   		{% for training in user.trainings %}
 												<div class="resume-section-content container">
 													<div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
-													du {{training.StartDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} au {{training.EndDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
+													du {{training.StartDate|date('d/m/Y') }} au {{training.EndDate|date('d/m/Y')}}
 													</div>
 													
 													<div class="col-lg-7 col-md-7 col-sm-7">
@@ -101,7 +101,7 @@
 									    {% for experience in user.experiences %}
 										    <div class="resume-section-content container">
 											    <div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
-											        du {{experience.DateDebut|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} au {{experience.DateFin|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
+											        du {{experience.DateDebut|date('d/m/Y')}} au {{experience.DateFin|date('d/m/Y')}}
 											    </div>
 											    <div class="rcol-lg-7 col-md-7 col-sm-7"><span class="font-weight-bold">{{ experience.position }}</span></br>
 																						 <span style="color:#288edc">{{ experience.company }}</span> </br>
