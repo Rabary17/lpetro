@@ -52,6 +52,6 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
             return new RedirectResponse($this->router->generate('easyadmin'));
         }
 
-        return new RedirectResponse($this->router->generate('home'));
+        return new RedirectResponse($this->router->generate('fos_user_profile_show'));
     }
 }

@@ -30,11 +30,14 @@
       <!-- Google Font -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
       <link rel="stylesheet" type="text/css" href="{{ asset('assets/dist/css/custom.css') }}">
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
       <link rel="stylesheet" href="{{ asset('assets/dist/css/intlTelInput.min.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ asset('assets/dist/css/bootstrap-tagsinput.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/webfonts/avenir.css')}}">
       <link rel="stylesheet" href="{{ asset('assets/webfonts/avenir-regular.css')}}">
+      {% block head_favicon %}
+          {% set favicon = easyadmin_config('design.assets.favicon') %}
+          <link rel="icon" type="{{ favicon.mime_type }}" href="{{ asset('assets/dist/img/favicon.png') }}" />
+      {% endblock %}
       <title>{% block title %}LPCS{% endblock %}</title>
       {% block stylesheets %}
       {% endblock %}
@@ -51,6 +54,7 @@
                 <li><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-home"></i> S'inscrire</a></li>
               {% endif %}
               {% if app.user %}
+                <li><a href="{{ path('job_opening') }}">Les annonces</a></li>
                 <li><a href="{{ path('training') }}">Mes formations</a></li>
                 <li><a href="{{ path('skill') }}">Mes compétences</a></li>
                 <li class="dropdown user user-menu">

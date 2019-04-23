@@ -164,7 +164,7 @@
 									<input style="font-size:15px;" type="submit" class="btn btn-primary" value="Sauvegarder"> ou 
 									<a href="{{ path('user_profile') }}" class="btn btn-default" style="font-size:15px;"><i class="fa fa-times"></i> Revenir</a>
 									{% if app.user.submit %}
-									<a class="btn btn-primary" title="CV déjà soumis" style="color: white;font-size: 15px;"><i class="fa fa-check"></i> CV Soumis</a>
+									<!--a class="btn btn-primary" title="CV déjà soumis" style="color: white;font-size: 15px;"><i class="fa fa-check"></i> CV Soumis</a-->
 									{% else %}
 									<a class="btn btn-primary changeme disabled" href="{{ path('user_cv_send', {'id' : user.id}) }}" title="Soumettre mon cv pour validation">Soumettre mon CV pour validation</a>
 									{% endif %}
@@ -204,12 +204,12 @@
 		});
 
 		jQuery(document).ready(function($) {
-			/*$(document).find('select').each(function(event){
+			$(document).find('select').each(function(event){
 				$(this).selectize({
 					allowEmptyOption: true,
 					create: true
 				});
-			});*/
+			});
 
 			$("#user_phoneNumber").intlTelInput({
 				// whether or not to allow the dropdown
@@ -316,6 +316,33 @@
 				}
 			});
 
+
+
+			$('.tag-input').tagsinput({
+				typeaheadjs: [{
+					highlights: true,
+				},{
+					name: 'hobbies',
+					display: 'name',
+					value: 'name',
+					source: hobbies
+				}]
+			});
+
+			$('.sports-tag-input').tagsinput({
+				typeaheadjs: [{
+					highlights: true,
+				},{
+					name: 'sports',
+					display: 'name',
+					value: 'name',
+					source: sports
+				}]
+			});
+
+
+		});
+
 			$('*[id*=startDate]').each(function(index) {
 				$(this).change(function() {
 					var startDate = $(this).val();
@@ -340,36 +367,6 @@
 				});
 			});
 
-			$('.tag-input').tagsinput({
-				typeaheadjs: [{
-					highlights: true,
-				},{
-					name: 'hobbies',
-					display: 'name',
-					value: 'name',
-					source: this.hobbies
-				}]
-			});
-
-			$('.sports-tag-input').tagsinput({
-				typeaheadjs: [{
-					highlights: true,
-				},{
-					name: 'sports',
-					display: 'name',
-					value: 'name',
-					source: this.sports
-				}]
-			});
-
-			$('.collection-selector-user-interviews').collection({
-				allow_up: false,
-				allow_down: false,
-				add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
-				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
-			});
-		});
-
 		$('#valide').change(function(){
 			if($(this).is(":checked")) {				
 				$('.changeme').removeClass('disabled');
@@ -388,7 +385,7 @@
 		};
 
 		$(function () {
-			$('[data-toggle="tooltip"]').tooltip()
-		})
+			$('[data-toggle="tooltip"]').tooltip();
+		});
 		</script>
 {% endblock %}

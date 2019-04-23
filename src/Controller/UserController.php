@@ -92,9 +92,9 @@ class UserController extends AbstractController
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $em->flush();
-            }
 
-            return $this->redirectToRoute('user_profile');
+                return $this->redirectToRoute('user_profile');
+            }
         }
 
         return  $this->render(

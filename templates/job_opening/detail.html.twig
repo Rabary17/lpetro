@@ -1,0 +1,23 @@
+{% extends 'base_user.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/profil.css')}}">
+{% endblock %}
+{% block body %}
+	<div class="job-opening-wrapper">
+		<h2>Poste: {{ jobOpening.position }} (Réf. {{ jobOpening.positionReference }})</h2>
+		<br/>
+		<div>
+			<h4>Missions:</h4>
+			<p>{{ jobOpening.missions }}</p>
+		</div>
+		<br/>
+		<div>
+			<h4>Profil:</h4>
+			<p>{{ jobOpening.profile }}</p>
+		</div>
+		<p>Annonce publié le: {{ jobOpening.updatedAt | date('d/m/Y') }}</p>
+		<a href="{{ path('application_letter', {jobid: jobOpening.id}) }}" class="btn btn-primary">Postuler</a>
+		<a href="{{ path('job_opening') }}" class="btn btn-default">Revenir à la liste d'annonces</a>
+	</div>
+{% endblock %}

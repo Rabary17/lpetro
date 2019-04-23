@@ -8373,7 +8373,7 @@
     color: #dc3545 !important;
     top: 0;
     right: 0;
-    padding: 5px;
+    /*padding: 5px;*/
   }
   
   a.text-danger:hover, a.text-danger:focus {
@@ -8773,7 +8773,7 @@
 
 input[type=checkbox]:not(old),
 input[type=radio   ]:not(old){
-	-webkit-appearance: none;
+	/*-webkit-appearance: none;*/
 	background-color: #fafafa;
 	border: 1px solid #cacece;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
@@ -8806,7 +8806,7 @@ input[type=radio   ]:not(old) + label{
   display      : inline-block;
   margin-left: -20px;
   padding-left : 28px;
-  background   : url('checks.png') no-repeat 0 0;
+  /*background   : url('checks.png') no-repeat 0 0;*/ 
   line-height  : 24px;
 }
 

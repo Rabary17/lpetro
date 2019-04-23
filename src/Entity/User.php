@@ -11,12 +11,18 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Concern\TaggableTrait;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="app_user")
  * @Vich\Uploadable
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     errorPath="email",
+ *     message="Cet email existe déjà."
+ * )
  */
 class User extends BaseUser
 {
@@ -29,7 +35,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=200)
+     * @ORM\Column(type="string", length=200, nullable=true)
      */
     private $lastName;
 
@@ -164,7 +170,7 @@ class User extends BaseUser
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\UserStatut", inversedBy="users", cascade={"remove"})
-     * @ORM\JoinColumn(name="statut_id",                    referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\JoinColumn(name="statut_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $statut;
 
@@ -182,6 +188,24 @@ class User extends BaseUser
      * @ORM\Column(type="boolean", options={"default":"0"})
      */
     private $archived  = false;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $stars;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $favoriteCandidate;
+
+    /**
+     * @Assert\NotBlank
+     * @Assert\Email(
+     *     message = "L'email '{{ value }}' n'est pas valide.",
+     * )
+     */
+    protected $email;
 
     public function __construct()
     {
@@ -212,7 +236,7 @@ class User extends BaseUser
         return $this->lastName;
     }
 
-    public function setLastName(string $lastName): self
+    public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
 
@@ -515,36 +539,6 @@ class User extends BaseUser
         return $this;
     }
 
-    /**
-     * @return Collection|UserSkill[]
-     */
-    public function getSkills(): Collection
-    {
-        return $this->skills;
-    }
-
-    public function addSkill(UserSkill $skill): self
-    {
-        if (!$this->skills->contains($skill)) {
-            $this->skills[] = $skill;
-            $skill->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSkill(UserSkill $skill): self
-    {
-        if ($this->skills->contains($skill)) {
-            $this->skills->removeElement($skill);
-            // set the owning side to null (unless already changed)
-            if ($skill->getUser() === $this) {
-                $skill->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|ApplicationLetter[]
@@ -731,6 +725,92 @@ class User extends BaseUser
     public function setArchived(bool $archived): self
     {
         $this->archived = $archived;
+
+        return $this;
+    }
+
+    public function getStars(): ?int
+    {
+        return $this->stars;
+    }
+
+    public function setStars(?int $stars): self
+    {
+        $this->stars = $stars;
+
+        return $this;
+    }
+
+    public function getFavoriteCandidate(): ?bool
+    {
+        return $this->favoriteCandidate;
+    }
+
+    public function setFavoriteCandidate(?bool $favoriteCandidate): self
+    {
+        $this->favoriteCandidate = $favoriteCandidate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|UserSkill[]
+     */
+    public function getSkills(): Collection
+    {
+        return $this->skills;
+    }
+
+    public function addSkill(UserSkill $skill): self
+    {
+        if (!$this->skills->contains($skill)) {
+            $this->skills[] = $skill;
+            $skill->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSkill(UserSkill $skill): self
+    {
+        if ($this->skills->contains($skill)) {
+            $this->skills->removeElement($skill);
+            // set the owning side to null (unless already changed)
+            if ($skill->getUser() === $this) {
+                $skill->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return Collection|Tag[]
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+        }
 
         return $this;
     }

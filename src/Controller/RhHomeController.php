@@ -189,4 +189,42 @@ class RhHomeController extends AbstractController
             ]
         );
     }
+
+    /**
+     * @Route("/rh/candidature", name="candidature")
+     * @return                   \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function candidature()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $applicationLetters = $em->getRepository('App:ApplicationLetter')->findAll();
+
+        return $this->render(
+            'application_letter/rh_application_letter.html.twig',
+            [
+                'applicationLetters' => $applicationLetters,
+
+            ]
+        );
+    }
+
+    /**
+     * @Route("/rh/application-letter/detail/{id}", name="application_letter_view")
+     * @param                                       string $id description
+     * @return                                      \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function applicationLetterDetail($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $applicationLetter = $em->getRepository('App:ApplicationLetter')->find($id);
+
+        return $this->render(
+            'application_letter/rh_application_letter_detail.html.twig',
+            [
+                'applicationLetter' => $applicationLetter,
+            ]
+        );
+    }
 }

@@ -32,7 +32,7 @@
 							    <li class="mb-2"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{user.email}}</li>
 								<li class="mb-2"><i class="fa fa-map-marker fa-fw mr-2" data-fa-transform="grow-3"></i>{{user.address}}</li>
 							    <li><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ user.phoneNumber }}</li>
-								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> {{ user.dateOfBirth |localizeddate('none', 'none', null, null, 'dd MMMM Y') }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> {{ user.dateOfBirth | date('d/m/Y') }}</li>
 								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> né(e) à {{ user.placeOfBirth }}</li>
 								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Situation familiale: {{ user.maritalStatus }}</li>
 								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Nom du conjoint: {{ user.conjointName }}</li>

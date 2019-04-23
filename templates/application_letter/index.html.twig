@@ -8,11 +8,17 @@
     <article class="resume-wrapper text-center position-relative">
 	    <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
 			<div class="resume-body p-5">
+				<section class="resume-section summary-section mb-5">
+		    		<h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">OFFRE</h2>
+		    		<p>Poste: {{ jobOpening.position }} (Réf. {{ jobOpening.positionReference }})</p>
+		    		<p>Profil:<br/> {{ jobOpening.profile }}</p>
+	    		</section>
 			    <section class="resume-section summary-section mb-5">
 				    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">MA LETTRE DE MOTIVATION</h2>
 			    	{{ form_row(form.content|raw) }}
-			    	<input	type="submit" value="Sauvegarder" class="btn btn-primary">
+			    	
 			    </section>
+				<input	type="submit" value="Envoyer ma candidature" class="btn btn-primary">
 			</div>
 	    </div>
 	</article>

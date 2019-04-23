@@ -1,0 +1,15 @@
+{% extends 'base_rh.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/profil.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/home.css')}}">
+{% endblock %}
+{% block body %}
+    <article class="resume-wrapper text-center position-relative">
+	    <div class="resume-wrapper-inner mx-auto text-left bg-white shadow-lg">
+	    	<div class="application-letter-content-wrapper">
+			    {{ applicationLetter.content | raw }}	    		
+	    	</div>
+		</div>
+    </article>
+{% endblock %}

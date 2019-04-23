@@ -70,6 +70,7 @@ class CandidatController extends AbstractController
             return $this->render(
                 'candidat/index.html.twig',
                 [
+                    'user' => $candidat,
                     'candidat' => $viewCandidat,
                     'experienceUpdated' => $cvUpdatedExperienceSection,
                     'trainingUpdated' => $cvUpdatedTrainingSection,
@@ -141,5 +142,56 @@ class CandidatController extends AbstractController
         $candidates = $em->getRepository('App:User')->filterCandidat($rhValidated, $status, $nationality, $tags);
 
         return $this->json($candidates);
+    }
+
+    /**
+     * @Route("/candidat/favorite/{id}", name="candidat_favorite")
+     * @param                            Request $request [description]
+     * @param                            integer $id      [description]
+     * @return                           json           [description]
+     */
+    public function favoriteCandidat(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        if ($request->isXmlHttpRequest()) {
+            $candidat = $em->getRepository('App:User')->find($id);
+            if ($candidat) {
+                $value = $candidat->getFavoriteCandidate() == 0 ? 1 : 0;
+                $candidat->setFavoriteCandidate($value);
+                $candidat->setStars(8);
+                $em->flush();
+
+                return $this->json(['success' => $value]);
+            }
+        }
+
+        return $this->json(['success' => false]);
+    }
+
+    /**
+     * @Route("/candidat/stars/{id}", name="candidat_stars")
+     * @param                         Request $request [description]
+     * @param                         integer $id      [description]
+     * @return                        json           [description]
+     */
+    public function noteCandidat(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        if ($request->isXmlHttpRequest()) {
+            $candidat = $em->getRepository('App:User')->find($id);
+            if ($candidat) {
+                $value = $request->request->get('stars');
+                $candidat->setStars($value);
+                /* Si le candidat a plus de 8 étoile il devient automatiquement favori ;) */
+                if ($value >= 8) {
+                    $candidat->setFavoriteCandidate(1);
+                }
+                $em->flush();
+
+                return $this->json(['success' => $value]);
+            }
+        }
+
+        return $this->json(['success' => false]);
     }
 }
