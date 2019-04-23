@@ -16,6 +16,7 @@
 	            </tr>
 	        </thead>
 	        <tbody>
+			{%  if applicationLetters.jobOpening is defined %}
 				{% for al in applicationLetters %}
 					<tr>
 				        <td>
@@ -36,6 +37,7 @@
 				        </td>						
 					</tr>
 				{% endfor %}
+			{% endif %}
 			</tbody>
 		</table>		
 	</div>
