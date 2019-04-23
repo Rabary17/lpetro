@@ -66,7 +66,7 @@
 						    <p>Adresse: {{ user.address }}</p>
 						</section> #}
 
-							<section class="resume-section experience-section mb-5">
+						<section class="resume-section experience-section mb-5">
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Diplômes et Formations</h2>
 						    <div class="resume-section-content">
 							    <div class="resume-timeline position-relative">		    
@@ -88,31 +88,7 @@
 							    </div>
 						    </div>
 					    </section>
-					    <section class="resume-section experience-section mb-5">
-						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Expériences Professionnelles</h2>
-						    <div class="resume-section-content">
-							    <div class="resume-timeline position-relative">		    
-								    <article class="resume-timeline-item position-relative">
-									    {% for experience in user.experiences %}
-										    <div class="resume-section-content container">
-											    <div class="col-lg-3 col-md-3 col-sm-3 resume-position-time">
-											        du </br>{{experience.DateDebut|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} </br>au</br> {{experience.DateFin|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
-											    </div>
-											    <div class="col-lg-9 col-md-9 col-sm-9"><span class="font-weight-bold">{{ experience.position }}</span></br>
-																						 <span style="color:#288edc">{{ experience.company }}</span> </br>
-																						 <small class="text-muted">Niveau : ({{ experience.status }})</br>
-																						 {{ experience.achievements|nl2br}}</br>
-																						 {{ experience.others|nl2br}}</small></br>
-												</div>
-										    </div>
-											</br>
-									    {% endfor %}
-									    <a href="{{ path('experience') }}"  class="extra-link">Voir toutes mes expériences déjà encodés </a>
-								    </article>
-							    </div>
-						    </div>
-					    </section>
-					    <section class="resume-section experience-section mb-5">
+						<section class="resume-section experience-section mb-5">
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Mes compétences</h2>
 						    <div class="resume-section-content">
 							    <div class="resume-timeline position-relative">		    
@@ -147,6 +123,31 @@
 							    </div>
 						    </div>
 					    </section>
+					    <section class="resume-section experience-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Expériences Professionnelles</h2>
+						    <div class="resume-section-content">
+							    <div class="resume-timeline position-relative">		    
+								    <article class="resume-timeline-item position-relative">
+									    {% for experience in user.experiences %}
+										    <div class="resume-section-content container">
+											    <div class="col-lg-3 col-md-3 col-sm-3 resume-position-time">
+											        du </br>{{experience.DateDebut|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} </br>au</br> {{experience.DateFin|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
+											    </div>
+											    <div class="col-lg-9 col-md-9 col-sm-9"><span class="font-weight-bold">{{ experience.position }}</span></br>
+																						 <span style="color:#288edc">{{ experience.company }}</span> </br>
+																						 <small class="text-muted">Niveau : ({{ experience.status }})</br>
+																						 {{ experience.achievements|nl2br}}</br>
+																						 {{ experience.others|nl2br}}</small></br>
+												</div>
+										    </div>
+											</br>
+									    {% endfor %}
+									    <a href="{{ path('experience') }}"  class="extra-link">Voir toutes mes expériences déjà encodés </a>
+								    </article>
+							    </div>
+						    </div>
+					    </section>
+
 					    <section class="resume-section experience-section mb-5">
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Activités extra-professionnelles</h2>
 						    <div class="resume-section-content">

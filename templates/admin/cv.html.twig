@@ -115,18 +115,8 @@
 
 			    <div class="row">
 				    <div class="col-lg-9">
-					    {# <section class="resume-section experience-section mb-5">
-						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Etat civil</h2>
-						    <p>Date de naissance: {{ candidat.dateOfBirth | date('d/m/Y') }}</p>
-						    <p>Lieu de naissance: {{ candidat.placeOfBirth }}</p>
-						    <p>Situation familiale: {{ candidat.maritalStatus }}</p>
-						    <p>Nom du conjoint: {{ candidat.conjointName }}</p>
-						    <p>Nombre d'enfant: {{ candidat.nbChildren }}</p>
-						    <p>Nationalité: {% if candidat.nationality.nationality is defined %}{{ candidat.nationality.nationality }}{% endif %}</p>
-						    <p>Adresse: {{ candidat.address }}</p>
-						</section> #}
-
-							<section class="resume-section experience-section mb-5">
+		
+						<section class="resume-section experience-section mb-5">
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Diplômes et Formations</h2>
 						    <div class="resume-section-content">
 							    <div class="resume-timeline position-relative">		    
@@ -148,31 +138,7 @@
 							    </div>
 						    </div>
 					    </section>
-					    <section class="resume-section experience-section mb-5">
-						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Expériences Professionnelles</h2>
-						    <div class="resume-section-content">
-							    <div class="resume-timeline position-relative">		    
-								    <article class="resume-timeline-item position-relative">
-									    {% for experience in candidat.experiences %}
-										    <div class="resume-section-content row">
-											    <div class="col-lg-3 col-md-3 col-sm-3">
-											        du</br> {{ experience.DateDebut|localizeddate('none', 'none', null, null, 'dd MMMM Y') }}<br>à</br> {{ experience.DateFin|localizeddate('none', 'none', null, null, 'dd MMMM Y') }}
-											    </div>
-											    <div class="col-lg-9 col-md-9 col-sm-9"><h3 class="font-weight-bold">{{ experience.position }}</h3>
-																						 <span style="color:#288edc">{{ experience.company }}</span> </br>
-																						 <small class="text-muted">Niveau : ({{ experience.status }})</br>
-																						 {{ experience.achievements|nl2br}}</br>
-																						 {{ experience.others|nl2br}}</small></br>
-												</div>
-										    </div>
-											</br>
-									    {% endfor %}
-									    <a href="{{ path('experience') }}" class="extra-link">Voir toutes mes expériences déjà encodés </a>
-								    </article>
-							    </div>
-						    </div>
-					    </section>
-					    <section class="resume-section experience-section mb-5">
+						<section class="resume-section experience-section mb-5">
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Mes competences</h2>
 						    <div class="resume-section-content">
 							    <div class="resume-timeline position-relative">		    
@@ -202,6 +168,31 @@
 							    </div>
 						    </div>
 					    </section>
+					    <section class="resume-section experience-section mb-5">
+						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Expériences Professionnelles</h2>
+						    <div class="resume-section-content">
+							    <div class="resume-timeline position-relative">		    
+								    <article class="resume-timeline-item position-relative">
+									    {% for experience in candidat.experiences %}
+										    <div class="resume-section-content row">
+											    <div class="col-lg-3 col-md-3 col-sm-3">
+											        du</br> {{ experience.DateDebut|localizeddate('none', 'none', null, null, 'dd MMMM Y') }}<br>à</br> {{ experience.DateFin|localizeddate('none', 'none', null, null, 'dd MMMM Y') }}
+											    </div>
+											    <div class="col-lg-9 col-md-9 col-sm-9"><h3 class="font-weight-bold">{{ experience.position }}</h3>
+																						 <span style="color:#288edc">{{ experience.company }}</span> </br>
+																						 <small class="text-muted">Niveau : ({{ experience.status }})</br>
+																						 {{ experience.achievements|nl2br}}</br>
+																						 {{ experience.others|nl2br}}</small></br>
+												</div>
+										    </div>
+											</br>
+									    {% endfor %}
+									    <a href="{{ path('experience') }}" class="extra-link">Voir toutes mes expériences déjà encodés </a>
+								    </article>
+							    </div>
+						    </div>
+					    </section>
+
 					    <section class="resume-section experience-section mb-5">
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Activités extra-professionnelles</h2>
 						    <div class="resume-section-content">
