@@ -43,7 +43,7 @@
   <style>p {font-size: 16px !important}</style>
   <body class="skin-blue" style="font-size:16px;">
       <header class="main-header main-header-user">
-        <nav class="navbar navbar-static-top" style="background-color: #7c97a1 ;">
+        <nav class="navbar navbar-static-top" style="background-color: #cc1b27 ;">
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
@@ -63,10 +63,10 @@
                     right: 0;
                     left: auto;
                     margin: 5px;
-                    background-color: #7c97a199;
+                    background-color: #cc1b2799;
                       border:none;
                 ">
-                    <li class="user-header" style="background-color: #7c97a1cc !important">
+                    <li class="user-header" style="background-color: #cc1b27cc !important">
                       <img src="{% if app.user.profileName %}{{ asset('uploads/photos/' ~ app.user.profileName) }}{% else %}{{ asset('assets/dist/img/user-avatar.jpg') }}{% endif %}" class="img-circle" alt="User Image">
                       <p>
                       {{ app.user.firstName | upper }} {{ app.user.lastName}}

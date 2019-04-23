@@ -8737,7 +8737,7 @@
     float: right;
     margin: 3px;
     text-align: center;
-    background-color: #7c97a1;
+    background-color: #667d86ba;
     border-radius: 50%;
     width: 45px;
     cursor: pointer;
@@ -8944,7 +8944,7 @@ input[class*="date-range"] {
 
 .select2-user_maritalStatus-result-zymo-Célibataire:hover{
   color:white;
-  background-color: #7c97a1  !important;
+  background-color: #cc1b27  !important;
 }
 
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header{
@@ -8955,14 +8955,14 @@ input[class*="date-range"] {
   padding: 20px;
 }
 .tt-cursor {
-  background: #7c97a1;
+  background: #cc1b27;
   color: white;
 }
 
 .tag-badge{
     font-size: 14px;
     font-weight: normal;
-    background-color: #7c97a1;
+    background-color: #cc1b27;
     padding: 3px 8px;
     border-radius: 5px;
     margin: 0 5px;
@@ -8980,6 +8980,7 @@ input[class*="date-range"] {
   padding: 0;
   text-shadow: 0px 1px 0 #a2a2a2;
   }
+  
  .star-ratings-css-top {
     color: #288edc;
     padding: 0;
@@ -9030,3 +9031,6 @@ input[class*="date-range"] {
 	    top: 4px;
   }
   
+  .extra-link{
+    font-size:10px !important;
+  }

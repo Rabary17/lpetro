@@ -11,7 +11,7 @@
 	}
 	.content-header {
 		border-bottom: none;
-		background-color: #7c97a1;
+		background-color: #cc1b27;
 	}
 	.resume-wrapper {
     padding: 0;
@@ -21,7 +21,7 @@
 	}
 	.content-footer{
 		border-top: none;
-		background-color: #7c97a1;
+		background-color: #cc1b27;
 	}
 	#langue_speaking:before{
     position: absolute;
@@ -60,7 +60,7 @@
 		    <header class="resume-header pt-4 pt-md-0">
 
 				<div class="media flex-column flex-md-row container">
-					<div class="col-md-5 col-lg-5 col-sm-12" style="text-align:center">
+					<div class="col-md-3 col-lg-3 col-sm-5" style="text-align:center">
 						<div style="text-align: left">
 						<div class="mr-3 img-fluid picture mx-auto" style="
 						background-image: url('{{ asset('uploads/photos/' ~ candidat.profileName) }}');
@@ -76,18 +76,18 @@
 						
 
 					</div>
-				    <div class="col-md-7 col-lg-7 col-sm-12 row">
+				    <div class="col-md-9 col-lg-9 col-sm-7 row">
 					    <div class="primary-info col-sm-6 col-md-8 col-lg-8">
 						    <ul class="list-unstyled">
-							    <li class="mb-2"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{user.email}}</li>
-								<li class="mb-2"><i class="fa fa-map-marker fa-fw mr-2" data-fa-transform="grow-3"></i>{{user.address}}</li>
-							    <li><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ user.phoneNumber }}</li>
-								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> {{ user.dateOfBirth |localizeddate('none', 'none', null, null, 'dd MMMM Y') }}</li>
-								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> né(e) à {{ user.placeOfBirth }}</li>
-								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Situation familiale: {{ user.maritalStatus }}</li>
-								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Nom du conjoint: {{ user.conjointName }}</li>
-								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Nombre d'enfant: {{ user.nbChildren }}</li>
-								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Nationalité: {% if user.nationality.nationality is defined %}{{ user.nationality.nationality }}{% endif %}</li>
+							    <li class="mb-2"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{candidat.email}}</li>
+								<li class="mb-2"><i class="fa fa-map-marker fa-fw mr-2" data-fa-transform="grow-3"></i>{{candidat.address}}</li>
+							    <li><i class="fa fa-mobile fa-fw mr-2" data-fa-transform="grow-6"></i>{{ candidat.phoneNumber }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> {{ candidat.dateOfBirth |localizeddate('none', 'none', null, null, 'dd MMMM Y') }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> né(e) à {{ candidat.placeOfBirth }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Situation familiale: {{ candidat.maritalStatus }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Nom du conjoint: {{ candidat.conjointName }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Nombre d'enfant: {{ candidat.nbChildren }}</li>
+								<li class="mb-2"><i class="fa fa-info-circle fa-fw mr-2" data-fa-transform="grow-6"></i> Nationalité: {% if candidat.nationality.nationality is defined %}{{ candidat.nationality.nationality }}{% endif %}</li>
 						    </ul>
 					    </div><!--//primary-info-->
 						<div style="display:block" class="col-sm-6 col-md-4 col-lg-4">
@@ -112,12 +112,7 @@
 		    </header>
 		
 		    <div class="resume-body p-5">
-			    <section class="resume-section summary-section mb-5" style="margin-bottom: 50px !important;">
-				    <div class="resume-section-content">
-					    <p class="mb-0">Je suis actuellement étudiant à l'Université de Coblence et de calcul suis dans la phase finale de ma thèse.</p>
-				    </div>
-			    </section>
-				
+
 			    <div class="row">
 				    <div class="col-lg-9">
 					    {# <section class="resume-section experience-section mb-5">
@@ -138,11 +133,11 @@
 								    <article class="resume-timeline-item position-relative">
 									   		{% for training in candidat.trainings %}
 												<div class="resume-section-content row">
-													<div class="col-lg-5 col-md-5 col-sm-5">
-													de {{ training.StartDate|localizeddate('none', 'none', null, null, 'dd MMMM Y') }} à {{ training.EndDate|localizeddate('none', 'none', null, null, 'dd MMMM Y') }}
+													<div class="col-lg-3 col-md-3 col-sm-3">
+													de</br> {{ training.StartDate|localizeddate('none', 'none', null, null, 'dd MMMM Y') }}</br>à</br> {{ training.EndDate|localizeddate('none', 'none', null, null, 'dd MMMM Y') }}
 													</div>
 													
-													<div class="col-lg-7 col-md-7 col-sm-7">
+													<div class="col-lg-9 col-md-9 col-sm-9">
 														<h3 class="font-weight-bold mb-1">{{ training.name }}</h3>
 														<p class="mb-0">{{ training.description }}</p>
 													</div>
@@ -160,10 +155,10 @@
 								    <article class="resume-timeline-item position-relative">
 									    {% for experience in candidat.experiences %}
 										    <div class="resume-section-content row">
-											    <div class="col-lg-5 col-md-5 col-sm-5">
-											        du {{ experience.DateDebut|localizeddate('none', 'none', null, null, 'dd MMMM Y') }} à {{ experience.DateFin|localizeddate('none', 'none', null, null, 'dd MMMM Y') }}
+											    <div class="col-lg-3 col-md-3 col-sm-3">
+											        du</br> {{ experience.DateDebut|localizeddate('none', 'none', null, null, 'dd MMMM Y') }}<br>à</br> {{ experience.DateFin|localizeddate('none', 'none', null, null, 'dd MMMM Y') }}
 											    </div>
-											    <div class="col-lg-7 col-md-7 col-sm-7"><h3 class="font-weight-bold">{{ experience.position }}</h3>
+											    <div class="col-lg-9 col-md-9 col-sm-9"><h3 class="font-weight-bold">{{ experience.position }}</h3>
 																						 <span style="color:#288edc">{{ experience.company }}</span> </br>
 																						 <small class="text-muted">Niveau : ({{ experience.status }})</br>
 																						 {{ experience.achievements|nl2br}}</br>
@@ -172,7 +167,7 @@
 										    </div>
 											</br>
 									    {% endfor %}
-									    <a href="{{ path('experience') }}">Voir toutes mes expériences déjà encodés </a>
+									    <a href="{{ path('experience') }}" class="extra-link">Voir toutes mes expériences déjà encodés </a>
 								    </article>
 							    </div>
 						    </div>
@@ -202,7 +197,7 @@
 
 											{% endfor %}
 										
-									    <a href="{{ path('skill') }}">Voir toutes mes competences </a>
+									    <a href="{{ path('skill') }}" class="extra-link">Voir toutes mes competences </a>
 								    </article>
 							    </div>
 						    </div>

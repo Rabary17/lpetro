@@ -10,7 +10,7 @@
 		    <header class="resume-header pt-4 pt-md-0">
 
 				<div class="media flex-column flex-md-row container">
-					<div class="col-md-5 col-lg-5 col-sm-12" style="text-align:center">
+					<div class="col-md-3 col-lg-3 col-sm-5" style="text-align:center">
 						<div style="text-align: left">
 						<div class="mr-3 img-fluid picture mx-auto" style="
 						background-image: url('{{ asset('uploads/photos/' ~ candidat.profileName) }}');
@@ -26,7 +26,7 @@
 						
 
 					</div>
-				    <div class="col-md-7 col-lg-7 col-sm-12">
+				    <div class="col-md-9 col-lg-9 col-sm-7">
 					    <div class="primary-info col-sm-6 col-md-8 col-lg-8">
 						    <ul class="list-unstyled">
 									<li class="mb-2"><i class="fa fa-envelope fa-fw mr-2" data-fa-transform="grow-3"></i>{{user.email}}</li>
@@ -54,12 +54,7 @@
 		    </header>
 		
 		    <div class="resume-body p-5">
-			    <section class="resume-section summary-section mb-5" style="margin-bottom: 50px !important;">
-				    <div class="resume-section-content">
-					    <p class="mb-0">Je suis actuellement étudiant à l'Université de Coblence et de calcul suis dans la phase finale de ma thèse.</p>
-				    </div>
-			    </section>
-				
+
 			    <div class="row">
 				    <div class="col-lg-9">
 					    {# <section class="resume-section experience-section mb-5">
@@ -88,11 +83,11 @@
 								   			{% else %}
 												<div class="resume-section-content container">
 											{% endif %}
-												<div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
-													du {{training.StartDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} au {{training.EndDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
+												<div class="col-lg-3 col-md-3 col-sm-3 resume-position-time">
+													du</br> {{training.StartDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}</br> au</br> {{training.EndDate|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
 												</div>
 												
-												<div class="col-lg-7 col-md-7 col-sm-7">
+												<div class="col-lg-9 col-md-9 col-sm-9">
 													<h3 class="font-weight-bold mb-1">{{ training.name }}</h3>
 													<p class="mb-0">{{ training.description }}</p>
 												</div>
@@ -118,10 +113,10 @@
 								   			{% else %}
 												<div class="resume-section-content container">
 											{% endif %}
-											    <div class="col-lg-5 col-md-5 col-sm-5 resume-position-time">
-													du {{experience.DateDebut|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} au {{experience.DateFin|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
+											    <div class="col-lg-3 col-md-3 col-sm-3 resume-position-time">
+													du</br> {{experience.DateDebut|localizeddate('none', 'none', null, null, 'dd MMMM Y')}} </br>au</br> {{experience.DateFin|localizeddate('none', 'none', null, null, 'dd MMMM Y')}}
 											    </div>
-											    <div class="rcol-lg-7 col-md-7 col-sm-7"><span class="font-weight-bold">{{ experience.position }}</span></br>
+											    <div class="col-lg-9 col-md-9 col-sm-9"><span class="font-weight-bold">{{ experience.position }}</span></br>
 													<span style="color:#288edc">{{ experience.company }}</span> </br>
 													<small class="text-muted">Niveau : ({{ experience.status }})</br>
 																						 {{ experience.achievements|nl2br}}</br>

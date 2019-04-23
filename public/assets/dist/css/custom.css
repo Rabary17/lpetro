@@ -18,7 +18,7 @@ footer {
     bottom: 0;
     z-index: 2;
     text-align: center;
-    background-color: #7c97a1 ;
+    background-color: #cc1b27 ;
     width: 100%;
     padding: 1rem;
     color: white;
@@ -33,7 +33,7 @@ footer {
 	list-style-type: none;
 }
 .skin-blue .main-header-user li.user-header {
-    background-color: #7c97a1  !important;
+    background-color: #cc1b27  !important;
 }
 .form-control{
 	font-size: 16px;
@@ -53,7 +53,7 @@ label.required:not(.mylabel) {
 #confirm_email {
     position: fixed;
     width: 30%;
-    background-color: #7c97a199;
+    background-color: #cc1b2799;
     color: white;
     bottom: 0px;
     z-index: 999;
@@ -89,7 +89,7 @@ label.required:not(.mylabel) {
     color: white;
     font-size: 13px;
     font-weight: normal;
-    background-color: #7c97a1 !important;
+    background-color: #cc1b27 !important;
 }
 .bootstrap-tagsinput {
     width: 100% !important;
