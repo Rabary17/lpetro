@@ -164,7 +164,7 @@
 									<input style="font-size:15px;" type="submit" class="btn btn-primary" value="Sauvegarder"> ou 
 									<a href="{{ path('user_profile') }}" class="btn btn-default" style="font-size:15px;"><i class="fa fa-times"></i> Revenir</a>
 									{% if app.user.submit %}
-									<a class="btn btn-primary" title="CV déjà soumis" style="color: white;font-size: 15px;"><i class="fa fa-check"></i> CV Soumis</a>
+									<!--a class="btn btn-primary" title="CV déjà soumis" style="color: white;font-size: 15px;"><i class="fa fa-check"></i> CV Soumis</a-->
 									{% else %}
 									<a class="btn btn-primary changeme disabled" href="{{ path('user_cv_send', {'id' : user.id}) }}" title="Soumettre mon cv pour validation">Soumettre mon CV pour validation</a>
 									{% endif %}
@@ -316,29 +316,7 @@
 				}
 			});
 
-			$('*[id*=startDate]').each(function(index) {
-				$(this).change(function() {
-					var startDate = $(this).val();
-					$('#user_trainings_'+ index +'_endDate').attr({'min': startDate});
-					$('#user_trainings_'+ index +'_endDate').change(function() {
-						if ($(this).val() < startDate) {
-							$('#user_trainings_'+ index +'_endDate').val(startDate);
-						}
-					});
-				});
-			});
 
-			$('*[id*=date_debut]').each(function(index) {
-				$(this).change(function() {
-					var startDate = $(this).val();
-					$('#user_experiences_'+ index +'_date_fin').attr({'min': startDate});
-					$('#user_experiences_'+ index +'_date_fin').change(function() {
-						if ($(this).val() < startDate) {
-							$('#user_experiences_'+ index +'_date_fin').val(startDate);
-						}
-					});
-				});
-			});
 
 			$('.tag-input').tagsinput({
 				typeaheadjs: [{
@@ -362,13 +340,32 @@
 				}]
 			});
 
-			$('.collection-selector-user-interviews').collection({
-				allow_up: false,
-				allow_down: false,
-				add: '<a href="#"><i title="Ajouter" class="fa fa-plus collection-btn"></i></a>',
-				remove: '<a href="#"><i title="Supprimer" class="fa fa-times collection-btn"></i></a>',
-			});
+
 		});
+
+			$('*[id*=startDate]').each(function(index) {
+				$(this).change(function() {
+					var startDate = $(this).val();
+					$('#user_trainings_'+ index +'_endDate').attr({'min': startDate});
+					$('#user_trainings_'+ index +'_endDate').change(function() {
+						if ($(this).val() < startDate) {
+							$('#user_trainings_'+ index +'_endDate').val(startDate);
+						}
+					});
+				});
+			});
+
+			$('*[id*=date_debut]').each(function(index) {
+				$(this).change(function() {
+					var startDate = $(this).val();
+					$('#user_experiences_'+ index +'_date_fin').attr({'min': startDate});
+					$('#user_experiences_'+ index +'_date_fin').change(function() {
+						if ($(this).val() < startDate) {
+							$('#user_experiences_'+ index +'_date_fin').val(startDate);
+						}
+					});
+				});
+			});
 
 		$('#valide').change(function(){
 			if($(this).is(":checked")) {				
