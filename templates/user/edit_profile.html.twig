@@ -204,12 +204,12 @@
 		});
 
 		jQuery(document).ready(function($) {
-			/*$(document).find('select').each(function(event){
+			$(document).find('select').each(function(event){
 				$(this).selectize({
 					allowEmptyOption: true,
 					create: true
 				});
-			});*/
+			});
 
 			$("#user_phoneNumber").intlTelInput({
 				// whether or not to allow the dropdown
@@ -347,7 +347,7 @@
 					name: 'hobbies',
 					display: 'name',
 					value: 'name',
-					source: this.hobbies
+					source: hobbies
 				}]
 			});
 
@@ -358,7 +358,7 @@
 					name: 'sports',
 					display: 'name',
 					value: 'name',
-					source: this.sports
+					source: sports
 				}]
 			});
 
@@ -388,7 +388,7 @@
 		};
 
 		$(function () {
-			$('[data-toggle="tooltip"]').tooltip()
-		})
+			$('[data-toggle="tooltip"]').tooltip();
+		});
 		</script>
 {% endblock %}
